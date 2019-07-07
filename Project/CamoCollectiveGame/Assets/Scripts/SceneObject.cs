@@ -31,17 +31,28 @@ public class SceneObject : MonoBehaviour
                 continue;
             string[] index = name.Split('X','Y');
             Vector2 pos = new Vector2(int.Parse(index[1]), int.Parse(index[2]));
-            Gizmos.color = new Color(0,0, 1, 0.1f);
             //Gizmos.DrawCube(new Vector3((pos.x + 1) * m_sceneSize.x - m_sceneSize.x / 2, 0, (pos.y + 1) * m_sceneSize.y - m_sceneSize.y / 2), new Vector3(m_sceneSize.x, 100, m_sceneSize.y));
             Vector3 frontPos = new Vector3((pos.x + 1) * m_sceneSize.x - m_sceneSize.x / 2, 0, (pos.y + 1) * m_sceneSize.y - m_sceneSize.y);
             Vector3 leftPos = new Vector3((pos.x + 1) * m_sceneSize.x - m_sceneSize.x, 0, (pos.y + 1) * m_sceneSize.y - m_sceneSize.y / 2);
+            Vector3 rightPos = new Vector3((pos.x + 1) * m_sceneSize.x, 0, (pos.y + 1) * m_sceneSize.y - m_sceneSize.y / 2);
+            Vector3 backPos = new Vector3((pos.x + 1) * m_sceneSize.x - m_sceneSize.x / 2, 0, (pos.y + 1) * m_sceneSize.y);
+
+            //Front border
+            Gizmos.color = new Color(0, 0, 1, 0.1f);
             Gizmos.DrawMesh(m_borderMesh, 0, frontPos, Quaternion.identity, new Vector3(m_sceneSize.x, 100, m_sceneSize.y));
             Gizmos.DrawMesh(m_borderMesh, 0, frontPos, Quaternion.AngleAxis(180, Vector3.up), new Vector3(m_sceneSize.x, 100, m_sceneSize.y));
+            //Back border
+            Gizmos.color = new Color(0, 1, 1, 0.1f);
+            Gizmos.DrawMesh(m_borderMesh, 0, backPos, Quaternion.identity, new Vector3(m_sceneSize.x, 100, m_sceneSize.y));
+            Gizmos.DrawMesh(m_borderMesh, 0, backPos, Quaternion.AngleAxis(180, Vector3.up), new Vector3(m_sceneSize.x, 100, m_sceneSize.y));
+            //Left border
             Gizmos.color = new Color(1, 0, 0, 0.1f);
             Gizmos.DrawMesh(m_borderMesh, 0, leftPos, Quaternion.AngleAxis(90, Vector3.up), new Vector3(m_sceneSize.x, 100, m_sceneSize.y));
             Gizmos.DrawMesh(m_borderMesh, 0, leftPos, Quaternion.AngleAxis(-90, Vector3.up), new Vector3(m_sceneSize.x, 100, m_sceneSize.y));
-
-
+            //Right border
+            Gizmos.color = new Color(0, 1, 0, 0.1f);
+            Gizmos.DrawMesh(m_borderMesh, 0, rightPos, Quaternion.AngleAxis(90, Vector3.up), new Vector3(m_sceneSize.x, 100, m_sceneSize.y));
+            Gizmos.DrawMesh(m_borderMesh, 0, rightPos, Quaternion.AngleAxis(-90, Vector3.up), new Vector3(m_sceneSize.x, 100, m_sceneSize.y));
 
         }
     }
