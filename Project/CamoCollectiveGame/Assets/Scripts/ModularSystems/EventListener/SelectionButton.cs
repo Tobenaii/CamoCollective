@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonEvent : MonoBehaviour
+public class SelectionButton : MonoBehaviour
 {
     [SerializeField]
-    private GameObjectEvent m_event;
+    private GameObjectEvent m_hoverEvent;
+    [SerializeField]
+    private GameEvent m_clickEvent;
     [SerializeField]
     private GameObject m_targetGameObject;
     private bool m_invoked;
@@ -17,9 +19,15 @@ public class ButtonEvent : MonoBehaviour
         if (EventSystem.current.currentSelectedGameObject == gameObject && !m_invoked)
         {
             m_invoked = true;
-            m_event.Invoke(m_targetGameObject);
+            m_hoverEvent.Invoke(m_targetGameObject);
         }
         else if (EventSystem.current.currentSelectedGameObject != gameObject)
             m_invoked = false;
+    }
+
+    public void OnClick()
+    {
+        m_clickEvent.Invoke();
+        transform.parent.gameObject.SetActive(false);
     }
 }

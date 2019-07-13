@@ -1758,6 +1758,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 721845976}
+  - component: {fileID: 721845977}
+  - component: {fileID: 721845978}
   m_Layer: 0
   m_Name: WAYPOINT_ChonkJousting
   m_TagString: Untagged
@@ -1779,6 +1781,49 @@ Transform:
   m_Father: {fileID: 157139004}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &721845977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721845975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69795ab3e7b27384e96db286eed0771e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_scene: {fileID: 102900000, guid: eb98ac3598618cc4d94186b66c0e5857, type: 3}
+  m_particles: {fileID: 0}
+--- !u!114 &721845978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 721845975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: a9fbe7f47cf7c974e8515a67832ae9b3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 721845977}
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &740425825
 GameObject:
   m_ObjectHideFlags: 0
@@ -2775,7 +2820,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1002514763}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1002514765}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1002514763
@@ -2827,7 +2883,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5331b6653e447c949819f72a6cc97afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_event: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
+  m_hoverEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
+  m_clickEvent: {fileID: 11400000, guid: a9fbe7f47cf7c974e8515a67832ae9b3, type: 2}
   m_targetGameObject: {fileID: 721845975}
 --- !u!1 &1031461479
 GameObject:
@@ -4129,7 +4186,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1389114431}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1389114433}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1389114431
@@ -4181,7 +4249,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5331b6653e447c949819f72a6cc97afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_event: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
+  m_hoverEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
+  m_clickEvent: {fileID: 0}
   m_targetGameObject: {fileID: 1450339381}
 --- !u!1 &1450339381
 GameObject:
@@ -5385,7 +5454,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1892716014}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1892716016}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1892716014
@@ -5437,7 +5517,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5331b6653e447c949819f72a6cc97afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_event: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
+  m_hoverEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
+  m_clickEvent: {fileID: 0}
   m_targetGameObject: {fileID: 1684831853}
 --- !u!1 &1925825920
 GameObject:
@@ -5943,7 +6024,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2076102513}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2076102515}
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &2076102513
@@ -5995,7 +6087,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5331b6653e447c949819f72a6cc97afd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_event: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
+  m_hoverEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
+  m_clickEvent: {fileID: 0}
   m_targetGameObject: {fileID: 543214101}
 --- !u!1001 &2082909191
 PrefabInstance:

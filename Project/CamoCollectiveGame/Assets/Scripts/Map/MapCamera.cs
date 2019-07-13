@@ -20,9 +20,9 @@ public class MapCamera : MonoBehaviour
     {
         if (m_atTarget)
             return;
-
-        transform.position = Vector3.SmoothDamp(transform.position, new Vector3(m_currentTarget.transform.position.x, transform.position.y, m_currentTarget.transform.position.z), ref m_velocity, 1 / m_panSpeed * m_panTime);
-        if (Vector3.Distance(transform.position, m_currentTarget.transform.position) < 0.001f)
+        Vector3 targetPos = new Vector3(m_currentTarget.transform.position.x, transform.position.y, m_currentTarget.transform.position.z);
+        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref m_velocity, 1 / m_panSpeed * m_panTime);
+        if (Vector3.Distance(transform.position, targetPos) < 0.01f)
             m_atTarget = true;
     }
 
