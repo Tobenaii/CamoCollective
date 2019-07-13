@@ -29,7 +29,7 @@ public class ChonkController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_rb.MovePosition(transform.position + m_velocity * Time.deltaTime);
+        m_rb.MovePosition(transform.position + transform.forward * Vector3.Magnitude(m_velocity) * Time.deltaTime);
         RotateChonkOverTime();
         RotateJoustOverTime();
     }
