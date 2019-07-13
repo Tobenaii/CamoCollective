@@ -216,7 +216,7 @@ public class InputMapper : MonoBehaviour
     private void Update()
     {
         prevState = state;
-        state = GamePad.GetState((PlayerIndex)controllerNum);
+        state = GamePad.GetState((PlayerIndex)controllerNum, GamePadDeadZone.Circular);
         foreach (InputAction action in actions)
         {
             foreach (ButtonMod button in action.buttons)

@@ -11,7 +11,6 @@ public class ControllerTest : MonoBehaviour
 
     public void Move(Vector2 stick)
     {
-        Debug.Log(stick);
         GetComponent<Rigidbody>().velocity = new Vector3(stick.x * 100, 0, stick.y * 100);
     }
 }
