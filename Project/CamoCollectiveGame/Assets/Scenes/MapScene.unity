@@ -1636,7 +1636,6 @@ GameObject:
   - component: {fileID: 678042348}
   - component: {fileID: 678042351}
   - component: {fileID: 678042352}
-  - component: {fileID: 678042353}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1750,29 +1749,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: CustomGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
---- !u!114 &678042353
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 678042347}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34a90f69efd33934e96ae51c722207d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_elevationLevels: 0
-  m_initHeight: 0
-  m_minHeightFromGround: 0
-  m_zoomSpeed: 0
-  m_rotationSpeed: 0
-  m_rotationCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!1 &721845975
 GameObject:
   m_ObjectHideFlags: 0
