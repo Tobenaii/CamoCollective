@@ -4986,11 +4986,11 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209207504}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e4cf9f88ab4a21f48bb2197a81ceaa54, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 35.11, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &209207506
 MeshRenderer:
@@ -5223,11 +5223,11 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627372441}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e4cf9f88ab4a21f48bb2197a81ceaa54, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 35.11, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &627372443
 MeshRenderer:
@@ -5414,11 +5414,11 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781281043}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e4cf9f88ab4a21f48bb2197a81ceaa54, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 35.11, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &781281045
 MeshRenderer:
@@ -5555,11 +5555,11 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512998906}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: e4cf9f88ab4a21f48bb2197a81ceaa54, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1, y: 35.11, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1512998908
 MeshRenderer:
@@ -5781,6 +5781,14 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 683146078, guid: c7c83928f081c524b91dca87891fd0f6, type: 3}
+      propertyPath: m_knockupForce
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 683146078, guid: c7c83928f081c524b91dca87891fd0f6, type: 3}
+      propertyPath: m_knockbackForce
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c83928f081c524b91dca87891fd0f6, type: 3}

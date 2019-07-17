@@ -7,6 +7,8 @@ public class LanceAttack : MonoBehaviour
     [SerializeField]
     private float m_knockbackForce;
     [SerializeField]
+    private float m_knockupForce;
+    [SerializeField]
     private FloatValue m_livesValue;
     [SerializeField]
     private FloatValue m_scoreValue;
@@ -18,18 +20,24 @@ public class LanceAttack : MonoBehaviour
         LanceAttack chonk = other.transform.parent?.GetComponent<LanceAttack>();
         if (chonk == null)
             return;
-        chonk.Attack(gameObject, m_scoreValue);
+        Attack(chonk.gameObject);
     }
 
-    public void Attack(GameObject other, FloatValue otherScore)
+    public void Attack(GameObject other)
     {
         float dot = Vector3.Dot(transform.forward, other.transform.forward);
         float shield = Mathf.Lerp(-1, 1, Mathf.InverseLerp(0, 180, m_shieldAngle));
         if (dot < shield)
             return;
-        GetComponent<Rigidbody>().AddForce(other.transform.forward * m_knockbackForce, ForceMode.Impulse);
+        m_scoreValue.value++;
+        other.GetComponent<LanceAttack>().Hurt(transform.forward * m_knockbackForce, m_knockupForce);
+    }
+
+    public void Hurt(Vector3 knockback, float knockup)
+    {
+        GetComponent<Rigidbody>().AddForce(Vector3.up * knockup, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse);
         m_livesValue.value--;
-        otherScore.value++;
         if (m_livesValue.value <= 0)
             GetComponent<ChonkJoustingDeath>().OnDeath();
     }
