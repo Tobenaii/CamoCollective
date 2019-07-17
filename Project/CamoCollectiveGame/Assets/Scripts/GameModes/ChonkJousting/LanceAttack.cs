@@ -5,6 +5,8 @@ using UnityEngine;
 public class LanceAttack : MonoBehaviour
 {
     [SerializeField]
+    private float m_knockbackForce;
+    [SerializeField]
     private FloatValue m_livesValue;
     [SerializeField]
     private float m_shieldAngle;
@@ -27,6 +29,7 @@ public class LanceAttack : MonoBehaviour
         float shield = Mathf.Lerp(-1, 1, Mathf.InverseLerp(0, 180, m_shieldAngle));
         if (dot < shield)
             return;
+        GetComponent<Rigidbody>().AddForce(other.transform.forward * m_knockbackForce, ForceMode.Impulse);
         m_livesValue.value--;
     }
 }
