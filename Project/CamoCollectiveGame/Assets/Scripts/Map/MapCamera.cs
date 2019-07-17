@@ -18,7 +18,7 @@ public class MapCamera : MonoBehaviour
 
     private void Update()
     {
-        if (m_atTarget)
+        if (m_atTarget || m_currentTarget == null)
             return;
         Vector3 targetPos = new Vector3(m_currentTarget.transform.position.x, transform.position.y, m_currentTarget.transform.position.z);
         transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref m_velocity, 1 / m_panSpeed * m_panTime);

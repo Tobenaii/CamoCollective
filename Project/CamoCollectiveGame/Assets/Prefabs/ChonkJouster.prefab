@@ -192,7 +192,7 @@ GameObject:
   - component: {fileID: 1306612044445990687}
   - component: {fileID: 1306612044445990686}
   m_Layer: 0
-  m_Name: Joust
+  m_Name: Lance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,8 +280,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1306612045077432823}
+  - component: {fileID: 2086573788905413209}
   m_Layer: 0
-  m_Name: JoustPivot
+  m_Name: LancePivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -302,6 +303,18 @@ Transform:
   m_Father: {fileID: 4666222537033324463}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2086573788905413209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306612045077432822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bf5a324c038d7b439a3ea552ce22e96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1306612044105721603
 PrefabInstance:
   m_ObjectHideFlags: 0

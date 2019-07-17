@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SelectionButton : MonoBehaviour
@@ -28,6 +29,5 @@ public class SelectionButton : MonoBehaviour
     public void OnClick()
     {
         m_clickEvent.Invoke();
-        transform.parent.gameObject.SetActive(false);
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChonkController : MonoBehaviour
+public class ChonkJoustingController : MonoBehaviour
 {
     private Rigidbody m_rb;
     [SerializeField]
