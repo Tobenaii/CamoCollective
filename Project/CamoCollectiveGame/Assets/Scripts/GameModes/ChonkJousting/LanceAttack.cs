@@ -15,7 +15,7 @@ public class LanceAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        LanceAttack chonk = other.transform.parent.GetComponent<LanceAttack>();
+        LanceAttack chonk = other.transform.parent?.GetComponent<LanceAttack>();
         if (chonk == null)
             return;
         chonk.Attack(gameObject, m_scoreValue);

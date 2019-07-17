@@ -20,6 +20,7 @@ public class ChonkJoustingController : MonoBehaviour
 
     private Vector3 m_velocity;
     private Vector3 m_lookDir;
+    private bool m_isSliding;
     //private Vector3 m_targetAim;
 
     private void Start()
@@ -30,12 +31,34 @@ public class ChonkJoustingController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        m_rb.MovePosition(transform.position + m_velocity * Time.deltaTime);
         if (m_lookDir == Vector3.zero)
             RotateChonkOverTime(m_velocity);
         else
             RotateChonkOverTime(m_lookDir);
-        m_rb.MovePosition(transform.position + m_velocity * Time.deltaTime);
         //RotateJoustOverTime();
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Mud"))
+        {
+            Slide(m_velocity.normalized);
+            m_isSliding = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Mud"))
+            m_isSliding = false;
+    }
+
+    private void Slide(Vector3 dir)
+    {
+        if (dir == Vector3.zero)
+            dir = transform.forward;
+        m_velocity = dir * m_chonkRunSpeed;
     }
 
     private void RotateChonkOverTime(Vector3 dir)
@@ -77,6 +100,8 @@ public class ChonkJoustingController : MonoBehaviour
 
     public void Move(Vector2 joystick)
     {
+        if (m_isSliding)
+            return;
         if (Vector3.Magnitude(joystick) < 0.3f)
         {
             m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_chonkStopSpeed * Time.deltaTime);
