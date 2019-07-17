@@ -49,9 +49,6 @@ MonoBehaviour:
   m_chonkRunSpeed: 10
   m_chonkStopSpeed: 10
   m_chonkRotateSpeed: 10
-  m_joustRotateSpeed: 10
-  m_maxJoustAngle: 45
-  m_joust: {fileID: 1306612045077432822}
 --- !u!114 &1306612043750070398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -153,7 +150,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 1306612043750070399}
-          m_MethodName: Aim
+          m_MethodName: Look
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -180,7 +177,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &1306612044445990684
 GameObject:
