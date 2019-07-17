@@ -11,6 +11,8 @@ public class SceneUnloader : MonoBehaviour
 
     private void Awake()
     {
+        if (!SceneManager.GetSceneByName(m_scene.name).IsValid())
+            return;
         SceneManager.UnloadSceneAsync(m_scene.name);
     }
 }

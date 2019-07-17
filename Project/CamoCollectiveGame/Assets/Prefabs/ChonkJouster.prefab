@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1306612043750070399}
   - component: {fileID: 1306612043750070398}
   - component: {fileID: 1306612043750070397}
+  - component: {fileID: 683146078}
   m_Layer: 0
   m_Name: ChonkJouster
   m_TagString: Untagged
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_chonkRunSpeed: 10
-  m_chonkStopSpeed: 10
+  m_chonkStopSpeed: 500
   m_chonkRotateSpeed: 10
 --- !u!114 &1306612043750070398
 MonoBehaviour:
@@ -179,6 +180,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &683146078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306612043750070396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde3391d25cfee146a16f76bfee66b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_livesValue: {fileID: 11400000, guid: a8daacf08d9dc154da533192d1c074f7, type: 2}
+  m_shieldAngle: 45
 --- !u!1 &1306612044445990684
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,7 +207,7 @@ GameObject:
   - component: {fileID: 1306612044445990687}
   - component: {fileID: 1306612044445990686}
   m_Layer: 0
-  m_Name: Lance
+  m_Name: Capsule
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +280,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1306612044445990684}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -280,9 +295,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1306612045077432823}
-  - component: {fileID: 2086573788905413209}
   m_Layer: 0
-  m_Name: LancePivot
+  m_Name: Lance
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -303,18 +317,6 @@ Transform:
   m_Father: {fileID: 4666222537033324463}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2086573788905413209
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306612045077432822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bf5a324c038d7b439a3ea552ce22e96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1306612044105721603
 PrefabInstance:
   m_ObjectHideFlags: 0
