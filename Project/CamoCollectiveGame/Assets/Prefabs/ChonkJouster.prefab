@@ -9,10 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1306612043750070392}
-  - component: {fileID: 1306612043750070399}
   - component: {fileID: 1306612043750070398}
   - component: {fileID: 1306612043750070397}
+  - component: {fileID: 1306612043750070399}
   - component: {fileID: 683146078}
+  - component: {fileID: 6394471394633165378}
   m_Layer: 0
   m_Name: ChonkJouster
   m_TagString: Untagged
@@ -35,21 +36,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1306612043750070399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306612043750070396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da86d4502edd9fd44a57cbc72218d398, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_chonkRunSpeed: 10
-  m_chonkStopSpeed: 500
-  m_chonkRotateSpeed: 10
 --- !u!114 &1306612043750070398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -180,6 +166,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &1306612043750070399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306612043750070396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da86d4502edd9fd44a57cbc72218d398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_chonkRunSpeed: 10
+  m_chonkStopSpeed: 500
+  m_chonkRotateSpeed: 10
 --- !u!114 &683146078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +197,23 @@ MonoBehaviour:
   m_livesValue: {fileID: 11400000, guid: a8daacf08d9dc154da533192d1c074f7, type: 2}
   m_scoreValue: {fileID: 11400000, guid: 66531886412ca744f962bfaba0216c29, type: 2}
   m_shieldAngle: 45
+--- !u!114 &6394471394633165378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306612043750070396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c867609428b00fa47b1ff7edb0f81e99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_respawnTime: 10
+  m_initLives: 4
+  m_scoreLossOnDeath: 2
+  m_livesValue: {fileID: 11400000, guid: a8daacf08d9dc154da533192d1c074f7, type: 2}
+  m_scoreValue: {fileID: 11400000, guid: 66531886412ca744f962bfaba0216c29, type: 2}
 --- !u!1 &1306612044445990684
 GameObject:
   m_ObjectHideFlags: 0

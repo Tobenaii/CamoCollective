@@ -13,11 +13,6 @@ public class LanceAttack : MonoBehaviour
     [SerializeField]
     private float m_shieldAngle;
 
-    private void Awake()
-    {
-        m_livesValue.value = 4;
-        m_scoreValue.value = 0;
-    }
     private void OnTriggerEnter(Collider other)
     {
         LanceAttack chonk = other.transform.parent.GetComponent<LanceAttack>();
@@ -35,5 +30,7 @@ public class LanceAttack : MonoBehaviour
         GetComponent<Rigidbody>().AddForce(other.transform.forward * m_knockbackForce, ForceMode.Impulse);
         m_livesValue.value--;
         otherScore.value++;
+        if (m_livesValue.value <= 0)
+            GetComponent<ChonkJoustingDeath>().OnDeath();
     }
 }
