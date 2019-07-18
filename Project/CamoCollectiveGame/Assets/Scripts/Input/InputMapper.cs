@@ -137,7 +137,7 @@ public class InputMapper : MonoBehaviour
     }
 
 
-    public List<InputAction> actions;
+    public List<InputAction> actions = new List<InputAction>();
 
     [SerializeField]
     private int controllerNum;
