@@ -12,6 +12,8 @@ public class InputWindow : EditorWindow
     static Texture texture;
     static Texture2D circle;
     static Texture2D circleHover;
+    static Texture2D oval;
+    static Texture2D ovalHover;
     static GUIStyle style;
 
     private SerializedObject inputDataObj;
@@ -39,6 +41,8 @@ public class InputWindow : EditorWindow
         texture = Resources.Load("Controller") as Texture;
         circle = Resources.Load("Circle") as Texture2D;
         circleHover = Resources.Load("CircleHover") as Texture2D;
+        oval = Resources.Load("Trigger") as Texture2D;
+        ovalHover = Resources.Load("TriggerHover") as Texture2D;
         style = new GUIStyle();
     }
 
@@ -117,6 +121,8 @@ public class InputWindow : EditorWindow
         DrawButton(new Rect(117, 195, 55, 55), circle, circleHover, style, InputMapper.InputAction.Button.LeftJoystick);
         DrawButton(new Rect(293, 263, 55, 55), circle, circleHover, style, InputMapper.InputAction.Button.RightJoystick);
 
+        DrawButton(new Rect(117, 90, 55, 55), oval, ovalHover, style, InputMapper.InputAction.Button.LeftTrigger);
+        DrawButton(new Rect(350, 90, 55, 55), oval, ovalHover, style, InputMapper.InputAction.Button.RightTrigger);
 
         if (canDisplay && actionProps.Count > 0)
         {
@@ -126,13 +132,15 @@ public class InputWindow : EditorWindow
                 EditorGUILayout.LabelField("Button " + currentButton.ToString());
                 for (int i = 0; i < actionProps.Count; i++)
                 {
-                    if (currentButton == InputMapper.InputAction.Button.LeftJoystick || currentButton == InputMapper.InputAction.Button.RightJoystick)
+                    if (currentButton == InputMapper.InputAction.Button.LeftTrigger || currentButton == InputMapper.InputAction.Button.RightTrigger)
+                        EditorGUILayout.PropertyField(actionProps[i].FindPropertyRelative("unityEventTrigger"), new GUIContent(actionProps[i].FindPropertyRelative("actionName").stringValue));
+                    else if (currentButton == InputMapper.InputAction.Button.LeftJoystick || currentButton == InputMapper.InputAction.Button.RightJoystick)
                         EditorGUILayout.PropertyField(actionProps[i].FindPropertyRelative("unityEventJoystick"), new GUIContent(actionProps[i].FindPropertyRelative("actionName").stringValue));
                     else
                         EditorGUILayout.PropertyField(actionProps[i].FindPropertyRelative("unityEventButton"), new GUIContent(actionProps[i].FindPropertyRelative("actionName").stringValue));
                 }
             }
-            else if (currentButton != InputMapper.InputAction.Button.LeftJoystick && currentButton != InputMapper.InputAction.Button.RightJoystick)
+            else if (currentButton != InputMapper.InputAction.Button.LeftJoystick && currentButton != InputMapper.InputAction.Button.RightJoystick && currentButton != InputMapper.InputAction.Button.LeftTrigger && currentButton != InputMapper.InputAction.Button.RightTrigger)
             {
                 for (int i = 0; i < modProps.Count; i++)
                 {
@@ -154,7 +162,7 @@ public class InputWindow : EditorWindow
                 }
             }
             else
-                EditorGUILayout.LabelField("Sorry, there are no modifiers for Joysticks at this time.");
+                EditorGUILayout.LabelField("Sorry, there are no modifiers for this action at this time.");
         }
         else
             EditorGUILayout.LabelField("This button has not been assigned to any actions.");

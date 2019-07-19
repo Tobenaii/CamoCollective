@@ -13,9 +13,14 @@ public class InputMapper : MonoBehaviour
     }
 
     [System.Serializable]
+    public class TriggerEvent : UnityEvent<float>
+    {
+    }
+
+    [System.Serializable]
     public class InputAction
     {
-        public enum Button { A, B, Y, X , LeftJoystick, RightJoystick};
+        public enum Button { A, B, Y, X, LeftJoystick, RightJoystick, LeftTrigger, RightTrigger };
 
         public static implicit operator InputAction(string action)
         {
@@ -46,6 +51,8 @@ public class InputMapper : MonoBehaviour
             buttonY = false;
             joystickLeft = false;
             joystickRight = false;
+            triggerLeft = false;
+            triggerRight = false;
             buttons.Clear();
             unityEventButton = new UnityEvent();
             unityEventJoystick = new JoystickEvent();
@@ -63,8 +70,11 @@ public class InputMapper : MonoBehaviour
                     unityEventJoystick.Invoke(new Vector2(state.ThumbSticks.Right.X, state.ThumbSticks.Right.Y));
                 if (mod.button == InputAction.Button.LeftJoystick)
                     unityEventJoystick.Invoke(new Vector2(state.ThumbSticks.Left.X, state.ThumbSticks.Left.Y));
-                else
-                    mod.Update(unityEventButton);
+                if (mod.button == InputAction.Button.LeftTrigger)
+                    unityEventTrigger.Invoke(state.Triggers.Left);
+                if (mod.button == InputAction.Button.RightTrigger)
+                    unityEventTrigger.Invoke(state.Triggers.Right);
+                mod.Update(unityEventButton);
             }
         }
 
@@ -75,12 +85,16 @@ public class InputMapper : MonoBehaviour
         public bool buttonY;
         public bool joystickLeft;
         public bool joystickRight;
+        public bool triggerLeft;
+        public bool triggerRight;
         [HideInInspector]
         public List<ButtonMod> buttons = new List<ButtonMod>();
         [HideInInspector]
         public UnityEvent unityEventButton = new UnityEvent();
         [HideInInspector]
         public JoystickEvent unityEventJoystick = new JoystickEvent();
+        [HideInInspector]
+        public TriggerEvent unityEventTrigger = new TriggerEvent();
     }
 
 
@@ -210,6 +224,14 @@ public class InputMapper : MonoBehaviour
                 AddButton(action, InputAction.Button.RightJoystick);
             else
                 RemoveButton(action, InputAction.Button.RightJoystick);
+            if (action.triggerLeft)
+                AddButton(action, InputAction.Button.LeftTrigger);
+            else
+                RemoveButton(action, InputAction.Button.LeftTrigger);
+            if (action.triggerRight)
+                AddButton(action, InputAction.Button.RightTrigger);
+            else
+                RemoveButton(action, InputAction.Button.RightTrigger);
         }
     }
 

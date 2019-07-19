@@ -10,8 +10,16 @@ public class SceneUnloader : MonoBehaviour
     private SceneAsset m_scene;
     [SerializeField]
     private bool m_retryUntilSuccessful;
+    [SerializeField]
+    private bool m_unloadOnAwake = true;
 
     private void Awake()
+    {
+        if (m_unloadOnAwake)
+            UnloadScene();
+    }
+
+    public void UnloadScene()
     {
         if (!SceneManager.GetSceneByName(m_scene.name).IsValid() && !m_retryUntilSuccessful)
             return;
