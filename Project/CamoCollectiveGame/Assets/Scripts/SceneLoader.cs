@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class SceneLoader: MonoBehaviour
 {
     [SerializeField]
-    private SceneValue m_scene;
+    private List<SceneValue> m_scenes;
     public void LoadScene()
     {
-        SceneManager.LoadSceneAsync(m_scene, LoadSceneMode.Additive);
+        foreach (SceneValue scene in m_scenes)
+            SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
     }
 }

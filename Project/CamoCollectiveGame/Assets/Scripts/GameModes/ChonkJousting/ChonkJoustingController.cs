@@ -118,7 +118,6 @@ public class ChonkJoustingController : MonoBehaviour
             m_velocity = Vector3.MoveTowards(m_velocity, target, m_chonkMudAcceleration * Time.deltaTime);
         else
             m_velocity = Vector3.MoveTowards(m_velocity, target, m_chonkAcceleration * Time.deltaTime);
-
     }
 
     public void Look(Vector2 joystick)
