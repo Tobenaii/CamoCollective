@@ -7,9 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneUnloader : MonoBehaviour
 {
     [SerializeField]
-    private SceneAsset m_scene;
-    [SerializeField]
-    private bool m_retryUntilSuccessful;
+    private List<SceneAsset> m_scenes;
     [SerializeField]
     private bool m_unloadOnAwake = true;
 
@@ -21,20 +19,11 @@ public class SceneUnloader : MonoBehaviour
 
     public void UnloadScene()
     {
-        if (!SceneManager.GetSceneByName(m_scene.name).IsValid() && !m_retryUntilSuccessful)
-            return;
-        if (!m_retryUntilSuccessful)
-            SceneManager.UnloadSceneAsync(m_scene.name);
-        else
-            StartCoroutine(RetryUnload());
-    }
-
-    private IEnumerator RetryUnload()
-    {
-        while (!SceneManager.GetSceneByName(m_scene.name).IsValid())
+        foreach (SceneAsset scene in m_scenes)
         {
-            yield return null;
+            if (!SceneManager.GetSceneByName(scene.name).IsValid())
+                return;
+            SceneManager.UnloadSceneAsync(scene.name);
         }
-        SceneManager.UnloadSceneAsync(m_scene.name);
     }
 }
