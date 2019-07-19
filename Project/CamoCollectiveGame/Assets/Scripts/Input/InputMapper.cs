@@ -150,16 +150,18 @@ public class InputMapper : MonoBehaviour
         public float cooldownTime;
     }
 
-
-    public List<InputAction> actions = new List<InputAction>();
-
+    [SerializeField]
+    private bool m_disableOnAwake;
     [SerializeField]
     private int controllerNum;
+    public List<InputAction> actions = new List<InputAction>();
     private GamePadState state;
     private GamePadState prevState;
+    private bool m_disabled;
 
     private void Awake()
     {
+        m_disabled = m_disableOnAwake;
     }
 
     private void AddButton(InputAction action, InputAction.Button button)
@@ -235,8 +237,20 @@ public class InputMapper : MonoBehaviour
         }
     }
 
+    public void DisableInput()
+    {
+        m_disabled = true;
+    }
+
+    public void EnableInput()
+    {
+        m_disabled = false;
+    }
+
     private void Update()
     {
+        if (m_disabled)
+            return;
         prevState = state;
         state = GamePad.GetState((PlayerIndex)controllerNum, GamePadDeadZone.Circular);
         foreach (InputAction action in actions)

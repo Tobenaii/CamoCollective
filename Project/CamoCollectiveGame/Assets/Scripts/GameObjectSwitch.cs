@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameObjectEnabler : MonoBehaviour
+public class GameObjectSwitch : MonoBehaviour
 {
     [SerializeField]
     private GameObject m_gameObject;

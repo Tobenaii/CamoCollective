@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1306612043750070399}
   - component: {fileID: 683146078}
   - component: {fileID: 6394471394633165378}
+  - component: {fileID: 1306612043788377550}
   m_Layer: 0
   m_Name: ChonkJouster
   m_TagString: Untagged
@@ -48,6 +49,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d14932de0e9034abfce6da8ef0ab14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_disableOnAwake: 1
+  controllerNum: 0
   actions:
   - actionName: Move
     buttonA: 0
@@ -56,6 +59,8 @@ MonoBehaviour:
     buttonY: 0
     joystickLeft: 1
     joystickRight: 0
+    triggerLeft: 0
+    triggerRight: 0
     buttons:
     - button: 4
       buttonState: 0
@@ -99,6 +104,11 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
+    unityEventTrigger:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
   - actionName: Aim
     buttonA: 0
     buttonB: 0
@@ -106,6 +116,8 @@ MonoBehaviour:
     buttonY: 0
     joystickLeft: 0
     joystickRight: 1
+    triggerLeft: 0
+    triggerRight: 0
     buttons:
     - button: 5
       buttonState: 0
@@ -149,7 +161,11 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-  controllerNum: 0
+    unityEventTrigger:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
 --- !u!54 &1306612043750070397
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -215,6 +231,35 @@ MonoBehaviour:
   m_scoreLossOnDeath: 2
   m_livesValue: {fileID: 11400000, guid: a8daacf08d9dc154da533192d1c074f7, type: 2}
   m_scoreValue: {fileID: 11400000, guid: 66531886412ca744f962bfaba0216c29, type: 2}
+--- !u!114 &1306612043788377550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306612043750070396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: eb7b7affc3d604f4a84ff0ca405edca4, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1306612043750070398}
+        m_MethodName: EnableInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1306612044445990684
 GameObject:
   m_ObjectHideFlags: 0
