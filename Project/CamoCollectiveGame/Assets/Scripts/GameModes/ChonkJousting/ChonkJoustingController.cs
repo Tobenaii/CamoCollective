@@ -8,7 +8,13 @@ public class ChonkJoustingController : MonoBehaviour
     [SerializeField]
     private float m_chonkRunSpeed;
     [SerializeField]
+    private float m_chonkAcceleration;
+    [SerializeField]
+    private float m_chonkMudAcceleration;
+    [SerializeField]
     private float m_chonkStopSpeed;
+    [SerializeField]
+    private float m_chonkMudStopSpeedMultiplier;
     [SerializeField]
     private float m_chonkRotateSpeed;
     //[SerializeField]
@@ -21,6 +27,7 @@ public class ChonkJoustingController : MonoBehaviour
     private Vector3 m_velocity;
     private Vector3 m_lookDir;
     private bool m_isSliding;
+    private Vector3 m_smoothVelocity;
     //private Vector3 m_targetAim;
 
     private void Start()
@@ -43,7 +50,7 @@ public class ChonkJoustingController : MonoBehaviour
     {
         if (other.CompareTag("Mud"))
         {
-            Slide(m_velocity.normalized);
+            //Slide(m_velocity.normalized);
             m_isSliding = true;
         }
     }
@@ -100,14 +107,18 @@ public class ChonkJoustingController : MonoBehaviour
 
     public void Move(Vector2 joystick)
     {
-        if (m_isSliding)
-            return;
+
         if (Vector3.Magnitude(joystick) < 0.3f)
         {
-            m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_chonkStopSpeed * Time.deltaTime);
+            m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_chonkStopSpeed * (m_isSliding? m_chonkMudStopSpeedMultiplier : 1) * Time.deltaTime);
             return;
         }
-        m_velocity = transform.forward + new Vector3(joystick.x, 0, joystick.y).normalized * m_chonkRunSpeed;
+        Vector3 target = transform.forward + new Vector3(joystick.x, 0, joystick.y).normalized * m_chonkRunSpeed;
+        if (m_isSliding)
+            m_velocity = Vector3.MoveTowards(m_velocity, target, m_chonkMudAcceleration * Time.deltaTime);
+        else
+            m_velocity = Vector3.MoveTowards(m_velocity, target, m_chonkAcceleration * Time.deltaTime);
+
     }
 
     public void Look(Vector2 joystick)

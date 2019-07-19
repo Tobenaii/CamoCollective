@@ -318,6 +318,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d14932de0e9034abfce6da8ef0ab14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_disableOnAwake: 0
+  controllerNum: 0
   actions:
   - actionName: PrevPage
     buttonA: 0
@@ -422,7 +424,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-  controllerNum: 0
 --- !u!1 &877992938
 GameObject:
   m_ObjectHideFlags: 0
@@ -683,7 +684,6 @@ GameObject:
   - component: {fileID: 1433158550}
   - component: {fileID: 1433158549}
   - component: {fileID: 1433158554}
-  - component: {fileID: 1433158555}
   - component: {fileID: 1433158553}
   m_Layer: 5
   m_Name: Canvas
@@ -825,19 +825,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_gameObject: {fileID: 862114825}
---- !u!114 &1433158555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1433158548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 584b2856d42b9d64dbf49f1d6fb89375, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_gameObject: {fileID: 0}
 --- !u!1 &1756048951
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,7 +858,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_scene:
     m_scene: {fileID: 102900000, guid: eb98ac3598618cc4d94186b66c0e5857, type: 3}
-    m_sceneName: ChonkJoustingTestScene
+    m_sceneName: ChonkJoustingScene
 --- !u!4 &1756048953
 Transform:
   m_ObjectHideFlags: 0
@@ -913,6 +900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d14932de0e9034abfce6da8ef0ab14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_disableOnAwake: 0
+  controllerNum: 0
   actions:
   - actionName: StartGame
     buttonA: 1
@@ -971,7 +960,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-  controllerNum: 0
 --- !u!1 &1843478220
 GameObject:
   m_ObjectHideFlags: 0

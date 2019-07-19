@@ -195,7 +195,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_chonkRunSpeed: 10
-  m_chonkStopSpeed: 500
+  m_chonkAcceleration: 30
+  m_chonkMudAcceleration: 10
+  m_chonkStopSpeed: 20
+  m_chonkMudStopSpeedMultiplier: 0.3
   m_chonkRotateSpeed: 10
 --- !u!114 &683146078
 MonoBehaviour:
