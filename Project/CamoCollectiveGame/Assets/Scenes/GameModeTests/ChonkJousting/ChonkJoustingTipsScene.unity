@@ -179,8 +179,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_scenes:
-  - {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
-  - {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
+  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
+    m_sceneName: FreePlayCharacterSelectScene
+  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
+    m_sceneName: ModeSelectionScene
   m_unloadOnAwake: 1
 --- !u!114 &433627070
 MonoBehaviour:
@@ -889,7 +891,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_scenes:
-  - {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
+  - m_scene: {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
+    m_sceneName: ChonkJoustingTipsScene
   m_unloadOnAwake: 1
 --- !u!114 &1689149972
 MonoBehaviour:
@@ -1024,7 +1027,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_scenes:
-  - {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
+  - m_scene: {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
+    m_sceneName: ChonkJoustingTipsScene
   m_unloadOnAwake: 0
 --- !u!114 &1756048955
 MonoBehaviour:

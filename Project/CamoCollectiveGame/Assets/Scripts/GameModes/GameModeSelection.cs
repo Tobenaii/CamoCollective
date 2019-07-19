@@ -12,9 +12,10 @@ public class SceneValue
     {
         return value.m_sceneName;
     }
-
+#if UNITY_EDITOR
     [SerializeField]
     public SceneAsset m_scene;
+#endif
     [SerializeField]
     private string m_sceneName;
 }
