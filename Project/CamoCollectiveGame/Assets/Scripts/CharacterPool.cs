@@ -15,11 +15,19 @@ public class CharacterPool : MonoBehaviour
     {
         if (m_characterPool.Count == 0)
             return;
-        ReturnCharacter(player.GetCharacter());
+        ReturnCharacterNext(player.GetCharacter());
         player.SetCharacter(GetNextCharacter());
     }
 
-    public CharacterData GetNextCharacter()
+    public void GetPreviousCharacter(PlayerData player)
+    {
+        if (m_characterPool.Count == 0)
+            return;
+        ReturnCharacterPrev(player.GetCharacter());
+        player.SetCharacter(GetPreviousCharacter());
+    }
+
+    private CharacterData GetNextCharacter()
     {
         if (m_characterPool.Count == 0)
             return null;
@@ -28,18 +36,34 @@ public class CharacterPool : MonoBehaviour
         return character;
     }
 
-    public void ReturnCharacter(CharacterData character)
+    private CharacterData GetPreviousCharacter()
+    {
+        if (m_characterPool.Count == 0)
+            return null;
+        CharacterData character = m_characterPool[m_characterPool.Count - 1];
+        m_characterPool.RemoveAt(m_characterPool.Count - 1);
+        return character;
+    }
+
+    private void ReturnCharacterNext(CharacterData character)
     {
         if (character == null)
             return;
         m_characterPool.Add(character);
     }
 
+    private void ReturnCharacterPrev(CharacterData character)
+    {
+        if (character == null)
+            return;
+        m_characterPool.Insert(0, character);
+    }
+
     public void ReturnCharacter(PlayerData player)
     {
         if (player.GetCharacter() == null)
             return;
-        ReturnCharacter(player.GetCharacter());
+        ReturnCharacterNext(player.GetCharacter());
         player.SetCharacter(null);
     }
 

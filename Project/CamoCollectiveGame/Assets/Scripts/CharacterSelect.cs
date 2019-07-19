@@ -12,7 +12,8 @@ public class CharacterSelect : MonoBehaviour
     private PlayerData m_playerData;
     [SerializeField]
     private CharacterPool m_characterPool;
-    private float m_prevTrigger;
+    private float m_prevTriggerNext;
+    private float m_prevTriggerPrev;
     private bool m_initialized;
 
     private void Init()
@@ -41,8 +42,15 @@ public class CharacterSelect : MonoBehaviour
 
     public void GetNextCharacter(float trigger)
     {
-        if (trigger > 0 && m_prevTrigger == 0)
+        if (trigger > 0 && m_prevTriggerNext == 0)
             m_characterPool.GetNextCharacter(m_playerData);
-        m_prevTrigger = trigger;
+        m_prevTriggerNext = trigger;
+    }
+
+    public void GetPreviousCharacter(float trigger)
+    {
+        if (trigger > 0 && m_prevTriggerPrev == 0)
+            m_characterPool.GetPreviousCharacter(m_playerData);
+        m_prevTriggerPrev = trigger;
     }
 }
