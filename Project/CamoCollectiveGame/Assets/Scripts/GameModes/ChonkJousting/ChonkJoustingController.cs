@@ -8,6 +8,8 @@ public class ChonkJoustingController : MonoBehaviour
     [SerializeField]
     private float m_chonkRunSpeed;
     [SerializeField]
+    private float m_chonkBackwardVelocityMultiplier;
+    [SerializeField]
     private float m_chonkAcceleration;
     [SerializeField]
     private float m_chonkMudAcceleration;
@@ -61,12 +63,12 @@ public class ChonkJoustingController : MonoBehaviour
             m_isSliding = false;
     }
 
-    private void Slide(Vector3 dir)
-    {
-        if (dir == Vector3.zero)
-            dir = transform.forward;
-        m_velocity = dir * m_chonkRunSpeed;
-    }
+    //private void Slide(Vector3 dir)
+    //{
+    //    if (dir == Vector3.zero)
+    //        dir = transform.forward;
+    //    m_velocity = dir * m_chonkRunSpeed;
+    //}
 
     private void RotateChonkOverTime(Vector3 dir)
     {
@@ -113,7 +115,10 @@ public class ChonkJoustingController : MonoBehaviour
             m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_chonkStopSpeed * (m_isSliding? m_chonkMudStopSpeedMultiplier : 1) * Time.deltaTime);
             return;
         }
-        Vector3 target = transform.forward + new Vector3(joystick.x, 0, joystick.y).normalized * m_chonkRunSpeed;
+        float backwardDot = Vector3.Dot(m_velocity, transform.forward);
+        float backwardMultiplier = Mathf.InverseLerp(1, -1, backwardDot);
+        float multiplier = Mathf.Lerp(1, m_chonkBackwardVelocityMultiplier, backwardMultiplier);
+        Vector3 target = transform.forward + new Vector3(joystick.x, 0, joystick.y).normalized * (m_chonkRunSpeed * multiplier);
         if (m_isSliding)
             m_velocity = Vector3.MoveTowards(m_velocity, target, m_chonkMudAcceleration * Time.deltaTime);
         else
