@@ -16,4 +16,9 @@ public class GameObjectSwitch : MonoBehaviour
     {
         m_gameObject.SetActive(false);
     }
+
+    public void SwitchGameObject()
+    {
+        m_gameObject.SetActive(!m_gameObject.activeSelf);
+    }
 }
