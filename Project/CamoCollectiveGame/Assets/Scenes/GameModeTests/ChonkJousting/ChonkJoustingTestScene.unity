@@ -5673,6 +5673,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1742053046}
   - component: {fileID: 1742053048}
+  - component: {fileID: 1742053049}
   - component: {fileID: 1742053047}
   m_Layer: 0
   m_Name: Player1
@@ -5705,9 +5706,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1742053045}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 890f0925ccc7a5c409b90fdae77a759e, type: 3}
+  m_Script: {fileID: 11500000, guid: dc773598f3c91f04d9b54eb71678afce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_scene: {fileID: 102900000, guid: eb98ac3598618cc4d94186b66c0e5857, type: 3}
+  m_retryUntilSuccessful: 0
+  m_unloadOnAwake: 0
 --- !u!114 &1742053048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5744,8 +5748,19 @@ MonoBehaviour:
     unityEventButton:
       m_PersistentCalls:
         m_Calls:
+        - m_Target: {fileID: 1742053049}
+          m_MethodName: LoadScene
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
         - m_Target: {fileID: 1742053047}
-          m_MethodName: Exit
+          m_MethodName: UnloadScene
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -5768,6 +5783,21 @@ MonoBehaviour:
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
   controllerNum: 0
+--- !u!114 &1742053049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742053045}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74b2018d6c2a1449bfc95f6ee3cf96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_scene:
+    m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
+    m_sceneName: ModeSelectionScene
 --- !u!1 &2115646979
 GameObject:
   m_ObjectHideFlags: 0
