@@ -22,9 +22,6 @@ public class LifeCounter : MonoBehaviour
 
     private void Update()
     {
-        if (m_livesValue == null)
-            return;
-
 #if UNITY_EDITOR
         if (EditorApplication.isPlaying && m_destroy)
         {

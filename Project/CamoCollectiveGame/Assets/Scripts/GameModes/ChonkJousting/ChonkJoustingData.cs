@@ -18,6 +18,7 @@ public class ChonkJoustingData : MonoBehaviour
     {
         GetComponent<InputMapper>().SetControllerNum(jouster.player.GetPlayerNum() - 1);
         m_jouster = jouster;
+        m_jouster.lives = m_spawnLives;
     }
 
     public void ResetLives()
