@@ -40,6 +40,7 @@ public class CharacterSelect : MonoBehaviour
             m_initialized = false;
         }
         m_image.sprite = m_playerData.GetCharacter()?.GetIcon();
+        m_image.SetNativeSize();
     }
 
     public void GetNextCharacter(float trigger)
