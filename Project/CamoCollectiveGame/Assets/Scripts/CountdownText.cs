@@ -14,7 +14,6 @@ public class CountdownText : MonoBehaviour
     [SerializeField]
     private bool m_toInt;
 
-
     private void Update()
     {
         string value = ((m_toInt) ? ((int)m_countdown.GetTime() + m_offset).ToString() : (m_countdown.GetTime() + m_offset).ToString());

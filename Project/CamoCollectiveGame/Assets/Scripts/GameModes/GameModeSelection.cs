@@ -24,8 +24,6 @@ public class GameModeSelection : MonoBehaviour
 {
     [SerializeField]
     private SceneValue m_scene;
-    [SerializeField]
-    private ParticleSystem m_particles;
 
     public void StartScene()
     {

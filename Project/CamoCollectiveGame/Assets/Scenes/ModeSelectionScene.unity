@@ -300,7 +300,6 @@ MonoBehaviour:
   m_scene:
     m_scene: {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
     m_sceneName: ChonkJoustingTipsScene
-  m_particles: {fileID: 0}
 --- !u!114 &721845978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -763,7 +762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hoverEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
-  m_clickEvent: {fileID: 0}
+  m_clickEvent: {fileID: 11400000, guid: e6495b7456536df40a5432c0250ba837, type: 2}
   m_targetGameObject: {fileID: 1450339381}
 --- !u!1 &1450339381
 GameObject:
@@ -774,6 +773,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1450339382}
+  - component: {fileID: 1450339383}
+  - component: {fileID: 1450339384}
   m_Layer: 0
   m_Name: WAYPOINT_ClimbTheTower
   m_TagString: Untagged
@@ -795,6 +796,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1450339383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450339381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69795ab3e7b27384e96db286eed0771e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_scene:
+    m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
+    m_sceneName: TowerClimbTipsScene
+--- !u!114 &1450339384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1450339381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e6495b7456536df40a5432c0250ba837, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1450339383}
+        m_MethodName: StartScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &1540042528
 GameObject:
   m_ObjectHideFlags: 0
