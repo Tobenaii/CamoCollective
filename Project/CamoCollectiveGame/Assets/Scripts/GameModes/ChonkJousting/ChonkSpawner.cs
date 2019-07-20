@@ -22,6 +22,7 @@ public class ChonkSpawner : MonoBehaviour
             if (player.IsPlaying())
             {
                 ChonkJoustingData data = Instantiate(m_chonkPrefab).GetComponent<ChonkJoustingData>();
+                data.gameObject.transform.SetParent(transform);
                 data.transform.position = m_spawns[index].position;
                 data.transform.rotation = m_spawns[index].rotation;
                 data.SetIndex(index);
