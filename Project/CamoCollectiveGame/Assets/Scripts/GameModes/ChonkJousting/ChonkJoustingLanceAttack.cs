@@ -2,22 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LanceAttack : MonoBehaviour
+[RequireComponent(typeof(ChonkJoustingData))]
+public class ChonkJoustingLanceAttack : MonoBehaviour
 {
     [SerializeField]
     private float m_knockbackForce;
     [SerializeField]
     private float m_knockupForce;
     [SerializeField]
-    private FloatValue m_livesValue;
-    [SerializeField]
-    private FloatValue m_scoreValue;
-    [SerializeField]
     private float m_shieldAngle;
 
     private void OnTriggerEnter(Collider other)
     {
-        LanceAttack chonk = other.transform.parent?.GetComponent<LanceAttack>();
+        ChonkJoustingLanceAttack chonk = other.transform.parent?.GetComponent<ChonkJoustingLanceAttack>();
         if (chonk == null)
             return;
         Attack(chonk.gameObject);
@@ -29,16 +26,16 @@ public class LanceAttack : MonoBehaviour
         float shield = Mathf.Lerp(-1, 1, Mathf.InverseLerp(0, 180, m_shieldAngle));
         if (dot < shield)
             return;
-        m_scoreValue.value++;
-        other.GetComponent<LanceAttack>().Hurt(transform.forward * m_knockbackForce, m_knockupForce);
+        GetComponent<ChonkJoustingData>().AddScore(1);
+        other.GetComponent<ChonkJoustingLanceAttack>().Hurt(transform.forward * m_knockbackForce, m_knockupForce);
     }
 
     public void Hurt(Vector3 knockback, float knockup)
     {
         GetComponent<Rigidbody>().AddForce(Vector3.up * knockup, ForceMode.Impulse);
         GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse);
-        m_livesValue.value--;
-        if (m_livesValue.value <= 0)
+        GetComponent<ChonkJoustingData>().RemoveLives(1);
+        if (GetComponent<ChonkJoustingData>().GetLives() <= 0)
             GetComponent<ChonkJoustingDeath>().OnDeath();
     }
 }

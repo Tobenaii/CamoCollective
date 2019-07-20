@@ -24,7 +24,7 @@ public class PlayerData : ScriptableObject
 
     public void SetPlaying(bool playing)
     {
-        m_isPlaying = true;
+        m_isPlaying = playing;
     }
 
     public bool IsPlaying()

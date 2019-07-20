@@ -153,7 +153,7 @@ public class InputMapper : MonoBehaviour
     [SerializeField]
     private bool m_disableOnAwake;
     [SerializeField]
-    private int controllerNum;
+    private int m_controllerNum;
     public List<InputAction> actions = new List<InputAction>();
     private GamePadState state;
     private GamePadState prevState;
@@ -237,6 +237,11 @@ public class InputMapper : MonoBehaviour
         }
     }
 
+    public void SetControllerNum(int index)
+    {
+        m_controllerNum = index;
+    }
+
     public void DisableInput()
     {
         m_disabled = true;
@@ -252,7 +257,7 @@ public class InputMapper : MonoBehaviour
         if (m_disabled)
             return;
         prevState = state;
-        state = GamePad.GetState((PlayerIndex)controllerNum, GamePadDeadZone.Circular);
+        state = GamePad.GetState((PlayerIndex)m_controllerNum, GamePadDeadZone.Circular);
         foreach (InputAction action in actions)
         {
             foreach (ButtonMod button in action.buttons)

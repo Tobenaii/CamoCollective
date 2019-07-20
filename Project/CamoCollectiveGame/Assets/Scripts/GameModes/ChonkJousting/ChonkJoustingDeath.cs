@@ -2,26 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(ChonkJoustingData))]
 public class ChonkJoustingDeath : MonoBehaviour
 {
     [SerializeField]
     private float m_respawnTime;
     [SerializeField]
-    private float m_initLives;
-    [SerializeField]
-    private float m_scoreLossOnDeath;
-    [SerializeField]
-    private FloatValue m_livesValue;
-    [SerializeField]
-    private FloatValue m_scoreValue;
+    private int m_scoreLossOnDeath;
     private float m_respawnTimer;
     private bool m_isRespawning;
-
-    private void Awake()
-    {
-        m_scoreValue.value = 0;
-        m_livesValue.value = m_initLives;
-    }
 
     private void Update()
     {
@@ -35,7 +24,7 @@ public class ChonkJoustingDeath : MonoBehaviour
     private void Respawn()
     {
         m_isRespawning = false;
-        m_livesValue.value = m_initLives;
+        GetComponent<ChonkJoustingData>().ResetLives();
         GetComponent<ChonkJoustingController>().enabled = true;
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().detectCollisions = true;
@@ -46,7 +35,7 @@ public class ChonkJoustingDeath : MonoBehaviour
         GetComponent<ChonkJoustingController>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Rigidbody>().detectCollisions = false;
-        m_scoreValue.value -= m_scoreLossOnDeath;
+        GetComponent<ChonkJoustingData>().RemoveScore(m_scoreLossOnDeath);
         m_respawnTimer = m_respawnTime;
         m_isRespawning = true;
     }
