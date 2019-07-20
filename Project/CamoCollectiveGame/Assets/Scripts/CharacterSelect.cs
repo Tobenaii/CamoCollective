@@ -9,6 +9,8 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField]
     private Image m_image;
     [SerializeField]
+    private Text m_scoreText;
+    [SerializeField]
     private PlayerData m_playerData;
     [SerializeField]
     private CharacterPool m_characterPool;
@@ -20,7 +22,7 @@ public class CharacterSelect : MonoBehaviour
     {
         m_characterPool.GetNextCharacter(m_playerData);
         m_initialized = true;
-        m_image.enabled = true;
+        m_image.gameObject.SetActive(true);
     }
 
     private void Update()
@@ -31,11 +33,12 @@ public class CharacterSelect : MonoBehaviour
             if (!m_initialized)
                 Init();
             m_playerData.SetPlaying(true);
+            m_scoreText.text = m_playerData.GetRulerScore().ToString();
         }
         else
         {
             m_playerData.SetPlaying(false);
-            m_image.enabled = false;
+            m_image.gameObject.SetActive(false);
             m_characterPool.ReturnCharacter(m_playerData);
             m_initialized = false;
         }

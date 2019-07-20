@@ -22,6 +22,11 @@ public class PlayerData : ScriptableObject
         m_rulerScore += value;
     }
 
+    public int GetRulerScore()
+    {
+        return m_rulerScore;
+    }
+
     public void SetCharacter(CharacterData character)
     {
         m_currentCharacter = character;
