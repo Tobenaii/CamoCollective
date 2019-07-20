@@ -20,6 +20,7 @@ public class CharacterSelect : MonoBehaviour
     {
         m_characterPool.GetNextCharacter(m_playerData);
         m_initialized = true;
+        m_image.enabled = true;
     }
 
     private void Update()
@@ -34,6 +35,7 @@ public class CharacterSelect : MonoBehaviour
         else
         {
             m_playerData.SetPlaying(false);
+            m_image.enabled = false;
             m_characterPool.ReturnCharacter(m_playerData);
             m_initialized = false;
         }
