@@ -10,6 +10,9 @@ public class SceneLoader: MonoBehaviour
     public void LoadScene()
     {
         foreach (SceneValue scene in m_scenes)
-            SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        {
+            if (!SceneManager.GetSceneByName(scene).IsValid())
+                SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        }
     }
 }

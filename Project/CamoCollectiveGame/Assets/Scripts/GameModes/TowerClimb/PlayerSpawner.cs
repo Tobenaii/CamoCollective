@@ -19,7 +19,7 @@ public class PlayerSpawner : MonoBehaviour
             if (!player.IsPlaying())
                 continue;
             InputMapper input = Instantiate(m_playerPrefab, m_spawns[index].position, m_spawns[index].rotation, transform).GetComponent<InputMapper>();
-            input.SetControllerNum(index);
+            input.SetControllerNum(player.GetPlayerNum());
             index++;
         }
     }
