@@ -10,11 +10,18 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
     private float m_knockupForce;
     [SerializeField]
     private float m_shieldAngle;
+    [SerializeField]
+    private float m_invincibilityFrame;
+    [SerializeField]
+    private float m_invincibilityFlashTime;
+    private bool m_isInvincible;
 
     private void OnTriggerEnter(Collider other)
     {
         ChonkJoustingLanceAttack chonk = other.transform.parent?.GetComponent<ChonkJoustingLanceAttack>();
         if (chonk == null)
+            return;
+        if (chonk.m_isInvincible)
             return;
         Attack(chonk.gameObject);
     }
@@ -36,5 +43,57 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
         GetComponent<ChonkJoustingData>().RemoveLives(1);
         if (GetComponent<ChonkJoustingData>().GetLives() <= 0)
             GetComponent<ChonkJoustingDeath>().OnDeath();
+        else
+            StartCoroutine(InvincibilityFrame());
+    }
+
+    private IEnumerator InvincibilityFrame()
+    {
+        Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        Color[] colours = new Color[renderers.Length];
+
+        int i = 0;
+        foreach (Renderer rend in renderers)
+        {
+            colours[i] = rend.material.color;
+            i++;
+        }
+
+        m_isInvincible = true;
+        float timer = m_invincibilityFrame;
+        float flashTimer = m_invincibilityFlashTime;
+        bool flash = true;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            flashTimer -= Time.deltaTime;
+
+            i = 0;
+            foreach (Renderer rend in renderers)
+            {
+                if (flash)
+                {
+                    rend.material.color = colours[i];
+                    rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 0.4f);
+                }
+                else
+                    rend.material.color = new Color(1, 0, 0, 0.3f);
+                i++;
+            }
+            if (flashTimer <= 0)
+            {
+                flash = !flash;
+                flashTimer = m_invincibilityFlashTime;
+            }
+
+            yield return null;
+        }
+        m_isInvincible = false;
+        i = 0;
+        foreach (Renderer rend in renderers)
+        {
+            rend.material.color = colours[i];
+            i++;
+        }
     }
 }

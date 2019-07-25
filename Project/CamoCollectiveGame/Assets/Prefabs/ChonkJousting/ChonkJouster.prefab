@@ -275,6 +275,8 @@ MonoBehaviour:
   m_knockbackForce: 5
   m_knockupForce: 30
   m_shieldAngle: 45
+  m_invincibilityFrame: 1.5
+  m_invincibilityFlashTime: 0.1
 --- !u!114 &6394471394633165378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,7 +404,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 01612f163a72fbb4c84fa6a798a1ae30, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

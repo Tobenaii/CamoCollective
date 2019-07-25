@@ -37,7 +37,9 @@ public class ChonkJoustingData : MonoBehaviour
 
     public void RemoveScore(int value)
     {
-       m_jouster.score -= value;
+        m_jouster.score -= value;
+        if (m_jouster.score < 0)
+            m_jouster.score = 0;
     }
 
     public void AddScore(int value)
