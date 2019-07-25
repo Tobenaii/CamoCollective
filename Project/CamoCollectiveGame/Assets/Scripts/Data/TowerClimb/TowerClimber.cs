@@ -12,19 +12,21 @@ public class TowerClimber : ScriptableObject, IEquatable<TowerClimber>, ICompara
     public PlayerData player;
     [HideInInspector]
     public GameObject towerClimber;
+    [HideInInspector]
+    public bool isDead;
 
     public int CompareTo(TowerClimber other)
     {
         if (other == null)
             return 1;
-        return placement.CompareTo(other.placement);
+        return towerClimber.transform.position.y.CompareTo(other.towerClimber.transform.position.y);
     }
 
     public bool Equals(TowerClimber other)
     {
         if (other == null)
             return false;
-        return (placement.Equals(other.placement));
+        return (towerClimber.transform.position.y.Equals(other.towerClimber.transform.position.y));
     }
     public override int GetHashCode()
     {

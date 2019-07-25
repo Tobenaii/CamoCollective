@@ -20,6 +20,7 @@ public class TowerClimbPlayerController : MonoBehaviour
     private bool m_climbLeft;
     private bool m_atTargetRot;
     public bool m_playerHasControl;
+    public bool m_isDead;
 
     private void Awake()
     {
@@ -27,6 +28,10 @@ public class TowerClimbPlayerController : MonoBehaviour
         m_rightClimbRot = Quaternion.Euler(0, 0, -20);
         m_atTargetRot = true;
         m_playerHasControl = false;
+    }
+    public void OnDeath()
+    {
+        m_isDead = true;
     }
 
     public void GiveControl()
@@ -37,6 +42,8 @@ public class TowerClimbPlayerController : MonoBehaviour
 
     public void MovePlayer(Vector2 joystick)
     {
+        if (m_isDead)
+            return;
         transform.position = new Vector3(transform.position.x + joystick.x * m_strafeSpeed * Time.deltaTime, transform.position.y, transform.position.z);
     }
 

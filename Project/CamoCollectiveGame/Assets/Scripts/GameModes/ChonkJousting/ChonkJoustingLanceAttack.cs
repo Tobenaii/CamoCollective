@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ChonkJoustingData))]
 public class ChonkJoustingLanceAttack : MonoBehaviour
 {
     [SerializeField]

@@ -6,13 +6,7 @@ public class ChonkJoustingData : MonoBehaviour
 {
     [SerializeField]
     private int m_spawnLives;
-    private int m_index;
     private ChonkJouster m_jouster;
-
-    public void SetIndex(int index)
-    {
-        m_index = index;
-    }
 
     public void SetChonkJouster(ChonkJouster jouster)
     {

@@ -19,18 +19,12 @@ public class ChonkJoustingController : MonoBehaviour
     private float m_chonkMudStopSpeedMultiplier;
     [SerializeField]
     private float m_chonkRotateSpeed;
-    //[SerializeField]
-    //private float m_joustRotateSpeed;
-    //[SerializeField]
-    //private float m_maxJoustAngle;
-    //[SerializeField]
-    //private GameObject m_joust;
+
 
     private Vector3 m_velocity;
     private Vector3 m_lookDir;
     private bool m_isSliding;
     private Vector3 m_smoothVelocity;
-    //private Vector3 m_targetAim;
 
     private void Start()
     {
@@ -45,16 +39,12 @@ public class ChonkJoustingController : MonoBehaviour
             RotateChonkOverTime(m_velocity);
         else
             RotateChonkOverTime(m_lookDir);
-        //RotateJoustOverTime();
     }
 
     private void OnTriggerStay(Collider other)
     {
         if (other.CompareTag("Mud"))
-        {
-            //Slide(m_velocity.normalized);
             m_isSliding = true;
-        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -62,13 +52,6 @@ public class ChonkJoustingController : MonoBehaviour
         if (other.CompareTag("Mud"))
             m_isSliding = false;
     }
-
-    //private void Slide(Vector3 dir)
-    //{
-    //    if (dir == Vector3.zero)
-    //        dir = transform.forward;
-    //    m_velocity = dir * m_chonkRunSpeed;
-    //}
 
     private void RotateChonkOverTime(Vector3 dir)
     {
@@ -87,25 +70,6 @@ public class ChonkJoustingController : MonoBehaviour
             return;
         transform.forward = dir;
     }
-
-    //private void RotateJoustOverTime()
-    //{
-    //    Vector3 maxNegRot = Quaternion.AngleAxis(-m_maxJoustAngle, Vector3.up) * transform.forward;
-    //    Vector3 maxPosRot = Quaternion.AngleAxis(m_maxJoustAngle, Vector3.up) * transform.forward;
-
-    //    if (m_targetAim == Vector3.zero)
-    //        return;
-    //    Quaternion prevRot = m_joust.transform.rotation;
-    //    m_joust.transform.forward = m_targetAim;
-    //    Quaternion newRot = m_joust.transform.rotation;
-    //    m_joust.transform.rotation = prevRot;
-    //    float targetDot = Vector3.Dot(m_targetAim, transform.right);
-    //    float frwdDot = Vector3.Dot(m_joust.transform.forward, transform.right);
-    //    float angleNormal = Mathf.InverseLerp(90, 0, m_maxJoustAngle);
-    //    if (targetDot < angleNormal && frwdDot < angleNormal)
-    //        return;
-    //    m_joust.transform.rotation = Quaternion.RotateTowards(m_joust.transform.rotation, newRot, m_joustRotateSpeed);
-    //}
 
     public void Move(Vector2 joystick)
     {
@@ -129,10 +93,4 @@ public class ChonkJoustingController : MonoBehaviour
     {
         m_lookDir = new Vector3(joystick.x, 0, joystick.y);
     }
-
-    //public void Aim(Vector2 joystick)
-    //{
-    //    m_targetAim = new Vector3(joystick.x, 0, joystick.y);
-    //    m_targetAim = Quaternion.AngleAxis(90, Vector3.up) * m_targetAim;
-    //}
 }

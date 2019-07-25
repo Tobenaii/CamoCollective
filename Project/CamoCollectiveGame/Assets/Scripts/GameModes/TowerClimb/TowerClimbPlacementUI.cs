@@ -13,15 +13,19 @@ public class TowerClimbPlacementUI : MonoBehaviour
     private void Update()
     {
         m_towerClimbers.Sort();
-
         int index = 0;
         foreach (Image image in m_images)
         {
             if (m_towerClimbers[index].player != null && m_towerClimbers[index].player.IsPlaying())
             {
-                image.gameObject.SetActive(true);
-                image.sprite = m_towerClimbers[index].player.GetCharacter().GetIcon();
-                image.SetNativeSize();
+                if (m_towerClimbers[index].isDead)
+                    image.gameObject.SetActive(false);
+                else
+                {
+                    image.gameObject.SetActive(true);
+                    image.sprite = m_towerClimbers[index].player.GetCharacter().GetIcon();
+                    image.SetNativeSize();
+                }
                 index++;
             }
             else

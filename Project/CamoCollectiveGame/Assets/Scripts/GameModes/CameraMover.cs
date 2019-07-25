@@ -5,6 +5,10 @@ using UnityEngine;
 public class CameraMover : MonoBehaviour
 {
     [SerializeField]
+    private bool m_move = true;
+    [SerializeField]
+    private bool m_rotate = true;
+    [SerializeField]
     private Vector3 m_targetPos;
     [SerializeField]
     private Vector3 m_targetRot;
@@ -18,9 +22,11 @@ public class CameraMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Camera.main.transform.rotation = Quaternion.RotateTowards(Camera.main.transform.rotation, Quaternion.Euler(m_targetRot), m_rotationSpeed * Time.deltaTime);
-        Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, m_targetPos, m_moveSpeed * Time.deltaTime);
-        if (Camera.main.transform.rotation == Quaternion.Euler(m_targetRot) && Vector3.Distance(Camera.main.transform.position, m_targetPos) < 0.005f)
+        if (m_rotate)
+            Camera.main.transform.rotation = Quaternion.RotateTowards(Camera.main.transform.rotation, Quaternion.Euler(m_targetRot), m_rotationSpeed * Time.deltaTime);
+        if (m_move)
+            Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, m_targetPos, m_moveSpeed * Time.deltaTime);
+        if ((Camera.main.transform.rotation == Quaternion.Euler(m_targetRot) || !m_rotate) && (Vector3.Distance(Camera.main.transform.position, m_targetPos) < 0.005f || !m_move))
         {
             m_onCameraMoved?.Invoke();
             gameObject.SetActive(false);

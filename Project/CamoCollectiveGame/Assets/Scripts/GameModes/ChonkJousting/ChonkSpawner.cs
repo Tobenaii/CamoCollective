@@ -25,7 +25,6 @@ public class ChonkSpawner : MonoBehaviour
                 data.gameObject.transform.SetParent(transform);
                 data.transform.position = m_spawns[index].position;
                 data.transform.rotation = m_spawns[index].rotation;
-                data.SetIndex(index);
                 m_jousters[index].player = player;
                 data.SetChonkJouster(m_jousters[index]);
                 index++;
