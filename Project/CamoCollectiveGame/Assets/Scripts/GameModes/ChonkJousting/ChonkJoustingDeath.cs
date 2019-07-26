@@ -37,10 +37,10 @@ public class ChonkJoustingDeath : MonoBehaviour
         m_isRespawning = false;
         GetComponent<ChonkJoustingData>().ResetLives();
         GetComponent<ChonkJoustingController>().enabled = true;
-        m_respawnEvent.Invoke(gameObject);
         GetComponent<ChonkJoustingData>().SetDead(false);
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().detectCollisions = true;
+        m_respawnEvent.Invoke(gameObject);
         m_animator.enabled = false;
 
         Renderer[] renderers = GetComponentsInChildren<Renderer>();

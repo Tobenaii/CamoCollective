@@ -27,13 +27,17 @@ public class ChonkJoustingController : MonoBehaviour
     private Vector3 m_lookDir;
     private bool m_isSliding;
     private Vector3 m_smoothVelocity;
+    private bool m_deathInvoked;
 
     private void OnTriggerEnter(Collider other)
     {
+        if (m_deathInvoked)
+            return;
         if (other.CompareTag("Balcony"))
         {
             GetComponent<InputMapper>().EnableInput();
             m_spawnedEvent.Invoke();
+            m_deathInvoked = true;
         }
     }
 
@@ -42,12 +46,11 @@ public class ChonkJoustingController : MonoBehaviour
         return m_velocity;
     }
 
-    public void Respawn(Transform respawnPoint)
+    public void Respawn()
     {
         GetComponent<InputMapper>().DisableInput();
-        transform.position = respawnPoint.transform.position;
-        transform.rotation = respawnPoint.transform.rotation;
         m_velocity = transform.forward * m_chonkRunSpeed;
+        m_deathInvoked = false;
     }
 
     private void Start()
