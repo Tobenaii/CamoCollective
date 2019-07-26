@@ -13,6 +13,10 @@ public class ChonkJoustingUI : MonoBehaviour
     private Text m_scoreText;
     [SerializeField]
     private LifeCounter m_lifeCounter;
+    [SerializeField]
+    private GameObject m_respawnPanel;
+    [SerializeField]
+    private Text m_respawnText;
 
     private void Start()
     {
@@ -28,6 +32,13 @@ public class ChonkJoustingUI : MonoBehaviour
     {
         m_scoreText.text = m_chonkJouster.score.ToString();
         m_lifeCounter.SetLivesValue(m_chonkJouster.lives);
+        if (m_chonkJouster.isDead)
+        {
+            m_respawnPanel.SetActive(true);
+            m_respawnText.text = ((int)(m_chonkJouster.respawnTimer)).ToString();
+        }
+        else
+            m_respawnPanel.SetActive(false);
         //m_scoreText.text = m_scores[m_index].ToString();
         //m_lifeCounter.SetLivesValue(m_lives[m_index]);
     }

@@ -11,4 +11,8 @@ public class ChonkJouster : ScriptableObject
     public int lives;
     [HideInInspector]
     public PlayerData player;
+    [HideInInspector]
+    public float respawnTimer;
+    [HideInInspector]
+    public bool isDead;
 }

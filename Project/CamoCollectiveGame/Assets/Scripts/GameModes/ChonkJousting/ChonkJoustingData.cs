@@ -45,6 +45,11 @@ public class ChonkJoustingData : MonoBehaviour
         return m_jouster.lives;
     }
 
+    public void SetDead(bool dead)
+    {
+        m_jouster.isDead = dead;
+    }
+
     public void RemoveScore(int value)
     {
         if (m_jouster == null)
@@ -59,5 +64,10 @@ public class ChonkJoustingData : MonoBehaviour
         if (m_jouster == null)
             return;
         m_jouster.score += value;
+    }
+
+    public void SetRespawnTimer(float timer)
+    {
+        m_jouster.respawnTimer = timer;
     }
 }
