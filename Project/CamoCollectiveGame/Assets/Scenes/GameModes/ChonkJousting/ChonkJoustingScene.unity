@@ -5035,7 +5035,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209207504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -5081,7 +5081,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 209207504}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 18.539612, y: -20.111048, z: 5.7693577}
+  m_LocalPosition: {x: 17.92, y: -20.111048, z: 5.7693577}
   m_LocalScale: {x: 1, y: 1, z: 30}
   m_Children: []
   m_Father: {fileID: 2115646980}
@@ -5204,12 +5204,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 999507352044658222, guid: e6a8d9c9c1963a34fb638c952a9419f3,
-        type: 3}
-      propertyPath: m_livesValue
-      value: 
-      objectReference: {fileID: 11400000, guid: 7ddd1e605753423488030facfa275296,
-        type: 2}
     - target: {fileID: 2987900355011713283, guid: e6a8d9c9c1963a34fb638c952a9419f3,
         type: 3}
       propertyPath: m_chonkJouster
@@ -5231,6 +5225,12 @@ PrefabInstance:
       propertyPath: m_lifeCounter
       value: 
       objectReference: {fileID: 224669846}
+    - target: {fileID: 999507352044658222, guid: e6a8d9c9c1963a34fb638c952a9419f3,
+        type: 3}
+      propertyPath: m_livesValue
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ddd1e605753423488030facfa275296,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6a8d9c9c1963a34fb638c952a9419f3, type: 3}
 --- !u!114 &224669844 stripped
@@ -5734,12 +5734,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 999507352044658222, guid: e6a8d9c9c1963a34fb638c952a9419f3,
-        type: 3}
-      propertyPath: m_livesValue
-      value: 
-      objectReference: {fileID: 11400000, guid: abd1411ae29b05f47914bfd6eab0dca0,
-        type: 2}
     - target: {fileID: 2987900355011713283, guid: e6a8d9c9c1963a34fb638c952a9419f3,
         type: 3}
       propertyPath: m_chonkJouster
@@ -5761,6 +5755,12 @@ PrefabInstance:
       propertyPath: m_lifeCounter
       value: 
       objectReference: {fileID: 412986842}
+    - target: {fileID: 999507352044658222, guid: e6a8d9c9c1963a34fb638c952a9419f3,
+        type: 3}
+      propertyPath: m_livesValue
+      value: 
+      objectReference: {fileID: 11400000, guid: abd1411ae29b05f47914bfd6eab0dca0,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6a8d9c9c1963a34fb638c952a9419f3, type: 3}
 --- !u!114 &412986840 stripped
@@ -6258,7 +6258,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627372441}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6304,7 +6304,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 627372441}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 9.589611, y: -20.111048, z: 15.039357}
+  m_LocalPosition: {x: 9.589611, y: -20.111048, z: 15.83}
   m_LocalScale: {x: 1, y: 1, z: 30.000015}
   m_Children: []
   m_Father: {fileID: 2115646980}
@@ -6526,7 +6526,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781281043}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -6572,7 +6572,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 781281043}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9603882, y: -20.111048, z: 5.7693577}
+  m_LocalPosition: {x: -1.51, y: -20.111048, z: 5.7693577}
   m_LocalScale: {x: 1, y: 1, z: 30}
   m_Children: []
   m_Father: {fileID: 2115646980}
@@ -6964,7 +6964,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512998906}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -7010,7 +7010,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1512998906}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 9.589611, y: -20.111048, z: -0.46064377}
+  m_LocalPosition: {x: 9.589611, y: -20.111048, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 30.000015}
   m_Children: []
   m_Father: {fileID: 2115646980}
@@ -7442,12 +7442,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 999507352044658222, guid: e6a8d9c9c1963a34fb638c952a9419f3,
-        type: 3}
-      propertyPath: m_livesValue
-      value: 
-      objectReference: {fileID: 11400000, guid: 3d31e880e20909440a3445c47d90c307,
-        type: 2}
     - target: {fileID: 2987900355011713283, guid: e6a8d9c9c1963a34fb638c952a9419f3,
         type: 3}
       propertyPath: m_chonkJouster
@@ -7469,6 +7463,12 @@ PrefabInstance:
       propertyPath: m_lifeCounter
       value: 
       objectReference: {fileID: 1767895606}
+    - target: {fileID: 999507352044658222, guid: e6a8d9c9c1963a34fb638c952a9419f3,
+        type: 3}
+      propertyPath: m_livesValue
+      value: 
+      objectReference: {fileID: 11400000, guid: 3d31e880e20909440a3445c47d90c307,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e6a8d9c9c1963a34fb638c952a9419f3, type: 3}
 --- !u!114 &1767895604 stripped
