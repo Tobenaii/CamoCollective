@@ -26,6 +26,22 @@ public class ChonkJoustingController : MonoBehaviour
     private bool m_isSliding;
     private Vector3 m_smoothVelocity;
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Balcony"))
+        {
+            GetComponent<InputMapper>().EnableInput();
+        }
+    }
+
+    public void Respawn(Transform respawnPoint)
+    {
+        GetComponent<InputMapper>().DisableInput();
+        transform.position = respawnPoint.transform.position;
+        transform.rotation = respawnPoint.transform.rotation;
+        m_velocity = transform.forward * m_chonkRunSpeed;
+    }
+
     private void Start()
     {
         m_rb = GetComponent<Rigidbody>();
@@ -73,7 +89,6 @@ public class ChonkJoustingController : MonoBehaviour
 
     public void Move(Vector2 joystick)
     {
-
         if (Vector3.Magnitude(joystick) < 0.3f)
         {
             m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_chonkStopSpeed * (m_isSliding? m_chonkMudStopSpeedMultiplier : 1) * Time.deltaTime);

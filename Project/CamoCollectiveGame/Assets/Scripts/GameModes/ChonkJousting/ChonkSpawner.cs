@@ -12,6 +12,8 @@ public class ChonkSpawner : MonoBehaviour
     private List<ChonkJouster> m_jousters;
     [SerializeField]
     private GameObject m_chonkPrefab;
+    [SerializeField]
+    private Transform m_respawnTransform;
 
 
     private void Awake()
@@ -22,6 +24,7 @@ public class ChonkSpawner : MonoBehaviour
             if (player.IsPlaying())
             {
                 ChonkJoustingData data = Instantiate(m_chonkPrefab).GetComponent<ChonkJoustingData>();
+                data.GetComponent<ChonkJoustingDeath>().SetRespawnTransform(m_respawnTransform);
                 data.gameObject.transform.SetParent(transform);
                 data.transform.position = m_spawns[index].position;
                 data.transform.rotation = m_spawns[index].rotation;

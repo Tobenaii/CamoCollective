@@ -7,6 +7,8 @@ public class ChonkJoustingData : MonoBehaviour
     [SerializeField]
     private int m_spawnLives;
     private ChonkJouster m_jouster;
+    private int m_score;
+    private int m_lives;
 
     public void SetChonkJouster(ChonkJouster jouster)
     {
@@ -17,26 +19,36 @@ public class ChonkJoustingData : MonoBehaviour
 
     public void ResetLives()
     {
+        if (m_jouster == null)
+            return;
         m_jouster.lives = m_spawnLives;
     }
 
     public void RemoveLives(int value)
     {
+        if (m_jouster == null)
+            return;
         m_jouster.lives -= value;
     }
 
     public void AddLives(int value)
     {
+        if (m_jouster == null)
+            return;
         m_jouster.lives += value;
     }
 
     public int GetLives()
     {
+        if (m_jouster == null)
+            return 0;
         return m_jouster.lives;
     }
 
     public void RemoveScore(int value)
     {
+        if (m_jouster == null)
+            return;
         m_jouster.score -= value;
         if (m_jouster.score < 0)
             m_jouster.score = 0;
@@ -44,6 +56,8 @@ public class ChonkJoustingData : MonoBehaviour
 
     public void AddScore(int value)
     {
-       m_jouster.score += value;
+        if (m_jouster == null)
+            return;
+        m_jouster.score += value;
     }
 }

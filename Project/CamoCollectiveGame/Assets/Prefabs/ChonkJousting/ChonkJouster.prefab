@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 1306612043788377550}
   - component: {fileID: 1306612043788377551}
   - component: {fileID: 675165720}
+  - component: {fileID: 1635591654813619552}
   m_Layer: 0
   m_Name: ChonkJouster
   m_TagString: Untagged
@@ -291,6 +292,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_respawnTime: 10
   m_scoreLossOnDeath: 2
+  m_fadeAwayTime: 2
 --- !u!114 &1306612043788377550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -346,6 +348,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spawnLives: 4
+--- !u!95 &1635591654813619552
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306612043750070396}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5246b469961efc645b6673a38624d0be, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1306612044445990684
 GameObject:
   m_ObjectHideFlags: 0
