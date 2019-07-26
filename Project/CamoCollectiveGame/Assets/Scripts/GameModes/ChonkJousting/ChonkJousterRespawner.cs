@@ -46,17 +46,20 @@ public class ChonkJousterRespawner : MonoBehaviour
         while (m_respawning)
             yield return null;
         m_respawning = true;
-        GameObject chonk = m_chonks[0];
-        chonk.SetActive(true);
-        chonk.GetComponent<ChonkJoustingController>().Respawn(m_respawnPoint);
-
-        float timer = m_respawnWaitForOtherTime;
-        while (timer > 0)
+        if (m_chonks.Count != 0)
         {
-            timer -= Time.deltaTime;
-            yield return null;
+            GameObject chonk = m_chonks[0];
+            chonk.SetActive(true);
+            chonk.GetComponent<ChonkJoustingController>().Respawn(m_respawnPoint);
+
+            float timer = m_respawnWaitForOtherTime;
+            while (timer > 0)
+            {
+                timer -= Time.deltaTime;
+                yield return null;
+            }
+            Respawned();
         }
-        Respawned();
     }
 
     private void Startup()
