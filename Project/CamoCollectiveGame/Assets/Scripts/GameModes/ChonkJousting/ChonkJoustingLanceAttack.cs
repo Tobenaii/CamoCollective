@@ -21,7 +21,7 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
         ChonkJoustingLanceAttack chonk = other.transform.parent?.GetComponent<ChonkJoustingLanceAttack>();
         if (chonk == null)
             return;
-        if (chonk.m_isInvincible)
+        if (chonk.m_isInvincible || GetComponent<ChonkJoustingController>().GetVelocity() == Vector3.zero)
             return;
         Attack(chonk.gameObject);
     }
