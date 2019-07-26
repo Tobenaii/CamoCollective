@@ -29,9 +29,7 @@ public class ChonkJoustingController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Balcony"))
-        {
             GetComponent<InputMapper>().EnableInput();
-        }
     }
 
     public Vector3 GetVelocity()

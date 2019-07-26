@@ -11,7 +11,7 @@ public class ChonkJoustingDeath : MonoBehaviour
     [SerializeField]
     private float m_fadeAwayTime;
     [SerializeField]
-    private Transform m_respawnTransform;
+    private GameObjectEvent m_respawnEvent;
     private float m_respawnTimer;
     private bool m_isRespawning;
     private Animator m_animator;
@@ -20,10 +20,6 @@ public class ChonkJoustingDeath : MonoBehaviour
     {
         m_animator = GetComponent<Animator>();
         m_animator.enabled = false;
-    }
-    public void SetRespawnTransform(Transform transform)
-    {
-        m_respawnTransform = transform;
     }
 
     private void Update()
@@ -41,7 +37,7 @@ public class ChonkJoustingDeath : MonoBehaviour
         m_isRespawning = false;
         GetComponent<ChonkJoustingData>().ResetLives();
         GetComponent<ChonkJoustingController>().enabled = true;
-        GetComponent<ChonkJoustingController>().Respawn(m_respawnTransform);
+        m_respawnEvent.Invoke(gameObject);
         GetComponent<ChonkJoustingData>().SetDead(false);
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().detectCollisions = true;

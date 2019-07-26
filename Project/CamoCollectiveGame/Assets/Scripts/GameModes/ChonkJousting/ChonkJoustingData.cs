@@ -47,6 +47,8 @@ public class ChonkJoustingData : MonoBehaviour
 
     public void SetDead(bool dead)
     {
+        if (m_jouster == null)
+            return;
         m_jouster.isDead = dead;
     }
 
@@ -68,6 +70,8 @@ public class ChonkJoustingData : MonoBehaviour
 
     public void SetRespawnTimer(float timer)
     {
+        if (m_jouster == null)
+            return;
         m_jouster.respawnTimer = timer;
     }
 }

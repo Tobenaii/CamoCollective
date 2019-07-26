@@ -5315,6 +5315,8 @@ GameObject:
   - component: {fileID: 361928062}
   - component: {fileID: 361928061}
   - component: {fileID: 361928060}
+  - component: {fileID: 361928064}
+  - component: {fileID: 361928065}
   m_Layer: 0
   m_Name: RespawnPlatform
   m_TagString: Untagged
@@ -5396,6 +5398,49 @@ Transform:
   m_Father: {fileID: 1966616253}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &361928064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361928059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a944c451dcfb9641ba26483a3acdd4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_respawnPoint: {fileID: 1645111372}
+  m_respawnWaitForOtherTime: 2
+--- !u!114 &361928065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 361928059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1611bb386457a09429c59f5c9f2f6cfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 4cce63c12ebee0a46bc8d41e5148eb5c, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 361928064}
+        m_MethodName: Respawn
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: CustomGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
 --- !u!1 &386687688
 GameObject:
   m_ObjectHideFlags: 0
@@ -5904,75 +5949,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1001 &416338832
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1306612043750070396, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_Name
-      value: ChonkJouster
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c7c83928f081c524b91dca87891fd0f6, type: 3}
 --- !u!1 &519628526
 GameObject:
   m_ObjectHideFlags: 0
@@ -7723,7 +7699,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a67be6a5ff2e06842a4e5b024e3f8fd8, type: 2}
   m_chonkPrefab: {fileID: 1306612043750070396, guid: c7c83928f081c524b91dca87891fd0f6,
     type: 3}
-  m_respawnTransform: {fileID: 1645111372}
 --- !u!4 &1966616253
 Transform:
   m_ObjectHideFlags: 0
