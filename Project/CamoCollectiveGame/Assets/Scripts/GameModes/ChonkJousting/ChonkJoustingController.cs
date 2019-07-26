@@ -19,6 +19,8 @@ public class ChonkJoustingController : MonoBehaviour
     private float m_chonkMudStopSpeedMultiplier;
     [SerializeField]
     private float m_chonkRotateSpeed;
+    [SerializeField]
+    private GameEvent m_spawnedEvent;
 
 
     private Vector3 m_velocity;
@@ -29,7 +31,10 @@ public class ChonkJoustingController : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Balcony"))
+        {
             GetComponent<InputMapper>().EnableInput();
+            m_spawnedEvent.Invoke();
+        }
     }
 
     public Vector3 GetVelocity()
