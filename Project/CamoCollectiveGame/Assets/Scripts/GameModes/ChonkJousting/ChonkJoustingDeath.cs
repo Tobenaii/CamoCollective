@@ -31,6 +31,7 @@ public class ChonkJoustingDeath : MonoBehaviour
         if (!m_isRespawning)
             return;
         m_respawnTimer -= Time.deltaTime;
+        GetComponent<ChonkJoustingData>().SetRespawnTimer(m_respawnTimer);
         if (m_respawnTimer <= 0)
             Respawn();
     }
@@ -41,6 +42,7 @@ public class ChonkJoustingDeath : MonoBehaviour
         GetComponent<ChonkJoustingData>().ResetLives();
         GetComponent<ChonkJoustingController>().enabled = true;
         GetComponent<ChonkJoustingController>().Respawn(m_respawnTransform);
+        GetComponent<ChonkJoustingData>().SetDead(false);
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().detectCollisions = true;
         m_animator.enabled = false;
@@ -60,6 +62,7 @@ public class ChonkJoustingDeath : MonoBehaviour
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Rigidbody>().detectCollisions = false;
         GetComponent<ChonkJoustingData>().RemoveScore(m_scoreLossOnDeath);
+        GetComponent<ChonkJoustingData>().SetDead(true);
         m_respawnTimer = m_respawnTime;
         m_isRespawning = true;
         m_animator.enabled = true;

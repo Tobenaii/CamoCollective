@@ -34,6 +34,11 @@ public class ChonkJoustingController : MonoBehaviour
         }
     }
 
+    public Vector3 GetVelocity()
+    {
+        return m_velocity;
+    }
+
     public void Respawn(Transform respawnPoint)
     {
         GetComponent<InputMapper>().DisableInput();
