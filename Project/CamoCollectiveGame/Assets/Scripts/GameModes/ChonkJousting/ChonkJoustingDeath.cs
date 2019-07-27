@@ -46,6 +46,7 @@ public class ChonkJoustingDeath : MonoBehaviour
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
         foreach (Renderer rend in renderers)
         {
+            rend.enabled = true;
             Color color = rend.material.color;
             rend.material.SetFloat("_Amount", 0);
             rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
@@ -69,6 +70,10 @@ public class ChonkJoustingDeath : MonoBehaviour
     {
         TimeLerper lerper = new TimeLerper();
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
+        foreach (Renderer rend in renderers)
+        {
+            rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+        }
         float fadeTimer = m_fadeAwayTime;
         while (fadeTimer > 0)
         {
@@ -78,11 +83,13 @@ public class ChonkJoustingDeath : MonoBehaviour
                 Color color = rend.material.color;
                 float dissolve = lerper.Lerp(0, 1, m_fadeAwayTime);
                 rend.material.SetFloat("_Amount", dissolve);
-                rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
             }
             yield return null;
         }
         m_animator.SetTrigger("EndAnim");
+        foreach (Renderer rend in renderers)
+        {
+            rend.enabled = false;
+        }
     }
-
 }
