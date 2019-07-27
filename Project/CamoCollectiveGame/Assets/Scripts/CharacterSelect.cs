@@ -18,9 +18,13 @@ public class CharacterSelect : MonoBehaviour
     private float m_prevTriggerPrev;
     private bool m_initialized;
 
+    private void Awake()
+    {
+    }
+
     private void Init()
     {
-        m_characterPool.GetNextCharacter(m_playerData);
+        m_characterPool.InitPlayer(m_playerData);
         m_initialized = true;
         m_image.gameObject.SetActive(true);
     }
@@ -39,7 +43,7 @@ public class CharacterSelect : MonoBehaviour
         {
             m_playerData.SetPlaying(false);
             m_image.gameObject.SetActive(false);
-            m_characterPool.ReturnCharacter(m_playerData);
+            m_characterPool.Disconnect(m_playerData);
             m_initialized = false;
         }
         m_image.sprite = m_playerData.GetCharacter()?.GetIcon();

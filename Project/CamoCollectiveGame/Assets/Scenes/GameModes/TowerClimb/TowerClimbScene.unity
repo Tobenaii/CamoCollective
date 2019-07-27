@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -515,13 +515,15 @@ GameObject:
   m_Component:
   - component: {fileID: 696531021}
   - component: {fileID: 696531020}
+  - component: {fileID: 696531023}
+  - component: {fileID: 696531022}
   m_Layer: 0
   m_Name: WinGameEvent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &696531020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,9 +541,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5422619221578df488f16183c3a8c076, type: 2}
   - {fileID: 11400000, guid: a11917f984810194e998598aca2eaa22, type: 2}
   - {fileID: 11400000, guid: 0137bbc31e94aaf4dbf8afc70ec4a2cc, type: 2}
-  m_quitGameEvent: {fileID: 11400000, guid: fc343835bf6d963409980ce2c05cd253, type: 2}
+  m_wonGameEvent: {fileID: 11400000, guid: 10835386bc2433f4c9655a02fb457fe0, type: 2}
   m_winnerText: {fileID: 1492865682}
-  m_winnerTextTime: 5
 --- !u!4 &696531021
 Transform:
   m_ObjectHideFlags: 0
@@ -557,6 +558,50 @@ Transform:
   m_Father: {fileID: 1603523156}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &696531022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696531019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f74b2018d6c2a1449bfc95f6ee3cf96b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_scenes:
+  - m_scene: {fileID: 102900000, guid: 91b50428f64511e4799b1c3a3a9873a3, type: 3}
+    m_sceneName: TowerClimbEndGameScene
+--- !u!114 &696531023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696531019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 10835386bc2433f4c9655a02fb457fe0, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 696531022}
+        m_MethodName: LoadScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &727640214
 GameObject:
   m_ObjectHideFlags: 0
@@ -1537,7 +1582,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1492865681
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1554,7 +1599,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 413.08502, y: 245.50613}
+  m_AnchoredPosition: {x: 413.08502, y: 129}
   m_SizeDelta: {x: 443.9, y: 228.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1492865682
@@ -1570,7 +1615,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_Color: {r: 1, g: 0.5749342, b: 0, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1590,7 +1635,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SOMEONE WINS!!!
+  m_Text: Barbarian WIns!
 --- !u!222 &1492865683
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1756,6 +1801,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1603523156}
+  - component: {fileID: 1603523158}
+  - component: {fileID: 1603523157}
   m_Layer: 5
   m_Name: WinnerUI
   m_TagString: Untagged
@@ -1783,6 +1830,48 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1603523157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603523155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 50cc687c38f71944a9f1ef55abf1f0fc, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1603523158}
+        m_MethodName: EnableGameObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1603523158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1603523155}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584b2856d42b9d64dbf49f1d6fb89375, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gameObject: {fileID: 696531019}
 --- !u!1 &1779671906
 GameObject:
   m_ObjectHideFlags: 0
@@ -1828,7 +1917,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_hairPrefab: {fileID: 5520693577452648691, guid: a524914160def6c4692801e79543d791,
     type: 3}
-  m_initAmmount: 10
+  m_initAmmount: 6
 --- !u!1 &1784714173
 GameObject:
   m_ObjectHideFlags: 0

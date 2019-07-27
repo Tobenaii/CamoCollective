@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 5520693577452648692}
   - component: {fileID: 1504753836}
   - component: {fileID: 3164653694484635051}
+  - component: {fileID: 2049487570498721288}
+  - component: {fileID: 3969747682040940051}
   m_Layer: 0
   m_Name: HairChunk
   m_TagString: Untagged
@@ -106,10 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a88ef191f7ed704ca1b60ff95523d8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hairPrefab: {fileID: 5520693577452648691}
-  m_moveSpeed: 10
-  m_obstaclePrefab: {fileID: 7314118985020372177, guid: c7d3f414a0b337a42bd3810e455e6168,
-    type: 3}
+  m_moveSpeed: 1
 --- !u!114 &3164653694484635051
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -128,6 +127,64 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1504753836}
         m_MethodName: StartMoving
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &2049487570498721288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5520693577452648691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 10835386bc2433f4c9655a02fb457fe0, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1504753836}
+        m_MethodName: StopMoving
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &3969747682040940051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5520693577452648691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 10835386bc2433f4c9655a02fb457fe0, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1504753836}
+        m_MethodName: StopMoving
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -21,6 +21,14 @@ public class TowerClimbPlayerController : MonoBehaviour
     private bool m_atTargetRot;
     public bool m_playerHasControl;
     public bool m_isDead;
+    private bool m_stopMoving;
+    private Rigidbody m_rb;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("StopClimber"))
+            m_stopMoving = true;
+    }
 
     private void Awake()
     {
@@ -28,6 +36,7 @@ public class TowerClimbPlayerController : MonoBehaviour
         m_rightClimbRot = Quaternion.Euler(0, 0, -20);
         m_atTargetRot = true;
         m_playerHasControl = false;
+        m_rb = GetComponent<Rigidbody>();
     }
     public void OnDeath()
     {
@@ -40,11 +49,17 @@ public class TowerClimbPlayerController : MonoBehaviour
         GetComponent<InputMapper>().EnableInput();
     }
 
+    public void TakeControl()
+    {
+        m_playerHasControl = false;
+        GetComponent<InputMapper>().DisableInput();
+    }
+
     public void MovePlayer(Vector2 joystick)
     {
         if (m_isDead)
             return;
-        transform.position = new Vector3(transform.position.x + joystick.x * m_strafeSpeed * Time.deltaTime, transform.position.y, transform.position.z);
+        m_rb.MovePosition(new Vector3(transform.position.x + joystick.x * m_strafeSpeed * Time.deltaTime, transform.position.y, transform.position.z));
     }
 
     public void Climb()
@@ -59,11 +74,13 @@ public class TowerClimbPlayerController : MonoBehaviour
         m_atTargetRot = false;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if (m_stopMoving)
+            return;
         if (!m_playerHasControl)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + m_autoClimbMoveSpeed * Time.deltaTime, transform.position.z);
+            m_rb.MovePosition(new Vector3(transform.position.x, transform.position.y + m_autoClimbMoveSpeed * Time.deltaTime, transform.position.z));
             Climb();
         }
         transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRot, m_rotateSpeed * Time.deltaTime);
@@ -72,8 +89,8 @@ public class TowerClimbPlayerController : MonoBehaviour
             m_atTargetRot = true;
         }
         else if (m_playerHasControl)
-            transform.position = new Vector3(transform.position.x, transform.position.y + m_climbSpeed * Time.deltaTime, transform.position.z);
+            m_rb.MovePosition(new Vector3(transform.position.x, transform.position.y + m_climbSpeed * Time.deltaTime, transform.position.z));
         if (m_playerHasControl)
-            transform.position = new Vector3(transform.position.x, transform.position.y - m_fallSpeed * Time.deltaTime, transform.position.z);
+            m_rb.MovePosition(new Vector3(transform.position.x, transform.position.y - m_fallSpeed * Time.deltaTime, transform.position.z));
     }
 }

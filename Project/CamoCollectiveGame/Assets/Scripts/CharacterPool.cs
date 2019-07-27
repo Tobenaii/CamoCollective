@@ -9,6 +9,15 @@ public class CharacterPool : MonoBehaviour
 
     private void Awake()
     {
+        
+    }
+
+    public void InitPlayer(PlayerData player)
+    {
+        if (player.GetCharacter() != null && m_characterPool.Contains(player.GetCharacter()))
+            m_characterPool.Remove(player.GetCharacter());
+        else
+            GetNextCharacter(player);
     }
 
     public void GetNextCharacter(PlayerData player)
@@ -65,6 +74,13 @@ public class CharacterPool : MonoBehaviour
             return;
         ReturnCharacterNext(player.GetCharacter());
         player.SetCharacter(null);
+    }
+
+    public void Disconnect(PlayerData player)
+    {
+        if (player.GetCharacter() == null)
+            return;
+        ReturnCharacterNext(player.GetCharacter());
     }
 
 

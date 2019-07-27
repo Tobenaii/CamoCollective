@@ -7,9 +7,11 @@ public class PlayerData : ScriptableObject
 {
     [SerializeField]
     private int m_playerNum;
-    [SerializeField]
+    [System.NonSerialized]
     private CharacterData m_currentCharacter;
+    [System.NonSerialized]
     private int m_rulerScore;
+    [System.NonSerialized]
     private bool m_isPlaying;
 
     public CharacterData GetCharacter()

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Countdown : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class Countdown : MonoBehaviour
     private FloatValue m_timeValue;
     [SerializeField]
     private GameEvent m_countdownFinishedEvent;
+    [SerializeField]
+    private UnityEvent m_countdownFinishedUnityEvent;
     private bool m_countdownStarted = false;
     private float m_countdown;
 
@@ -38,6 +41,7 @@ public class Countdown : MonoBehaviour
         {
             StopCountdown();
             m_countdownFinishedEvent?.Invoke();
+            m_countdownFinishedUnityEvent.Invoke();
         }
     }
 
