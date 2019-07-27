@@ -431,6 +431,11 @@ MonoBehaviour:
   m_timeValue: {fileID: 0}
   m_countdownFinishedEvent: {fileID: 11400000, guid: 50cc687c38f71944a9f1ef55abf1f0fc,
     type: 2}
+  m_countdownFinishedUnityEvent:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &695219690
 GameObject:
   m_ObjectHideFlags: 0
@@ -523,7 +528,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &696531020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1582,7 +1587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1492865681
 RectTransform:
   m_ObjectHideFlags: 0

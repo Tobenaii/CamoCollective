@@ -23,5 +23,6 @@ public class TowerClimbDeath : MonoBehaviour
     {
         m_climber.isDead = true;
         GetComponent<TowerClimbPlayerController>().OnDeath();
+        Destroy(gameObject);
     }
 }
