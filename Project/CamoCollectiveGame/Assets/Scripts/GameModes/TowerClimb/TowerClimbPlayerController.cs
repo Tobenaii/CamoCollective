@@ -60,7 +60,7 @@ public class TowerClimbPlayerController : MonoBehaviour
     {
         if (m_isDead)
             return;
-        m_rb.MovePosition(new Vector3(transform.position.x + joystick.x * m_strafeSpeed * Time.deltaTime, transform.position.y, transform.position.z));
+        transform.position = new Vector3(transform.position.x + joystick.x * m_strafeSpeed * Time.deltaTime, transform.position.y, transform.position.z);
     }
 
     public void Climb()
@@ -84,6 +84,14 @@ public class TowerClimbPlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, transform.position.y + m_autoClimbMoveSpeed * Time.deltaTime, transform.position.z);
             Climb();
         }
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, Vector3.up, out hit, 1))
+        {
+            transform.position = hit.point + Vector3.down;
+            return;
+        }
+
         transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRot, m_rotateSpeed * Time.deltaTime);
         if (transform.rotation == m_targetRot)
         {

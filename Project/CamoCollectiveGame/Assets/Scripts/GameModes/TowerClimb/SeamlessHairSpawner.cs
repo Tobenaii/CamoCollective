@@ -15,8 +15,6 @@ public class SeamlessHairSpawner : MonoBehaviour
         for (int i = 1; i <= m_initAmmount; i++)
         {
             HairController hair = Instantiate(m_hairPrefab, new Vector3(transform.position.x, transform.position.y + (m_height) * (i), transform.position.z), transform.rotation, transform).GetComponent<HairController>();
-            if (i != m_initAmmount)
-                hair.DontSpawnHair();
         }
     }
 }

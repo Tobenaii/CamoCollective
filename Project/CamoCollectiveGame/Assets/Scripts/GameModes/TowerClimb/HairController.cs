@@ -6,7 +6,6 @@ public class HairController : MonoBehaviour
 {
     [SerializeField]
     private float m_moveSpeed;
-    private bool m_dontSpawnHair;
     private Renderer m_renderer;
     private bool m_moveHair;
     private float m_offset;
@@ -15,7 +14,6 @@ public class HairController : MonoBehaviour
     {
         m_renderer = GetComponent<Renderer>();
         m_moveHair = false;
-        m_dontSpawnHair = false;
     }
 
     public void StartMoving()
@@ -26,11 +24,6 @@ public class HairController : MonoBehaviour
     public void StopMoving()
     {
         m_moveHair = false;
-    }
-
-    public void DontSpawnHair()
-    {
-        m_dontSpawnHair = true;
     }
 
     private void Update()
