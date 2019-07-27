@@ -17,9 +17,9 @@ public class TowerClimber : ScriptableObject, IEquatable<TowerClimber>, ICompara
 
     public int CompareTo(TowerClimber other)
     {
-        if (other == null || towerClimber == null)
+        if (other == null || towerClimber == null || other.towerClimber == null)
             return 1;
-        return towerClimber.transform.position.y.CompareTo(other.towerClimber.transform.position.y);
+        return (towerClimber.transform.position.y > other.towerClimber.transform.position.y)?-1:1;
     }
 
     public bool Equals(TowerClimber other)
