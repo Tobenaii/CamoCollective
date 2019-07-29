@@ -90,10 +90,13 @@ public class InputMapper : MonoBehaviour
         [HideInInspector]
         public List<ButtonMod> buttons = new List<ButtonMod>();
         [HideInInspector]
+        [SerializeField]
         public UnityEvent unityEventButton = new UnityEvent();
         [HideInInspector]
+        [SerializeField]
         public JoystickEvent unityEventJoystick = new JoystickEvent();
         [HideInInspector]
+        [SerializeField]
         public TriggerEvent unityEventTrigger = new TriggerEvent();
     }
 
