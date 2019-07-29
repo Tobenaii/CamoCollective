@@ -20,9 +20,16 @@ public class CharacterSelect : MonoBehaviour
     private float m_prevTriggerPrev;
     private bool m_initialized;
 
+    private void Awake()
+    {
+        if (m_playerData.IsPlaying())
+            Connect();
+    }
+
     private void Init()
     {
-        m_characterPool.InitPlayer(m_playerData);
+        if (!m_playerData.IsPlaying())
+            m_characterPool.InitPlayer(m_playerData);
         m_initialized = true;
         m_image.gameObject.SetActive(true);
         m_playerData.SetPlaying(true);
