@@ -46,7 +46,7 @@ public class CharacterSelect : MonoBehaviour
             m_characterPool.Disconnect(m_playerData);
             m_initialized = false;
         }
-        m_image.sprite = m_playerData.GetCharacter()?.GetIcon();
+        m_image.sprite = m_playerData.GetCharacter()?.Icon;
         m_image.SetNativeSize();
     }
 

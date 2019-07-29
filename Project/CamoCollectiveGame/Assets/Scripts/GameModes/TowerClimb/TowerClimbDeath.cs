@@ -5,10 +5,13 @@ using UnityEngine;
 public class TowerClimbDeath : MonoBehaviour
 {
     private TowerClimber m_climber;
+    [SerializeField]
+    private Renderer m_tempBody;
 
     public void SetClimber(TowerClimber climber)
     {
         m_climber = climber;
+        m_tempBody.material.color = climber.player.GetCharacter().TempColour;
     }
 
     // Update is called once per frame

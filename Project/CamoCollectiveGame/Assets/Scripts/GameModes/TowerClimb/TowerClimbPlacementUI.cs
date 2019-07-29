@@ -24,7 +24,7 @@ public class TowerClimbPlacementUI : MonoBehaviour
                 else
                 {
                     m_images[index].gameObject.SetActive(true);
-                    m_images[index].sprite = m_towerClimbers[i].player.GetCharacter().GetIcon();
+                    m_images[index].sprite = m_towerClimbers[i].player.GetCharacter().Icon;
                     m_images[index].SetNativeSize();
                 }
             }

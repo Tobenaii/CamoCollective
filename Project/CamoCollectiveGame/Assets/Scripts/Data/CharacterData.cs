@@ -7,9 +7,8 @@ public class CharacterData : ScriptableObject
 {
     [SerializeField]
     private Sprite m_icon;
-
-    public Sprite GetIcon()
-    {
-        return m_icon;
-    }
+    [SerializeField]
+    private Color m_tempColour;
+    public Sprite Icon { get { return m_icon; } private set { } }
+    public Color TempColour { get { return m_tempColour; } private set { } }
 }

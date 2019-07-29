@@ -25,7 +25,7 @@ public class ChonkJoustingUI : MonoBehaviour
             gameObject.SetActive(false);
             return;
         }
-        m_image.sprite = m_chonkJouster.player.GetCharacter().GetIcon();
+        m_image.sprite = m_chonkJouster.player.GetCharacter().Icon;
     }
 
     private void Update()

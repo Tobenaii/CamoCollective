@@ -6,6 +6,8 @@ public class ChonkJoustingData : MonoBehaviour
 {
     [SerializeField]
     private int m_spawnLives;
+    [SerializeField]
+    private Renderer m_tempBody;
     private ChonkJouster m_jouster;
     private int m_score;
     private int m_lives;
@@ -24,6 +26,7 @@ public class ChonkJoustingData : MonoBehaviour
         m_jouster.score = 0;
         ResetLives();
         ResetScore();
+        m_tempBody.material.color = jouster.player.GetCharacter().TempColour;
     }
 
     public void ResetLives()

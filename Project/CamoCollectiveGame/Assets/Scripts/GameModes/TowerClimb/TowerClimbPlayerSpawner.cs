@@ -26,12 +26,12 @@ public class TowerClimbPlayerSpawner : MonoBehaviour
             if (!player.IsPlaying())
                 continue;
             InputMapper input = Instantiate(m_playerPrefab, m_spawns[index].position, m_spawns[index].rotation, transform).GetComponent<InputMapper>();
-            input.GetComponent<TowerClimbDeath>().SetClimber(m_towerClimbers[index]);
-            input.SetControllerNum(player.GetPlayerNum());
             m_towerClimbers[index].player = player;
             m_towerClimbers[index].placement = index;
             m_towerClimbers[index].towerClimber = input.gameObject;
             m_towerClimbers[index].isDead = false;
+            input.GetComponent<TowerClimbDeath>().SetClimber(m_towerClimbers[index]);
+            input.SetControllerNum(player.GetPlayerNum());
             index++;
         }
     }
