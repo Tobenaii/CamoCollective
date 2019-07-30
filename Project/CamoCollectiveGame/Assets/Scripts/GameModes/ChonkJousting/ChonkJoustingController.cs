@@ -18,7 +18,9 @@ public class ChonkJoustingController : MonoBehaviour
     [SerializeField]
     private float m_chonkMudStopSpeedMultiplier;
     [SerializeField]
-    private float m_chonkRotateSpeed;
+    private float m_chonkLookRotateSpeed;
+    [SerializeField]
+    private float m_chonkMoveRotateSpeed;
     [SerializeField]
     private GameEvent m_spawnedEvent;
 
@@ -63,9 +65,9 @@ public class ChonkJoustingController : MonoBehaviour
     {
         m_rb.MovePosition(transform.position + m_velocity * Time.deltaTime);
         if (m_lookDir == Vector3.zero)
-            RotateChonkOverTime(m_velocity);
+            RotateChonkOverTime(m_velocity, m_chonkMoveRotateSpeed);
         else
-            RotateChonkOverTime(m_lookDir);
+            RotateChonkOverTime(m_lookDir, m_chonkLookRotateSpeed);
     }
 
     private void OnTriggerStay(Collider other)
@@ -80,7 +82,7 @@ public class ChonkJoustingController : MonoBehaviour
             m_isSliding = false;
     }
 
-    private void RotateChonkOverTime(Vector3 dir)
+    private void RotateChonkOverTime(Vector3 dir, float speed)
     {
         if (dir == Vector3.zero)
             return;
@@ -88,7 +90,7 @@ public class ChonkJoustingController : MonoBehaviour
         transform.forward = dir;
         Quaternion newRot = transform.rotation;
         transform.rotation = prevRot;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, m_chonkRotateSpeed);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, speed);
     }
 
     private void RotateChonkInstant(Vector3 dir)
