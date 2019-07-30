@@ -257,12 +257,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_chonkRunSpeed: 10
-  m_chonkBackwardVelocityMultiplier: 0.75
+  m_chonkBackwardVelocityMultiplier: 0.5
   m_chonkAcceleration: 30
   m_chonkMudAcceleration: 10
   m_chonkStopSpeed: 20
   m_chonkMudStopSpeedMultiplier: 0.3
-  m_chonkRotateSpeed: 30
+  m_chonkLookRotateSpeed: 10
+  m_chonkMoveRotateSpeed: 10
   m_spawnedEvent: {fileID: 11400000, guid: 497acc1f9471e8e44b55135dbe097851, type: 2}
 --- !u!114 &683146078
 MonoBehaviour:
