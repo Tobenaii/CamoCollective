@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4430062, g: 0.492195, b: 0.571924, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -112,6 +112,85 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &128703724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 128703727}
+  - component: {fileID: 128703726}
+  - component: {fileID: 128703725}
+  m_Layer: 5
+  m_Name: Text (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &128703725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128703724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 0.16748914, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 175
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 10
+    m_MaxSize: 196
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: Chonk Jousting
+--- !u!222 &128703726
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128703724}
+  m_CullTransparentMesh: 0
+--- !u!224 &128703727
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128703724}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 15.6}
+  m_LocalScale: {x: 0.29999998, y: 0.29999998, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1598902991}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1, y: -364}
+  m_SizeDelta: {x: 1542.35, y: 201.5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &223084947
 GameObject:
   m_ObjectHideFlags: 0
@@ -171,11 +250,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 156
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 213
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -408,16 +487,16 @@ RectTransform:
   m_GameObject: {fileID: 1002514760}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 15.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 2095221567}
   m_Father: {fileID: 1598902991}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 11, y: 23.499985}
-  m_SizeDelta: {x: 30, y: 30}
+  m_AnchoredPosition: {x: 75, y: 83}
+  m_SizeDelta: {x: 270, y: 276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1002514762
 MonoBehaviour:
@@ -524,6 +603,8 @@ MonoBehaviour:
   m_hoverEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
   m_clickEvent: {fileID: 11400000, guid: a9fbe7f47cf7c974e8515a67832ae9b3, type: 2}
   m_targetGameObject: {fileID: 721845975}
+  m_name: Chonk Jousting
+  m_text: {fileID: 128703725}
 --- !u!1 &1038166249
 GameObject:
   m_ObjectHideFlags: 0
@@ -583,11 +664,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 156
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 213
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -632,16 +713,16 @@ RectTransform:
   m_GameObject: {fileID: 1389114428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 15.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 1540042529}
   m_Father: {fileID: 1598902991}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 60, y: 23.499985}
-  m_SizeDelta: {x: 30, y: 30}
+  m_AnchoredPosition: {x: 225, y: 82.99997}
+  m_SizeDelta: {x: 270, y: 276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1389114430
 MonoBehaviour:
@@ -748,6 +829,8 @@ MonoBehaviour:
   m_hoverEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
   m_clickEvent: {fileID: 11400000, guid: e6495b7456536df40a5432c0250ba837, type: 2}
   m_targetGameObject: {fileID: 1450339381}
+  m_name: Climb the Tower
+  m_text: {fileID: 128703725}
 --- !u!1 &1450339381
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,11 +966,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 156
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 213
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
@@ -954,10 +1037,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -996,6 +1079,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 128703727}
   - {fileID: 1892716012}
   - {fileID: 2076102511}
   - {fileID: 1002514761}
@@ -1050,16 +1134,16 @@ RectTransform:
   m_GameObject: {fileID: 1892716011}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 15.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 223084948}
   m_Father: {fileID: 1598902991}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -80, y: 23.499985}
-  m_SizeDelta: {x: 30, y: 30}
+  m_AnchoredPosition: {x: -225, y: 82.99997}
+  m_SizeDelta: {x: 270, y: 276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1892716013
 MonoBehaviour:
@@ -1166,6 +1250,8 @@ MonoBehaviour:
   m_hoverEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
   m_clickEvent: {fileID: 0}
   m_targetGameObject: {fileID: 585492970}
+  m_name: Nothing
+  m_text: {fileID: 128703725}
 --- !u!1 &2076102510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1195,16 +1281,16 @@ RectTransform:
   m_GameObject: {fileID: 2076102510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 15.6}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
   m_Children:
   - {fileID: 1038166250}
   m_Father: {fileID: 1598902991}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -36, y: 23.5}
-  m_SizeDelta: {x: 30, y: 30}
+  m_AnchoredPosition: {x: -75, y: 82.99997}
+  m_SizeDelta: {x: 270, y: 276}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2076102512
 MonoBehaviour:
@@ -1311,6 +1397,8 @@ MonoBehaviour:
   m_hoverEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
   m_clickEvent: {fileID: 0}
   m_targetGameObject: {fileID: 543214101}
+  m_name: Zilch
+  m_text: {fileID: 128703725}
 --- !u!1 &2095221566
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,11 +1458,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 156
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
-    m_MaxSize: 40
+    m_MaxSize: 213
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1

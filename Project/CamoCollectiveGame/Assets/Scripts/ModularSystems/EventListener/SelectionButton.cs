@@ -13,12 +13,17 @@ public class SelectionButton : MonoBehaviour
     private GameEvent m_clickEvent;
     [SerializeField]
     private GameObject m_targetGameObject;
+    [SerializeField]
+    private string m_name;
+    [SerializeField]
+    private Text m_text;
     private bool m_invoked;
 
     private void Update()
     {
         if (EventSystem.current.currentSelectedGameObject == gameObject && !m_invoked)
         {
+            m_text.text = m_name;
             m_invoked = true;
             m_hoverEvent.Invoke(m_targetGameObject);
         }
