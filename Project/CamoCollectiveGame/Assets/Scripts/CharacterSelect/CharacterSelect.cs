@@ -85,9 +85,8 @@ public class CharacterSelect : MonoBehaviour
     {
         GamePadState state = GamePad.GetState((PlayerIndex)m_playerData.GetPlayerNum() - 1);
         if (!state.IsConnected)
-        {
             Disconnect();
-        }
+
         m_image.sprite = m_playerData.GetCharacter()?.Icon;
         m_image.SetNativeSize();
     }
@@ -100,6 +99,7 @@ public class CharacterSelect : MonoBehaviour
 
     public void Disconnect()
     {
+        m_currentIndex = 0;
         m_playerData.SetPlaying(false);
         m_playerData.RemoveCharacter();
         m_image.gameObject.SetActive(false);

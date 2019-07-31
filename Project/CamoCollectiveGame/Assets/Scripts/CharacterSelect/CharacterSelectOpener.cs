@@ -31,6 +31,15 @@ public class CharacterSelectOpener : MonoBehaviour
     private void Start()
     {
         m_rect = GetComponent<RectTransform>();
+
+        if (!CheckForPlayers())
+            OpenCharacterSelect();
+        else
+            CloseCharacterSelect();
+    }
+
+    private bool CheckForPlayers()
+    {
         bool hasPlayer = false;
         foreach (PlayerData player in m_playerData)
         {
@@ -40,14 +49,14 @@ public class CharacterSelectOpener : MonoBehaviour
                 break;
             }
         }
-        if (!hasPlayer)
-            OpenCharacterSelect();
-        else
-            CloseCharacterSelect();
+        return hasPlayer;
     }
 
     private void Update()
     {
+        if (!CheckForPlayers())
+            OpenCharacterSelect();
+
         if (m_isOpen)
         {
             m_rect.anchoredPosition = Vector3.SmoothDamp(m_rect.anchoredPosition, m_openPos, ref m_velocity, m_moveSpeed * Time.deltaTime);
