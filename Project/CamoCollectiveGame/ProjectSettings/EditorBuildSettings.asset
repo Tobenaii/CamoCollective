@@ -6,19 +6,22 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/MapScene.unity
+    path: Assets/Scenes/MainScene.unity
+    guid: e3aa12dd1fe5a5d49b4467328b483b57
+  - enabled: 1
+    path: Assets/Scenes/KingdomScene.unity
     guid: a920beed2bda3fb48965d41a69299999
   - enabled: 1
     path: Assets/Scenes/GameModes/ChonkJousting/ChonkJoustingScene.unity
     guid: eb98ac3598618cc4d94186b66c0e5857
   - enabled: 1
-    path: Assets/Scenes/ModeSelectionScene.unity
+    path: Assets/Scenes/Functionality/ModeSelectionScene.unity
     guid: 3f96e893bd9a30e47833dc767154f916
   - enabled: 1
     path: Assets/Scenes/GameModes/ChonkJousting/ChonkJoustingTipsScene.unity
     guid: bbaf4038ee69c9d41ba1b1d4806af9c3
   - enabled: 1
-    path: Assets/Scenes/FreePlayCharacterSelectScene.unity
+    path: Assets/Scenes/Functionality/FreePlayCharacterSelectScene.unity
     guid: e2e4a622e1e4fb646a7ab3a69f88c8f2
   - enabled: 1
     path: Assets/Scenes/GameModes/TowerClimb/TowerClimbScene.unity
@@ -32,4 +35,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenuScene.unity
     guid: 09abf88edf0f4be47972794f2ad897ab
+  - enabled: 1
+    path: Assets/Scenes/UICamera.unity
+    guid: 14b1fc9a741ff6c4084de97efade3a9e
+  - enabled: 1
+    path: Assets/Scenes/MainCamera.unity
+    guid: 3abf72cc827069941a035819ab15c9d6
   m_configObjects: {}

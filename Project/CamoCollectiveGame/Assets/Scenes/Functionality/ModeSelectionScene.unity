@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4430062, g: 0.492195, b: 0.571924, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -341,8 +341,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 721845976}
-  - component: {fileID: 721845977}
   - component: {fileID: 721845978}
+  - component: {fileID: 721845977}
   m_Layer: 0
   m_Name: WAYPOINT_ChonkJousting
   m_TagString: Untagged
@@ -373,11 +373,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 721845975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69795ab3e7b27384e96db286eed0771e, type: 3}
+  m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_scene:
-    m_scene: {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
+  m_runOnAwake: 0
+  m_scenesToUnload:
+  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
+    m_sceneName: FreePlayCharacterSelectScene
+  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
+    m_sceneName: ModeSelectionScene
+  m_scenesToLoad:
+  - m_scene: {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
     m_sceneName: ChonkJoustingTipsScene
 --- !u!114 &721845978
 MonoBehaviour:
@@ -396,7 +402,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 721845977}
-        m_MethodName: StartScene
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -408,7 +414,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &821378939
+--- !u!1 &855669901
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -416,48 +422,46 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 821378941}
-  - component: {fileID: 821378940}
+  - component: {fileID: 855669902}
+  - component: {fileID: 855669903}
   m_Layer: 0
-  m_Name: CameraMover
+  m_Name: SceneLoader
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &821378940
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821378939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aa95380f08e0804eb99c69efda12612, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_move: 0
-  m_rotate: 1
-  m_targetPos: {x: 0, y: 0, z: 0}
-  m_targetRot: {x: 70, y: 0, z: 0}
-  m_moveSpeed: 0
-  m_rotationSpeed: 40
-  m_onCameraMoved: {fileID: 0}
---- !u!4 &821378941
+--- !u!4 &855669902
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 821378939}
+  m_GameObject: {fileID: 855669901}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -74.86593, y: 133.87024, z: 123.58209}
+  m_LocalPosition: {x: 66.13382, y: 477.40002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &855669903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 855669901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_runOnAwake: 1
+  m_scenesToUnload: []
+  m_scenesToLoad:
+  - m_scene: {fileID: 102900000, guid: 14b1fc9a741ff6c4084de97efade3a9e, type: 3}
+    m_sceneName: UICamera
 --- !u!1 &1002514760
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,8 +844,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1450339382}
-  - component: {fileID: 1450339383}
   - component: {fileID: 1450339384}
+  - component: {fileID: 1450339383}
   m_Layer: 0
   m_Name: WAYPOINT_ClimbTheTower
   m_TagString: Untagged
@@ -872,11 +876,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 1450339381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69795ab3e7b27384e96db286eed0771e, type: 3}
+  m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_scene:
-    m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
+  m_runOnAwake: 0
+  m_scenesToUnload:
+  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
+    m_sceneName: FreePlayCharacterSelectScene
+  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
+    m_sceneName: ModeSelectionScene
+  m_scenesToLoad:
+  - m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
     m_sceneName: TowerClimbTipsScene
 --- !u!114 &1450339384
 MonoBehaviour:
@@ -895,7 +905,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1450339383}
-        m_MethodName: StartScene
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -200,9 +200,10 @@ MonoBehaviour:
   m_rotate: 1
   m_targetPos: {x: 90, y: 11, z: 61}
   m_targetRot: {x: 0, y: 0, z: 0}
+  m_snap: 0
   m_moveSpeed: 30
   m_rotationSpeed: 30
-  m_onCameraMoved: {fileID: 11400000, guid: 6822fb547a3adeb46a0cd59fa8d8ca33, type: 2}
+  m_onCameraMoved: {fileID: 11400000, guid: ea840f825e823fa4c82d778e6f293af4, type: 2}
 --- !u!4 &433627071
 Transform:
   m_ObjectHideFlags: 0
@@ -215,8 +216,108 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &602849186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 602849187}
+  - component: {fileID: 602849188}
+  m_Layer: 0
+  m_Name: StartEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &602849187
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602849186}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1689149969}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &602849188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 602849186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_runOnAwake: 0
+  m_scenesToUnload:
+  - m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
+    m_sceneName: TowerClimbTipsScene
+  m_scenesToLoad:
+  - m_scene: {fileID: 102900000, guid: 5c1f29ad1242bb641bfa1af4f9779dff, type: 3}
+    m_sceneName: TowerClimbScene
+--- !u!1 &832882381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 832882382}
+  - component: {fileID: 832882383}
+  m_Layer: 0
+  m_Name: QuitEvent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &832882382
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832882381}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1689149969}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &832882383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 832882381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_runOnAwake: 0
+  m_scenesToUnload:
+  - m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
+    m_sceneName: TowerClimbTipsScene
+  m_scenesToLoad:
+  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
+    m_sceneName: FreePlayCharacterSelectScene
 --- !u!1 &862114825
 GameObject:
   m_ObjectHideFlags: 0
@@ -767,7 +868,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 6822fb547a3adeb46a0cd59fa8d8ca33, type: 2}
+  gameEvent: {fileID: 11400000, guid: ea840f825e823fa4c82d778e6f293af4, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -807,10 +908,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1689149969}
   - component: {fileID: 1689149972}
-  - component: {fileID: 1689149971}
   - component: {fileID: 1689149970}
   m_Layer: 0
-  m_Name: QuitEvent
+  m_Name: Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -826,9 +926,11 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 563.1501, y: 414.56354, z: 140.2373}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 602849187}
+  - {fileID: 832882382}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1689149970
 MonoBehaviour:
@@ -839,30 +941,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 1689149968}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74b2018d6c2a1449bfc95f6ee3cf96b, type: 3}
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_scenes:
-  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
-    m_sceneName: FreePlayCharacterSelectScene
-  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
-    m_sceneName: ModeSelectionScene
---- !u!114 &1689149971
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1689149968}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc773598f3c91f04d9b54eb71678afce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_scenes:
-  - m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
-    m_sceneName: TowerClimbTipsScene
-  m_unloadOnAwake: 0
+  gameEvent: {fileID: 11400000, guid: ea840f825e823fa4c82d778e6f293af4, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1689149972}
+        m_MethodName: EnableInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1689149972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -875,7 +973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d14932de0e9034abfce6da8ef0ab14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_disableOnAwake: 0
+  m_disableOnAwake: 1
   m_controllerNumber: 1
   actions:
   - actionName: Quit
@@ -901,8 +999,8 @@ MonoBehaviour:
     unityEventButton:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1689149971}
-          m_MethodName: UnloadScene
+        - m_Target: {fileID: 832882383}
+          m_MethodName: Load
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -912,8 +1010,43 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 1689149970}
-          m_MethodName: LoadScene
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    unityEventJoystick:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    unityEventTrigger:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - actionName: Start
+    buttonA: 1
+    buttonB: 0
+    buttonX: 0
+    buttonY: 0
+    joystickLeft: 0
+    joystickRight: 0
+    triggerLeft: 0
+    triggerRight: 0
+    buttons:
+    - button: 0
+      buttonState: 0
+      prevButtonState: 0
+      delay: 0
+      cooldown: 0
+      onButtonDown: 1
+      onButtonHold: 0
+      onButtonRelease: 0
+      delayTime: 0
+      cooldownTime: 0
+    unityEventButton:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 602849188}
+          m_MethodName: Load
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1071,72 +1204,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
---- !u!1 &1843478220
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1843478223}
-  - component: {fileID: 1843478222}
-  - component: {fileID: 1843478221}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1843478221
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843478220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 1077351063, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &1843478222
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843478220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: -619905303, guid: f70555f144d8491a825f0804e09c671c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &1843478223
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1843478220}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2017915975
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(StringEventListener))]
 public class CinematicController : MonoBehaviour
 {
     [SerializeField]
@@ -17,7 +16,7 @@ public class CinematicController : MonoBehaviour
 
     public void StartCinematic(string cinematic)
     {
-        if (cinematic == "StopCinematics")
+        if (cinematic == "StopCinematics" || cinematic == "")
         {
             m_animator.enabled = false;
             return;

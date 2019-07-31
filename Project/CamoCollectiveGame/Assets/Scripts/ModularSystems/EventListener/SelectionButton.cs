@@ -21,6 +21,8 @@ public class SelectionButton : MonoBehaviour
 
     private void Update()
     {
+        if (EventSystem.current == null)
+            return;
         if (EventSystem.current.currentSelectedGameObject == gameObject && !m_invoked)
         {
             m_text.text = m_name;

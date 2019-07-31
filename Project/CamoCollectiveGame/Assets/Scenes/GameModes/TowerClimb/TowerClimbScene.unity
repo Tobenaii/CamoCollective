@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300634, g: 0.4921952, b: 0.5719241, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -470,13 +470,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 696531019}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74b2018d6c2a1449bfc95f6ee3cf96b, type: 3}
+  m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_scenes:
+  m_runOnAwake: 0
+  m_scenesToUnload: []
+  m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: 91b50428f64511e4799b1c3a3a9873a3, type: 3}
     m_sceneName: TowerClimbEndGameScene
-  m_loadOnAwake: 0
 --- !u!114 &696531023
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -494,7 +495,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 696531022}
-        m_MethodName: LoadScene
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -732,7 +733,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1465806065}
+      - m_Target: {fileID: 0}
         m_MethodName: LoadScene
         m_Mode: 1
         m_Arguments:
@@ -743,7 +744,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1465806066}
+      - m_Target: {fileID: 0}
         m_MethodName: UnloadScene
         m_Mode: 1
         m_Arguments:
@@ -1253,9 +1254,8 @@ GameObject:
   - component: {fileID: 1465806063}
   - component: {fileID: 1465806068}
   - component: {fileID: 1465806067}
-  - component: {fileID: 1465806066}
-  - component: {fileID: 1465806065}
   - component: {fileID: 1465806064}
+  - component: {fileID: 1465806065}
   m_Layer: 0
   m_Name: PauseEvent
   m_TagString: Untagged
@@ -1293,19 +1293,8 @@ MonoBehaviour:
   response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1465806066}
-        m_MethodName: UnloadScene
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 1465806065}
-        m_MethodName: LoadScene
+        m_MethodName: Load
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1326,31 +1315,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1465806062}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f74b2018d6c2a1449bfc95f6ee3cf96b, type: 3}
+  m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_scenes:
-  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
-    m_sceneName: ModeSelectionScene
-  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
-    m_sceneName: FreePlayCharacterSelectScene
-  m_loadOnAwake: 0
---- !u!114 &1465806066
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1465806062}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc773598f3c91f04d9b54eb71678afce, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_scenes:
+  m_runOnAwake: 0
+  m_scenesToUnload:
   - m_scene: {fileID: 102900000, guid: 5c1f29ad1242bb641bfa1af4f9779dff, type: 3}
     m_sceneName: TowerClimbScene
-  m_unloadOnAwake: 0
+  m_scenesToLoad:
+  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
+    m_sceneName: FreePlayCharacterSelectScene
 --- !u!114 &1465806067
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6820,6 +6794,7 @@ MonoBehaviour:
   m_rotate: 1
   m_targetPos: {x: 90, y: 50, z: 61}
   m_targetRot: {x: 0, y: 0, z: 0}
+  m_snap: 0
   m_moveSpeed: 10
   m_rotationSpeed: 0
   m_onCameraMoved: {fileID: 11400000, guid: 50cc687c38f71944a9f1ef55abf1f0fc, type: 2}

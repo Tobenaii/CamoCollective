@@ -31,7 +31,18 @@ public class PlayerData : ScriptableObject
 
     public void SetCharacter(CharacterData character)
     {
+        if (m_currentCharacter != null)
+            m_currentCharacter.inUse = false;
         m_currentCharacter = character;
+        m_currentCharacter.inUse = true;
+    }
+
+    public void RemoveCharacter()
+    {
+        if (m_currentCharacter == null)
+            return;
+        m_currentCharacter.inUse = false;
+        m_currentCharacter = null;
     }
 
     public void SetPlaying(bool playing)

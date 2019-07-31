@@ -10,12 +10,14 @@ public class FirstSeletedObjectUI : MonoBehaviour
 
     private void OnEnable()
     {
-        EventSystem.current.SetSelectedGameObject(null);
         StartCoroutine(HighlightButton());
     }
 
     IEnumerator HighlightButton()
     {
+        while (EventSystem.current == null)
+            yield return null;
+        EventSystem.current.SetSelectedGameObject(null);
         yield return null;
         EventSystem.current.SetSelectedGameObject(m_firstSelectedObject);
     }

@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class SceneValue
@@ -18,16 +16,4 @@ public class SceneValue
 #endif
     [SerializeField]
     private string m_sceneName;
-}
-
-public class GameModeSelection : MonoBehaviour
-{
-    [SerializeField]
-    private SceneValue m_scene;
-
-    public void StartScene()
-    {
-        SceneManager.LoadSceneAsync(m_scene, LoadSceneMode.Additive);
-        EventSystem.current.SetSelectedGameObject(null);
-    }
 }

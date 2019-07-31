@@ -14,6 +14,14 @@ public class CharacterSelectOpener : MonoBehaviour
     private Vector3 m_closeScale;
     [SerializeField]
     private float m_moveSpeed;
+    [SerializeField]
+    private int m_index;
+    [SerializeField]
+    private List<PlayerData> m_playerData;
+    [SerializeField]
+    private GameEvent m_openEvent;
+    [SerializeField]
+    private GameEvent m_closeEvent;
 
     private Vector3 m_velocity;
     private Vector3 m_scaleVelocity;
@@ -23,7 +31,19 @@ public class CharacterSelectOpener : MonoBehaviour
     private void Start()
     {
         m_rect = GetComponent<RectTransform>();
-        m_isOpen = true;
+        bool hasPlayer = false;
+        foreach (PlayerData player in m_playerData)
+        {
+            if (player.IsPlaying())
+            {
+                hasPlayer = true;
+                break;
+            }
+        }
+        if (!hasPlayer)
+            OpenCharacterSelect();
+        else
+            CloseCharacterSelect();
     }
 
     private void Update()
@@ -43,10 +63,23 @@ public class CharacterSelectOpener : MonoBehaviour
     public void OpenCharacterSelect()
     {
         m_isOpen = true;
+        m_openEvent.Invoke();
     }
 
     public void CloseCharacterSelect()
     {
+        bool hasPlayer = false;
+        foreach (PlayerData player in m_playerData)
+        {
+            if (player.IsPlaying())
+            {
+                hasPlayer = true;
+                break;
+            }
+        }
+        if (!hasPlayer)
+            return;
         m_isOpen = false;
+        m_closeEvent.Invoke();
     }
 }
