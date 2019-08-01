@@ -7,7 +7,7 @@ public class AnimatorTrigger : MonoBehaviour
     [SerializeField]
     private Animator m_animator;
 
-    private void Awake()
+    private void Start()
     {
         m_animator.enabled = false;
     }
