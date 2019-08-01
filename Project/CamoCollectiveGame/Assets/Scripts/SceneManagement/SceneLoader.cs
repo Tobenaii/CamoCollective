@@ -9,6 +9,8 @@ public class SceneLoader : MonoBehaviour
     [SerializeField]
     private bool m_runOnAwake;
     [SerializeField]
+    private bool m_unloadAllScenes;
+    [SerializeField]
     private List<SceneValue> m_scenesToUnload;
     [SerializeField]
     private List<SceneValue> m_scenesToLoad;
@@ -16,7 +18,7 @@ public class SceneLoader : MonoBehaviour
     private int m_loadedAmmount;
     private int m_loadSceneAmmount;
 
-    private void Awake()
+    private void Start()
     {
         SceneManager.sceneLoaded += OnSceneLoaded;
         if (m_runOnAwake)
@@ -35,6 +37,24 @@ public class SceneLoader : MonoBehaviour
         LoadScenes();
         if (m_loadSceneAmmount == 0)
             UnloadScenes();
+        if (!m_unloadAllScenes)
+            return;
+        for (int i = 0; i < SceneManager.sceneCount; i++)
+        {
+            if (SceneManager.GetSceneAt(i) == gameObject.scene)
+                continue;
+            bool unload = true;
+            foreach (SceneValue scene in m_scenesToLoad)
+            {
+                if (SceneManager.GetSceneAt(i).name == scene)
+                {
+                    unload = false;
+                    break;
+                }
+            }
+            if (unload)
+                SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i));
+        }
     }
 
     private void LoadScenes()

@@ -7,7 +7,9 @@ public class GameObjectMover : MonoBehaviour
     [SerializeField]
     private Vector3 m_direction;
     [SerializeField]
-    private FloatReference m_moveSpeed;
+    private float m_moveSpeed;
+    [SerializeField]
+    private FloatValue m_scale;
     [SerializeField]
     private bool m_moveOnAwake;
     private bool m_move;
@@ -32,6 +34,6 @@ public class GameObjectMover : MonoBehaviour
     {
         if (!m_move)
             return;
-        transform.position += m_direction.normalized * m_moveSpeed.Value * Time.deltaTime * 11;
+        transform.position += m_direction.normalized * m_moveSpeed * m_scale.value * Time.deltaTime;
     }
 }

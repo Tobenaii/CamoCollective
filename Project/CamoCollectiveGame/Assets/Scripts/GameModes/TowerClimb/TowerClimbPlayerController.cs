@@ -94,9 +94,9 @@ public class TowerClimbPlayerController : MonoBehaviour
         bool hitUp = Physics.Raycast(transform.position, Vector3.up, out hit, 1.0f);
         if (hitUp)
             transform.position = new Vector3(transform.position.x, hit.point.y - 1.0f, transform.position.z);
-        if (!m_playerHasControl)
+        if (!m_playerHasControl && !hitUp)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + m_autoClimbMoveSpeed * Time.deltaTime, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + m_autoClimbMoveSpeed * Time.deltaTime * m_speedScale.value, transform.position.z);
             Climb();
         }
 
