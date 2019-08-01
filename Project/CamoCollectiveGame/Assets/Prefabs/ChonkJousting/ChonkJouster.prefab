@@ -15,9 +15,9 @@ GameObject:
   - component: {fileID: 683146078}
   - component: {fileID: 6394471394633165378}
   - component: {fileID: 1306612043788377550}
-  - component: {fileID: 1306612043788377551}
   - component: {fileID: 675165720}
   - component: {fileID: 1635591654813619552}
+  - component: {fileID: 1777820783}
   m_Layer: 0
   m_Name: ChonkJouster
   m_TagString: Untagged
@@ -54,6 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d14932de0e9034abfce6da8ef0ab14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_uiController: {fileID: 11400000, guid: 329c4a3f6d274f74097f96ac4a2d862d, type: 2}
   m_disableOnAwake: 1
   m_controllerNumber: 1
   actions:
@@ -194,9 +195,20 @@ MonoBehaviour:
     unityEventButton:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1306612043788377551}
-          m_MethodName: TriggerEvent
-          m_Mode: 4
+        - m_Target: {fileID: 1777820783}
+          m_MethodName: Load
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1306612043750070398}
+          m_MethodName: SetUIController
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -327,19 +339,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &1306612043788377551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306612043750070396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2ed112f55b7f1f4c9fc03921e572e92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_floatEvent: {fileID: 11400000, guid: ff1e128af921d9b4a93888c13fe6adcc, type: 2}
 --- !u!114 &675165720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -373,6 +372,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1777820783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306612043750070396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_runOnAwake: 0
+  m_scenesToUnload: []
+  m_scenesToLoad:
+  - m_scene: {fileID: 102900000, guid: 76215b81304c2a9499af2a749c9bbb93, type: 3}
+    m_sceneName: PauseScene
 --- !u!1 &1306612044445990684
 GameObject:
   m_ObjectHideFlags: 0

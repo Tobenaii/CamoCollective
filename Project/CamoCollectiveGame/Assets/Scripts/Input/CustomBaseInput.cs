@@ -8,14 +8,14 @@ using XInputDotNetPure;
 public class CustomBaseInput : BaseInput
 {
     [SerializeField]
-    private int m_controllerNumber;
+    private FloatValue m_controllerNumber;
     GamePadState state;
     GamePadState prevState;
 
     private void Update()
     {
         prevState = state;
-        state = GamePad.GetState((PlayerIndex)m_controllerNumber - 1);
+        state = GamePad.GetState((PlayerIndex)m_controllerNumber.value - 1);
     }
 
     public override float GetAxisRaw(string axisName)
@@ -41,7 +41,7 @@ public class CustomBaseInput : BaseInput
 
     public override bool GetButtonDown(string buttonName)
     {
-        state = GamePad.GetState((PlayerIndex)m_controllerNumber - 1);
+        state = GamePad.GetState((PlayerIndex)m_controllerNumber.value - 1);
         switch (buttonName)
         {
             case "ButtonA":

@@ -132,7 +132,9 @@ public class InputMapper : MonoBehaviour
         private void CheckButton(UnityEvent unityEvent)
         {
             if (onButtonDown && buttonState == ButtonState.Pressed && prevButtonState == ButtonState.Released)
+            {
                 Invoke(unityEvent);
+            }
             if (onButtonHold && buttonState == ButtonState.Pressed)
                 Invoke(unityEvent);
             if (onButtonRelease && prevButtonState == ButtonState.Released && prevButtonState == ButtonState.Pressed)
@@ -153,6 +155,8 @@ public class InputMapper : MonoBehaviour
         public float cooldownTime;
     }
 
+    [SerializeField]
+    private FloatValue m_uiController;
     [SerializeField]
     private bool m_disableOnAwake;
     [SerializeField]
@@ -253,6 +257,11 @@ public class InputMapper : MonoBehaviour
     public void EnableInput()
     {
         m_disabled = false;
+    }
+
+    public void SetUIController()
+    {
+        m_uiController.value = m_controllerNumber;
     }
 
     private void Update()
