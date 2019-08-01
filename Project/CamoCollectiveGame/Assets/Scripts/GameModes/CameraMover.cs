@@ -51,7 +51,7 @@ public class CameraMover : MonoBehaviour
             if (!m_smooth)
                 Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, m_targetPos, m_moveSpeed * Time.deltaTime);
             else
-                Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.rotation.eulerAngles, m_targetRot, ref m_rotateVelocty, m_moveSpeed);
+                Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, m_targetPos, ref m_moveVelocity, m_moveSpeed);
         }
         if ((Camera.main.transform.rotation == Quaternion.Euler(m_targetRot) || !m_rotate) && (Vector3.Distance(Camera.main.transform.position, m_targetPos) < 0.005f || !m_move))
         {
