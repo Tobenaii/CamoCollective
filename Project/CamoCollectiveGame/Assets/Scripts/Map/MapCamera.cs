@@ -5,11 +5,14 @@ using UnityEngine;
 public class MapCamera : MonoBehaviour
 {
     [SerializeField]
-    private float m_panSpeed;
+    private float m_panTime;
+    [SerializeField]
+    private float m_rotateTime;
     private GameObject m_currentTarget;
     private bool m_atTarget;
     private Vector3 m_velocity;
-    private float m_panTime;
+    private Vector3 m_rotateVelocity;
+    private Vector3 m_targetRot;
 
     private void Start()
     {
@@ -20,9 +23,10 @@ public class MapCamera : MonoBehaviour
     {
         if (m_atTarget || m_currentTarget == null)
             return;
-        Vector3 targetPos = new Vector3(m_currentTarget.transform.position.x, m_currentTarget.transform.position.y, m_currentTarget.transform.position.z);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref m_velocity, 1 / m_panSpeed * m_panTime);
-        if (Vector3.Distance(transform.position, targetPos) < 0.01f)
+        Vector3 targetPos = m_currentTarget.transform.position;
+        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref m_velocity, m_panTime);
+        transform.rotation = Quaternion.Euler(Vector3.SmoothDamp(transform.rotation.eulerAngles, m_currentTarget.transform.rotation.eulerAngles, ref m_rotateVelocity, m_rotateTime));
+        if (Vector3.Distance(transform.position, targetPos) < 0.01f && transform.rotation == m_currentTarget.transform.rotation)
             m_atTarget = true;
     }
 
@@ -30,6 +34,5 @@ public class MapCamera : MonoBehaviour
     {
         m_currentTarget = target;
         m_atTarget = false;
-        m_panTime = 1 / Vector3.Magnitude(transform.position - target.transform.position);
     }
 }
