@@ -74,8 +74,8 @@ public class CharacterSelectOpener : MonoBehaviour
         m_isOpen = true;
         m_openEvent.Invoke();
     }
-
-    public void CloseCharacterSelect()
+    
+    public void Close()
     {
         bool hasPlayer = false;
         foreach (PlayerData player in m_playerData)
@@ -89,6 +89,10 @@ public class CharacterSelectOpener : MonoBehaviour
         if (!hasPlayer)
             return;
         m_isOpen = false;
+    }
+
+    public void CloseCharacterSelect()
+    {
         m_closeEvent.Invoke();
     }
 }
