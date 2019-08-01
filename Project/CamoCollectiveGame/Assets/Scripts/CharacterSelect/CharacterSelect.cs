@@ -33,8 +33,9 @@ public class CharacterSelect : MonoBehaviour
 
     private void Init()
     {
+        m_currentIndex = -1;
         if (m_playerData.GetCharacter() == null)
-            GetNextCharacter(0);
+            GetNextCharacter(-1);
 
         m_initialized = true;
         m_image.gameObject.SetActive(true);
