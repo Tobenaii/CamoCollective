@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -146,6 +146,7 @@ MonoBehaviour:
   m_targetPos: {x: 0, y: 0, z: 0}
   m_targetRot: {x: 70, y: 0, z: 0}
   m_snap: 0
+  m_smooth: 0
   m_moveSpeed: 0
   m_rotationSpeed: 40
   m_onCameraMoved: {fileID: 0}
@@ -391,6 +392,11 @@ PrefabInstance:
       propertyPath: m_closeScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 209637132009577349, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_Text
+      value: Player 2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -462,7 +468,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_unloadAllOtherScenes: 0
   m_runOnAwake: 0
   m_scenesToUnload: []
   m_scenesToLoad:
@@ -738,6 +743,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_closeScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 209637132009577349, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_Text
+      value: Player 3
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
@@ -1092,6 +1102,11 @@ PrefabInstance:
       propertyPath: m_closeScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 209637132009577349, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_Text
+      value: Player 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -1327,6 +1342,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_closeScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 209637132009577349, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_Text
+      value: Player 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d1621947e4b387143bb8b108d3681fd6, type: 3}
