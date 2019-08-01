@@ -7,6 +7,8 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
     [SerializeField]
     private float m_moveSpeed;
     [SerializeField]
+    private FloatValue m_scale;
+    [SerializeField]
     private List<GameObjectPool> m_obstaclePools;
     [SerializeField]
     private float m_spawnFrequency;
@@ -61,7 +63,7 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
         for (int i = 0; i < m_obstacles.Count; i++)
         {
             GameObject obstacle = m_obstacles[i];
-            obstacle.transform.position = new Vector3(obstacle.transform.position.x, obstacle.transform.position.y - m_moveSpeed * Time.deltaTime * 11.0f, obstacle.transform.position.z);
+            obstacle.transform.position = new Vector3(obstacle.transform.position.x, obstacle.transform.position.y - m_moveSpeed * Time.deltaTime * 12.0f * m_scale.value, obstacle.transform.position.z);
         }
     }
 }

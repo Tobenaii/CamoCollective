@@ -19,6 +19,8 @@ public class CameraMover : MonoBehaviour
     [SerializeField]
     private float m_moveSpeed;
     [SerializeField]
+    private FloatValue m_scale;
+    [SerializeField]
     private bool m_timeInstead;
     [SerializeField]
     private float m_rotationSpeed;
@@ -39,6 +41,7 @@ public class CameraMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        float speed = m_moveSpeed * (m_scale == null ? 1 : m_scale.value);
         if (m_snap)
         {
             if (m_rotate)
@@ -59,11 +62,11 @@ public class CameraMover : MonoBehaviour
         if (m_move)
         {
             if (!m_smooth)
-                Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, m_targetPos, m_moveSpeed * Time.deltaTime);
+                Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, m_targetPos, speed * Time.deltaTime);
             else if (m_timeInstead)
-                Camera.main.transform.position = m_lerper.Lerp(m_initPos, m_targetPos, m_moveSpeed);
+                Camera.main.transform.position = m_lerper.Lerp(m_initPos, m_targetPos, speed);
             else
-                Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, m_targetPos, ref m_moveVelocity, m_moveSpeed);
+                Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, m_targetPos, ref m_moveVelocity, speed);
         }
         if ((Vector3.Distance(Camera.main.transform.rotation.eulerAngles, m_targetRot) < 0.05f || !m_rotate) && (Vector3.Distance(Camera.main.transform.position, m_targetPos) < 0.05f || !m_move))
         {

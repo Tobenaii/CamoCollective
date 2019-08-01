@@ -14,6 +14,8 @@ public class TowerClimbPlayerController : MonoBehaviour
     private float m_strafeSpeed;
     [SerializeField]
     private float m_autoClimbMoveSpeed;
+    [SerializeField]
+    private FloatValue m_speedScale;
     private Quaternion m_leftClimbRot;
     private Quaternion m_rightClimbRot;
     private Quaternion m_targetRot;
@@ -106,6 +108,6 @@ public class TowerClimbPlayerController : MonoBehaviour
         else if (m_playerHasControl && !hitUp)
             transform.position = new Vector3(transform.position.x, transform.position.y + m_climbSpeed * Time.deltaTime, transform.position.z);
         if (m_playerHasControl && m_playerFalling)
-            transform.position = new Vector3(transform.position.x, transform.position.y - m_fallSpeed * Time.deltaTime * 11.0f, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y - m_fallSpeed * Time.deltaTime * 12.0f * m_speedScale.value, transform.position.z);
     }
 }
