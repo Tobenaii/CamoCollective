@@ -19,12 +19,22 @@ public class CameraMover : MonoBehaviour
     [SerializeField]
     private float m_moveSpeed;
     [SerializeField]
+    private bool m_timeInstead;
+    [SerializeField]
     private float m_rotationSpeed;
     [SerializeField]
     private GameEvent m_onCameraMoved;
 
     private Vector3 m_rotateVelocty;
     private Vector3 m_moveVelocity;
+    private TimeLerper m_lerper;
+    private Vector3 m_initPos;
+
+    private void Awake()
+    {
+        m_lerper = new TimeLerper();
+        m_initPos = Camera.main.transform.position;
+    }
 
     // Update is called once per frame
     void Update()
@@ -50,6 +60,8 @@ public class CameraMover : MonoBehaviour
         {
             if (!m_smooth)
                 Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, m_targetPos, m_moveSpeed * Time.deltaTime);
+            else if (m_timeInstead)
+                Camera.main.transform.position = m_lerper.Lerp(m_initPos, m_targetPos, m_moveSpeed);
             else
                 Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, m_targetPos, ref m_moveVelocity, m_moveSpeed);
         }

@@ -18,7 +18,9 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        ChonkJoustingLanceAttack chonk = other.transform.parent?.GetComponent<ChonkJoustingLanceAttack>();
+        if (other.isTrigger)
+            return;
+        ChonkJoustingLanceAttack chonk = other.GetComponentInParent<ChonkJoustingLanceAttack>();
         if (chonk == null)
             return;
         if (chonk.m_isInvincible || GetComponent<ChonkJoustingController>().GetVelocity() == Vector3.zero)
@@ -33,7 +35,7 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
         if (dot < shield)
             return;
         GetComponent<ChonkJoustingData>().AddScore(1);
-        other.GetComponent<ChonkJoustingLanceAttack>().Hurt(transform.forward * m_knockbackForce, m_knockupForce);
+        other.GetComponentInParent<ChonkJoustingLanceAttack>().Hurt(transform.forward * m_knockbackForce, m_knockupForce);
     }
 
     public void Hurt(Vector3 knockback, float knockup)

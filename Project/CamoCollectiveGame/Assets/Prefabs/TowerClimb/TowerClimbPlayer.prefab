@@ -17,8 +17,8 @@ GameObject:
   - component: {fileID: 4508574378673596375}
   - component: {fileID: 4084629548600643607}
   - component: {fileID: 1932972857}
-  - component: {fileID: 1197469553198373161}
   - component: {fileID: 1421969225}
+  - component: {fileID: 8409824986521078545}
   m_Layer: 0
   m_Name: TowerClimbPlayer
   m_TagString: Untagged
@@ -113,10 +113,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_rotateSpeed: 500
   m_climbSpeed: 30
-  m_fallSpeed: 12
+  m_fallSpeed: 0.5
   m_strafeSpeed: 5
-  m_autoClimbMoveSpeed: 9
+  m_autoClimbMoveSpeed: 5
   m_playerHasControl: 0
+  m_playerFalling: 0
   m_isDead: 0
 --- !u!114 &4508574378673596376
 MonoBehaviour:
@@ -386,22 +387,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!54 &1197469553198373161
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4508574378673596382}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 120
-  m_CollisionDetection: 2
 --- !u!114 &1421969225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -419,3 +404,32 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: 76215b81304c2a9499af2a749c9bbb93, type: 3}
     m_sceneName: PauseScene
+--- !u!114 &8409824986521078545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508574378673596382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ea840f825e823fa4c82d778e6f293af4, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4508574378673596377}
+        m_MethodName: StartFalling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

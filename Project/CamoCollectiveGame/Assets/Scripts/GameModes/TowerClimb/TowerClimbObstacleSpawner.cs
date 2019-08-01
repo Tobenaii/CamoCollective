@@ -16,7 +16,7 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
     private float m_extents;
     private float m_frequencyTimer;
     private bool m_spawn;
-
+    private bool m_move;
     private List<GameObject> m_obstacles = new List<GameObject>();
 
     public void StartSpawning()
@@ -28,6 +28,11 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
     public void StopSpawning()
     {
         m_spawn = false;
+    }
+
+    public void StartMoving()
+    {
+        m_move = true;
     }
 
     private void Update()
@@ -44,16 +49,19 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
             {
                 int index = Random.Range(0, m_obstaclePools.Count);
                 GameObject obstacle = m_obstaclePools[index].GetObject();
-                obstacle.transform.position = new Vector3(transform.position.x + Random.Range(-m_extents, m_extents), transform.position.y, transform.position.z);
+                obstacle.transform.rotation = transform.rotation;
+                obstacle.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Random.Range(-m_extents, m_extents));
                 obstacle.transform.SetParent(transform);
                 m_obstacles.Add(obstacle);
             }
         }
 
+        if (!m_move)
+            return;
         for (int i = 0; i < m_obstacles.Count; i++)
         {
             GameObject obstacle = m_obstacles[i];
-            obstacle.transform.position = new Vector3(obstacle.transform.position.x, obstacle.transform.position.y - m_moveSpeed * Time.deltaTime, obstacle.transform.position.z);
+            obstacle.transform.position = new Vector3(obstacle.transform.position.x, obstacle.transform.position.y - m_moveSpeed * Time.deltaTime * 11.0f, obstacle.transform.position.z);
         }
     }
 }
