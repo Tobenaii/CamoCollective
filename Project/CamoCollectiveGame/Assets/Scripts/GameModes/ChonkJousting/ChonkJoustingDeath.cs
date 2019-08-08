@@ -16,6 +16,8 @@ public class ChonkJoustingDeath : MonoBehaviour
     private GameObjectEvent m_respawnEvent;
     [SerializeField]
     private PlayerData m_playerData;
+    [SerializeField]
+    private Renderer m_tempBody;
     private float m_respawnTimer;
     private bool m_isRespawning;
     private Animator m_animator;
@@ -25,6 +27,10 @@ public class ChonkJoustingDeath : MonoBehaviour
         m_animator = GetComponent<Animator>();
         m_animator.enabled = false;
         m_playerData.ChonkJoustingData.lives = m_initLives;
+
+        GameObject character = Instantiate(m_playerData.Character.ChonkJoustingCharacter, transform);
+        character.transform.localPosition = Vector3.zero;
+        character.transform.localRotation = Quaternion.identity;
     }
 
     private void Update()
