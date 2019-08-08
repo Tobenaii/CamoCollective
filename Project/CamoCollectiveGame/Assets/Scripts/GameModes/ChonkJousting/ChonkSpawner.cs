@@ -19,14 +19,14 @@ public class ChonkSpawner : MonoBehaviour
         int index = 0;
         foreach (PlayerData player in m_playerData)
         {
-            if (player.IsPlaying())
+            if (player.IsPlaying)
             {
-                ChonkJoustingData data = Instantiate(m_chonkPrefab).GetComponent<ChonkJoustingData>();
-                data.gameObject.transform.SetParent(transform);
-                data.transform.position = m_spawns[index].position;
-                data.transform.rotation = m_spawns[index].rotation;
+                //ChonkJoustingData data = Instantiate(m_chonkPrefab).GetComponent<ChonkJoustingData>();
+                //data.gameObject.transform.SetParent(transform);
+                //data.transform.position = m_spawns[index].position;
+                //data.transform.rotation = m_spawns[index].rotation;
                 m_jousters[index].player = player;
-                data.SetChonkJouster(m_jousters[index]);
+                //data.SetChonkJouster(m_jousters[index]);
                 index++;
             }
         }

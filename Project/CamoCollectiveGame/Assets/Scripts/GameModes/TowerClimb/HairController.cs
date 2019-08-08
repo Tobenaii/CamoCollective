@@ -33,6 +33,6 @@ public class HairController : MonoBehaviour
         if (!m_moveHair)
             return;
         m_renderer.material.SetTextureOffset("_MainTex", new Vector2(0, m_offset));
-        m_offset -= Time.deltaTime * m_scale.value;
+        m_offset -= Time.deltaTime * m_scale.Value;
     }
 }

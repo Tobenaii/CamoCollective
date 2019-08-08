@@ -36,7 +36,7 @@ public class Countdown : MonoBehaviour
             return;
         m_countdown -= Time.deltaTime;
         if (m_timeValue != null)
-            m_timeValue.value = m_countdown;
+            m_timeValue.Value = m_countdown;
         if (m_countdown <= 0)
         {
             StopCountdown();

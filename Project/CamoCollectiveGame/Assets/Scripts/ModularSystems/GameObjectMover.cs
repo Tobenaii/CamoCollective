@@ -34,6 +34,6 @@ public class GameObjectMover : MonoBehaviour
     {
         if (!m_move)
             return;
-        transform.position += m_direction.normalized * m_moveSpeed * m_scale.value * Time.deltaTime;
+        transform.position += m_direction.normalized * m_moveSpeed * m_scale.Value * Time.deltaTime;
     }
 }

@@ -14,6 +14,8 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
     private float m_invincibilityFrame;
     [SerializeField]
     private float m_invincibilityFlashTime;
+    [SerializeField]
+    private PlayerData m_playerData;
     private bool m_isInvincible;
 
     private void OnTriggerEnter(Collider other)
@@ -34,7 +36,7 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
         float shield = Mathf.Lerp(-1, 1, Mathf.InverseLerp(0, 180, m_shieldAngle));
         if (dot < shield)
             return;
-        GetComponent<ChonkJoustingData>().AddScore(1);
+        m_playerData.ChonkJoustingData.score++;
         other.GetComponentInParent<ChonkJoustingLanceAttack>().Hurt(transform.forward * m_knockbackForce, m_knockupForce);
     }
 
@@ -42,8 +44,8 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
     {
         GetComponent<Rigidbody>().AddForce(Vector3.up * knockup, ForceMode.Impulse);
         GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse);
-        GetComponent<ChonkJoustingData>().RemoveLives(1);
-        if (GetComponent<ChonkJoustingData>().GetLives() <= 0)
+        m_playerData.ChonkJoustingData.lives--;
+        if (m_playerData.ChonkJoustingData.lives <= 0)
             GetComponent<ChonkJoustingDeath>().OnDeath();
         else
             StartCoroutine(InvincibilityFrame());

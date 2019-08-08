@@ -473,7 +473,6 @@ GameObject:
   - component: {fileID: 7299654288684776068}
   - component: {fileID: 7299654288684776066}
   - component: {fileID: 7299654288684776069}
-  - component: {fileID: 7736433521076145741}
   - component: {fileID: 2286464242668830794}
   - component: {fileID: 2078250199031579170}
   m_Layer: 5
@@ -519,7 +518,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_image: {fileID: 7299654288552546787}
-  m_scoreText: {fileID: 7299654287418746887}
   m_playerData: {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590, type: 2}
   m_characterPool:
   - {fileID: 11400000, guid: 8979679f2c94479469438680b6aa2e76, type: 2}
@@ -540,9 +538,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d14932de0e9034abfce6da8ef0ab14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_uiController: {fileID: 0}
   m_disableOnAwake: 0
-  m_controllerNumber: 1
+  m_controllerNumber:
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: a0d4e4a7ce2c5454dab589eca17f6b3d, type: 2}
   actions:
   - actionName: NextCharacter
     buttonA: 0
@@ -636,202 +636,6 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-  - actionName: Join
-    buttonA: 0
-    buttonB: 0
-    buttonX: 1
-    buttonY: 0
-    joystickLeft: 0
-    joystickRight: 0
-    triggerLeft: 0
-    triggerRight: 0
-    buttons:
-    - button: 3
-      buttonState: 0
-      prevButtonState: 0
-      delay: 0
-      cooldown: 0
-      onButtonDown: 1
-      onButtonHold: 0
-      onButtonRelease: 0
-      delayTime: 0
-      cooldownTime: 0
-    unityEventButton:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: Connect
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    unityEventJoystick:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    unityEventTrigger:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: GetPreviousCharacter
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-  - actionName: Quit
-    buttonA: 0
-    buttonB: 1
-    buttonX: 0
-    buttonY: 0
-    joystickLeft: 0
-    joystickRight: 0
-    triggerLeft: 0
-    triggerRight: 0
-    buttons:
-    - button: 1
-      buttonState: 0
-      prevButtonState: 0
-      delay: 0
-      cooldown: 0
-      onButtonDown: 0
-      onButtonHold: 0
-      onButtonRelease: 0
-      delayTime: 0
-      cooldownTime: 0
-    unityEventButton:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: Disconnect
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    unityEventJoystick:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    unityEventTrigger:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: GetPreviousCharacter
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-  - actionName: Close
-    buttonA: 1
-    buttonB: 0
-    buttonX: 0
-    buttonY: 0
-    joystickLeft: 0
-    joystickRight: 0
-    triggerLeft: 0
-    triggerRight: 0
-    buttons:
-    - button: 0
-      buttonState: 0
-      prevButtonState: 0
-      delay: 0
-      cooldown: 0
-      onButtonDown: 1
-      onButtonHold: 0
-      onButtonRelease: 0
-      delayTime: 0
-      cooldownTime: 0
-    unityEventButton:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 7736433521076145741}
-          m_MethodName: CloseCharacterSelect
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    unityEventJoystick:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    unityEventTrigger:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: GetPreviousCharacter
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
---- !u!114 &7736433521076145741
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7299654288684776071}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3efa385e3437d046be6a1bfc62ff1d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_openPos: {x: 0, y: 0, z: 0}
-  m_openScale: {x: 0, y: 0, z: 0}
-  m_closePos: {x: 0, y: 0, z: 0}
-  m_closeScale: {x: 0, y: 0, z: 0}
-  m_moveSpeed: 10
-  m_index: 0
-  m_playerData:
-  - {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590, type: 2}
-  - {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b, type: 2}
-  - {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61, type: 2}
-  - {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9, type: 2}
-  m_openEvent: {fileID: 11400000, guid: 187a09abbdf04924689fd788a7f64eb4, type: 2}
-  m_closeEvent: {fileID: 11400000, guid: d9100db3e4056784b8a7e6dde985d60d, type: 2}
 --- !u!114 &2286464242668830794
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -850,17 +654,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7299654288684776069}
         m_MethodName: EnableInput
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7299654288684776066}
-        m_MethodName: OnCharacterSelectOpen
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -890,28 +683,6 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7299654288684776069}
         m_MethodName: DisableInput
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7299654288684776066}
-        m_MethodName: OnCharacterSelectClose
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 7736433521076145741}
-        m_MethodName: Close
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

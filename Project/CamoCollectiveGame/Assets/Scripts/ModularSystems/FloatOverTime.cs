@@ -15,8 +15,8 @@ public class FloatOverTime : MonoBehaviour
 
     private void Update()
     {
-        m_float.value += m_increaseRate * Time.deltaTime;
-        if (m_cap && m_float.value > m_maxCap)
-            m_float.value = m_maxCap;
+        m_float.Value += m_increaseRate * Time.deltaTime;
+        if (m_cap && m_float.Value > m_maxCap)
+            m_float.Value = m_maxCap;
     }
 }

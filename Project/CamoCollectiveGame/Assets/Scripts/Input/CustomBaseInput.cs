@@ -15,7 +15,7 @@ public class CustomBaseInput : BaseInput
     private void Update()
     {
         prevState = state;
-        state = GamePad.GetState((PlayerIndex)m_controllerNumber.value - 1);
+        state = GamePad.GetState((PlayerIndex)m_controllerNumber.Value - 1);
     }
 
     public override float GetAxisRaw(string axisName)
@@ -41,7 +41,7 @@ public class CustomBaseInput : BaseInput
 
     public override bool GetButtonDown(string buttonName)
     {
-        state = GamePad.GetState((PlayerIndex)m_controllerNumber.value - 1);
+        state = GamePad.GetState((PlayerIndex)m_controllerNumber.Value - 1);
         switch (buttonName)
         {
             case "ButtonA":

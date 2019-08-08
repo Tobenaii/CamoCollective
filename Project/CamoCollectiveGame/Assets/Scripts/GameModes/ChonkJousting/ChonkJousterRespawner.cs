@@ -21,7 +21,7 @@ public class ChonkJousterRespawner : MonoBehaviour
 
     public void Respawn()
     {
-        if (m_chonks.Count == 0)
+        if (m_chonks.Count == 0 || m_chonkIndex == m_chonks.Count)
             return;
         StartCoroutine(DoQueuedRespawn(m_chonks[m_chonkIndex]));
         m_respawning = true;

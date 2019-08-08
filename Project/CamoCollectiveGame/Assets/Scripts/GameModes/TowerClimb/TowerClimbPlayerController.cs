@@ -16,6 +16,8 @@ public class TowerClimbPlayerController : MonoBehaviour
     private float m_autoClimbMoveSpeed;
     [SerializeField]
     private FloatValue m_speedScale;
+    [SerializeField]
+    private PlayerData m_playerData;
     private Quaternion m_leftClimbRot;
     private Quaternion m_rightClimbRot;
     private Quaternion m_targetRot;
@@ -72,6 +74,7 @@ public class TowerClimbPlayerController : MonoBehaviour
         Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - joystick.x * m_strafeSpeed * Time.deltaTime);
         if (!Physics.Raycast(transform.position, newPos - transform.position, out hit, 0.5f))
             transform.position = newPos;
+        m_playerData.TowerClimbData.yPos = transform.position.y;
     }
 
     public void Climb()
@@ -96,9 +99,9 @@ public class TowerClimbPlayerController : MonoBehaviour
             transform.position = new Vector3(transform.position.x, hit.point.y - 1.0f, transform.position.z);
         if (!m_playerHasControl && !hitUp)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + m_autoClimbMoveSpeed * Time.deltaTime * m_speedScale.value, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + m_autoClimbMoveSpeed * Time.deltaTime * m_speedScale.Value, transform.position.z);
             Climb();
-        }
+        } 
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRot, m_rotateSpeed * Time.deltaTime);
         if (transform.rotation == m_targetRot)
@@ -108,6 +111,6 @@ public class TowerClimbPlayerController : MonoBehaviour
         else if (m_playerHasControl && !hitUp)
             transform.position = new Vector3(transform.position.x, transform.position.y + m_climbSpeed * Time.deltaTime, transform.position.z);
         if (m_playerHasControl && m_playerFalling)
-            transform.position = new Vector3(transform.position.x, transform.position.y - m_fallSpeed * Time.deltaTime * 12.0f * m_speedScale.value, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y - m_fallSpeed * Time.deltaTime * 12.0f * m_speedScale.Value, transform.position.z);
     }
 }

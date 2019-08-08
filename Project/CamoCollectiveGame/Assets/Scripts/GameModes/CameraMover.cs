@@ -41,7 +41,7 @@ public class CameraMover : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float speed = m_moveSpeed * (m_scale == null ? 1 : m_scale.value);
+        float speed = m_moveSpeed * (m_scale == null ? 1 : m_scale.Value);
         if (m_snap)
         {
             if (m_rotate)

@@ -156,11 +156,9 @@ public class InputMapper : MonoBehaviour
     }
 
     [SerializeField]
-    private FloatValue m_uiController;
-    [SerializeField]
     private bool m_disableOnAwake;
     [SerializeField]
-    private int m_controllerNumber = 1;
+    private FloatReference m_controllerNumber;
     public List<InputAction> actions = new List<InputAction>();
     private GamePadState state;
     private GamePadState prevState;
@@ -244,11 +242,6 @@ public class InputMapper : MonoBehaviour
         }
     }
 
-    public void SetControllerNum(int index)
-    {
-        m_controllerNumber = index;
-    }
-
     public void DisableInput()
     {
         m_disabled = true;
@@ -259,21 +252,16 @@ public class InputMapper : MonoBehaviour
         m_disabled = false;
     }
 
-    public void SetUIController()
-    {
-        m_uiController.value = m_controllerNumber;
-    }
-
     private void Update()
     {
         if (m_disabled)
             return;
         prevState = state;
-        state = GamePad.GetState((PlayerIndex)m_controllerNumber - 1, GamePadDeadZone.Circular);
+        state = GamePad.GetState((PlayerIndex)m_controllerNumber.Value - 1, GamePadDeadZone.Circular);
         if (state.Buttons.X == ButtonState.Pressed)
-            GamePad.SetVibration((PlayerIndex)m_controllerNumber - 1, 1, 1);
+            GamePad.SetVibration((PlayerIndex)m_controllerNumber.Value - 1, 1, 1);
         else
-            GamePad.SetVibration((PlayerIndex)m_controllerNumber - 1, 0, 0);
+            GamePad.SetVibration((PlayerIndex)m_controllerNumber.Value - 1, 0, 0);
         foreach (InputAction action in actions)
         {
             foreach (ButtonMod button in action.buttons)

@@ -13,12 +13,14 @@ public class EventTrigger : StateMachineBehaviour
     [SerializeField]
     private GameEvent m_onComplete;
     private float m_currentFrame;
+    private bool m_onCompleted;
 
 
     //OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //Invoke onstart at start of animation
+        m_onCompleted = false;
         if (m_onStart)
             m_onStart.Invoke();
         m_currentFrame = 0;
@@ -34,6 +36,11 @@ public class EventTrigger : StateMachineBehaviour
                 m_onUpdate.Invoke();
         }
         m_currentFrame += Time.deltaTime;
+        if (m_onComplete && !m_onCompleted && stateInfo.normalizedTime >= 1)
+        {
+            m_onComplete.Invoke();
+            m_onCompleted = true;
+        }
     }
 
     //OnStateExit is called when a transition ends and the state machine finishes evaluating this state
