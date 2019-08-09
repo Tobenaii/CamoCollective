@@ -20,8 +20,6 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.isTrigger)
-            return;
         ChonkJoustingLanceAttack chonk = other.GetComponentInParent<ChonkJoustingLanceAttack>();
         if (chonk == null)
             return;

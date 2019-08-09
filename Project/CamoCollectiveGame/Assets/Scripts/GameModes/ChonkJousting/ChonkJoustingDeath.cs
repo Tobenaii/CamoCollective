@@ -71,6 +71,8 @@ public class ChonkJoustingDeath : MonoBehaviour
         GetComponent<Rigidbody>().detectCollisions = false;
         m_playerData.ChonkJoustingData.isDead = true;
         m_playerData.ChonkJoustingData.score -= m_scoreLossOnDeath;
+        if (m_playerData.ChonkJoustingData.score < 0)
+            m_playerData.ChonkJoustingData.score = 0;
         m_respawnTimer = m_respawnTime;
         m_isRespawning = true;
         m_animator.enabled = true;

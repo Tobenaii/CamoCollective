@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 6735077321765604337, guid: d4c0f51dd136d744d8188b96e2f70da2,
         type: 3}
       propertyPath: m_Name
-      value: KnightJouster
+      value: KnightJouster Variant
       objectReference: {fileID: 0}
     - target: {fileID: 8480840897056183113, guid: d4c0f51dd136d744d8188b96e2f70da2,
         type: 3}
@@ -72,5 +72,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Knight
       objectReference: {fileID: 0}
+    - target: {fileID: 6287387701953885072, guid: d4c0f51dd136d744d8188b96e2f70da2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 01612f163a72fbb4c84fa6a798a1ae30, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c0f51dd136d744d8188b96e2f70da2, type: 3}
