@@ -6128,7 +6128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b0653763fec14448fe024459f9efc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_players: []
+  m_players:
+  - {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590, type: 2}
+  - {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b, type: 2}
+  - {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61, type: 2}
+  - {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9, type: 2}
   m_winnerText: {fileID: 1048267052}
   m_timeToQuit: 5
   m_quitGameEvent: {fileID: 11400000, guid: 5aa731d1e79153c42a409d8eaa426dda, type: 2}
@@ -7480,7 +7484,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1669574728
 Transform:
   m_ObjectHideFlags: 0
