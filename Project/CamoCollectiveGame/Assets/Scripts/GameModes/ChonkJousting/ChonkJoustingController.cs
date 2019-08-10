@@ -63,7 +63,7 @@ public class ChonkJoustingController : MonoBehaviour
     public void Respawn()
     {
         m_input.DisableInput();
-        m_velocity = transform.forward * m_chonkRunSpeed;
+        m_velocity = transform.forward * m_chonkRunSpeed * 2;
         m_deathInvoked = false;
     }
 
