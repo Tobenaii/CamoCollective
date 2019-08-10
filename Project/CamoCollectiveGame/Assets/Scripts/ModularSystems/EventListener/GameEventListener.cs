@@ -42,15 +42,17 @@ public class GameEventListener : MonoBehaviour
     private void OnEnable()
     {
         if (gameEvent == null)
-            Debug.Log(gameObject.name);
-        if (gameEvent == null)
-            Debug.Log("Null Event at " + gameObject.name);
-        gameEvent.AttachListener(this);
+            Debug.Log("OnEnable null GameEvent at: " + gameObject.scene + ":" + gameObject.name);
+        else
+            gameEvent.AttachListener(this);
     }
 
     private void OnDisable()
     {
-        gameEvent.DetachListener(this);
+        if (gameEvent == null)
+            Debug.Log("OnEnable null GameEvent at: " + gameObject.scene + ":" + gameObject.name);
+        else
+            gameEvent.DetachListener(this);
     }
 }
 

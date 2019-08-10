@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class TowerClimbWin : MonoBehaviour
 {
     [SerializeField]
-    private List<TowerClimber> m_climbers;
+    private List<PlayerData> m_playerData;
     [SerializeField]
     private GameEvent m_wonGameEvent;
     [SerializeField]
@@ -19,20 +19,20 @@ public class TowerClimbWin : MonoBehaviour
         if (m_hasWon)
             return;
         int alive = 0;
-        TowerClimber m_winner = null;
-        foreach (TowerClimber climber in m_climbers)
+        PlayerData m_winner = null;
+        foreach (PlayerData player in m_playerData)
         {
-            if (climber.player == null || !climber.player.IsPlaying())
+            if (!player.IsPlaying)
                 continue;
-            alive += Convert.ToInt32(!climber.isDead);
-            if (!climber.isDead)
-                m_winner = climber;
+            alive += Convert.ToInt32(!player.TowerClimbData.isDead);
+            if (!player.TowerClimbData.isDead)
+                m_winner = player;
         }
         if (alive == 1)
         {
-            m_winnerText.text = m_winner.player.GetCharacter().name + " Wins!";
+            m_winnerText.text = m_winner.Character.name + " Wins!";
             m_winnerText.gameObject.SetActive(true);
-            m_winner.player.AddToScore(1);
+            m_winner.RulerScore++;
             StartCoroutine(WonGame());
             m_hasWon = true;
             

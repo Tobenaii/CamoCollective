@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -182,7 +182,10 @@ MonoBehaviour:
   m_targetPos: {x: 37, y: 14, z: -30}
   m_targetRot: {x: 70, y: 0, z: 0}
   m_snap: 0
+  m_smooth: 0
   m_moveSpeed: 30
+  m_scale: {fileID: 0}
+  m_timeInstead: 0
   m_rotationSpeed: 30
   m_onCameraMoved: {fileID: 11400000, guid: ea840f825e823fa4c82d778e6f293af4, type: 2}
 --- !u!4 &433627071
@@ -373,6 +376,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_runOnAwake: 0
+  m_unloadAllScenes: 0
   m_scenesToUnload:
   - m_scene: {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
     m_sceneName: ChonkJoustingTipsScene
@@ -423,6 +427,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_runOnAwake: 0
+  m_unloadAllScenes: 0
   m_scenesToUnload:
   - m_scene: {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
     m_sceneName: ChonkJoustingTipsScene
@@ -900,7 +905,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_disableOnAwake: 1
-  m_controllerNumber: 1
+  m_controllerNumber:
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: cd4124caeda9bf14b9381ee841503190, type: 2}
   actions:
   - actionName: Quit
     buttonA: 0

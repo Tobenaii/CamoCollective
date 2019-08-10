@@ -7,17 +7,16 @@ using UnityEngine;
 [System.Serializable]
 public class Reference<TType, TValue> where TValue : Variable<TType>
 {
+    public bool useConstant = true;
     [SerializeField]
-    private bool useConstant = true;
+    private TType m_constant;
     [SerializeField]
-    private TType constant;
-    [SerializeField]
-    private TValue variable = null;
+    private TValue m_variable = null;
     public TType Value
     {
         get
         {
-            return (useConstant) ? constant : variable.value;
+            return (useConstant) ? m_constant : m_variable.Value;
         }
     }
 }

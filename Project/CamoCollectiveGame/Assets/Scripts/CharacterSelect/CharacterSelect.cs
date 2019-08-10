@@ -9,15 +9,11 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField]
     private Image m_image;
     [SerializeField]
-    private Text m_scoreText;
-    [SerializeField]
     private PlayerData m_playerData;
     [SerializeField]
     private List<CharacterData> m_characterPool;
     [SerializeField]
     private GameObject m_joinPanel;
-    [SerializeField]
-    private GameEvent m_closeEvent;
 
 
     private float m_prevTriggerNext;
@@ -27,20 +23,19 @@ public class CharacterSelect : MonoBehaviour
 
     private void Awake()
     {
-        if (m_playerData.IsPlaying())
+        if (m_playerData.IsPlaying)
             Connect();
     }
 
     private void Init()
     {
         m_currentIndex = -1;
-        if (m_playerData.GetCharacter() == null)
+        if (m_playerData.Character == null)
             GetNextCharacter(-1);
 
         m_initialized = true;
         m_image.gameObject.SetActive(true);
-        m_playerData.SetPlaying(true);
-        m_scoreText.text = m_playerData.GetRulerScore().ToString();
+        m_playerData.IsPlaying = true;
         m_joinPanel.SetActive(false);
     }
 
@@ -55,8 +50,11 @@ public class CharacterSelect : MonoBehaviour
             return;
         if (!m_characterPool[index].inUse)
         {
-            m_playerData.SetCharacter(m_characterPool[index]);
+            if (m_playerData.Character != null)
+                m_playerData.Character.inUse = false;
+            m_playerData.Character = m_characterPool[index];
             m_currentIndex = index;
+            m_playerData.Character.inUse = true;
             return;
         }
         else
@@ -74,21 +72,21 @@ public class CharacterSelect : MonoBehaviour
             return;
         if (!m_characterPool[index].inUse)
         {
-            m_playerData.SetCharacter(m_characterPool[index]);
+            m_playerData.Character.inUse = false;
+            m_playerData.Character = m_characterPool[index];
             m_currentIndex = index;
+            m_playerData.Character.inUse = true;
             return;
         }
         else
-            GetNextCharacter(index);
+            GetPreviousCharacter(index);
     }
 
     private void Update()
     {
-        GamePadState state = GamePad.GetState((PlayerIndex)m_playerData.GetPlayerNum() - 1);
-        if (!state.IsConnected)
-            Disconnect();
-
-        m_image.sprite = m_playerData.GetCharacter()?.Icon;
+        if (!m_initialized && m_playerData.IsPlaying)
+            Init();
+        m_image.sprite = m_playerData.Character?.Icon;
         m_image.SetNativeSize();
     }
 
@@ -101,7 +99,7 @@ public class CharacterSelect : MonoBehaviour
     public void Disconnect()
     {
         m_currentIndex = 0;
-        m_playerData.SetPlaying(false);
+        m_playerData.IsPlaying = false;
         m_playerData.RemoveCharacter();
         m_image.gameObject.SetActive(false);
         m_initialized = false;
@@ -119,17 +117,5 @@ public class CharacterSelect : MonoBehaviour
         if (trigger > 0 && m_prevTriggerPrev == 0)
             GetPreviousCharacter(m_currentIndex);
         m_prevTriggerPrev = trigger;
-    }
-
-    public void OnCharacterSelectOpen()
-    {
-        if (!m_playerData.IsPlaying())
-            m_joinPanel.SetActive(true);
-    }
-
-    public void OnCharacterSelectClose()
-    {
-        if (!m_playerData.IsPlaying())
-            m_joinPanel.SetActive(false);
     }
 }

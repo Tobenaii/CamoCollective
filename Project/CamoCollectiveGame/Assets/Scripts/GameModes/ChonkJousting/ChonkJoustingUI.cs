@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ChonkJoustingUI : MonoBehaviour
 {
     [SerializeField]
-    private ChonkJouster m_chonkJouster;
+    private PlayerData m_playerData;
     [SerializeField]
     private Image m_image;
     [SerializeField]
@@ -20,26 +20,24 @@ public class ChonkJoustingUI : MonoBehaviour
 
     private void Start()
     {
-        if (m_chonkJouster.player == null)
+        if (!m_playerData.IsPlaying)
         {
             gameObject.SetActive(false);
             return;
         }
-        m_image.sprite = m_chonkJouster.player.GetCharacter().Icon;
+        m_image.sprite = m_playerData.Character.Icon;
     }
 
     private void Update()
     {
-        m_scoreText.text = m_chonkJouster.score.ToString();
-        m_lifeCounter.SetLivesValue(m_chonkJouster.lives);
-        if (m_chonkJouster.isDead)
+        m_scoreText.text = m_playerData.ChonkJoustingData.score.ToString();
+        m_lifeCounter.SetLivesValue(m_playerData.ChonkJoustingData.lives);
+        if (m_playerData.ChonkJoustingData.isDead)
         {
             m_respawnPanel.SetActive(true);
-            m_respawnText.text = ((int)(m_chonkJouster.respawnTimer)).ToString();
+            m_respawnText.text = ((int)(m_playerData.ChonkJoustingData.respawnTimer)).ToString();
         }
         else
             m_respawnPanel.SetActive(false);
-        //m_scoreText.text = m_scores[m_index].ToString();
-        //m_lifeCounter.SetLivesValue(m_lives[m_index]);
     }
 }

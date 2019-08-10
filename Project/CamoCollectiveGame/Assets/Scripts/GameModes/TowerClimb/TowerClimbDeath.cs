@@ -4,14 +4,16 @@ using UnityEngine;
 
 public class TowerClimbDeath : MonoBehaviour
 {
-    private TowerClimber m_climber;
+    [SerializeField]
+    private PlayerData m_playerData;
     [SerializeField]
     private Renderer m_tempBody;
 
-    public void SetClimber(TowerClimber climber)
+    private void Start()
     {
-        m_climber = climber;
-        m_tempBody.material.color = climber.player.GetCharacter().TempColour;
+        //if (m_playerData.Character.Mesh != null)
+        //    m_tempBody.GetComponent<MeshFilter>().mesh = m_playerData.Character.Mesh;
+        m_tempBody.material.color = m_playerData.Character.TempColour;
     }
 
     // Update is called once per frame
@@ -24,7 +26,7 @@ public class TowerClimbDeath : MonoBehaviour
 
     private void OnDeath()
     {
-        m_climber.isDead = true;
+        m_playerData.TowerClimbData.isDead = true;
         GetComponent<TowerClimbPlayerController>().OnDeath();
         Destroy(gameObject);
     }

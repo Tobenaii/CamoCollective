@@ -2,35 +2,30 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
 
 public class TowerClimbPlacementUI : MonoBehaviour
 {
     [SerializeField]
-    private List<Image> m_images;
+    private List<PlayerData> m_playerData;
     [SerializeField]
-    private List<TowerClimber> m_towerClimbers;
+    private List<Image> m_images;
 
     private void Update()
     {
-        m_towerClimbers.Sort();
+        m_playerData = m_playerData.OrderBy(x => -x.TowerClimbData.yPos).ToList<PlayerData>();
 
-        int index = 0;
-        for (int i = 0; i < m_towerClimbers.Count; i++)
+        int image = 0;
+        for (int i = 0; i < m_playerData.Count; i++)
         {
-            if (m_towerClimbers[i].player != null && m_towerClimbers[i].player.IsPlaying())
-            {
-                if (m_towerClimbers[i].isDead)
-                    m_images[index].gameObject.SetActive(false);
-                else
-                {
-                    m_images[index].gameObject.SetActive(true);
-                    m_images[index].sprite = m_towerClimbers[i].player.GetCharacter().Icon;
-                    m_images[index].SetNativeSize();
-                }
-            }
+            if (!m_playerData[i].IsPlaying)
+                m_images[i].gameObject.SetActive(false);
             else
-                m_images[index].gameObject.SetActive(false);
-            index++;
+            {
+                m_images[image].sprite = m_playerData[i].Character.Icon;
+                m_images[image].SetNativeSize();
+                image++;
+             }
         }
     }
 }

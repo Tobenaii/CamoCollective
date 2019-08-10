@@ -11,6 +11,6 @@ public class InitFloatValue : MonoBehaviour
 
     private void Awake()
     {
-        m_floatValue.value = m_initValue;
+        m_floatValue.Value = m_initValue;
     }
 }
