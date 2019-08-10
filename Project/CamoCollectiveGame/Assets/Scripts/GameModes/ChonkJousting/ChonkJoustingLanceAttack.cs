@@ -20,6 +20,7 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
     private PlayerData m_playerData;
     private bool m_isInvincible;
 
+
     private void Update()
     {
         RaycastHit hit;
@@ -40,15 +41,26 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
         float dot = Vector3.Dot(transform.forward, other.transform.forward);
         float shield = Mathf.Lerp(-1, 1, Mathf.InverseLerp(0, 180, m_shieldAngle));
         if (dot < shield)
-            return;
-        m_playerData.ChonkJoustingData.score++;
-        other.GetComponentInParent<ChonkJoustingLanceAttack>().Hurt(transform.forward * m_knockbackForce, m_knockupForce);
+        {
+            Knockback(transform.forward * -1 * m_knockbackForce * 2, 0);
+            other.GetComponentInParent<ChonkJoustingLanceAttack>().Knockback(transform.forward * m_knockbackForce * 2, 0);
+        }
+        else
+        {
+            m_playerData.ChonkJoustingData.score++;
+            other.GetComponentInParent<ChonkJoustingLanceAttack>().Hurt(transform.forward * m_knockbackForce, m_knockupForce);
+        }
+    }
+
+    public void Knockback(Vector3 knockback, float knockup)
+    {
+        GetComponent<Rigidbody>().AddForce(Vector3.up * knockup, ForceMode.Impulse);
+        GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse);
     }
 
     public void Hurt(Vector3 knockback, float knockup)
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.up * knockup, ForceMode.Impulse);
-        GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse);
+        Knockback(knockback, knockup);
         m_playerData.ChonkJoustingData.lives--;
         if (m_playerData.ChonkJoustingData.lives <= 0)
             GetComponent<ChonkJoustingDeath>().OnDeath();
