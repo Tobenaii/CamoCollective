@@ -38,7 +38,7 @@ public class ChonkJoustingDeath : MonoBehaviour
         if (!m_isRespawning)
             return;
         m_respawnTimer -= Time.deltaTime;
-        m_playerData.ChonkJoustingData.respawnTimer = m_respawnTime;
+        m_playerData.ChonkJoustingData.respawnTimer = m_respawnTimer;
         if (m_respawnTimer <= 0)
             Respawn();
     }

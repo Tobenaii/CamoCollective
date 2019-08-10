@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4430062, g: 0.492195, b: 0.571924, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300658, g: 0.4921953, b: 0.57192475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -202,6 +202,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChonkJouster2
       objectReference: {fileID: 0}
+    - target: {fileID: 1306612043750070396, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -280,6 +285,12 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
         type: 2}
     - target: {fileID: 2659406844423747302, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_playerData
       value: 
@@ -5438,6 +5449,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChonkJouster3
       objectReference: {fileID: 0}
+    - target: {fileID: 1306612043750070396, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5516,6 +5532,12 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
         type: 2}
     - target: {fileID: 2659406844423747302, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
+        type: 2}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_playerData
       value: 
@@ -6106,11 +6128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b0653763fec14448fe024459f9efc2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_jousters:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  m_players: []
   m_winnerText: {fileID: 1048267052}
   m_timeToQuit: 5
   m_quitGameEvent: {fileID: 11400000, guid: 5aa731d1e79153c42a409d8eaa426dda, type: 2}
@@ -6203,10 +6221,24 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2077610728}
     m_Modifications:
+    - target: {fileID: 6947285510579088598, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1306612043750070396, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_Name
       value: ChonkJouster1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1306612043750070396, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
@@ -6803,6 +6835,75 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 999507351582993282}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &849533472
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3610455055875165436, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_Name
+      value: Jouster
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f3115669f0ece00459bf49544501d117, type: 3}
 --- !u!1 &898554355
 GameObject:
   m_ObjectHideFlags: 0
@@ -7379,7 +7480,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1669574728
 Transform:
   m_ObjectHideFlags: 0
@@ -8128,6 +8229,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChonkJouster4
       objectReference: {fileID: 0}
+    - target: {fileID: 1306612043750070396, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1306612043750070392, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8206,6 +8312,12 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
         type: 2}
     - target: {fileID: 2659406844423747302, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
+        type: 2}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_playerData
       value: 

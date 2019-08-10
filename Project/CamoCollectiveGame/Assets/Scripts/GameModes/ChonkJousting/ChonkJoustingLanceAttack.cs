@@ -5,6 +5,8 @@ using UnityEngine;
 public class ChonkJoustingLanceAttack : MonoBehaviour
 {
     [SerializeField]
+    private Transform m_lanceTransform;
+    [SerializeField]
     private float m_knockbackForce;
     [SerializeField]
     private float m_knockupForce;
@@ -18,14 +20,19 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
     private PlayerData m_playerData;
     private bool m_isInvincible;
 
-    private void OnTriggerEnter(Collider other)
+    private void Update()
     {
-        ChonkJoustingLanceAttack chonk = other.GetComponentInParent<ChonkJoustingLanceAttack>();
-        if (chonk == null)
-            return;
-        if (chonk.m_isInvincible || GetComponent<ChonkJoustingController>().GetVelocity() == Vector3.zero)
-            return;
-        Attack(chonk.gameObject);
+        RaycastHit hit;
+        if (Physics.Raycast(new Ray(m_lanceTransform.position, m_lanceTransform.forward), out hit, 1))
+        {
+            if (hit.transform.CompareTag("Player"))
+            {
+                ChonkJoustingLanceAttack chonk = hit.transform.GetComponentInParent<ChonkJoustingLanceAttack>();
+                if (chonk.m_isInvincible)
+                    return;
+                Attack(hit.transform.gameObject);
+            }
+        }
     }
 
     public void Attack(GameObject other)
