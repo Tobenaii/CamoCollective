@@ -71,6 +71,7 @@ public class ChonkJoustingController : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody>();
         m_input = GetComponent<InputMapper>();
+        m_lookDir = transform.forward;
     }
 
     private void FixedUpdate()
@@ -135,7 +136,7 @@ public class ChonkJoustingController : MonoBehaviour
 
     public void Look(Vector2 joystick)
     {
-        if (joystick == Vector2.zero)
+        if (joystick == Vector2.zero && m_inDash)
             return;
         m_lookDir = new Vector3(joystick.x, 0, joystick.y);
     }
