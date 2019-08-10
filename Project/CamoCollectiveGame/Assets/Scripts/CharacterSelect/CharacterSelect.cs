@@ -79,7 +79,7 @@ public class CharacterSelect : MonoBehaviour
             return;
         }
         else
-            GetNextCharacter(index);
+            GetPreviousCharacter(index);
     }
 
     private void Update()
