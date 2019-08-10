@@ -31,23 +31,40 @@ public class CameraMover : MonoBehaviour
     private Vector3 m_moveVelocity;
     private TimeLerper m_lerper;
     private Vector3 m_initPos;
+    private Camera m_camera;
 
     private void Awake()
     {
+        StartCoroutine(FindCamera());
+    }
+
+    IEnumerator FindCamera()
+    {
+        while (m_camera == null)
+        {
+            m_camera = Camera.main;
+            yield return null;
+        }
+    }
+
+    private void Init()
+    {
         m_lerper = new TimeLerper();
-        m_initPos = Camera.main.transform.position;
+        m_initPos = m_camera.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (m_camera == null)
+            return;
         float speed = m_moveSpeed * (m_scale == null ? 1 : m_scale.Value);
         if (m_snap)
         {
             if (m_rotate)
-                Camera.main.transform.rotation = Quaternion.Euler(m_targetRot);
+                m_camera.transform.rotation = Quaternion.Euler(m_targetRot);
             if (m_move)
-                Camera.main.transform.position = m_targetPos;
+                m_camera.transform.position = m_targetPos;
             m_onCameraMoved?.Invoke();
             gameObject.SetActive(false);
             return;
@@ -55,20 +72,20 @@ public class CameraMover : MonoBehaviour
         if (m_rotate)
         {
             if (!m_smooth)
-                Camera.main.transform.rotation = Quaternion.RotateTowards(Camera.main.transform.rotation, Quaternion.Euler(m_targetRot), m_rotationSpeed * Time.deltaTime);
+                m_camera.transform.rotation = Quaternion.RotateTowards(m_camera.transform.rotation, Quaternion.Euler(m_targetRot), m_rotationSpeed * Time.deltaTime);
             else
-                Camera.main.transform.rotation = Quaternion.Euler(Vector3.SmoothDamp(Camera.main.transform.rotation.eulerAngles, m_targetRot, ref m_rotateVelocty, m_rotationSpeed));
+                m_camera.transform.rotation = Quaternion.Euler(Vector3.SmoothDamp(m_camera.transform.rotation.eulerAngles, m_targetRot, ref m_rotateVelocty, m_rotationSpeed));
         }
         if (m_move)
         {
             if (!m_smooth)
-                Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, m_targetPos, speed * Time.deltaTime);
+                m_camera.transform.position = Vector3.MoveTowards(m_camera.transform.position, m_targetPos, speed * Time.deltaTime);
             else if (m_timeInstead)
-                Camera.main.transform.position = m_lerper.Lerp(m_initPos, m_targetPos, speed);
+                m_camera.transform.position = m_lerper.Lerp(m_initPos, m_targetPos, speed);
             else
-                Camera.main.transform.position = Vector3.SmoothDamp(Camera.main.transform.position, m_targetPos, ref m_moveVelocity, speed);
+                m_camera.transform.position = Vector3.SmoothDamp(m_camera.transform.position, m_targetPos, ref m_moveVelocity, speed);
         }
-        if ((Vector3.Distance(Camera.main.transform.rotation.eulerAngles, m_targetRot) < 0.05f || !m_rotate) && (Vector3.Distance(Camera.main.transform.position, m_targetPos) < 0.05f || !m_move))
+        if ((Vector3.Distance(m_camera.transform.rotation.eulerAngles, m_targetRot) < 0.05f || !m_rotate) && (Vector3.Distance(m_camera.transform.position, m_targetPos) < 0.05f || !m_move))
         {
             m_onCameraMoved?.Invoke();
             gameObject.SetActive(false);

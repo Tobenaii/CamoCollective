@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ChonkJoustingEndGame : MonoBehaviour
 {
     [SerializeField]
-    private List<ChonkJouster> m_jousters;
+    private List<PlayerData> m_players;
     [SerializeField]
     private Text m_winnerText;
     [SerializeField]
@@ -22,19 +22,19 @@ public class ChonkJoustingEndGame : MonoBehaviour
     //We're in the end game now
     public void EndGame()
     {
-        ChonkJouster winner = null;
+        PlayerData winner = null;
 
-        foreach (ChonkJouster jouster in m_jousters)
+        foreach (PlayerData player in m_players)
         {
-            if (jouster.player == null)
+            if (!player.IsPlaying)
                 continue;
-            if (winner == null || winner.score < jouster.score)
-                winner = jouster;
+            if (winner == null || winner.ChonkJoustingData.score < player.ChonkJoustingData.score)
+                winner = player;
         }
 
         m_winnerText.gameObject.SetActive(true);
-        m_winnerText.text = winner.player.Character.name + " WINS!!!";
-        winner.player.RulerScore++;
+        m_winnerText.text = winner.Character.name + " WINS!!!";
+        winner.RulerScore++;
         StartCoroutine(FinishUpGame());
     }
 

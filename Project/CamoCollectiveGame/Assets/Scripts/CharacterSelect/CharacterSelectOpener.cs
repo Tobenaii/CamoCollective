@@ -13,6 +13,8 @@ public class CharacterSelectOpener : MonoBehaviour
     private void Awake()
     {
         m_animator = GetComponent<Animator>();
+        if (m_isOpen.Value)
+            m_animator.enabled = true;
     }
 
     private void Start()

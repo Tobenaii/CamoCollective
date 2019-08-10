@@ -25,7 +25,7 @@ public class TowerClimbWin : MonoBehaviour
             if (!player.IsPlaying)
                 continue;
             alive += Convert.ToInt32(!player.TowerClimbData.isDead);
-            if (player.TowerClimbData.isDead)
+            if (!player.TowerClimbData.isDead)
                 m_winner = player;
         }
         if (alive == 1)

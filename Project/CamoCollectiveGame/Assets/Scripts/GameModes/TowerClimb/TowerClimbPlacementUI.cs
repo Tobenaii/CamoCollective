@@ -22,7 +22,6 @@ public class TowerClimbPlacementUI : MonoBehaviour
                 m_images[i].gameObject.SetActive(false);
             else
             {
-                Debug.Log(m_playerData[i].TowerClimbData.yPos);
                 m_images[image].sprite = m_playerData[i].Character.Icon;
                 m_images[image].SetNativeSize();
                 image++;
