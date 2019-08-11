@@ -14,6 +14,8 @@ public class SceneLoader : MonoBehaviour
     private List<SceneValue> m_scenesToUnload;
     [SerializeField]
     private List<SceneValue> m_scenesToLoad;
+    [SerializeField]
+    private GameEvent m_loadedEvent;
 
     private int m_loadedAmmount;
     private int m_loadSceneAmmount;
@@ -84,6 +86,9 @@ public class SceneLoader : MonoBehaviour
     {
         m_loadedAmmount++;
         if (m_loadedAmmount == m_loadSceneAmmount)
+        {
+            m_loadedEvent?.Invoke();
             UnloadScenes();
+        }
     }
 }
