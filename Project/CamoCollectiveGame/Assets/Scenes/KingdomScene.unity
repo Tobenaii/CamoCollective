@@ -12046,6 +12046,7 @@ GameObject:
   - component: {fileID: 817086295}
   - component: {fileID: 817111930}
   - component: {fileID: 817111928}
+  - component: {fileID: 817111929}
   m_Layer: 0
   m_Name: SM_Climbing_tower
   m_TagString: Untagged
@@ -12066,6 +12067,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_gameObject: {fileID: 817111925}
+--- !u!114 &817111929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817111927}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: cc17dfd6d0f870442a5d0a919fe8e3a4, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 817111928}
+        m_MethodName: EnableGameObject
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &817111930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33106,6 +33136,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344324344989838866, guid: 1103b7453e9aa6443959cbed639f340f,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1103b7453e9aa6443959cbed639f340f, type: 3}

@@ -14,6 +14,14 @@ public class TowerClimbWin : MonoBehaviour
     private Text m_winnerText;
     private bool m_hasWon;
 
+    private void Start()
+    {
+        foreach (PlayerData player in m_playerData)
+        {
+            player.TowerClimbData.isDead = false;
+        }
+    }
+
     private void Update()
     {
         if (m_hasWon)
@@ -33,7 +41,7 @@ public class TowerClimbWin : MonoBehaviour
             m_winnerText.text = m_winner.Character.name + " Wins!";
             m_winnerText.gameObject.SetActive(true);
             m_winner.RulerScore++;
-            StartCoroutine(WonGame());
+            m_wonGameEvent.Invoke();
             m_hasWon = true;
             
         }
@@ -41,14 +49,8 @@ public class TowerClimbWin : MonoBehaviour
         {
             m_winnerText.text = "Nobody wins I guess?";
             m_winnerText.gameObject.SetActive(true);
-            StartCoroutine(WonGame());
+            m_wonGameEvent.Invoke();
             m_hasWon = true;
         }
-    }
-
-    private IEnumerator WonGame()
-    {
-        yield return new WaitForSeconds(0.1f);
-        m_wonGameEvent.Invoke();
     }
 }

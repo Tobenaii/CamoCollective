@@ -14,6 +14,7 @@ public class SeamlessHairSpawner : MonoBehaviour
     private List<GameObject> m_hair = new List<GameObject>();
     private bool m_queueStopSpawn;
     private bool m_stopSpawn;
+    private bool m_hairIsMoving;
 
     private void OnEnable()
     {
@@ -25,6 +26,11 @@ public class SeamlessHairSpawner : MonoBehaviour
         }
     }
 
+    public void HairIsMoving()
+    {
+        m_hairIsMoving = true;
+    }
+
     public void StopSpawningHair()
     {
         m_queueStopSpawn = true;
@@ -32,6 +38,8 @@ public class SeamlessHairSpawner : MonoBehaviour
 
     private void LateUpdate()
     {
+        if (!m_hairIsMoving && m_queueStopSpawn)
+            m_stopMovingHairEvent.Invoke();
         if (m_hair.Count == 0 || m_hair[0] == null || m_stopSpawn)
             return;
         if (m_hair[0].transform.position.y < transform.position.y - m_height)
