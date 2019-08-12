@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1326521789482284093}
   - component: {fileID: 1326521789482284082}
   - component: {fileID: 2090856284}
-  - component: {fileID: 938005612}
+  - component: {fileID: 776857042}
   m_Layer: 0
   m_Name: ObstacleSpawner
   m_TagString: Untagged
@@ -46,8 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3365dbdd0daa55479130b15b1feb90e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 1
-  m_scale: {fileID: 11400000, guid: 5e4261c139267984580a96e53eeafa49, type: 2}
+  m_moveSpeed:
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 5e4261c139267984580a96e53eeafa49, type: 2}
   m_obstaclePools:
   - {fileID: 11400000, guid: 863059b3964031d44b140777469accaf, type: 2}
   m_spawnFrequency: 1
@@ -65,7 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 50cc687c38f71944a9f1ef55abf1f0fc, type: 2}
+  gameEvent: {fileID: 11400000, guid: ce2d5c80197276f45aa32769e200c7d9, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -94,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 10835386bc2433f4c9655a02fb457fe0, type: 2}
+  gameEvent: {fileID: 11400000, guid: 675c4246f4669bb47814312dbc42bff2, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -111,7 +113,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &938005612
+--- !u!114 &776857042
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: ea840f825e823fa4c82d778e6f293af4, type: 2}
+  gameEvent: {fileID: 11400000, guid: 044d86fc67f501946ba6f990d9153bee, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:

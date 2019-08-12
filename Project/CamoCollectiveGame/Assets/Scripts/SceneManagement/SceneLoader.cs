@@ -17,78 +17,84 @@ public class SceneLoader : MonoBehaviour
     [SerializeField]
     private GameEvent m_loadedEvent;
 
+    private int m_unloadAmmount;
+    private int m_unloadedAmmount;
+
+    private int m_loadAmmount;
     private int m_loadedAmmount;
-    private int m_loadSceneAmmount;
 
     private void Start()
     {
-        SceneManager.sceneLoaded += OnSceneLoaded;
         if (m_runOnAwake)
             Load();
     }
 
     private void OnDestroy()
     {
-        SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
     public void Load()
     {
-        m_loadSceneAmmount = 0;
-        m_loadedAmmount = 0;
-        LoadScenes();
-        if (m_loadSceneAmmount == 0)
+        SceneManager.sceneLoaded += OnSceneLoaded;
+        SceneManager.sceneUnloaded += OnSceneUnloaded;
+        m_unloadedAmmount = 0;
+        if (m_unloadAllScenes)
+            UnloadAllScenes();
+        else
             UnloadScenes();
-        if (!m_unloadAllScenes)
-            return;
-        for (int i = 0; i < SceneManager.sceneCount; i++)
-        {
-            if (SceneManager.GetSceneAt(i) == gameObject.scene)
-                continue;
-            bool unload = true;
-            foreach (SceneValue scene in m_scenesToLoad)
-            {
-                if (SceneManager.GetSceneAt(i).name == scene)
-                {
-                    unload = false;
-                    break;
-                }
-            }
-            if (unload)
-                SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i));
-        }
     }
 
     private void LoadScenes()
     {
-        foreach (SceneValue value in m_scenesToLoad)
+        if (m_scenesToLoad.Count == 0)
         {
-            if (!SceneManager.GetSceneByName(value).IsValid())
-            {
-                SceneManager.LoadSceneAsync(value, LoadSceneMode.Additive);
-                m_loadSceneAmmount++;
-            }
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneUnloaded -= OnSceneUnloaded;
+            m_loadedEvent.Invoke();
+            return;
         }
+        m_loadAmmount = m_scenesToLoad.Count;
+        foreach (SceneValue scene in m_scenesToLoad)
+            SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
     }
 
     private void UnloadScenes()
     {
-        foreach (SceneValue scene in m_scenesToUnload)
+        if (m_scenesToUnload.Count == 0)
         {
-            if (SceneManager.GetSceneByName(scene).IsValid())
-            {
-                SceneManager.UnloadSceneAsync(scene);
-            }
+            LoadScenes();
+            return;
+        }
+        m_unloadAmmount = m_scenesToUnload.Count;
+        foreach (SceneValue scene in m_scenesToUnload)
+            SceneManager.UnloadSceneAsync(scene);
+    }
+
+    private void UnloadAllScenes()
+    {
+        m_unloadAmmount = SceneManager.sceneCount - 1;
+        for (int i = 0; i < m_unloadAmmount + 1; i++)
+        {
+            if (SceneManager.GetSceneAt(i).name != gameObject.scene.name)
+                SceneManager.UnloadSceneAsync(SceneManager.GetSceneAt(i));
         }
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         m_loadedAmmount++;
-        if (m_loadedAmmount == m_loadSceneAmmount)
+        if (m_loadedAmmount == m_loadAmmount)
         {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneUnloaded -= OnSceneUnloaded;
             m_loadedEvent?.Invoke();
-            UnloadScenes();
         }
+    }
+
+    private void OnSceneUnloaded(Scene scene)
+    {
+        m_unloadedAmmount++;
+        if (m_unloadedAmmount == m_unloadAmmount)
+            LoadScenes();
     }
 }

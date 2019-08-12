@@ -1076,6 +1076,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584b2856d42b9d64dbf49f1d6fb89375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_disableOnWake: 0
+  m_enableOnAwake: 0
   m_gameObject: {fileID: 401803485}
 --- !u!1001 &893876798
 PrefabInstance:
@@ -1566,6 +1568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584b2856d42b9d64dbf49f1d6fb89375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_disableOnWake: 0
+  m_enableOnAwake: 0
   m_gameObject: {fileID: 1178316994}
 --- !u!114 &1204173550
 MonoBehaviour:
@@ -7423,14 +7427,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4344324344989938224, guid: 1103b7453e9aa6443959cbed639f340f,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4344324344989838866, guid: 1103b7453e9aa6443959cbed639f340f,
         type: 3}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4344324344989938224, guid: 1103b7453e9aa6443959cbed639f340f,
+        type: 3}
+      propertyPath: m_LocalScale.y
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7453,11 +7457,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleSpawner
       objectReference: {fileID: 0}
-    - target: {fileID: 1326521789482284095, guid: f23ac636c5498864a8b2b33bfc091b3e,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284092, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7466,7 +7465,7 @@ PrefabInstance:
     - target: {fileID: 1326521789482284092, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 32.07277
+      value: 78
       objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284092, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
@@ -7513,11 +7512,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2090856284, guid: f23ac636c5498864a8b2b33bfc091b3e, type: 3}
-      propertyPath: gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 675c4246f4669bb47814312dbc42bff2,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f23ac636c5498864a8b2b33bfc091b3e, type: 3}
 --- !u!4 &2090856282 stripped
