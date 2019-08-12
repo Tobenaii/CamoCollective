@@ -16,9 +16,13 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
     private float m_invincibilityFrame;
     [SerializeField]
     private float m_invincibilityFlashTime;
-    [SerializeField]
-    private PlayerData m_playerData;
     private bool m_isInvincible;
+
+    [Header("Data")]
+    [SerializeField]
+    private FloatReference m_scoreValue;
+    [SerializeField]
+    private FloatReference m_livesValue;
 
 
     private void Update()
@@ -47,7 +51,7 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
         }
         else
         {
-            m_playerData.ChonkJoustingData.score++;
+            m_scoreValue.Value++;
             other.GetComponentInParent<ChonkJoustingLanceAttack>().Hurt(transform.forward * m_knockbackForce, m_knockupForce);
         }
     }
@@ -61,8 +65,8 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
     public void Hurt(Vector3 knockback, float knockup)
     {
         Knockback(knockback, knockup);
-        m_playerData.ChonkJoustingData.lives--;
-        if (m_playerData.ChonkJoustingData.lives <= 0)
+        m_livesValue.Value--;
+        if (m_livesValue.Value <= 0)
             GetComponent<ChonkJoustingDeath>().OnDeath();
         else
             StartCoroutine(InvincibilityFrame());

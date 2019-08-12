@@ -184,6 +184,7 @@ MonoBehaviour:
   m_snap: 0
   m_smooth: 1
   m_moveSpeed:
+    m_index: 0
     useConstant: 1
     m_constant: 2
     m_variable: {fileID: 0}
@@ -430,6 +431,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_disableOnAwake: 0
   m_controllerNumber:
+    m_index: 0
     useConstant: 1
     m_constant: 0
     m_variable: {fileID: 0}
@@ -874,6 +876,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584b2856d42b9d64dbf49f1d6fb89375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_disableOnWake: 0
+  m_enableOnAwake: 0
   m_gameObject: {fileID: 862114825}
 --- !u!1 &1689149968
 GameObject:
@@ -952,9 +956,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_disableOnAwake: 1
   m_controllerNumber:
+    m_index: 0
     useConstant: 0
     m_constant: 0
-    m_variable: {fileID: 11400000, guid: a0d4e4a7ce2c5454dab589eca17f6b3d, type: 2}
+    m_variable: {fileID: 11400000, guid: cd4124caeda9bf14b9381ee841503190, type: 2}
   actions:
   - actionName: Quit
     buttonA: 0
@@ -1130,6 +1135,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_disableOnAwake: 0
   m_controllerNumber:
+    m_index: 0
     useConstant: 1
     m_constant: 0
     m_variable: {fileID: 0}

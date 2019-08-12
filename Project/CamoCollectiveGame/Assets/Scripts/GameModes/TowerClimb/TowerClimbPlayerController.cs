@@ -15,9 +15,12 @@ public class TowerClimbPlayerController : MonoBehaviour
     [SerializeField]
     private float m_autoClimbMoveSpeed;
     [SerializeField]
-    private PlayerData m_playerData;
-    [SerializeField]
     private GameEvent m_reachedTopEvent;
+
+    [Header("Data")]
+    [SerializeField]
+    private FloatReference m_yPosValue;
+
     private Quaternion m_leftClimbRot;
     private Quaternion m_rightClimbRot;
     private Quaternion m_targetRot;
@@ -25,7 +28,6 @@ public class TowerClimbPlayerController : MonoBehaviour
     private bool m_atTargetRot;
     private bool m_playerHasControl;
     private bool m_playerFalling;
-    private bool m_isDead;
     private bool m_stopMoving;
     private Rigidbody m_rb;
 
@@ -36,12 +38,7 @@ public class TowerClimbPlayerController : MonoBehaviour
         m_atTargetRot = true;
         m_playerHasControl = false;
         m_rb = GetComponent<Rigidbody>();
-        m_isDead = false;
         TakeControl();
-    }
-    public void OnDeath()
-    {
-        m_isDead = true;
     }
 
     public void GiveControl()
@@ -68,15 +65,12 @@ public class TowerClimbPlayerController : MonoBehaviour
 
     public void MovePlayer(Vector2 joystick)
     {
-        if (m_isDead)
-            return;
         RaycastHit hit;
         Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - joystick.x * m_strafeSpeed * Time.deltaTime);
         if (!Physics.Raycast(transform.position, newPos - transform.position, out hit, 0.5f))
         {
             transform.position = newPos;
         }
-        m_playerData.TowerClimbData.yPos = transform.position.y;
     }
 
     public void Climb()
@@ -93,6 +87,7 @@ public class TowerClimbPlayerController : MonoBehaviour
 
     private void Update()
     {
+        m_yPosValue.Value = transform.position.y;
         if (m_stopMoving)
             return;
         RaycastHit hit;

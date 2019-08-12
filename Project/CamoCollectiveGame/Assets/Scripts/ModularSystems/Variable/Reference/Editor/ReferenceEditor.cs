@@ -23,14 +23,20 @@ public abstract class ReferenceEditor : PropertyDrawer
         SerializedProperty useConstant = property.FindPropertyRelative("useConstant");
 
         var constantRect = new Rect(position.x, position.y, 30, position.height);
-        var valueRect = new Rect(position.x + 30, position.y, 50, position.height);
+        var valueRect = new Rect(position.x + 30, position.y, 100, position.height);
 
         EditorGUI.PropertyField(constantRect, useConstant, GUIContent.none);
 
         if ((useConstant.boolValue))
             EditorGUI.PropertyField(valueRect, property.FindPropertyRelative("m_constant"), GUIContent.none);
         else
-            EditorGUI.PropertyField(valueRect, property.FindPropertyRelative("m_variable"), GUIContent.none);
+        {
+            EditorGUIUtility.labelWidth = 1;
+            SerializedProperty variable = property.FindPropertyRelative("m_variable");
+            EditorGUI.ObjectField(valueRect, variable);
+            valueRect.x += valueRect.width;
+            property.FindPropertyRelative("m_index").intValue = EditorGUI.IntField(valueRect, property.FindPropertyRelative("m_index").intValue);
+        }
 
         EditorGUI.indentLevel = indent;
         EditorGUI.EndProperty();

@@ -12,11 +12,11 @@ GameObject:
   - component: {fileID: 4508574378673596379}
   - component: {fileID: 4508574378673596380}
   - component: {fileID: 4508574378673596381}
+  - component: {fileID: 4508574378673596376}
   - component: {fileID: 4508574378673596377}
   - component: {fileID: 4084629548600643607}
-  - component: {fileID: 4508574378673596376}
-  - component: {fileID: 1421969225}
   - component: {fileID: 7303296308635538765}
+  - component: {fileID: 1421969225}
   - component: {fileID: 5928477405831206058}
   - component: {fileID: 4508574378673596375}
   - component: {fileID: 4591651431310112951}
@@ -101,42 +101,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &4508574378673596377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4508574378673596382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46c53bc0c0be3124e986d10785cd1b98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_rotateSpeed: 500
-  m_climbSpeed: 30
-  m_fallSpeed:
-    useConstant: 0
-    m_constant: 0
-    m_variable: {fileID: 11400000, guid: 5e4261c139267984580a96e53eeafa49, type: 2}
-  m_strafeSpeed: 5
-  m_autoClimbMoveSpeed: 12
-  m_playerData: {fileID: 0}
-  m_reachedTopEvent: {fileID: 11400000, guid: 2c03b0c2cbf9e3645aa501cfa5a3a60f, type: 2}
---- !u!114 &4084629548600643607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4508574378673596382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 087e3577876755242b2555afe02489ec, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_playerData: {fileID: 0}
-  m_tempBody: {fileID: 4508574378673596380}
 --- !u!114 &4508574378673596376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,6 +115,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_disableOnAwake: 1
   m_controllerNumber:
+    m_index: 0
     useConstant: 1
     m_constant: 0
     m_variable: {fileID: 0}
@@ -336,6 +301,65 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
+--- !u!114 &4508574378673596377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508574378673596382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46c53bc0c0be3124e986d10785cd1b98, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rotateSpeed: 500
+  m_climbSpeed: 30
+  m_fallSpeed:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 5e4261c139267984580a96e53eeafa49, type: 2}
+  m_strafeSpeed: 5
+  m_autoClimbMoveSpeed: 12
+  m_reachedTopEvent: {fileID: 11400000, guid: 2c03b0c2cbf9e3645aa501cfa5a3a60f, type: 2}
+  m_yPosValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: b2e39b3bd21b092439cd93d126a3f43d, type: 2}
+--- !u!114 &4084629548600643607
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508574378673596382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 087e3577876755242b2555afe02489ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerData: {fileID: 0}
+  m_tempBody: {fileID: 4508574378673596380}
+  m_isDeadValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: d7a15ddefd4c2a942880b2097ba2e96e, type: 2}
+--- !u!114 &7303296308635538765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508574378673596382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3c39f42d0ee094ba92b08ec7bfc266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerData: {fileID: 0}
 --- !u!114 &1421969225
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -355,19 +379,6 @@ MonoBehaviour:
   - m_scene: {fileID: 102900000, guid: 76215b81304c2a9499af2a749c9bbb93, type: 3}
     m_sceneName: PauseScene
   m_loadedEvent: {fileID: 0}
---- !u!114 &7303296308635538765
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4508574378673596382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e3c39f42d0ee094ba92b08ec7bfc266, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_playerData: {fileID: 0}
 --- !u!114 &5928477405831206058
 MonoBehaviour:
   m_ObjectHideFlags: 0

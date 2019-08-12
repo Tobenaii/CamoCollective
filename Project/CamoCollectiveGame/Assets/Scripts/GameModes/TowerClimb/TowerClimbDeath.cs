@@ -9,10 +9,12 @@ public class TowerClimbDeath : MonoBehaviour
     [SerializeField]
     private Renderer m_tempBody;
 
+    [Header("Data")]
+    [SerializeField]
+    private BoolReference m_isDeadValue;
+
     private void Start()
     {
-        //if (m_playerData.Character.Mesh != null)
-        //    m_tempBody.GetComponent<MeshFilter>().mesh = m_playerData.Character.Mesh;
         m_tempBody.material.color = m_playerData.Character.TempColour;
     }
 
@@ -26,8 +28,7 @@ public class TowerClimbDeath : MonoBehaviour
 
     private void OnDeath()
     {
-        m_playerData.TowerClimbData.isDead = true;
-        GetComponent<TowerClimbPlayerController>().OnDeath();
+        m_isDeadValue.Value = true;
         Destroy(gameObject);
     }
 }

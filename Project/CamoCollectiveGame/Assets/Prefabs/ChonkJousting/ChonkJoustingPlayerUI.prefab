@@ -121,6 +121,11 @@ MonoBehaviour:
   m_sprite: {fileID: 21300000, guid: 1a3fd31942ef3dd47acf781c7482b938, type: 3}
   m_scale: {x: 0.15, y: 0.15, z: 0.15}
   m_spacing: {x: 58.64, y: 0, z: 0}
+  m_livesValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: fbc00d6342149864aa6501ec8a064f7e, type: 2}
 --- !u!1 &999507352378648977
 GameObject:
   m_ObjectHideFlags: 0
@@ -132,6 +137,7 @@ GameObject:
   - component: {fileID: 999507352378648982}
   - component: {fileID: 999507352378648980}
   - component: {fileID: 999507352378648983}
+  - component: {fileID: 4979780625878407047}
   m_Layer: 5
   m_Name: CharacterIcon
   m_TagString: Untagged
@@ -195,6 +201,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &4979780625878407047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999507352378648977}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34346b8694a2e24aaa86b3f112e51e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_player: {fileID: 0}
 --- !u!1 &999507352393374384
 GameObject:
   m_ObjectHideFlags: 0
@@ -204,7 +223,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 999507352393374385}
-  - component: {fileID: 2987900355011713283}
+  - component: {fileID: 239248422037307956}
   m_Layer: 5
   m_Name: ChonkJoustingPlayerUI
   m_TagString: Untagged
@@ -235,7 +254,7 @@ RectTransform:
   m_AnchoredPosition: {x: -837.7, y: 408.1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2987900355011713283
+--- !u!114 &239248422037307956
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -244,15 +263,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 999507352393374384}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab38c60b3d4301e44ad1a8c808bd7217, type: 3}
+  m_Script: {fileID: 11500000, guid: 1e3c39f42d0ee094ba92b08ec7bfc266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_chonkJouster: {fileID: 0}
-  m_image: {fileID: 999507352378648983}
-  m_scoreText: {fileID: 999507353139480530}
-  m_lifeCounter: {fileID: 999507352044658222}
-  m_respawnPanel: {fileID: 728935759754028864}
-  m_respawnText: {fileID: 2059815737872631832}
+  m_playerData: {fileID: 0}
 --- !u!1 &999507353139480524
 GameObject:
   m_ObjectHideFlags: 0
@@ -264,6 +278,7 @@ GameObject:
   - component: {fileID: 999507353139480525}
   - component: {fileID: 999507353139480531}
   - component: {fileID: 999507353139480530}
+  - component: {fileID: 6397897543934309523}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -332,6 +347,24 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 10
+--- !u!114 &6397897543934309523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999507353139480524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07a1f603c92b9e41aaa0c44b389cb84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_floatValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 6f7cb79ed5315c147b2a0bd38d01cfee, type: 2}
+  m_text: {fileID: 999507353139480530}
 --- !u!1 &7232829430322618595
 GameObject:
   m_ObjectHideFlags: 0
