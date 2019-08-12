@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300658, g: 0.4921953, b: 0.57192475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -185,6 +185,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 584b2856d42b9d64dbf49f1d6fb89375, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_disableOnWake: 0
+  m_enableOnAwake: 0
   m_gameObject: {fileID: 1844294069}
 --- !u!114 &122713085
 MonoBehaviour:
@@ -377,11 +379,11 @@ MonoBehaviour:
   m_runOnAwake: 0
   m_unloadAllScenes: 0
   m_scenesToUnload:
+  - m_scene: {fileID: 102900000, guid: 82900495f16e88945a0350feb99a28fe, type: 3}
+    m_sceneName: PoultryBashTipsScene
+  m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: b4b49e70f1507264fa8466a2e019dad1, type: 3}
     m_sceneName: PoultryBashScene
-  m_scenesToLoad:
-  - m_scene: {fileID: 102900000, guid: eb98ac3598618cc4d94186b66c0e5857, type: 3}
-    m_sceneName: ChonkJoustingScene
   m_loadedEvent: {fileID: 0}
 --- !u!4 &241603709
 Transform:
@@ -520,8 +522,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc773598f3c91f04d9b54eb71678afce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &601099930
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,8 +532,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f74b2018d6c2a1449bfc95f6ee3cf96b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &731950185
@@ -603,16 +601,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_move: 1
   m_rotate: 1
-  m_targetPos: {x: 37, y: 14, z: -30}
+  m_targetPos: {x: -83.2, y: 12.5, z: 57}
   m_targetRot: {x: 70, y: 0, z: 0}
   m_snap: 0
-  m_smooth: 0
+  m_smooth: 1
   m_moveSpeed:
     useConstant: 1
-    m_constant: 0
+    m_constant: 2
     m_variable: {fileID: 0}
-  m_timeInstead: 0
-  m_rotationSpeed: 30
+  m_timeInstead: 1
+  m_rotationSpeed: 2
   m_onCameraMoved: {fileID: 11400000, guid: ea840f825e823fa4c82d778e6f293af4, type: 2}
 --- !u!4 &891664282
 Transform:
