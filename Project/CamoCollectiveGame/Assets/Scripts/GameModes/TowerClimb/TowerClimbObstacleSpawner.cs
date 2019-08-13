@@ -25,6 +25,11 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
         m_frequencyTimer = m_spawnFrequency;
     }
 
+    public void Destruct()
+    {
+        Destroy(gameObject);
+    }
+
     public void StopSpawning()
     {
         m_spawn = false;
