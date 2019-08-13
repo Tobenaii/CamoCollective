@@ -37,7 +37,6 @@ public class ChonkJoustingController : MonoBehaviour
     private Vector3 m_velocity;
     private Vector3 m_lookDir;
     private bool m_isSliding;
-    private Vector3 m_smoothVelocity;
     private bool m_deathInvoked;
 
     private float m_dashPower;
@@ -53,11 +52,6 @@ public class ChonkJoustingController : MonoBehaviour
             m_spawnedEvent.Invoke();
             m_deathInvoked = true;
         }
-    }
-
-    public Vector3 GetVelocity()
-    {
-        return m_velocity;
     }
 
     public void Respawn()
