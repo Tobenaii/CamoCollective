@@ -18,6 +18,7 @@ public class KingdomEditor : SceneView
         public static Object prefab;
         public override void OnDrop()
         {
+            
         }
     }
 
@@ -61,12 +62,37 @@ public class KingdomEditor : SceneView
     private KingdomAsset m_currentAsset;
     private GUIStyle m_textStyle = new GUIStyle();
 
+    private bool[] m_buttonsPressed = new bool[(int)KeyCode.Z];
+
+    public bool WasKeyPressed(KeyCode key)
+    {
+        bool pressed = (Event.current.isKey && Event.current.type == EventType.KeyDown && Event.current.keyCode == key && !m_buttonsPressed[(int)key]);
+        if (pressed)
+            m_buttonsPressed[(int)key] = true;
+        WasKeyReleased(key, false);
+        Event.current.Use();
+        return pressed;
+    }
+
+    public bool WasKeyReleased(KeyCode key, bool use = true)
+    {
+        bool released = (Event.current.isKey && Event.current.type == EventType.KeyUp && Event.current.keyCode == key && m_buttonsPressed[(int)key]);
+        if (released)
+            m_buttonsPressed[(int)key] = false;
+        if (use)
+            Event.current.Use();
+        return released;
+    }
+
     protected override void OnGUI()
     {
         base.OnGUI();
 
-        if (Event.current.button == 2)
+        if (WasKeyPressed(KeyCode.A))
+        {
+            Debug.Log("Placed walls");
             SpawnWalls();
+        }
 
         if (m_currentAsset != null && m_currentAsset.gameObject != null)
         {
@@ -105,26 +131,29 @@ public class KingdomEditor : SceneView
     {
         if (Selection.gameObjects.Length < 2)
             return;
-        GameObject gameObject = Selection.gameObjects[0];
-        GameObject nextWallConnector = Selection.gameObjects[1];
+        GameObject gameObject1 = Selection.gameObjects[0];
+        GameObject gameObject2 = Selection.gameObjects[1];
 
-        if (nextWallConnector == null)
+        if (gameObject2 == null)
             return;
         GameObject initWall = PrefabUtility.InstantiatePrefab(wallPrefab) as GameObject;
         float width = initWall.GetComponent<Renderer>().bounds.size.x;
-        float ammount = Vector3.Distance(gameObject.transform.position, nextWallConnector.gameObject.transform.position) / width;
-        Vector3 dir = (nextWallConnector.gameObject.transform.position - gameObject.transform.position).normalized;
+        float ammount = Vector3.Distance(gameObject1.transform.position, gameObject2.gameObject.transform.position) / width;
+        Vector3 dir = (gameObject2.gameObject.transform.position - gameObject1.transform.position).normalized;
         float angle = Vector3.Angle(Vector3.right, dir);
-        if (nextWallConnector.gameObject.transform.position.z > gameObject.transform.position.z)
+        if (gameObject2.gameObject.transform.position.z > gameObject1.transform.position.z)
             angle *= -1;
 
-        initWall.transform.position = gameObject.gameObject.transform.position + dir * (width - 0.1f);
+        initWall.transform.position = gameObject1.gameObject.transform.position + dir * (width - 0.1f);
         initWall.transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+        initWall.transform.SetParent(gameObject1.transform);
+
         for (int i = 1; i < ammount; i++)
         {
             GameObject newWall = PrefabUtility.InstantiatePrefab(wallPrefab) as GameObject;
-            newWall.transform.position = gameObject.gameObject.transform.position + (dir * (width - 0.1f) * (i + 1));
+            newWall.transform.position = gameObject1.gameObject.transform.position + (dir * (width - 0.1f) * (i + 1));
             newWall.transform.rotation = Quaternion.AngleAxis(angle, Vector3.up);
+            newWall.transform.SetParent(gameObject1.transform);
         }
     }
 }
