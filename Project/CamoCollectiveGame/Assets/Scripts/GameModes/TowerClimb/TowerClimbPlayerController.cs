@@ -9,31 +9,27 @@ public class TowerClimbPlayerController : MonoBehaviour
     [SerializeField]
     private float m_climbSpeed;
     [SerializeField]
-    private float m_fallSpeed;
+    private FloatReference m_fallSpeed;
     [SerializeField]
     private float m_strafeSpeed;
     [SerializeField]
     private float m_autoClimbMoveSpeed;
     [SerializeField]
-    private FloatValue m_speedScale;
+    private GameEvent m_reachedTopEvent;
+
+    [Header("Data")]
     [SerializeField]
-    private PlayerData m_playerData;
+    private FloatReference m_yPosValue;
+
     private Quaternion m_leftClimbRot;
     private Quaternion m_rightClimbRot;
     private Quaternion m_targetRot;
     private bool m_climbLeft;
     private bool m_atTargetRot;
-    public bool m_playerHasControl;
-    public bool m_playerFalling;
-    public bool m_isDead;
+    private bool m_playerHasControl;
+    private bool m_playerFalling;
     private bool m_stopMoving;
     private Rigidbody m_rb;
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("StopClimber"))
-            m_stopMoving = true;
-    }
 
     private void Awake()
     {
@@ -42,11 +38,7 @@ public class TowerClimbPlayerController : MonoBehaviour
         m_atTargetRot = true;
         m_playerHasControl = false;
         m_rb = GetComponent<Rigidbody>();
-        m_isDead = false;
-    }
-    public void OnDeath()
-    {
-        m_isDead = true;
+        TakeControl();
     }
 
     public void GiveControl()
@@ -60,6 +52,11 @@ public class TowerClimbPlayerController : MonoBehaviour
         m_playerFalling = true;
     }
 
+    public void StopFalling()
+    {
+        m_playerFalling = false;
+    }
+
     public void TakeControl()
     {
         m_playerHasControl = false;
@@ -68,13 +65,12 @@ public class TowerClimbPlayerController : MonoBehaviour
 
     public void MovePlayer(Vector2 joystick)
     {
-        if (m_isDead)
-            return;
         RaycastHit hit;
         Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - joystick.x * m_strafeSpeed * Time.deltaTime);
         if (!Physics.Raycast(transform.position, newPos - transform.position, out hit, 0.5f))
+        {
             transform.position = newPos;
-        m_playerData.TowerClimbData.yPos = transform.position.y;
+        }
     }
 
     public void Climb()
@@ -91,26 +87,31 @@ public class TowerClimbPlayerController : MonoBehaviour
 
     private void Update()
     {
+        m_yPosValue.Value = transform.position.y;
         if (m_stopMoving)
             return;
         RaycastHit hit;
         bool hitUp = Physics.Raycast(transform.position, Vector3.up, out hit, 1.0f);
+        if (hitUp && hit.transform.CompareTag("StopClimber"))
+        {
+            m_reachedTopEvent.Invoke();
+            m_stopMoving = true;
+            return;
+        }
         if (hitUp)
             transform.position = new Vector3(transform.position.x, hit.point.y - 1.0f, transform.position.z);
         if (!m_playerHasControl && !hitUp)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + m_autoClimbMoveSpeed * Time.deltaTime * m_speedScale.Value, transform.position.z);
+            transform.position += Vector3.up * m_fallSpeed.Value * Time.deltaTime;
             Climb();
-        } 
+        }
 
         transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRot, m_rotateSpeed * Time.deltaTime);
         if (transform.rotation == m_targetRot)
-        {
             m_atTargetRot = true;
-        }
         else if (m_playerHasControl && !hitUp)
             transform.position = new Vector3(transform.position.x, transform.position.y + m_climbSpeed * Time.deltaTime, transform.position.z);
-        if (m_playerHasControl && m_playerFalling)
-            transform.position = new Vector3(transform.position.x, transform.position.y - m_fallSpeed * Time.deltaTime * 12.0f * m_speedScale.Value, transform.position.z);
+        if (m_playerFalling)
+            transform.position += Vector3.down * m_fallSpeed.Value * Time.deltaTime;
     }
 }

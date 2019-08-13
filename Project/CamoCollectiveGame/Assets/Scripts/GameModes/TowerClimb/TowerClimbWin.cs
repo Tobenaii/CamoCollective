@@ -12,43 +12,52 @@ public class TowerClimbWin : MonoBehaviour
     private GameEvent m_wonGameEvent;
     [SerializeField]
     private Text m_winnerText;
+
+    [Header("Data")]
+    [SerializeField]
+    private BoolValue m_isDeadValues;
+    [SerializeField]
+    private FloatValue m_rulesScores;
     private bool m_hasWon;
+
+    private void Start()
+    {
+        for (int i = 0; i < 4; i++)
+            m_isDeadValues.Value = false;
+    }
 
     private void Update()
     {
         if (m_hasWon)
             return;
         int alive = 0;
-        PlayerData m_winner = null;
+
+        int winner = -1;
+        int index = -1;
         foreach (PlayerData player in m_playerData)
         {
+            index++;
             if (!player.IsPlaying)
                 continue;
-            alive += Convert.ToInt32(!player.TowerClimbData.isDead);
-            if (!player.TowerClimbData.isDead)
-                m_winner = player;
+            alive += Convert.ToInt32(!m_isDeadValues.GetValue(index));
+            if (!m_isDeadValues.GetValue(index))
+                winner = index;
         }
         if (alive == 1)
         {
-            m_winnerText.text = m_winner.Character.name + " Wins!";
+            m_winnerText.text = m_playerData[winner].Character.name + " Wins!";
             m_winnerText.gameObject.SetActive(true);
-            m_winner.RulerScore++;
-            StartCoroutine(WonGame());
-            m_hasWon = true;
             
+            m_wonGameEvent.Invoke();
+            m_hasWon = true;
+
         }
         else if (alive == 0)
         {
             m_winnerText.text = "Nobody wins I guess?";
             m_winnerText.gameObject.SetActive(true);
-            StartCoroutine(WonGame());
+            m_wonGameEvent.Invoke();
             m_hasWon = true;
         }
-    }
-
-    private IEnumerator WonGame()
-    {
-        yield return new WaitForSeconds(0.1f);
-        m_wonGameEvent.Invoke();
     }
 }

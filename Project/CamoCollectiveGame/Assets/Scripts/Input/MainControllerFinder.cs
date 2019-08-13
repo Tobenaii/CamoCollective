@@ -7,7 +7,7 @@ public class MainControllerFinder : MonoBehaviour
     [SerializeField]
     private List<PlayerData> m_playerData;
     [SerializeField]
-    private List<FloatValue> m_controllers;
+    private FloatValue m_controllers;
     [SerializeField]
     private FloatValue m_mainController;
 
@@ -18,7 +18,7 @@ public class MainControllerFinder : MonoBehaviour
         {
             if (player.IsPlaying)
             {
-                m_mainController.Value = m_controllers[i].Value;
+                m_mainController.Value = m_controllers.GetValue(i);
                 return;
             }
             i++;

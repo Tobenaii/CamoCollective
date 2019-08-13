@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 1306612043750070397}
   - component: {fileID: 1306612043750070399}
   - component: {fileID: 6394471394633165378}
+  - component: {fileID: 2538854164580634275}
   - component: {fileID: 1306612043788377550}
   - component: {fileID: 1635591654813619552}
   - component: {fileID: 1777820783}
   - component: {fileID: 2659406844423747302}
-  - component: {fileID: 2538854164580634275}
   - component: {fileID: 8215074841666493223}
   m_Layer: 0
   m_Name: ChonkJouster
@@ -55,9 +55,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_disableOnAwake: 1
   m_controllerNumber:
-    useConstant: 1
+    m_index: 0
+    useConstant: 0
     m_constant: 0
-    m_variable: {fileID: 0}
+    m_variable: {fileID: 11400000, guid: f2f096e69a744c44184a66a037b6acbf, type: 2}
   actions:
   - actionName: Move
     buttonA: 0
@@ -406,13 +407,53 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c867609428b00fa47b1ff7edb0f81e99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_initLives: 3
-  m_respawnTime: 3.9
   m_scoreLossOnDeath: 2
   m_fadeAwayTime: 1.5
   m_respawnEvent: {fileID: 11400000, guid: 4cce63c12ebee0a46bc8d41e5148eb5c, type: 2}
-  m_playerData: {fileID: 0}
   m_tempBody: {fileID: 0}
+  m_livesValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: fbc00d6342149864aa6501ec8a064f7e, type: 2}
+  m_respawnTimer:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: f8ffa813e21018a46a3a7fe58b0ebfad, type: 2}
+  m_scoreValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 6f7cb79ed5315c147b2a0bd38d01cfee, type: 2}
+--- !u!114 &2538854164580634275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306612043750070396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fde3391d25cfee146a16f76bfee66b07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_lanceTransform: {fileID: 6947285510579088598}
+  m_knockbackForce: 10
+  m_knockupForce: 20
+  m_shieldAngle: 30
+  m_invincibilityFrame: 1.5
+  m_invincibilityFlashTime: 0.1
+  m_scoreValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 6f7cb79ed5315c147b2a0bd38d01cfee, type: 2}
+  m_livesValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: fbc00d6342149864aa6501ec8a064f7e, type: 2}
 --- !u!114 &1306612043788377550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -479,6 +520,7 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: 76215b81304c2a9499af2a749c9bbb93, type: 3}
     m_sceneName: PauseScene
+  m_loadedEvent: {fileID: 0}
 --- !u!114 &2659406844423747302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -492,25 +534,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerData: {fileID: 0}
---- !u!114 &2538854164580634275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306612043750070396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde3391d25cfee146a16f76bfee66b07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_lanceTransform: {fileID: 6947285510579088598}
-  m_knockbackForce: 10
-  m_knockupForce: 20
-  m_shieldAngle: 30
-  m_invincibilityFrame: 1.5
-  m_invincibilityFlashTime: 0.1
-  m_playerData: {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590, type: 2}
 --- !u!114 &8215074841666493223
 MonoBehaviour:
   m_ObjectHideFlags: 0

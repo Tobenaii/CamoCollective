@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300658, g: 0.4921953, b: 0.57192475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -182,11 +182,13 @@ MonoBehaviour:
   m_targetPos: {x: 37, y: 14, z: -30}
   m_targetRot: {x: 70, y: 0, z: 0}
   m_snap: 0
-  m_smooth: 0
-  m_moveSpeed: 30
-  m_scale: {fileID: 0}
-  m_timeInstead: 0
-  m_rotationSpeed: 30
+  m_smooth: 1
+  m_moveSpeed:
+    useConstant: 1
+    m_constant: 2
+    m_variable: {fileID: 0}
+  m_timeInstead: 1
+  m_rotationSpeed: 2
   m_onCameraMoved: {fileID: 11400000, guid: ea840f825e823fa4c82d778e6f293af4, type: 2}
 --- !u!4 &433627071
 Transform:
@@ -383,6 +385,7 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
     m_sceneName: FreePlayCharacterSelectScene
+  m_loadedEvent: {fileID: 0}
 --- !u!1 &1009900024
 GameObject:
   m_ObjectHideFlags: 0
@@ -434,6 +437,7 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: eb98ac3598618cc4d94186b66c0e5857, type: 3}
     m_sceneName: ChonkJoustingScene
+  m_loadedEvent: {fileID: 0}
 --- !u!1 &1024925111
 GameObject:
   m_ObjectHideFlags: 0

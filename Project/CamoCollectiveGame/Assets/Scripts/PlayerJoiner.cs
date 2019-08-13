@@ -7,7 +7,7 @@ public class PlayerJoiner : MonoBehaviour
     [SerializeField]
     private List<PlayerData> m_players;
     [SerializeField]
-    private List<FloatValue> m_playerControllers;
+    private FloatValue m_playerControllers;
 
     private PlayerData m_currentPlayerData;
 
@@ -28,7 +28,7 @@ public class PlayerJoiner : MonoBehaviour
             {
                 player.IsPlaying = true;
                 m_currentPlayerData = player;
-                m_playerControllers[index].Value = controllerNum;
+                m_playerControllers.SetValue(index, controllerNum);
                 break;
             }
             index++;

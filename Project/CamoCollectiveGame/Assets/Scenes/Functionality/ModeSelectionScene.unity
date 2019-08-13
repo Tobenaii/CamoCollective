@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4430062, g: 0.492195, b: 0.571924, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300658, g: 0.4921953, b: 0.57192475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -163,7 +163,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Chonk Jousting
+  m_Text: Thythe
 --- !u!222 &128703726
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -281,6 +281,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543214102}
+  - component: {fileID: 543214103}
+  - component: {fileID: 543214104}
   m_Layer: 0
   m_Name: WAYPOINT_PoultryBash
   m_TagString: Untagged
@@ -302,6 +304,58 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
+--- !u!114 &543214103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543214101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 028cc803818b34c49bb00e2e537d7464, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 543214104}
+        m_MethodName: Load
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &543214104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543214101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_runOnAwake: 0
+  m_unloadAllScenes: 0
+  m_scenesToUnload:
+  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
+    m_sceneName: FreePlayCharacterSelectScene
+  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
+    m_sceneName: ModeSelectionScene
+  m_scenesToLoad:
+  - m_scene: {fileID: 102900000, guid: 82900495f16e88945a0350feb99a28fe, type: 3}
+    m_sceneName: PoultryBashTipsScene
+  m_loadedEvent: {fileID: 0}
 --- !u!1 &585492970
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,6 +440,7 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
     m_sceneName: ChonkJoustingTipsScene
+  m_loadedEvent: {fileID: 0}
 --- !u!114 &721845978
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,55 +470,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!1 &855669901
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 855669902}
-  - component: {fileID: 855669903}
-  m_Layer: 0
-  m_Name: SceneLoader
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &855669902
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855669901}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 66.13382, y: 477.40002, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &855669903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 855669901}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_runOnAwake: 1
-  m_unloadAllScenes: 0
-  m_scenesToUnload: []
-  m_scenesToLoad:
-  - m_scene: {fileID: 102900000, guid: 14b1fc9a741ff6c4084de97efade3a9e, type: 3}
-    m_sceneName: UICamera
 --- !u!1 &1002514760
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +484,7 @@ GameObject:
   - component: {fileID: 1002514762}
   - component: {fileID: 1002514765}
   m_Layer: 5
-  m_Name: GameMode1 (2)
+  m_Name: GameMode3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -704,7 +710,7 @@ GameObject:
   - component: {fileID: 1389114430}
   - component: {fileID: 1389114433}
   m_Layer: 5
-  m_Name: GameMode1 (3)
+  m_Name: GameMode4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -833,7 +839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hoverEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
-  m_clickEvent: {fileID: 11400000, guid: e6495b7456536df40a5432c0250ba837, type: 2}
+  m_clickEvent: {fileID: 11400000, guid: a948d242716a3114f952825b62eb5fb3, type: 2}
   m_targetGameObject: {fileID: 1450339381}
   m_name: Climb the Tower
   m_text: {fileID: 128703725}
@@ -891,6 +897,7 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
     m_sceneName: TowerClimbTipsScene
+  m_loadedEvent: {fileID: 0}
 --- !u!114 &1450339384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -903,7 +910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: e6495b7456536df40a5432c0250ba837, type: 2}
+  gameEvent: {fileID: 11400000, guid: a948d242716a3114f952825b62eb5fb3, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -1279,7 +1286,7 @@ GameObject:
   - component: {fileID: 2076102512}
   - component: {fileID: 2076102515}
   m_Layer: 5
-  m_Name: GameMode1 (1)
+  m_Name: GameMode2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1408,7 +1415,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hoverEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
-  m_clickEvent: {fileID: 0}
+  m_clickEvent: {fileID: 11400000, guid: 028cc803818b34c49bb00e2e537d7464, type: 2}
   m_targetGameObject: {fileID: 543214101}
   m_name: Poultry Bash
   m_text: {fileID: 128703725}

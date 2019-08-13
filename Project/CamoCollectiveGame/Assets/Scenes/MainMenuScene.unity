@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4430062, g: 0.492195, b: 0.571924, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300658, g: 0.4921953, b: 0.57192475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -148,8 +148,10 @@ MonoBehaviour:
   m_targetRot: {x: 0, y: 0, z: 0}
   m_snap: 1
   m_smooth: 0
-  m_moveSpeed: 0
-  m_scale: {fileID: 0}
+  m_moveSpeed:
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
   m_timeInstead: 0
   m_rotationSpeed: 0
   m_onCameraMoved: {fileID: 0}
@@ -395,6 +397,7 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
     m_sceneName: FreePlayCharacterSelectScene
+  m_loadedEvent: {fileID: 0}
 --- !u!114 &698122835
 MonoBehaviour:
   m_ObjectHideFlags: 0

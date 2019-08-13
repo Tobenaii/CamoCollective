@@ -11,5 +11,6 @@ public class GameStartCheck : MonoBehaviour
     {
         if (!m_playerData.IsPlaying)
             gameObject.SetActive(false);
+
     }
 }

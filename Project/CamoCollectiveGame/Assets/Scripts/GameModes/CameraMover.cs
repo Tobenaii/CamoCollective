@@ -17,9 +17,7 @@ public class CameraMover : MonoBehaviour
     [SerializeField]
     private bool m_smooth;
     [SerializeField]
-    private float m_moveSpeed;
-    [SerializeField]
-    private FloatValue m_scale;
+    private FloatReference m_moveSpeed;
     [SerializeField]
     private bool m_timeInstead;
     [SerializeField]
@@ -31,7 +29,9 @@ public class CameraMover : MonoBehaviour
     private Vector3 m_moveVelocity;
     private TimeLerper m_lerper;
     private Vector3 m_initPos;
+    private Quaternion m_initRot;
     private Camera m_camera;
+    private bool m_stopped;
 
     private void Awake()
     {
@@ -43,22 +43,35 @@ public class CameraMover : MonoBehaviour
         while (m_camera == null)
         {
             m_camera = Camera.main;
+            if (m_camera != null)
+                Init();
             yield return null;
         }
+    }
+
+    public void Stop()
+    {
+        m_stopped = true;
+    }
+
+    public void Start()
+    {
+        m_stopped = false;
     }
 
     private void Init()
     {
         m_lerper = new TimeLerper();
         m_initPos = m_camera.transform.position;
+        m_initRot = m_camera.transform.rotation;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (m_camera == null)
+        if (m_camera == null || m_stopped)
             return;
-        float speed = m_moveSpeed * (m_scale == null ? 1 : m_scale.Value);
+        float speed = m_moveSpeed.Value;
         if (m_snap)
         {
             if (m_rotate)
@@ -73,6 +86,8 @@ public class CameraMover : MonoBehaviour
         {
             if (!m_smooth)
                 m_camera.transform.rotation = Quaternion.RotateTowards(m_camera.transform.rotation, Quaternion.Euler(m_targetRot), m_rotationSpeed * Time.deltaTime);
+            else if (m_timeInstead)
+                m_camera.transform.rotation = m_lerper.Lerp(m_initRot, Quaternion.Euler(m_targetRot), m_rotationSpeed);
             else
                 m_camera.transform.rotation = Quaternion.Euler(Vector3.SmoothDamp(m_camera.transform.rotation.eulerAngles, m_targetRot, ref m_rotateVelocty, m_rotationSpeed));
         }
