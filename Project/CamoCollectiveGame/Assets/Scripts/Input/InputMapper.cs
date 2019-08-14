@@ -137,7 +137,7 @@ public class InputMapper : MonoBehaviour
             }
             if (onButtonHold && buttonState == ButtonState.Pressed)
                 Invoke(unityEvent);
-            if (onButtonRelease && prevButtonState == ButtonState.Released && prevButtonState == ButtonState.Pressed)
+            if (onButtonRelease && buttonState == ButtonState.Released && prevButtonState == ButtonState.Pressed)
                 Invoke(unityEvent);
         }
 

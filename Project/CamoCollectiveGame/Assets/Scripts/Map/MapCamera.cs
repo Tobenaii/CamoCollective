@@ -14,6 +14,11 @@ public class MapCamera : MonoBehaviour
     private Vector3 m_rotateVelocity;
     private Vector3 m_targetRot;
 
+    private void Awake()
+    {
+        GetComponent<Camera>().depth = -1;
+    }
+
     private void Start()
     {
         m_atTarget = true;

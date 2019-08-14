@@ -5,9 +5,7 @@ using UnityEngine;
 public class TowerClimbObstacleSpawner : MonoBehaviour
 {
     [SerializeField]
-    private float m_moveSpeed;
-    [SerializeField]
-    private FloatValue m_scale;
+    private FloatReference m_moveSpeed;
     [SerializeField]
     private List<GameObjectPool> m_obstaclePools;
     [SerializeField]
@@ -25,6 +23,11 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
     {
         m_spawn = true;
         m_frequencyTimer = m_spawnFrequency;
+    }
+
+    public void Destruct()
+    {
+        Destroy(gameObject);
     }
 
     public void StopSpawning()
@@ -63,7 +66,7 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
         for (int i = 0; i < m_obstacles.Count; i++)
         {
             GameObject obstacle = m_obstacles[i];
-            obstacle.transform.position = new Vector3(obstacle.transform.position.x, obstacle.transform.position.y - m_moveSpeed * Time.deltaTime * 12.0f * m_scale.Value, obstacle.transform.position.z);
+            obstacle.transform.position += Vector3.down * m_moveSpeed.Value * Time.deltaTime;
         }
     }
 }

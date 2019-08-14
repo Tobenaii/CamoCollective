@@ -12,7 +12,10 @@ public class LifeCounter : MonoBehaviour
     private Vector3 m_scale;
     [SerializeField]
     private Vector3 m_spacing;
-    private float m_livesValue;
+
+    [Header("Data")]
+    [SerializeField]
+    private FloatReference m_livesValue;
 
     private Stack<GameObject> m_uiImages = new Stack<GameObject>();
 
@@ -32,7 +35,7 @@ public class LifeCounter : MonoBehaviour
         }
 #endif
 
-        while (m_uiImages.Count < m_livesValue)
+        while (m_uiImages.Count < m_livesValue.Value)
         {
             GameObject image = new GameObject("LifeImage", new System.Type[] { typeof(Image) });
             image.GetComponent<Image>().sprite = m_sprite;
@@ -44,16 +47,11 @@ public class LifeCounter : MonoBehaviour
             m_uiImages.Push(image);
         }
 
-        while (m_uiImages.Count > m_livesValue && m_livesValue >= 0)
+        while (m_uiImages.Count > m_livesValue.Value && m_livesValue.Value >= 0)
         {
             GameObject obj = m_uiImages.Pop();
             Destroy(obj);
         }
-    }
-
-    public void SetLivesValue(float value)
-    {
-        m_livesValue = value;
     }
 
 #if UNITY_EDITOR

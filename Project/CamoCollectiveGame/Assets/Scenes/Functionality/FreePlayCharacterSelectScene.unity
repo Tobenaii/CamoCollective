@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4430062, g: 0.492195, b: 0.571924, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300658, g: 0.4921953, b: 0.57192475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -198,8 +198,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_controllerNumber.m_variable
       value: 
-      objectReference: {fileID: 11400000, guid: b7885571d4b9d834fa419f98afe69894,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b64ba08ba6fd16d49a713b63eaa660f5, type: 3}
 --- !u!4 &396453593 stripped
@@ -328,8 +327,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_controllerNumber.m_variable
       value: 
-      objectReference: {fileID: 11400000, guid: 0e7c9822d814ca0489067ed8371fb986,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b64ba08ba6fd16d49a713b63eaa660f5, type: 3}
 --- !u!4 &747292055 stripped
@@ -373,8 +371,11 @@ MonoBehaviour:
   m_targetRot: {x: 70, y: 0, z: 0}
   m_snap: 0
   m_smooth: 0
-  m_moveSpeed: 0
-  m_scale: {fileID: 0}
+  m_moveSpeed:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
   m_timeInstead: 0
   m_rotationSpeed: 40
   m_onCameraMoved: {fileID: 0}
@@ -569,8 +570,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_controllerNumber.m_variable
       value: 
-      objectReference: {fileID: 11400000, guid: b7885571d4b9d834fa419f98afe69894,
+      objectReference: {fileID: 11400000, guid: f2f096e69a744c44184a66a037b6acbf,
         type: 2}
+    - target: {fileID: 7299654288684776069, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_controllerNumber.m_index
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7299654288552546789, guid: d1621947e4b387143bb8b108d3681fd6,
         type: 3}
       propertyPath: m_IsActive
@@ -728,8 +734,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_controllerNumber.m_variable
       value: 
-      objectReference: {fileID: 11400000, guid: 63c3f5028ef017d438fe8def976ccc6b,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b64ba08ba6fd16d49a713b63eaa660f5, type: 3}
 --- !u!4 &953316755 stripped
@@ -738,30 +743,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 953316754}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &988220281 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1630597936044211263, guid: b64ba08ba6fd16d49a713b63eaa660f5,
-    type: 3}
-  m_PrefabInstance: {fileID: 2795252351567286186}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &988220282
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 988220281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 0}
-  response:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!224 &1213643522 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7299654288684776068, guid: d1621947e4b387143bb8b108d3681fd6,
@@ -828,6 +809,7 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
     m_sceneName: ModeSelectionScene
+  m_loadedEvent: {fileID: 0}
 --- !u!4 &1305953365
 Transform:
   m_ObjectHideFlags: 0
@@ -1048,8 +1030,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_controllerNumber.m_variable
       value: 
-      objectReference: {fileID: 11400000, guid: 63c3f5028ef017d438fe8def976ccc6b,
+      objectReference: {fileID: 11400000, guid: f2f096e69a744c44184a66a037b6acbf,
         type: 2}
+    - target: {fileID: 7299654288684776069, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_controllerNumber.m_index
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7299654288552546789, guid: d1621947e4b387143bb8b108d3681fd6,
         type: 3}
       propertyPath: m_IsActive
@@ -1271,6 +1258,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_disableOnAwake: 0
   m_controllerNumber:
+    m_index: 0
     useConstant: 0
     m_constant: 0
     m_variable: {fileID: 11400000, guid: cd4124caeda9bf14b9381ee841503190, type: 2}
@@ -1526,8 +1514,13 @@ PrefabInstance:
         type: 3}
       propertyPath: m_controllerNumber.m_variable
       value: 
-      objectReference: {fileID: 11400000, guid: 0e7c9822d814ca0489067ed8371fb986,
+      objectReference: {fileID: 11400000, guid: f2f096e69a744c44184a66a037b6acbf,
         type: 2}
+    - target: {fileID: 7299654288684776069, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_controllerNumber.m_index
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7299654288552546789, guid: d1621947e4b387143bb8b108d3681fd6,
         type: 3}
       propertyPath: m_IsActive
@@ -1680,8 +1673,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_controllerNumber.m_variable
       value: 
-      objectReference: {fileID: 11400000, guid: a0d4e4a7ce2c5454dab589eca17f6b3d,
-        type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b64ba08ba6fd16d49a713b63eaa660f5, type: 3}
 --- !u!1001 &7299654287479587206
@@ -1853,6 +1845,17 @@ PrefabInstance:
         type: 3}
       propertyPath: actions.Array.data[3].buttons.Array.data[0].onButtonDown
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299654288684776069, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_controllerNumber.m_variable
+      value: 
+      objectReference: {fileID: 11400000, guid: f2f096e69a744c44184a66a037b6acbf,
+        type: 2}
+    - target: {fileID: 7299654288684776069, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_controllerNumber.m_index
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7299654288552546789, guid: d1621947e4b387143bb8b108d3681fd6,
         type: 3}

@@ -33,4 +33,10 @@ public class TimeLerper
         float lerpPercent = GetPercent(timeToFinish);
         return Mathf.Lerp(init, end, lerpPercent);
     }
+
+    public Quaternion Lerp(Quaternion init, Quaternion end, float timeToFinish)
+    {
+        float lerpPercent = GetPercent(timeToFinish);
+        return Quaternion.Lerp(init, end, lerpPercent);
+    }
 }

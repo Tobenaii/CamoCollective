@@ -6,13 +6,19 @@ using UnityEngine.UI;
 public class ChonkJoustingEndGame : MonoBehaviour
 {
     [SerializeField]
-    private List<ChonkJouster> m_jousters;
-    [SerializeField]
     private Text m_winnerText;
     [SerializeField]
     private float m_timeToQuit;
     [SerializeField]
     private GameEvent m_quitGameEvent;
+
+    [Header("Data")]
+    [SerializeField]
+    private List<PlayerData> m_players;
+    [SerializeField]
+    private FloatValue m_scoreValues;
+    [SerializeField]
+    private FloatValue m_rulerScoreValue;
 
     private void Awake()
     {
@@ -22,19 +28,19 @@ public class ChonkJoustingEndGame : MonoBehaviour
     //We're in the end game now
     public void EndGame()
     {
-        ChonkJouster winner = null;
+        int winner = -1;
 
-        foreach (ChonkJouster jouster in m_jousters)
+        int index = 0;
+        foreach (PlayerData player in m_players)
         {
-            if (jouster.player == null)
-                continue;
-            if (winner == null || winner.score < jouster.score)
-                winner = jouster;
+            if (player.IsPlaying && (winner == -1 || m_scoreValues.GetValue(index) > m_scoreValues.GetValue(winner)))
+                winner = index;
+            index++;
         }
 
         m_winnerText.gameObject.SetActive(true);
-        m_winnerText.text = winner.player.Character.name + " WINS!!!";
-        winner.player.RulerScore++;
+        m_winnerText.text = m_players[winner].Character.name + " WINS!!!";
+        m_rulerScoreValue.SetValue(winner, m_rulerScoreValue.GetValue(winner) + 1);
         StartCoroutine(FinishUpGame());
     }
 
