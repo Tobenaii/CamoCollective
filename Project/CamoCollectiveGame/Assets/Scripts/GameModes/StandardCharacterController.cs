@@ -65,7 +65,7 @@ public class StandardCharacterController : MonoBehaviour
             m_rotationQueue.Enqueue(newRot);
         }
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, (m_rotationQueue.Count > 0)?m_rotationQueue.Peek():transform.rotation, speed);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, (m_rotationQueue.Count > 0) ? m_rotationQueue.Peek() : transform.rotation, speed);
         if (m_rotationQueue.Count > 0 && transform.rotation == m_rotationQueue.Peek())
         {
             m_rotationQueue.Dequeue();
@@ -82,13 +82,14 @@ public class StandardCharacterController : MonoBehaviour
         transform.rotation = prevRot;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, speed);
     }
+
     private void FixedUpdate()
     {
         m_rb.MovePosition(transform.position + m_velocity * Time.deltaTime);
         if (m_lookDir == Vector3.zero)
             RotateChonkOverTime(m_velocity, m_moveRotateSpeed);
         else
-            RotateChonkOverTimeNew(m_lookDir, m_lookRotateSpeed);
+            RotateChonkOverTime(m_lookDir, m_lookRotateSpeed);
     }
 
     public void Move(Vector2 joystick)
@@ -104,18 +105,30 @@ public class StandardCharacterController : MonoBehaviour
         float backwardMultiplier = Mathf.InverseLerp(1, -1, backwardDot);
         float multiplier = Mathf.Lerp(1, m_backwardVelocityMultiplier, backwardMultiplier);
         Vector3 target = new Vector3(joystick.x, 0, joystick.y).normalized * (m_moveSpeed * multiplier);
-        if (m_velocity.sqrMagnitude > target.sqrMagnitude)
-            return;
         m_velocity = Vector3.MoveTowards(m_velocity, target, m_acceleration * Time.deltaTime);
     }
 
     public void Look(Vector2 joystick)
     {
+        Move(joystick);
         if (Vector3.Magnitude(joystick) < m_joystickDeadZone)
         {
             m_lookDir = Vector3.zero;
             return;
         }
         m_lookDir = new Vector3(joystick.x, 0, joystick.y);
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        Vector3 normal = collision.GetContact(0).normal;
+        if (normal.x > 0 && m_velocity.x < 0)
+            m_velocity.x = 0;
+        if (normal.x < 0 && m_velocity.x > 0)
+            m_velocity.x = 0;
+        if (normal.z < 0 && m_velocity.z > 0)
+            m_velocity.z = 0;
+        if (normal.z > 0 && m_velocity.z < 0)
+            m_velocity.z = 0;
     }
 }

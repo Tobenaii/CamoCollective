@@ -8,6 +8,8 @@ public class ChonkJousterRespawner : MonoBehaviour
     private Transform m_respawnPoint;
     [SerializeField]
     private Animator m_animator;
+    [SerializeField]
+    private float m_respawnForce;
     private List<GameObject> m_chonks = new List<GameObject>();
     private bool m_respawning;
     private int m_chonkIndex = 0;
@@ -17,6 +19,12 @@ public class ChonkJousterRespawner : MonoBehaviour
         chonk.gameObject.SetActive(false);
         m_chonks.Add(chonk);
         Startup();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.CompareTag("Player"))
+            collision.transform.GetComponent<InputMapper>().EnableInput();
     }
 
     public void Respawn()
@@ -47,7 +55,7 @@ public class ChonkJousterRespawner : MonoBehaviour
         chonk.transform.position = m_respawnPoint.position;
         chonk.transform.rotation = m_respawnPoint.rotation;
         chonk.SetActive(true);
-        chonk.GetComponent<ChonkJoustingController>().Respawn();
+        chonk.GetComponent<Rigidbody>().AddForce(chonk.transform.forward * m_respawnForce);
     }
 
     private void Startup()
