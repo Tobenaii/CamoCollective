@@ -49,7 +49,7 @@ public class ChonkJoustingDeath : MonoBehaviour
     {
         m_isRespawning = false;
         m_livesValue.Reset();
-        GetComponent<ChonkJoustingController>().enabled = true;
+        GetComponent<StandardCharacterController>().enabled = true;
         GetComponent<Rigidbody>().isKinematic = false;
         GetComponent<Rigidbody>().detectCollisions = true;
         m_respawnEvent.Invoke(gameObject);
@@ -67,7 +67,7 @@ public class ChonkJoustingDeath : MonoBehaviour
 
     public void OnDeath()
     {
-        GetComponent<ChonkJoustingController>().enabled = false;
+        GetComponent<StandardCharacterController>().enabled = false;
         GetComponent<Rigidbody>().isKinematic = true;
         GetComponent<Rigidbody>().detectCollisions = false;
 

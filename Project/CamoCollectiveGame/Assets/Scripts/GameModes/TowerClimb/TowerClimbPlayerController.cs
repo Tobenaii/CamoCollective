@@ -14,8 +14,6 @@ public class TowerClimbPlayerController : MonoBehaviour
     private float m_strafeSpeed;
     [SerializeField]
     private float m_autoClimbMoveSpeed;
-    [SerializeField]
-    private GameEvent m_reachedTopEvent;
 
     [Header("Data")]
     [SerializeField]
@@ -94,7 +92,6 @@ public class TowerClimbPlayerController : MonoBehaviour
         bool hitUp = Physics.Raycast(transform.position, Vector3.up, out hit, 1.0f);
         if (hitUp && hit.transform.CompareTag("StopClimber"))
         {
-            m_reachedTopEvent.Invoke();
             m_stopMoving = true;
             return;
         }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1635591654813619552}
   - component: {fileID: 1306612043750070397}
   - component: {fileID: 1306612043750070398}
-  - component: {fileID: 1306612043750070399}
+  - component: {fileID: 161683513231905873}
   - component: {fileID: 6394471394633165378}
   - component: {fileID: 2538854164580634275}
   - component: {fileID: 1777820783}
@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 1306612043788377550}
   m_Layer: 0
   m_Name: ChonkJouster
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
     unityEventJoystick:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1306612043750070399}
+        - m_Target: {fileID: 161683513231905873}
           m_MethodName: Move
           m_Mode: 0
           m_Arguments:
@@ -191,7 +191,7 @@ MonoBehaviour:
     unityEventJoystick:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1306612043750070399}
+        - m_Target: {fileID: 161683513231905873}
           m_MethodName: Look
           m_Mode: 0
           m_Arguments:
@@ -259,7 +259,7 @@ MonoBehaviour:
     unityEventJoystick:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1306612043750070399}
+        - m_Target: {fileID: 0}
           m_MethodName: Look
           m_Mode: 0
           m_Arguments:
@@ -300,7 +300,7 @@ MonoBehaviour:
     unityEventButton:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1306612043750070399}
+        - m_Target: {fileID: 0}
           m_MethodName: StartDash
           m_Mode: 1
           m_Arguments:
@@ -316,7 +316,7 @@ MonoBehaviour:
     unityEventJoystick:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1306612043750070399}
+        - m_Target: {fileID: 0}
           m_MethodName: Look
           m_Mode: 0
           m_Arguments:
@@ -357,7 +357,7 @@ MonoBehaviour:
     unityEventButton:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1306612043750070399}
+        - m_Target: {fileID: 0}
           m_MethodName: EndDash
           m_Mode: 1
           m_Arguments:
@@ -373,7 +373,7 @@ MonoBehaviour:
     unityEventJoystick:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1306612043750070399}
+        - m_Target: {fileID: 0}
           m_MethodName: Look
           m_Mode: 0
           m_Arguments:
@@ -391,7 +391,7 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
---- !u!114 &1306612043750070399
+--- !u!114 &161683513231905873
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -400,20 +400,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1306612043750070396}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da86d4502edd9fd44a57cbc72218d398, type: 3}
+  m_Script: {fileID: 11500000, guid: ff6464134e6f33f4a991301d9057948b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_chonkRunSpeed: 15
-  m_chonkBackwardVelocityMultiplier: 0.5
-  m_chonkAcceleration: 50
-  m_chonkMudAcceleration: 10
-  m_chonkStopSpeed: 20
-  m_chonkMudStopSpeedMultiplier: 0.3
-  m_chonkLookRotateSpeed: 30
-  m_chonkMoveRotateSpeed: 30
-  m_dashPowerIncreaseRate: 5
-  m_maxDashPower: 20
-  m_spawnedEvent: {fileID: 11400000, guid: 497acc1f9471e8e44b55135dbe097851, type: 2}
+  m_moveSpeed: 15
+  m_backwardVelocityMultiplier: 0.5
+  m_acceleration: 50
+  m_stopSpeed: 20
+  m_lookRotateSpeed: 30
+  m_moveRotateSpeed: 30
+  m_minRotationValue: 0
 --- !u!114 &6394471394633165378
 MonoBehaviour:
   m_ObjectHideFlags: 0
