@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 1306612043750070392}
   - component: {fileID: 1635591654813619552}
   - component: {fileID: 7977383903260922302}
+  - component: {fileID: 161683513231905873}
   - component: {fileID: 1306612043750070397}
   - component: {fileID: 1306612043750070398}
-  - component: {fileID: 161683513231905873}
   - component: {fileID: 1777820783}
   - component: {fileID: 2659406844423747302}
   - component: {fileID: 8215074841666493223}
@@ -72,10 +72,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_shieldAngle: 20
-  m_shieldKnockbackForce: 25
+  m_shieldKnockbackForce: 10
   m_lanceTransform: {fileID: 6947285510579088598}
-  m_knockbackForce: 25
-  m_knockupForce: 25
+  m_knockbackForce: 10
+  m_knockupForce: 15
   m_invincibilityFrame: 2
   m_invincibilityFlashTime: 0.1
   m_fadeAwayTime: 2
@@ -98,6 +98,25 @@ MonoBehaviour:
     m_variable: {fileID: 11400000, guid: f8ffa813e21018a46a3a7fe58b0ebfad, type: 2}
   m_respawnEvent: {fileID: 11400000, guid: 4cce63c12ebee0a46bc8d41e5148eb5c, type: 2}
   m_respawnedEvent: {fileID: 11400000, guid: 497acc1f9471e8e44b55135dbe097851, type: 2}
+--- !u!114 &161683513231905873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306612043750070396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6464134e6f33f4a991301d9057948b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_moveSpeed: 15
+  m_backwardVelocityMultiplier: 0.5
+  m_acceleration: 50
+  m_stopSpeed: 20
+  m_lookRotateSpeed: 100
+  m_moveRotateSpeed: 450
+  m_minRotationValue: 0
 --- !u!54 &1306612043750070397
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -396,25 +415,6 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
---- !u!114 &161683513231905873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306612043750070396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff6464134e6f33f4a991301d9057948b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_moveSpeed: 15
-  m_backwardVelocityMultiplier: 0.5
-  m_acceleration: 50
-  m_stopSpeed: 20
-  m_lookRotateSpeed: 100
-  m_moveRotateSpeed: 300
-  m_minRotationValue: 0
 --- !u!114 &1777820783
 MonoBehaviour:
   m_ObjectHideFlags: 0
