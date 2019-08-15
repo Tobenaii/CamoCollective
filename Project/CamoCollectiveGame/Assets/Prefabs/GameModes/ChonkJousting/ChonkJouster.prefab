@@ -110,13 +110,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6464134e6f33f4a991301d9057948b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 15
+  m_moveSpeed: 10
   m_backwardVelocityMultiplier: 0.5
-  m_acceleration: 50
-  m_stopSpeed: 20
-  m_lookRotateSpeed: 100
+  m_acceleration: 20
+  m_stopSpeed: 10
+  m_lookRotateSpeed: 600
   m_moveRotateSpeed: 450
   m_minRotationValue: 0
+  m_minDashForce: 20
+  m_maxDashForce: 40
+  m_dashChargeSpeed: 20
+  m_dashCooldown: 4
 --- !u!54 &1306612043750070397
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -345,7 +349,18 @@ MonoBehaviour:
       cooldownTime: 0
     unityEventButton:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 161683513231905873}
+          m_MethodName: StartDash
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     unityEventJoystick:
@@ -391,7 +406,18 @@ MonoBehaviour:
       cooldownTime: 0
     unityEventButton:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 161683513231905873}
+          m_MethodName: EndDash
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     unityEventJoystick:

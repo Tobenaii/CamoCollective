@@ -20,12 +20,24 @@ public class StandardCharacterController : MonoBehaviour
     private float m_moveRotateSpeed;
     [SerializeField]
     private float m_minRotationValue;
+    [Header("Dash")]
+    [SerializeField]
+    private float m_minDashForce;
+    [SerializeField]
+    private float m_maxDashForce;
+    [SerializeField]
+    private float m_dashChargeSpeed;
+    [SerializeField]
+    private float m_dashCooldown;
     [Header("Input")]
     private float m_joystickDeadZone;
 
     private Vector3 m_velocity;
     private Vector3 m_lookDir;
     private Quaternion m_targetRot;
+    private float m_dashForce;
+    private bool m_isDashing;
+    private float m_dashCooldownTimer;
 
     private Rigidbody m_rb;
 
@@ -47,20 +59,48 @@ public class StandardCharacterController : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRot, speed * Time.deltaTime);
     }
 
+    private void Update()
+    {
+        if (m_isDashing)
+        {
+            m_dashForce = Mathf.MoveTowards(m_dashForce, m_maxDashForce, m_dashChargeSpeed * Time.deltaTime);
+            if (m_dashForce >= m_maxDashForce)
+                EndDash();
+        }
+        else if (m_dashCooldownTimer > 0)
+        {
+            m_dashCooldownTimer -= Time.deltaTime;
+        }
+    }
+
     private void FixedUpdate()
     {
         m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_stopSpeed * Time.deltaTime);
-        if (m_lookDir == Vector3.zero)
+        if (!m_isDashing)
         {
             RotateChonkOverTime(m_velocity, m_moveRotateSpeed);
             m_rb.MovePosition(transform.position + transform.forward * m_velocity.magnitude * Time.deltaTime);
         }
         else
-        {
             RotateChonkOverTime(m_lookDir, m_lookRotateSpeed);
-            m_rb.MovePosition(transform.position + m_velocity * Time.deltaTime);
-        }
-        
+    }
+
+    public void StartDash()
+    {
+        if (m_dashCooldownTimer > 0)
+            return;
+        m_isDashing = true;
+        m_dashForce = m_minDashForce;
+        m_lookDir = transform.forward;
+    }
+
+    public void EndDash()
+    {
+        if (!m_isDashing)
+            return;
+        m_isDashing = false;
+        m_rb.AddForce(transform.forward * m_dashForce, ForceMode.Impulse);
+        m_dashCooldownTimer = m_dashCooldown;
     }
 
     public void Move(Vector2 joystick)
@@ -68,6 +108,8 @@ public class StandardCharacterController : MonoBehaviour
         float mag = joystick.magnitude;
         if (mag <= m_joystickDeadZone || mag == 0)
             return;
+        if (m_isDashing)
+            Look(joystick);
 
         float backwardDot = Vector3.Dot(m_velocity, transform.forward);
         float backwardMultiplier = Mathf.InverseLerp(1, -1, backwardDot);
@@ -80,7 +122,7 @@ public class StandardCharacterController : MonoBehaviour
     {
         if (Vector3.Magnitude(joystick) < m_joystickDeadZone)
         {
-            m_lookDir = Vector3.zero;
+            m_lookDir = transform.forward;
             return;
         }
         m_lookDir = new Vector3(joystick.x, 0, joystick.y);
