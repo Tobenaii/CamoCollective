@@ -21,12 +21,6 @@ public class ChonkJousterRespawner : MonoBehaviour
         Startup();
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.transform.CompareTag("Player"))
-            collision.transform.GetComponent<InputMapper>().EnableInput();
-    }
-
     public void Respawn()
     {
         if (m_chonks.Count == 0 || m_chonkIndex == m_chonks.Count)
@@ -55,7 +49,10 @@ public class ChonkJousterRespawner : MonoBehaviour
         chonk.transform.position = m_respawnPoint.position;
         chonk.transform.rotation = m_respawnPoint.rotation;
         chonk.SetActive(true);
-        chonk.GetComponent<Rigidbody>().AddForce(chonk.transform.forward * m_respawnForce);
+        yield return null;
+        Rigidbody rb = chonk.GetComponent<Rigidbody>();
+        rb.velocity = Vector3.zero;
+        rb.AddForce(chonk.transform.forward * m_respawnForce, ForceMode.Impulse);
     }
 
     private void Startup()

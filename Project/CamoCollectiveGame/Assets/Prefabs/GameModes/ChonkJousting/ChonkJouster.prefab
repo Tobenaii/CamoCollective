@@ -10,11 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1306612043750070392}
   - component: {fileID: 1635591654813619552}
+  - component: {fileID: 7977383903260922302}
   - component: {fileID: 1306612043750070397}
   - component: {fileID: 1306612043750070398}
   - component: {fileID: 161683513231905873}
-  - component: {fileID: 6394471394633165378}
-  - component: {fileID: 2538854164580634275}
   - component: {fileID: 1777820783}
   - component: {fileID: 2659406844423747302}
   - component: {fileID: 8215074841666493223}
@@ -60,6 +59,45 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7977383903260922302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1306612043750070396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6e47c96fd65fba747aab4808db2e8016, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_shieldAngle: 20
+  m_shieldKnockbackForce: 25
+  m_lanceTransform: {fileID: 6947285510579088598}
+  m_knockbackForce: 25
+  m_knockupForce: 25
+  m_invincibilityFrame: 2
+  m_invincibilityFlashTime: 0.1
+  m_fadeAwayTime: 2
+  m_respawnTime: 3
+  m_player: {fileID: 0}
+  m_scoreValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 6f7cb79ed5315c147b2a0bd38d01cfee, type: 2}
+  m_livesValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: fbc00d6342149864aa6501ec8a064f7e, type: 2}
+  m_respawnTimer:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: f8ffa813e21018a46a3a7fe58b0ebfad, type: 2}
+  m_respawnEvent: {fileID: 11400000, guid: 4cce63c12ebee0a46bc8d41e5148eb5c, type: 2}
+  m_respawnedEvent: {fileID: 11400000, guid: 497acc1f9471e8e44b55135dbe097851, type: 2}
 --- !u!54 &1306612043750070397
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -190,18 +228,7 @@ MonoBehaviour:
         Culture=neutral, PublicKeyToken=null
     unityEventJoystick:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 161683513231905873}
-          m_MethodName: Look
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
     unityEventTrigger:
@@ -299,18 +326,7 @@ MonoBehaviour:
       cooldownTime: 0
     unityEventButton:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: StartDash
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     unityEventJoystick:
@@ -356,18 +372,7 @@ MonoBehaviour:
       cooldownTime: 0
     unityEventButton:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_MethodName: EndDash
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     unityEventJoystick:
@@ -407,69 +412,9 @@ MonoBehaviour:
   m_backwardVelocityMultiplier: 0.5
   m_acceleration: 50
   m_stopSpeed: 20
-  m_lookRotateSpeed: 30
-  m_moveRotateSpeed: 30
+  m_lookRotateSpeed: 100
+  m_moveRotateSpeed: 300
   m_minRotationValue: 0
---- !u!114 &6394471394633165378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306612043750070396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c867609428b00fa47b1ff7edb0f81e99, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_scoreLossOnDeath: 2
-  m_fadeAwayTime: 1.5
-  m_respawnEvent: {fileID: 11400000, guid: 4cce63c12ebee0a46bc8d41e5148eb5c, type: 2}
-  m_tempBody: {fileID: 0}
-  m_player: {fileID: 0}
-  m_livesValue:
-    m_index: 0
-    useConstant: 0
-    m_constant: 0
-    m_variable: {fileID: 11400000, guid: fbc00d6342149864aa6501ec8a064f7e, type: 2}
-  m_respawnTimer:
-    m_index: 0
-    useConstant: 0
-    m_constant: 0
-    m_variable: {fileID: 11400000, guid: f8ffa813e21018a46a3a7fe58b0ebfad, type: 2}
-  m_scoreValue:
-    m_index: 0
-    useConstant: 0
-    m_constant: 0
-    m_variable: {fileID: 11400000, guid: 6f7cb79ed5315c147b2a0bd38d01cfee, type: 2}
---- !u!114 &2538854164580634275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1306612043750070396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fde3391d25cfee146a16f76bfee66b07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_lanceTransform: {fileID: 6947285510579088598}
-  m_knockbackForce: 10
-  m_knockupForce: 20
-  m_shieldAngle: 30
-  m_invincibilityFrame: 1.5
-  m_invincibilityFlashTime: 0.1
-  m_scoreValue:
-    m_index: 0
-    useConstant: 0
-    m_constant: 0
-    m_variable: {fileID: 11400000, guid: 6f7cb79ed5315c147b2a0bd38d01cfee, type: 2}
-  m_livesValue:
-    m_index: 0
-    useConstant: 0
-    m_constant: 0
-    m_variable: {fileID: 11400000, guid: fbc00d6342149864aa6501ec8a064f7e, type: 2}
 --- !u!114 &1777820783
 MonoBehaviour:
   m_ObjectHideFlags: 0

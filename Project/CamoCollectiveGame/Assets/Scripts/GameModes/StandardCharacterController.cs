@@ -25,51 +25,14 @@ public class StandardCharacterController : MonoBehaviour
 
     private Vector3 m_velocity;
     private Vector3 m_lookDir;
+    private Quaternion m_targetRot;
 
     private Rigidbody m_rb;
-
-    private Queue<Quaternion> m_rotationQueue = new Queue<Quaternion>();
-    private Quaternion m_lastRotAdded;
 
     // Start is called before the first frame update
     void Start()
     {
-        m_lookDir = transform.forward;
         m_rb = GetComponent<Rigidbody>();
-    }
-
-    private void RotateChonkOverTimeNew(Vector3 dir, float speed)
-    {
-        if (dir == Vector3.zero)
-        {
-            m_rotationQueue.Clear();
-            return;
-        }
-
-        Quaternion prevRot = transform.rotation;
-        transform.forward = dir;
-        Quaternion newRot = transform.rotation;
-        transform.rotation = prevRot;
-
-        if (m_rotationQueue.Count == 0 || newRot != m_lastRotAdded)
-        {
-            if (Quaternion.Angle(newRot, transform.rotation) > m_minRotationValue)
-            {
-                m_rotationQueue.Enqueue(newRot);
-                m_lastRotAdded = newRot;
-            }
-        }
-        else
-        {
-            m_rotationQueue.Clear();
-            m_rotationQueue.Enqueue(newRot);
-        }
-
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, (m_rotationQueue.Count > 0) ? m_rotationQueue.Peek() : transform.rotation, speed);
-        if (m_rotationQueue.Count > 0 && transform.rotation == m_rotationQueue.Peek())
-        {
-            m_rotationQueue.Dequeue();
-        }
     }
 
     private void RotateChonkOverTime(Vector3 dir, float speed)
@@ -79,27 +42,32 @@ public class StandardCharacterController : MonoBehaviour
         Quaternion prevRot = transform.rotation;
         transform.forward = dir;
         Quaternion newRot = transform.rotation;
+        m_targetRot = newRot;
         transform.rotation = prevRot;
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, speed);
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRot, speed * Time.deltaTime);
     }
 
     private void FixedUpdate()
     {
-        m_rb.MovePosition(transform.position + m_velocity * Time.deltaTime);
+        m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_stopSpeed * Time.deltaTime);
         if (m_lookDir == Vector3.zero)
+        {
             RotateChonkOverTime(m_velocity, m_moveRotateSpeed);
+            m_rb.MovePosition(transform.position + transform.forward * m_velocity.magnitude * Time.deltaTime);
+        }
         else
+        {
             RotateChonkOverTime(m_lookDir, m_lookRotateSpeed);
+            m_rb.MovePosition(transform.position + m_velocity * Time.deltaTime);
+        }
+        
     }
 
     public void Move(Vector2 joystick)
     {
         float mag = joystick.magnitude;
         if (mag <= m_joystickDeadZone || mag == 0)
-        {
-            m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_stopSpeed * Time.deltaTime);
             return;
-        }
 
         float backwardDot = Vector3.Dot(m_velocity, transform.forward);
         float backwardMultiplier = Mathf.InverseLerp(1, -1, backwardDot);
@@ -110,7 +78,6 @@ public class StandardCharacterController : MonoBehaviour
 
     public void Look(Vector2 joystick)
     {
-        Move(joystick);
         if (Vector3.Magnitude(joystick) < m_joystickDeadZone)
         {
             m_lookDir = Vector3.zero;
@@ -121,14 +88,14 @@ public class StandardCharacterController : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        Vector3 normal = collision.GetContact(0).normal;
-        if (normal.x > 0 && m_velocity.x < 0)
-            m_velocity.x = 0;
-        if (normal.x < 0 && m_velocity.x > 0)
-            m_velocity.x = 0;
-        if (normal.z < 0 && m_velocity.z > 0)
-            m_velocity.z = 0;
-        if (normal.z > 0 && m_velocity.z < 0)
-            m_velocity.z = 0;
+        //Vector3 normal = collision.GetContact(0).normal;
+        //if (normal.x > 0 && m_velocity.x < 0)
+        //    m_velocity.x = 0;
+        //if (normal.x < 0 && m_velocity.x > 0)
+        //    m_velocity.x = 0;
+        //if (normal.z < 0 && m_velocity.z > 0)
+        //    m_velocity.z = 0;
+        //if (normal.z > 0 && m_velocity.z < 0)
+        //    m_velocity.z = 0;
     }
 }
