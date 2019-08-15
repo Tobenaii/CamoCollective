@@ -5,8 +5,6 @@ using UnityEngine;
 public class ChonkJoustingLanceAttack : MonoBehaviour
 {
     [SerializeField]
-    private Transform m_lanceTransform;
-    [SerializeField]
     private float m_knockbackForce;
     [SerializeField]
     private float m_knockupForce;
@@ -18,6 +16,14 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
     private float m_invincibilityFlashTime;
     private bool m_isInvincible;
 
+    [Header("Joust")]
+    [SerializeField]
+    private float m_maxJoustAngle;
+    [SerializeField]
+    private float m_joustRotateSpeed;
+
+    private Vector3 m_targetAim;
+
     [Header("Data")]
     [SerializeField]
     private FloatReference m_scoreValue;
@@ -27,8 +33,10 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
 
     private void Update()
     {
+        RotateLanceOverTime();
+
         RaycastHit hit;
-        if (Physics.Raycast(new Ray(m_lanceTransform.position, m_lanceTransform.forward), out hit, 1))
+        if (Physics.Raycast(new Ray(transform.position, transform.forward), out hit, 1))
         {
             if (hit.transform.CompareTag("Player"))
             {
@@ -56,10 +64,36 @@ public class ChonkJoustingLanceAttack : MonoBehaviour
         }
     }
 
+    public void Aim(Vector2 joystick)
+    {
+        m_targetAim = new Vector3(joystick.x, 0, joystick.y);
+        m_targetAim = Quaternion.AngleAxis(90, Vector3.up) * m_targetAim;
+    }
+
+    public void RotateLanceOverTime()
+    {
+        Vector3 maxNegRot = Quaternion.AngleAxis(-m_maxJoustAngle, Vector3.up) * transform.forward;
+        Vector3 maxPosRot = Quaternion.AngleAxis(m_maxJoustAngle, Vector3.up) * transform.forward;
+
+        if (m_targetAim == Vector3.zero)
+            return;
+        Quaternion prevRot = transform.rotation;
+        transform.forward = m_targetAim;
+        Quaternion newRot = transform.transform.rotation;
+        transform.rotation = prevRot;
+        float targetDot = Vector3.Dot(m_targetAim, transform.right);
+        float frwdDot = Vector3.Dot(transform.forward, transform.right);
+        float angleNormal = Mathf.InverseLerp(90, 0, m_maxJoustAngle);
+        if (targetDot < angleNormal && frwdDot < angleNormal)
+            return;
+        transform.rotation = Quaternion.RotateTowards(transform.rotation, newRot, m_joustRotateSpeed);
+    }
+
+
     public void Knockback(Vector3 knockback, float knockup)
     {
-        GetComponent<Rigidbody>().AddForce(Vector3.up * knockup, ForceMode.Impulse);
-        GetComponent<Rigidbody>().AddForce(knockback, ForceMode.Impulse);
+        GetComponentInParent<Rigidbody>().AddForce(Vector3.up * knockup, ForceMode.Impulse);
+        GetComponentInParent<Rigidbody>().AddForce(knockback, ForceMode.Impulse);
     }
 
     public void Hurt(Vector3 knockback, float knockup)

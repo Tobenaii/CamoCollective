@@ -68,9 +68,11 @@ public class KingdomEditor : SceneView
     {
         bool pressed = (Event.current.isKey && Event.current.type == EventType.KeyDown && Event.current.keyCode == key && !m_buttonsPressed[(int)key]);
         if (pressed)
+        {
             m_buttonsPressed[(int)key] = true;
+            Event.current.Use();
+        }
         WasKeyReleased(key, false);
-        Event.current.Use();
         return pressed;
     }
 
@@ -78,9 +80,12 @@ public class KingdomEditor : SceneView
     {
         bool released = (Event.current.isKey && Event.current.type == EventType.KeyUp && Event.current.keyCode == key && m_buttonsPressed[(int)key]);
         if (released)
+        {
             m_buttonsPressed[(int)key] = false;
-        if (use)
-            Event.current.Use();
+            if (use)
+                Event.current.Use();
+        }
+
         return released;
     }
 
