@@ -28,11 +28,21 @@ public class StandardCharacterController : MonoBehaviour
     [SerializeField]
     private float m_maxDashForce;
     [SerializeField]
+    [Range(0, 1)]
     private float m_dashChargeSpeed;
     [SerializeField]
     private float m_dashCooldown;
     [Header("Sprint")]
-
+    [SerializeField]
+    private FloatReference m_stamina;
+    [SerializeField]
+    [Range(0,1)]
+    private float m_staminaRegenSpeed;
+    [SerializeField]
+    [Range(0, 1)]
+    private float m_staminaDecreaseSpeed;
+    [SerializeField]
+    private float m_sprintMoveSpeed;
     [Header("Input")]
     private float m_joystickDeadZone;
 
@@ -41,6 +51,8 @@ public class StandardCharacterController : MonoBehaviour
     private Quaternion m_targetRot;
     private bool m_isDashing;
     private float m_dashCooldownTimer;
+    private float m_curMoveSpeed;
+    private bool m_isSprinting;
 
     private Rigidbody m_rb;
 
@@ -48,6 +60,7 @@ public class StandardCharacterController : MonoBehaviour
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
+        m_curMoveSpeed = m_moveSpeed;
     }
 
     private void RotateChonkOverTime(Vector3 dir, float speed)
@@ -64,6 +77,17 @@ public class StandardCharacterController : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(m_isSprinting);
+        Debug.Log(m_stamina.Value);
+        if (m_isSprinting)
+        {
+            m_stamina.Value = Mathf.MoveTowards(m_stamina.Value, 0, m_staminaDecreaseSpeed * Time.deltaTime);
+            if (m_stamina.Value <= 0)
+                EndSprint();
+        }
+        else
+            m_stamina.Value = Mathf.MoveTowards(m_stamina.Value, 1, m_staminaRegenSpeed * Time.deltaTime);
+
         if (m_isDashing)
         {
             m_dashForceScale.Value = Mathf.MoveTowards(m_dashForceScale.Value, 1, m_dashChargeSpeed * Time.deltaTime);
@@ -106,6 +130,16 @@ public class StandardCharacterController : MonoBehaviour
         m_dashCooldownTimer = m_dashCooldown;
     }
 
+    public void StartSprint()
+    {
+        m_isSprinting = true;
+    }
+
+    public void EndSprint()
+    {
+        m_isSprinting = false;
+    }
+
     public void Move(Vector2 joystick)
     {
         float mag = joystick.magnitude;
@@ -114,10 +148,12 @@ public class StandardCharacterController : MonoBehaviour
         if (m_isDashing)
             Look(joystick);
 
+        m_curMoveSpeed = m_isSprinting ? m_sprintMoveSpeed : m_moveSpeed;
+
         float backwardDot = Vector3.Dot(m_velocity, transform.forward);
         float backwardMultiplier = Mathf.InverseLerp(1, -1, backwardDot);
         float multiplier = Mathf.Lerp(1, m_backwardVelocityMultiplier, backwardMultiplier);
-        Vector3 target = new Vector3(joystick.x, 0, joystick.y).normalized * (m_moveSpeed * multiplier);
+        Vector3 target = new Vector3(joystick.x, 0, joystick.y).normalized * (m_curMoveSpeed * multiplier);
         m_velocity = Vector3.MoveTowards(m_velocity, target, m_acceleration * Time.deltaTime);
     }
 
@@ -129,18 +165,5 @@ public class StandardCharacterController : MonoBehaviour
             return;
         }
         m_lookDir = new Vector3(joystick.x, 0, joystick.y);
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        //Vector3 normal = collision.GetContact(0).normal;
-        //if (normal.x > 0 && m_velocity.x < 0)
-        //    m_velocity.x = 0;
-        //if (normal.x < 0 && m_velocity.x > 0)
-        //    m_velocity.x = 0;
-        //if (normal.z < 0 && m_velocity.z > 0)
-        //    m_velocity.z = 0;
-        //if (normal.z > 0 && m_velocity.z < 0)
-        //    m_velocity.z = 0;
     }
 }
