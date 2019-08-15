@@ -24,7 +24,10 @@ public class Reference<TType, TValue> where TValue : Variable<TType>
         }
         set
         {
-            m_variable.SetValue(m_index, value);
+            if (useConstant)
+                m_constant = value;
+            else
+                m_variable.SetValue(m_index, value);
         }
     }
 

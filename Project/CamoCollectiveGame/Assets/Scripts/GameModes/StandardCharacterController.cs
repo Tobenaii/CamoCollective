@@ -22,6 +22,8 @@ public class StandardCharacterController : MonoBehaviour
     private float m_minRotationValue;
     [Header("Dash")]
     [SerializeField]
+    private FloatReference m_dashForceScale;
+    [SerializeField]
     private float m_minDashForce;
     [SerializeField]
     private float m_maxDashForce;
@@ -29,13 +31,14 @@ public class StandardCharacterController : MonoBehaviour
     private float m_dashChargeSpeed;
     [SerializeField]
     private float m_dashCooldown;
+    [Header("Sprint")]
+
     [Header("Input")]
     private float m_joystickDeadZone;
 
     private Vector3 m_velocity;
     private Vector3 m_lookDir;
     private Quaternion m_targetRot;
-    private float m_dashForce;
     private bool m_isDashing;
     private float m_dashCooldownTimer;
 
@@ -63,8 +66,8 @@ public class StandardCharacterController : MonoBehaviour
     {
         if (m_isDashing)
         {
-            m_dashForce = Mathf.MoveTowards(m_dashForce, m_maxDashForce, m_dashChargeSpeed * Time.deltaTime);
-            if (m_dashForce >= m_maxDashForce)
+            m_dashForceScale.Value = Mathf.MoveTowards(m_dashForceScale.Value, 1, m_dashChargeSpeed * Time.deltaTime);
+            if (m_dashForceScale.Value >= 1)
                 EndDash();
         }
         else if (m_dashCooldownTimer > 0)
@@ -90,7 +93,7 @@ public class StandardCharacterController : MonoBehaviour
         if (m_dashCooldownTimer > 0)
             return;
         m_isDashing = true;
-        m_dashForce = m_minDashForce;
+        m_dashForceScale.Value = 0;
         m_lookDir = transform.forward;
     }
 
@@ -99,7 +102,7 @@ public class StandardCharacterController : MonoBehaviour
         if (!m_isDashing)
             return;
         m_isDashing = false;
-        m_rb.AddForce(transform.forward * m_dashForce, ForceMode.Impulse);
+        m_rb.AddForce(transform.forward * Mathf.Lerp(m_minDashForce, m_maxDashForce, m_dashForceScale.Value), ForceMode.Impulse);
         m_dashCooldownTimer = m_dashCooldown;
     }
 
