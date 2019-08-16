@@ -25,6 +25,8 @@ public class ChonkJouster : MonoBehaviour
     [Header("Death")]
     [SerializeField]
     private float m_fadeAwayTime;
+    [SerializeField]
+    private int m_scoreLossOnDeath;
 
     [Header("Respawn")]
     [SerializeField]
@@ -51,6 +53,7 @@ public class ChonkJouster : MonoBehaviour
     //State
     private bool m_isInvincible;
     private bool m_isRespawning;
+    private bool m_triggeredRespawn;
 
     void Awake()
     {
@@ -138,12 +141,18 @@ public class ChonkJouster : MonoBehaviour
         //Disable input and start fading away
         m_controller.enabled = false;
         m_respawnTimer.Value = m_respawnTime;
-        StartCoroutine(FadeAway());
+        m_scoreValue.Value -= m_scoreLossOnDeath;
+        if (m_scoreValue.Value < 0)
+            m_scoreValue.Value = 0;
+        //StartCoroutine(FadeAway());
         m_isRespawning = true;
+        m_triggeredRespawn = false;
+        m_rb.detectCollisions = false;
     }
 
     public void Respawn()
     {
+        m_rb.isKinematic = true;
         m_respawnEvent.Invoke(gameObject);
         m_isRespawning = false;
         m_livesValue.Reset();
@@ -161,39 +170,44 @@ public class ChonkJouster : MonoBehaviour
 
         else if (other.CompareTag("Respawner"))
         {
-            m_controller.enabled = true;
-            m_respawnedEvent.Invoke();
-        }
-    }
-
-    private IEnumerator FadeAway()
-    {
-        //Set fade away ammount in shader to 1 over time
-        TimeLerper lerper = new TimeLerper();
-        Renderer[] renderers = GetComponentsInChildren<Renderer>();
-
-        foreach (Renderer rend in renderers)
-            rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-
-        float fadeTimer = m_fadeAwayTime;
-        while (fadeTimer > 0)
-        {
-            fadeTimer -= Time.deltaTime;
-            foreach (Renderer rend in renderers)
+            if (!m_triggeredRespawn)
             {
-                float dissolve = lerper.Lerp(0, 1, m_fadeAwayTime);
-                rend.material.SetFloat("_Amount", dissolve);
+                m_triggeredRespawn = true;
+                m_controller.enabled = true;
+                m_rb.useGravity = true;
+                m_respawnedEvent.Invoke();
             }
-            yield return null;
-        }
-        transform.position += Vector3.up * 1000;
-        yield return null;
-        foreach (Renderer rend in renderers)
-        {
-            rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-            rend.material.SetFloat("_Amount", 0);
         }
     }
+
+    //private IEnumerator FadeAway()
+    //{
+    //    //Set fade away ammount in shader to 1 over time
+    //    TimeLerper lerper = new TimeLerper();
+    //    Renderer[] renderers = GetComponentsInChildren<Renderer>();
+
+    //    foreach (Renderer rend in renderers)
+    //        rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+
+    //    float fadeTimer = m_fadeAwayTime;
+    //    while (fadeTimer > 0)
+    //    {
+    //        fadeTimer -= Time.deltaTime;
+    //        foreach (Renderer rend in renderers)
+    //        {
+    //            float dissolve = lerper.Lerp(0, 1, m_fadeAwayTime);
+    //            rend.material.SetFloat("_Amount", dissolve);
+    //        }
+    //        yield return null;
+    //    }
+    //    transform.position += Vector3.up * 1000;
+    //    yield return null;
+    //    foreach (Renderer rend in renderers)
+    //    {
+    //        rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
+    //        rend.material.SetFloat("_Amount", 0);
+    //    }
+    //}
 
     private IEnumerator Flash(float time, float flashTime)
     {
@@ -254,5 +268,10 @@ public class ChonkJouster : MonoBehaviour
             yield return null;
         }
         m_isInvincible = false;
+    }
+
+    private void OnMouseDown()
+    {
+        Die();
     }
 }
