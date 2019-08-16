@@ -11,8 +11,9 @@ public class ChonkJousterRespawner : MonoBehaviour
     [SerializeField]
     private float m_respawnForce;
     private List<GameObject> m_chonks = new List<GameObject>();
-    private bool m_respawning;
     private int m_chonkIndex = 0;
+    private bool m_isOpen;
+    private bool m_isRespawning;
 
     public void QueueRespawn(GameObject chonk)
     {
@@ -25,13 +26,18 @@ public class ChonkJousterRespawner : MonoBehaviour
     {
         if (m_chonks.Count == 0 || m_chonkIndex == m_chonks.Count)
             return;
+        if (!m_isOpen)
+        {
+            Startup();
+            return;
+        }
         StartCoroutine(DoQueuedRespawn(m_chonks[m_chonkIndex]));
-        m_respawning = true;
         m_chonkIndex++;
     }                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
     public void OnSpawned()
     {
+        m_isRespawning = false;
         m_chonks.RemoveAt(0);
         m_chonkIndex--;
         if (m_chonks.Count == 0)
@@ -42,31 +48,42 @@ public class ChonkJousterRespawner : MonoBehaviour
 
     IEnumerator DoQueuedRespawn(GameObject chonk)
     {
-        while (m_respawning)
+        while (m_isRespawning)
             yield return null;
-
+        m_isRespawning = true;
         chonk.transform.position = m_respawnPoint.position;
         chonk.transform.rotation = m_respawnPoint.rotation;
         chonk.SetActive(true);
         yield return null;
         Rigidbody rb = chonk.GetComponent<Rigidbody>();
-        rb.velocity = Vector3.zero;
-        rb.AddForce(chonk.transform.forward * m_respawnForce, ForceMode.Impulse);
+        rb.isKinematic = false;
+        //rb.useGravity = false;
+        rb.velocity = chonk.transform.forward * 10;
+        rb.detectCollisions = true;
+        //rb.AddForce(chonk.transform.forward * m_respawnForce, ForceMode.Impulse);
     }
 
     private void Startup()
     {
         if (m_chonks.Count > 1)
             return;
+        if (m_isOpen)
+        {
+            Respawn();
+            return;
+        }
         m_animator.SetTrigger("Open");
+        m_animator.ResetTrigger("Close");
+        m_isOpen = true;
     }
 
     private void Cleanup()
     {
         if (m_chonks.Count > 0)
             return;
-        m_respawning = false;
         m_animator.SetTrigger("Close");
+        m_animator.ResetTrigger("Open");
+        m_isOpen = false;
     }
 
 
