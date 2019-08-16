@@ -32,7 +32,6 @@ public class ChonkJousterRespawner : MonoBehaviour
 
     public void OnSpawned()
     {
-        m_respawning = false;
         m_chonks.RemoveAt(0);
         m_chonkIndex--;
         if (m_chonks.Count == 0)
@@ -66,6 +65,7 @@ public class ChonkJousterRespawner : MonoBehaviour
     {
         if (m_chonks.Count > 0)
             return;
+        m_respawning = false;
         m_animator.SetTrigger("Close");
     }
 
