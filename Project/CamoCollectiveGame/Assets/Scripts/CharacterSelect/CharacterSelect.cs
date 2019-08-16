@@ -13,8 +13,9 @@ public class CharacterSelect : MonoBehaviour
     [SerializeField]
     private List<CharacterData> m_characterPool;
     [SerializeField]
-    private GameObject m_joinPanel;
-
+    private GameObject m_joinText;
+    [SerializeField]
+    private GameObject m_playerNumberText;
 
     private float m_prevTriggerNext;
     private float m_prevTriggerPrev;
@@ -23,6 +24,8 @@ public class CharacterSelect : MonoBehaviour
 
     private void Awake()
     {
+        m_joinText.SetActive(true);
+        m_playerNumberText.SetActive(false);
         if (m_playerData.IsPlaying)
             Connect();
     }
@@ -36,7 +39,8 @@ public class CharacterSelect : MonoBehaviour
         m_initialized = true;
         m_image.gameObject.SetActive(true);
         m_playerData.IsPlaying = true;
-        m_joinPanel.SetActive(false);
+        m_joinText.SetActive(false);
+        m_playerNumberText.SetActive(true);
     }
 
     private void GetNextCharacter(int index)
