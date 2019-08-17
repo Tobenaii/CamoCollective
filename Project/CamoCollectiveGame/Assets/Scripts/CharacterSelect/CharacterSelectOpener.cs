@@ -8,6 +8,8 @@ public class CharacterSelectOpener : MonoBehaviour
     private BoolValue m_isOpen;
     [SerializeField]
     private List<PlayerData> m_playerData;
+    [SerializeField]
+    private GameEvent m_closeEvent;
     private Animator m_animator;
 
     private void Awake()
@@ -44,24 +46,9 @@ public class CharacterSelectOpener : MonoBehaviour
         m_animator.SetTrigger("Open");
     }
     
-    public void Close()
+    public void CloseCharacterSelect()
     {
-        bool hasPlayer = false;
-        foreach (PlayerData player in m_playerData)
-        {
-            if (player.IsPlaying)
-            {
-                hasPlayer = true;
-                break;
-            }
-        }
-        if (!hasPlayer)
-            return;
-        CloseCharacterSelect();
-    }
-
-    private void CloseCharacterSelect()
-    {
+        m_closeEvent.Invoke();
         m_isOpen.Value = false;
         m_animator.SetTrigger("Close");
     }

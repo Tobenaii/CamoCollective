@@ -9,16 +9,17 @@ public class PlayerJoiner : MonoBehaviour
     [SerializeField]
     private FloatValue m_playerControllers;
 
-    private PlayerData m_currentPlayerData;
+    [SerializeField]
+    private FloatReference m_currentPlayerIndex;
 
     public void Disconnected()
     {
-        m_currentPlayerData.IsPlaying = false;
+        m_players[(int)m_currentPlayerIndex.Value].IsPlaying = false;
     }
 
     public void Join(int controllerNum)
     {
-        if (m_currentPlayerData != null && m_currentPlayerData.IsPlaying)
+        if (m_players[(int)m_currentPlayerIndex.Value].IsPlaying)
             return;
 
         int index = 0;
@@ -27,7 +28,7 @@ public class PlayerJoiner : MonoBehaviour
             if (!player.IsPlaying)
             {
                 player.IsPlaying = true;
-                m_currentPlayerData = player;
+                m_currentPlayerIndex.Value = index;
                 m_playerControllers.SetValue(index, controllerNum);
                 break;
             }

@@ -45,13 +45,32 @@ public class CharacterSelect : MonoBehaviour
 
     private void GetNextCharacter(int index)
     {
-        if (m_characterPool.Count == 0)
-            return;
         index++;
         if (index == m_characterPool.Count)
             index = 0;
         if (index == m_currentIndex)
             return;
+        if (TryChangeCharacter(index))
+            return;
+        else
+            GetNextCharacter(index);
+    }
+
+    private void GetPreviousCharacter(int index)
+    {
+        index--;
+        if (index < 0)
+            index = m_characterPool.Count - 1;
+        if (index == m_currentIndex)
+            return;
+        if (TryChangeCharacter(index))
+            return;
+        else
+            GetPreviousCharacter(index);
+    }
+
+    private bool TryChangeCharacter(int index)
+    {
         if (!m_characterPool[index].inUse)
         {
             if (m_playerData.Character != null)
@@ -59,31 +78,9 @@ public class CharacterSelect : MonoBehaviour
             m_playerData.Character = m_characterPool[index];
             m_currentIndex = index;
             m_playerData.Character.inUse = true;
-            return;
+            return true;
         }
-        else
-            GetNextCharacter(index);
-    }
-
-    private void GetPreviousCharacter(int index)
-    {
-        if (m_characterPool.Count == 0)
-            return;
-        index--;
-        if (index < 0)
-            index = m_characterPool.Count - 1;
-        if (index == m_currentIndex)
-            return;
-        if (!m_characterPool[index].inUse)
-        {
-            m_playerData.Character.inUse = false;
-            m_playerData.Character = m_characterPool[index];
-            m_currentIndex = index;
-            m_playerData.Character.inUse = true;
-            return;
-        }
-        else
-            GetPreviousCharacter(index);
+        return false;
     }
 
     private void Update()

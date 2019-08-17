@@ -36,7 +36,7 @@ public class EventTrigger : StateMachineBehaviour
                 m_onUpdate.Invoke();
         }
         m_currentFrame += Time.deltaTime;
-        if (m_onComplete && !m_onCompleted && stateInfo.normalizedTime >= 1)
+        if (m_onComplete && !m_onCompleted && stateInfo.normalizedTime >= 0.95)
         {
             m_onComplete.Invoke();
             m_onCompleted = true;
@@ -47,7 +47,7 @@ public class EventTrigger : StateMachineBehaviour
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         //invoke onComplete when animation state exits
-        if (m_onComplete)
-            m_onComplete.Invoke();
+        //if (m_onComplete)
+        //    m_onComplete.Invoke();
     }
 }
