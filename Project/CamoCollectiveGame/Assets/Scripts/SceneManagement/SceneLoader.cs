@@ -56,9 +56,23 @@ public class SceneLoader : MonoBehaviour
         m_loadAmmount = m_scenesToLoad.Count;
         foreach (SceneValue scene in m_scenesToLoad)
         {
-            if (SceneManager.GetSceneByName(scene).IsValid())
-                return;
+            if (!m_unloadAllScenes && SceneManager.GetSceneByName(scene).IsValid())
+            {
+                m_loadedAmmount++;
+                CheckLoaded();
+                continue;
+            }
             SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        }
+    }
+
+    public void CheckLoaded()
+    {
+        if (m_loadedAmmount == m_loadAmmount)
+        {
+            SceneManager.sceneLoaded -= OnSceneLoaded;
+            SceneManager.sceneUnloaded -= OnSceneUnloaded;
+            m_loadedEvent?.Invoke();
         }
     }
 
@@ -89,12 +103,7 @@ public class SceneLoader : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         m_loadedAmmount++;
-        if (m_loadedAmmount == m_loadAmmount)
-        {
-            SceneManager.sceneLoaded -= OnSceneLoaded;
-            SceneManager.sceneUnloaded -= OnSceneUnloaded;
-            m_loadedEvent?.Invoke();
-        }
+        CheckLoaded();
     }
 
     private void OnSceneUnloaded(Scene scene)
