@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TowerClimbPlayerController : MonoBehaviour
 {
+    [Header("Movement")]
     [SerializeField]
     private float m_rotateSpeed;
     [SerializeField]
@@ -14,6 +15,10 @@ public class TowerClimbPlayerController : MonoBehaviour
     private float m_strafeSpeed;
     [SerializeField]
     private float m_autoClimbMoveSpeed;
+
+    [Header("Sticky Obstacle")]
+    [SerializeField]
+    private float m_stickyMovementScale;
 
     [Header("Data")]
     [SerializeField]
@@ -28,6 +33,7 @@ public class TowerClimbPlayerController : MonoBehaviour
     private bool m_playerFalling;
     private bool m_stopMoving;
     private Rigidbody m_rb;
+    private float m_climbScale;
 
     private void Awake()
     {
@@ -37,6 +43,11 @@ public class TowerClimbPlayerController : MonoBehaviour
         m_playerHasControl = false;
         m_rb = GetComponent<Rigidbody>();
         TakeControl();
+    }
+
+    private void Start()
+    {
+        m_climbScale = 1;
     }
 
     public void GiveControl()
@@ -64,7 +75,7 @@ public class TowerClimbPlayerController : MonoBehaviour
     public void MovePlayer(Vector2 joystick)
     {
         RaycastHit hit;
-        Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - joystick.x * m_strafeSpeed * Time.deltaTime);
+        Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - joystick.x * m_strafeSpeed * m_climbScale * Time.deltaTime);
         if (!Physics.Raycast(transform.position, newPos - transform.position, out hit, 0.5f))
         {
             transform.position = newPos;
@@ -90,6 +101,8 @@ public class TowerClimbPlayerController : MonoBehaviour
             return;
         RaycastHit hit;
         bool hitUp = Physics.Raycast(transform.position, Vector3.up, out hit, 1.0f);
+        if (hitUp && hit.collider.CompareTag("Mud"))
+            hitUp = false;
         if (hitUp && hit.transform.CompareTag("StopClimber"))
         {
             m_stopMoving = true;
@@ -107,8 +120,20 @@ public class TowerClimbPlayerController : MonoBehaviour
         if (transform.rotation == m_targetRot)
             m_atTargetRot = true;
         else if (m_playerHasControl && !hitUp)
-            transform.position = new Vector3(transform.position.x, transform.position.y + m_climbSpeed * Time.deltaTime, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + m_climbSpeed * m_climbScale * Time.deltaTime, transform.position.z);
         if (m_playerFalling)
             transform.position += Vector3.down * m_fallSpeed.Value * Time.deltaTime;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Mud"))
+            m_climbScale = m_stickyMovementScale;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Mud"))
+            m_climbScale = 1;
     }
 }

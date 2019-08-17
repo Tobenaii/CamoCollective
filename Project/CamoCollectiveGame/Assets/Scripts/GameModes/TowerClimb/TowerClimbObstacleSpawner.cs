@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class TowerClimbObstacleSpawner : MonoBehaviour
@@ -21,6 +22,7 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
     private List<Obstacle> m_obstacles;
 
     private List<GameObject> m_liveObstacles = new List<GameObject>();
+    private List<Obstacle> m_possibleObstacles = new List<Obstacle>();
     private float m_frequencyTimer;
     private bool m_spawn;
     private bool m_move;
@@ -67,19 +69,21 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
         if (m_frequencyTimer <= 0)
         {
             m_frequencyTimer = m_spawnFrequency;
-            int spawn = Random.Range(1, 101);
+            int spawnValue = Random.Range(1, 101);
 
-            Obstacle obstacle = null;
-            foreach (Obstacle o in m_obstacles)
+            m_possibleObstacles.Clear();
+
+            foreach (Obstacle obstacle in m_obstacles)
             {
-                if (obstacle == null && o.spawnChance < spawn)
-                    obstacle = o;
-                else if (o.spawnChance < spawn && o.spawnChance < obstacle.spawnChance)
-                    obstacle = o;
+                if (obstacle.spawnChance < spawnValue)
+                    m_possibleObstacles.Add(obstacle);
             }
-            if (obstacle != null)
+
+            if (m_possibleObstacles.Count > 0)
             {
-                GameObject obstacleObj = obstacle.objectPool.GetObject();
+                int randObstacle = Random.Range(0, m_possibleObstacles.Count);
+
+                GameObject obstacleObj = m_possibleObstacles[randObstacle].objectPool.GetObject();
                 obstacleObj.transform.rotation = transform.rotation;
                 obstacleObj.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Random.Range(-m_extents, m_extents));
                 obstacleObj.transform.SetParent(transform);
