@@ -93,6 +93,11 @@ public class SceneLoader : MonoBehaviour
     private void UnloadAllScenes()
     {
         m_unloadAmmount = SceneManager.sceneCount - 1;
+        if (m_unloadAmmount == 0)
+        {
+            LoadScenes();
+            return;
+        }
         for (int i = 0; i < m_unloadAmmount + 1; i++)
         {
             if (SceneManager.GetSceneAt(i).name != gameObject.scene.name)
