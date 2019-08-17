@@ -77,8 +77,6 @@ public class StandardCharacterController : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(m_isSprinting);
-        Debug.Log(m_stamina.Value);
         if (m_isSprinting)
         {
             m_stamina.Value = Mathf.MoveTowards(m_stamina.Value, 0, m_staminaDecreaseSpeed * Time.deltaTime);
