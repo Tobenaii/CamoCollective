@@ -50,7 +50,7 @@ public class SceneLoader : MonoBehaviour
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
             SceneManager.sceneUnloaded -= OnSceneUnloaded;
-            m_loadedEvent.Invoke();
+            m_loadedEvent?.Invoke();
             return;
         }
         m_loadAmmount = m_scenesToLoad.Count;

@@ -40,10 +40,12 @@ public class CharacterSelectOpener : MonoBehaviour
         return hasPlayer;
     }
 
-    private void OpenCharacterSelect()
+    public void OpenCharacterSelect()
     {
+        m_animator.enabled = true;
         m_isOpen.Value = true;
         m_animator.SetTrigger("Open");
+        m_animator.ResetTrigger("Close");
     }
     
     public void CloseCharacterSelect()
@@ -51,5 +53,6 @@ public class CharacterSelectOpener : MonoBehaviour
         m_closeEvent.Invoke();
         m_isOpen.Value = false;
         m_animator.SetTrigger("Close");
+        m_animator.ResetTrigger("Open");
     }
 }
