@@ -74,6 +74,7 @@ public class ChonkJouster : MonoBehaviour
         character.transform.localRotation = Quaternion.identity;
         m_livesValue.Reset();
         m_scoreValue.Reset();
+        m_chonkSpeedScale.Value = 1;
     }
 
     void Update()
