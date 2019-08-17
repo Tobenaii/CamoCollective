@@ -252,6 +252,11 @@ public class InputMapper : MonoBehaviour
         m_disabled = false;
     }
 
+    public void SetToControllerNum(FloatValue value)
+    {
+        value.Value = m_controllerNumber.Value;
+    }
+
     private void Update()
     {
         if (m_disabled)

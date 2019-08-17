@@ -6,16 +6,19 @@ using UnityEngine.EventSystems;
 public class PauseGame : MonoBehaviour
 {
     [SerializeField]
-    private GameObject m_firstMenuItem;
+    private GameEvent m_gamePausedEvent;
+    [SerializeField]
+    private GameEvent m_gameResumedEvent;
 
     private void Awake()
     {
-        EventSystem.current.SetSelectedGameObject(m_firstMenuItem);
         Time.timeScale = 0;
+        m_gamePausedEvent.Invoke();
     }
 
     private void OnDisable()
     {
         Time.timeScale = 1;
+        m_gameResumedEvent.Invoke();
     }
 }

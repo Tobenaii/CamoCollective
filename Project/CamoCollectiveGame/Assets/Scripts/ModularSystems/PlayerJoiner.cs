@@ -19,7 +19,7 @@ public class PlayerJoiner : MonoBehaviour
 
     public void Join(int controllerNum)
     {
-        if (m_players[(int)m_currentPlayerIndex.Value].IsPlaying)
+        if (m_currentPlayerIndex.Value != -1 && m_players[(int)m_currentPlayerIndex.Value].IsPlaying)
             return;
 
         int index = 0;
