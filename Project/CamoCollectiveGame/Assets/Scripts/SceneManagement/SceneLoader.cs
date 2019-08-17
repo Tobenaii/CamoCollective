@@ -55,7 +55,11 @@ public class SceneLoader : MonoBehaviour
         }
         m_loadAmmount = m_scenesToLoad.Count;
         foreach (SceneValue scene in m_scenesToLoad)
+        {
+            if (SceneManager.GetSceneByName(scene).IsValid())
+                return;
             SceneManager.LoadSceneAsync(scene, LoadSceneMode.Additive);
+        }
     }
 
     private void UnloadScenes()
@@ -67,7 +71,9 @@ public class SceneLoader : MonoBehaviour
         }
         m_unloadAmmount = m_scenesToUnload.Count;
         foreach (SceneValue scene in m_scenesToUnload)
+        {
             SceneManager.UnloadSceneAsync(scene);
+        }
     }
 
     private void UnloadAllScenes()

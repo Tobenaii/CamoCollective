@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4508574378673596375}
   - component: {fileID: 4591651431310112951}
   - component: {fileID: 2169452279697505274}
+  - component: {fileID: 1081933985081646400}
+  - component: {fileID: 9048602410507865624}
   m_Layer: 0
   m_Name: TowerClimbPlayer
   m_TagString: Untagged
@@ -238,7 +240,7 @@ MonoBehaviour:
       prevButtonState: 0
       delay: 0
       cooldown: 0
-      onButtonDown: 0
+      onButtonDown: 1
       onButtonHold: 0
       onButtonRelease: 0
       delayTime: 0
@@ -268,11 +270,12 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
         - m_Target: {fileID: 4508574378673596376}
-          m_MethodName: SetUIController
-          m_Mode: 1
+          m_MethodName: SetToControllerNum
+          m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_ObjectArgument: {fileID: 11400000, guid: 172dc2899a71e6f4eb8b58c393dd6ca5,
+              type: 2}
+            m_ObjectArgumentAssemblyTypeName: FloatValue, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
@@ -322,7 +325,6 @@ MonoBehaviour:
     m_variable: {fileID: 11400000, guid: 5e4261c139267984580a96e53eeafa49, type: 2}
   m_strafeSpeed: 5
   m_autoClimbMoveSpeed: 12
-  m_reachedTopEvent: {fileID: 11400000, guid: 2c03b0c2cbf9e3645aa501cfa5a3a60f, type: 2}
   m_yPosValue:
     m_index: 0
     useConstant: 0
@@ -484,6 +486,64 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 4508574378673596377}
         m_MethodName: StopFalling
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1081933985081646400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508574378673596382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ff1e128af921d9b4a93888c13fe6adcc, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4508574378673596376}
+        m_MethodName: DisableInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &9048602410507865624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4508574378673596382}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: dfd0cfa86d4cf9f4aa17216767da4c83, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4508574378673596376}
+        m_MethodName: EnableInput
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
