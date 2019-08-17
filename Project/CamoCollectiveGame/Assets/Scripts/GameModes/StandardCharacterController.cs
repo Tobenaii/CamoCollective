@@ -8,6 +8,8 @@ public class StandardCharacterController : MonoBehaviour
     [SerializeField]
     private float m_moveSpeed;
     [SerializeField]
+    private FloatReference m_moveSpeedScale;
+    [SerializeField]
     private float m_backwardVelocityMultiplier;
     [SerializeField]
     private float m_acceleration;
@@ -146,7 +148,7 @@ public class StandardCharacterController : MonoBehaviour
         if (m_isDashing)
             Look(joystick);
 
-        m_curMoveSpeed = m_isSprinting ? m_sprintMoveSpeed : m_moveSpeed;
+        m_curMoveSpeed = (m_isSprinting ? m_sprintMoveSpeed : m_moveSpeed) * m_moveSpeedScale.Value;
 
         float backwardDot = Vector3.Dot(m_velocity, transform.forward);
         float backwardMultiplier = Mathf.InverseLerp(1, -1, backwardDot);

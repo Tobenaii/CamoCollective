@@ -83,6 +83,7 @@ MonoBehaviour:
   m_fadeAwayTime: 2
   m_scoreLossOnDeath: 2
   m_respawnTime: 3
+  m_speedScaleInMud: 0.5
   m_player: {fileID: 0}
   m_scoreValue:
     m_index: 0
@@ -101,6 +102,11 @@ MonoBehaviour:
     m_variable: {fileID: 11400000, guid: f8ffa813e21018a46a3a7fe58b0ebfad, type: 2}
   m_respawnEvent: {fileID: 11400000, guid: 4cce63c12ebee0a46bc8d41e5148eb5c, type: 2}
   m_respawnedEvent: {fileID: 11400000, guid: 497acc1f9471e8e44b55135dbe097851, type: 2}
+  m_chonkSpeedScale:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 2d9bd5b9a7b45844c956c583e3de8ad4, type: 2}
 --- !u!114 &161683513231905873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -114,6 +120,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_moveSpeed: 15
+  m_moveSpeedScale:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 2d9bd5b9a7b45844c956c583e3de8ad4, type: 2}
   m_backwardVelocityMultiplier: 0.5
   m_acceleration: 25
   m_stopSpeed: 10

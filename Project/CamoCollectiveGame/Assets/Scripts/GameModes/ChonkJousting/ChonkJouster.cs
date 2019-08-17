@@ -32,6 +32,10 @@ public class ChonkJouster : MonoBehaviour
     [SerializeField]
     private float m_respawnTime;
 
+    [Header("Mud")]
+    [SerializeField]
+    private float m_speedScaleInMud;
+
     [Header("Data")]
     [SerializeField]
     private PlayerData m_player;
@@ -45,6 +49,8 @@ public class ChonkJouster : MonoBehaviour
     private GameObjectEvent m_respawnEvent;
     [SerializeField]
     private GameEvent m_respawnedEvent;
+    [SerializeField]
+    private FloatReference m_chonkSpeedScale;
 
     //Components
     private Rigidbody m_rb;
@@ -178,6 +184,15 @@ public class ChonkJouster : MonoBehaviour
                 m_respawnedEvent.Invoke();
             }
         }
+
+        else if (other.CompareTag("Mud"))
+            m_chonkSpeedScale.Value = m_speedScaleInMud;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Mud"))
+            m_chonkSpeedScale.Value = 1;
     }
 
     //private IEnumerator FadeAway()
