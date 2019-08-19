@@ -112,7 +112,6 @@ public class StandardCharacterController : MonoBehaviour
         else if (m_lookOverride)
         {
             RotateChonkOverTime(m_lookDir, m_lookRotateSpeed);
-            Debug.Log(m_velocity.magnitude);
             m_rb.MovePosition(transform.position + m_velocity * Time.deltaTime);
         }
     }
