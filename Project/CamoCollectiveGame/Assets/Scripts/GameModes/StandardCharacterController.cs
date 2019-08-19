@@ -57,6 +57,7 @@ public class StandardCharacterController : MonoBehaviour
     private bool m_isSprinting;
 
     private Rigidbody m_rb;
+    private bool m_lookOverride;
 
     // Start is called before the first frame update
     void Start()
@@ -103,13 +104,17 @@ public class StandardCharacterController : MonoBehaviour
     private void FixedUpdate()
     {
         m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_stopSpeed * Time.deltaTime);
-        if (!m_isDashing)
+        if (!m_isDashing && !m_lookOverride)
         {
             RotateChonkOverTime(m_velocity, m_moveRotateSpeed);
             m_rb.MovePosition(transform.position + transform.forward * m_velocity.magnitude * Time.deltaTime);
         }
-        else
+        else if (m_lookOverride)
+        {
             RotateChonkOverTime(m_lookDir, m_lookRotateSpeed);
+            Debug.Log(m_velocity.magnitude);
+            m_rb.MovePosition(transform.position + m_velocity * Time.deltaTime);
+        }
     }
 
     public void StartDash()
@@ -153,17 +158,19 @@ public class StandardCharacterController : MonoBehaviour
         float backwardDot = Vector3.Dot(m_velocity, transform.forward);
         float backwardMultiplier = Mathf.InverseLerp(1, -1, backwardDot);
         float multiplier = Mathf.Lerp(1, m_backwardVelocityMultiplier, backwardMultiplier);
-        Vector3 target = new Vector3(joystick.x, 0, joystick.y).normalized * (m_curMoveSpeed * multiplier);
+        Vector3 target = new Vector3(joystick.x, 0, joystick.y).normalized * (m_curMoveSpeed);
         m_velocity = Vector3.MoveTowards(m_velocity, target, m_acceleration * Time.deltaTime);
     }
 
     public void Look(Vector2 joystick)
     {
-        if (Vector3.Magnitude(joystick) < m_joystickDeadZone)
+        if (Vector3.Magnitude(joystick) <= m_joystickDeadZone)
         {
             m_lookDir = transform.forward;
+            m_lookOverride = false;
             return;
         }
+        m_lookOverride = true;
         m_lookDir = new Vector3(joystick.x, 0, joystick.y);
     }
 }

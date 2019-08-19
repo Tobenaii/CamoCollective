@@ -263,12 +263,35 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff6464134e6f33f4a991301d9057948b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 10
-  m_backwardVelocityMultiplier: 10
-  m_acceleration: 10
+  m_moveSpeed: 15
+  m_moveSpeedScale:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 2d9bd5b9a7b45844c956c583e3de8ad4, type: 2}
+  m_backwardVelocityMultiplier: 0.5
+  m_acceleration: 25
   m_stopSpeed: 10
-  m_lookRotateSpeed: 10
-  m_moveRotateSpeed: 10
+  m_lookRotateSpeed: 600
+  m_moveRotateSpeed: 600
+  m_minRotationValue: 0
+  m_dashForceScale:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
+  m_minDashForce: 20
+  m_maxDashForce: 40
+  m_dashChargeSpeed: 1
+  m_dashCooldown: 4
+  m_stamina:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
+  m_staminaRegenSpeed: 0.25
+  m_staminaDecreaseSpeed: 0.25
+  m_sprintMoveSpeed: 40
 --- !u!54 &1414134112084113511
 Rigidbody:
   m_ObjectHideFlags: 0
