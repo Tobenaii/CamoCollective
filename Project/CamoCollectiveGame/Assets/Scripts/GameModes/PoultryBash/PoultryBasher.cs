@@ -21,15 +21,25 @@ public class PoultryBasher : MonoBehaviour
     [Header("Data")]
     [SerializeField]
     private BoolReference m_deadValue;
+    [SerializeField]
+    private GameObjectEvent m_dynamicCameraEvent;
+    [SerializeField]
+    private GameEvent m_dynamicCameraStartEvent;
 
     private bool m_punchedRight;
     private bool m_punchedLeft;
 
     private InputMapper m_input;
 
+    private void Awake()
+    {
+    }
+
     private void Start()
     {
+        m_dynamicCameraEvent.Invoke(gameObject);
         m_input = GetComponent<InputMapper>();
+        m_dynamicCameraStartEvent.Invoke();
     }
 
     private void OnCollisionEnter(Collision collision)
