@@ -24,6 +24,8 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private GameObjectEvent m_dynamicCameraEvent;
     [SerializeField]
+    private GameObjectEvent m_dynamicCameraRemoveEvent;
+    [SerializeField]
     private GameEvent m_dynamicCameraStartEvent;
 
     private bool m_punchedRight;
@@ -48,6 +50,7 @@ public class PoultryBasher : MonoBehaviour
         {
             m_deadValue.Value = true;
             m_input.DisableInput();
+            m_dynamicCameraRemoveEvent.Invoke(gameObject);
         }
     }
 
