@@ -21,6 +21,8 @@ public class PoultryBashWin : MonoBehaviour
     private FloatValue m_roundNumberValue;
     [SerializeField]
     private float m_numberOfRounds;
+    [SerializeField]
+    private FloatValue m_scoreValues;
 
     private bool m_wonGame;
     private int m_winner;
@@ -98,7 +100,10 @@ public class PoultryBashWin : MonoBehaviour
         if (alive == 0)
             m_winnerText.text = "NOBODY WINS!!!";
         else
+        {
             m_winnerText.text = m_players[winner].Character.name + " WINS!!!";
+            m_scoreValues.SetValue(winner, m_scoreValues.GetValue(winner) + 1);
+        }
         float timer = 3;
         while (timer > 0)
         {

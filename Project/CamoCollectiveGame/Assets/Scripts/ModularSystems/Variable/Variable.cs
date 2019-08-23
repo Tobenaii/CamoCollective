@@ -35,6 +35,12 @@ public abstract class Variable<T> : ScriptableObject, ISerializationCallbackRece
         m_runtimeValues[index] = value;
     }
 
+    public void Reset()
+    {
+        for (int i = 0; i < m_runtimeValues.Length; i++)
+            m_runtimeValues[i] = value;
+    }
+
     public void OnBeforeSerialize()
     {
     }
