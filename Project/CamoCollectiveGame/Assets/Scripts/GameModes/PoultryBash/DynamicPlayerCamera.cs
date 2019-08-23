@@ -68,7 +68,6 @@ public class DynamicPlayerCamera : MonoBehaviour
         float normSize = Mathf.InverseLerp(m_minimumZoom, m_maximumZoom, size);
         float newNormSize = m_zoomCurve.Evaluate(normSize);
         float newSize = Mathf.Lerp(m_minimumZoom, m_maximumZoom, newNormSize);
-        Debug.Log(newNormSize);
         transform.position = Vector3.SmoothDamp(transform.position, (m_midPos + m_offset) - transform.forward * newSize * m_zoomBufferSpace, ref m_zoomVelocity, m_zoomSpeed);
     }
 

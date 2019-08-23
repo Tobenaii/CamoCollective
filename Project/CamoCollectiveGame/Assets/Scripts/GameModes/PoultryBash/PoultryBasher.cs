@@ -20,9 +20,11 @@ public class PoultryBasher : MonoBehaviour
 
     [Header("Data")]
     [SerializeField]
+    private PlayerData m_playerData;
+    [SerializeField]
     private BoolReference m_deadValue;
     [SerializeField]
-    private GameObjectEvent m_dynamicCameraEvent;
+    private GameObjectEvent m_dynamicCameraAddEvent;
     [SerializeField]
     private GameObjectEvent m_dynamicCameraRemoveEvent;
     [SerializeField]
@@ -30,8 +32,14 @@ public class PoultryBasher : MonoBehaviour
 
     private bool m_punchedRight;
     private bool m_punchedLeft;
+    private bool m_isPunching;
 
     private InputMapper m_input;
+
+    public bool m_leftPunch;
+
+    private bool m_punchQueued;
+    private bool m_inRing;
 
     private void Awake()
     {
@@ -39,9 +47,22 @@ public class PoultryBasher : MonoBehaviour
 
     private void Start()
     {
-        m_dynamicCameraEvent.Invoke(gameObject);
+        m_dynamicCameraAddEvent.Invoke(gameObject);
         m_input = GetComponent<InputMapper>();
         m_dynamicCameraStartEvent.Invoke();
+        //Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Stop"))
+            m_inRing = true;
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Stop"))
+            m_inRing = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -54,6 +75,23 @@ public class PoultryBasher : MonoBehaviour
         }
     }
 
+    public void AlternatePunch()
+    {
+        if (m_leftPunch)
+            QueueNextPunch("LeftPunch");
+        else
+            QueueNextPunch("RightPunch");
+    }
+
+    private void QueueNextPunch(string anim)
+    {
+        if (m_punchQueued)
+            return;
+        if (!m_inRing)
+            return;
+        m_animator.SetTrigger(anim);
+    }
+
     public void LeftPunch(float trigger)
     {
         if (trigger == 0)
@@ -64,7 +102,7 @@ public class PoultryBasher : MonoBehaviour
         if (m_punchedLeft)
             return;
         m_punchedLeft = true;
-        m_animator.SetTrigger("LeftPunch");
+        QueueNextPunch("LeftPunch");
     }
 
     public void RightPunch(float trigger)
@@ -77,11 +115,13 @@ public class PoultryBasher : MonoBehaviour
         if (m_punchedRight)
             return;
         m_punchedRight = true;
-        m_animator.SetTrigger("RightPunch");
+        QueueNextPunch("RightPunch");
     }
 
     public void Punch()
     {
+        if (!m_inRing)
+            return;
         RaycastHit hit;
         if (Physics.CapsuleCast((transform.position - transform.up / 2) - transform.forward * m_punchRadius, (transform.position + transform.up / 2) - transform.forward * m_punchRadius, m_punchRadius, transform.forward, out hit, m_punchDistance, 1<<10))
         {
@@ -89,5 +129,16 @@ public class PoultryBasher : MonoBehaviour
             rb.AddForce(transform.forward * m_knockback, ForceMode.Impulse);
             rb.AddForce(Vector3.up * m_knockup, ForceMode.Impulse);
         }
+    }
+
+    public void OnPunchEnd()
+    {
+        m_punchQueued = false;
+        m_leftPunch = !m_leftPunch;
+    }
+
+    private void OnDestroy()
+    {
+        m_dynamicCameraRemoveEvent.Invoke(gameObject);
     }
 }

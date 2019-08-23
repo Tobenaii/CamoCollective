@@ -13,12 +13,12 @@ public class PauseGame : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = 0;
-        m_gamePausedEvent.Invoke();
+        m_gamePausedEvent?.Invoke();
     }
 
     private void OnDisable()
     {
         Time.timeScale = 1;
-        m_gameResumedEvent.Invoke();
+        m_gameResumedEvent?.Invoke();
     }
 }

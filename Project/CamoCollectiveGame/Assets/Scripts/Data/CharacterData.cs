@@ -11,6 +11,8 @@ public class CharacterData : ScriptableObject
     private Color m_tempColour;
     [SerializeField]
     private GameObject m_chonkJoustingCharacter;
+    [SerializeField]
+    private GameObject m_poultryBashCharacter;
 
     [System.NonSerialized]
     public bool inUse;
@@ -18,4 +20,5 @@ public class CharacterData : ScriptableObject
     public Sprite Icon { get { return m_icon; } private set { } }
     public Color TempColour { get { return m_tempColour; } private set { } }
     public GameObject ChonkJoustingCharacter { get { return m_chonkJoustingCharacter; } private set { } }
+    public GameObject PoultryBashCharacter { get { return m_poultryBashCharacter; } private set { } }
 }

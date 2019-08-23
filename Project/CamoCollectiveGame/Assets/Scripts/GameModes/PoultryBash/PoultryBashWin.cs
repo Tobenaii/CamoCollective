@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PoultryBashWin : MonoBehaviour
@@ -14,8 +15,15 @@ public class PoultryBashWin : MonoBehaviour
     private Text m_winnerText;
     [SerializeField]
     private GameEvent m_finishedEvent;
+    [SerializeField]
+    private float m_winnerCheckInterval;
+    [SerializeField]
+    private FloatValue m_roundNumberValue;
+    [SerializeField]
+    private float m_numberOfRounds;
 
     private bool m_wonGame;
+    private int m_winner;
 
     private void Start()
     {
@@ -30,8 +38,17 @@ public class PoultryBashWin : MonoBehaviour
     {
         if (m_wonGame)
             return;
+        int alive = GetAliveCount();
+
+        if (alive > 1)
+            return;
+        StartCoroutine(DrawCheck());
+    }
+
+    private int GetAliveCount()
+    {
         int alive = 0;
-        int winner = -1;
+        m_winner = -1;
         for (int i = 0; i < 4; i++)
         {
             if (!m_players[i].IsPlaying)
@@ -39,14 +56,56 @@ public class PoultryBashWin : MonoBehaviour
             bool dead = m_deadValues.GetValue(i);
             alive += Convert.ToInt32(!m_deadValues.GetValue(i));
             if (!dead)
-                winner = i;
+                m_winner = i;
         }
+        return alive;
+    }
 
-        if (alive > 1 || winner == -1)
-            return;
-        m_winnerText.gameObject.SetActive(true);
-        m_winnerText.text = m_players[winner].Character.name + " WINS!!!";
+    private IEnumerator DrawCheck()
+    {
         m_wonGame = true;
-        m_finishedEvent.Invoke();
+        float checkTimer = m_winnerCheckInterval;
+        while (checkTimer > 0)
+        {
+            checkTimer -= Time.deltaTime;
+            yield return null;
+        }
+        int winner = -1;
+        WinGame(GetAliveCount());
+    }
+
+    private void WinGame(int alive)
+    {
+        m_wonGame = true;
+        if (m_roundNumberValue.Value == m_numberOfRounds - 1)
+        {
+            m_winnerText.gameObject.SetActive(true);
+            //if (alive == 0)
+            //    m_winnerText.text = "NOBODY WINS!!!";
+            //else
+            //    m_winnerText.text = m_players[m_winner].Character.name + " WINS!!!";
+            m_finishedEvent.Invoke();
+            return;
+        }
+        Debug.Log("ROUND: " + (m_roundNumberValue.Value + 1));
+        m_roundNumberValue.Value++;
+        StartCoroutine(WinnerText(m_winner, alive));
+    }
+
+    IEnumerator WinnerText(int winner, int alive)
+    {
+        m_winnerText.gameObject.SetActive(true);
+        if (alive == 0)
+            m_winnerText.text = "NOBODY WINS!!!";
+        else
+            m_winnerText.text = m_players[winner].Character.name + " WINS!!!";
+        float timer = 3;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        SceneManager.UnloadSceneAsync(gameObject.scene);
+        SceneManager.LoadSceneAsync(gameObject.scene.name, LoadSceneMode.Additive);
     }
 }
