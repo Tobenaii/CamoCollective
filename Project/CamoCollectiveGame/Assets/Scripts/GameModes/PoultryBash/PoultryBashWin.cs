@@ -80,7 +80,7 @@ public class PoultryBashWin : MonoBehaviour
     {
         m_wonGame = true;
         m_roundNumberValue.Value++;
-        if (m_scoreValues.GetValue(m_winner) == m_numberOfWins)
+        if (m_winner >= 0 && m_scoreValues.GetValue(m_winner) == m_numberOfWins)
         {
             m_winnerText.gameObject.SetActive(true);
             m_winnerText.text = m_players[m_winner].Character.name + " WINS THE ENTIRE GAME!!!";

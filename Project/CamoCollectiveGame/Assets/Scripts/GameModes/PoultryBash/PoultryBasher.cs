@@ -50,6 +50,8 @@ public class PoultryBasher : MonoBehaviour
         m_dynamicCameraAddEvent.Invoke(gameObject);
         m_input = GetComponent<InputMapper>();
         m_dynamicCameraStartEvent.Invoke();
+        foreach (Renderer rend in GetComponentsInChildren<Renderer>())
+            rend.material.color = m_playerData.Character.TempColour;
         //Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
     }
 
