@@ -15,6 +15,8 @@ public class DynamicPlayerCamera : MonoBehaviour
     private float m_maximumZoom;
     [SerializeField]
     private Vector3 m_offset;
+    [SerializeField]
+    private AnimationCurve m_zoomCurve;
 
     private List<GameObject> m_gameObjects = new List<GameObject>();
 
@@ -63,7 +65,11 @@ public class DynamicPlayerCamera : MonoBehaviour
 
         float size = (bounds.size.x > bounds.size.z) ? bounds.size.x : bounds.size.z;
         size = Mathf.Clamp(size, m_minimumZoom, m_maximumZoom);
-        transform.position = Vector3.SmoothDamp(transform.position, (m_midPos + m_offset) - transform.forward * size * m_zoomBufferSpace, ref m_zoomVelocity, m_zoomSpeed);
+        float normSize = Mathf.InverseLerp(m_minimumZoom, m_maximumZoom, size);
+        float newNormSize = m_zoomCurve.Evaluate(normSize);
+        float newSize = Mathf.Lerp(m_minimumZoom, m_maximumZoom, newNormSize);
+        Debug.Log(newNormSize);
+        transform.position = Vector3.SmoothDamp(transform.position, (m_midPos + m_offset) - transform.forward * newSize * m_zoomBufferSpace, ref m_zoomVelocity, m_zoomSpeed);
     }
 
     private void OnDrawGizmos()
