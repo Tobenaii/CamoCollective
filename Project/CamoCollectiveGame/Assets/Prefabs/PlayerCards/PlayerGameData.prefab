@@ -86,6 +86,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 693771883116399719}
+  - component: {fileID: 6607832532748933592}
   m_Layer: 5
   m_Name: PlayerGameData
   m_TagString: Untagged
@@ -113,6 +114,19 @@ RectTransform:
   m_AnchoredPosition: {x: 210, y: -150}
   m_SizeDelta: {x: 240, y: 240}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6607832532748933592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693771883116399720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3c39f42d0ee094ba92b08ec7bfc266, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerData: {fileID: 0}
 --- !u!1 &693771883885622245
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +138,7 @@ GameObject:
   - component: {fileID: 693771883885622244}
   - component: {fileID: 693771883885622242}
   - component: {fileID: 693771883885622243}
+  - component: {fileID: 2249111135014755360}
   m_Layer: 5
   m_Name: PlayerSprite
   m_TagString: Untagged
@@ -187,6 +202,19 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &2249111135014755360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 693771883885622245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34346b8694a2e24aaa86b3f112e51e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_player: {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590, type: 2}
 --- !u!1 &693771884009409287
 GameObject:
   m_ObjectHideFlags: 0
@@ -277,6 +305,7 @@ GameObject:
   - component: {fileID: 2932394970919716675}
   - component: {fileID: 1422288582592242966}
   - component: {fileID: 160520328814490296}
+  - component: {fileID: 3903810573845222766}
   m_Layer: 5
   m_Name: PlayerScoreText
   m_TagString: Untagged
@@ -345,3 +374,21 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: 00
+--- !u!114 &3903810573845222766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2934018458221086664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07a1f603c92b9e41aaa0c44b389cb84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_floatValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: be05ff3b4e44b704f892246306e76baa, type: 2}
+  m_text: {fileID: 160520328814490296}

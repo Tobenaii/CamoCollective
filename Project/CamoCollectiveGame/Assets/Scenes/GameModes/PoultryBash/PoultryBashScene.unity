@@ -450,6 +450,23 @@ PrefabInstance:
       propertyPath: m_Text
       value: Player 2
       objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
+    - target: {fileID: 3903810573845222766, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_floatValue.m_index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607832532748933592, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
 --- !u!224 &423308825 stripped
@@ -658,6 +675,23 @@ PrefabInstance:
       propertyPath: m_Text
       value: Player 4
       objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
+        type: 2}
+    - target: {fileID: 3903810573845222766, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_floatValue.m_index
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607832532748933592, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
 --- !u!224 &583318499 stripped
@@ -1016,6 +1050,12 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6607832532748933592, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
 --- !u!224 &781129735 stripped
@@ -1308,7 +1348,7 @@ GameObject:
   - component: {fileID: 1276482118}
   - component: {fileID: 1276482117}
   m_Layer: 5
-  m_Name: Text
+  m_Name: WinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1366,7 +1406,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Wizard WINS!!!
+  m_Text: Chonker WINS!!!
 --- !u!222 &1276482118
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1680,6 +1720,23 @@ PrefabInstance:
       propertyPath: m_Text
       value: Player 3
       objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
+        type: 2}
+    - target: {fileID: 3903810573845222766, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_floatValue.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6607832532748933592, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
 --- !u!224 &1423858579 stripped
@@ -1893,7 +1950,7 @@ MonoBehaviour:
   m_finishedEvent: {fileID: 11400000, guid: 3099c6222d6989b42abd823b3386e4a2, type: 2}
   m_winnerCheckInterval: 0.5
   m_roundNumberValue: {fileID: 11400000, guid: 789cf0f6ca30bbb4cba2e13672597ed4, type: 2}
-  m_numberOfRounds: 3
+  m_numberOfWins: 3
   m_scoreValues: {fileID: 11400000, guid: be05ff3b4e44b704f892246306e76baa, type: 2}
 --- !u!1001 &4490508310066785028
 PrefabInstance:

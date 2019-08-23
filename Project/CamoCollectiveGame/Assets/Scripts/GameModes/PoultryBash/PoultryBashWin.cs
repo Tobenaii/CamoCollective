@@ -20,7 +20,7 @@ public class PoultryBashWin : MonoBehaviour
     [SerializeField]
     private FloatValue m_roundNumberValue;
     [SerializeField]
-    private float m_numberOfRounds;
+    private float m_numberOfWins;
     [SerializeField]
     private FloatValue m_scoreValues;
 
@@ -79,18 +79,15 @@ public class PoultryBashWin : MonoBehaviour
     private void WinGame(int alive)
     {
         m_wonGame = true;
-        if (m_roundNumberValue.Value == m_numberOfRounds - 1)
+        m_roundNumberValue.Value++;
+        if (m_scoreValues.GetValue(m_winner) == m_numberOfWins)
         {
             m_winnerText.gameObject.SetActive(true);
-            //if (alive == 0)
-            //    m_winnerText.text = "NOBODY WINS!!!";
-            //else
-            //    m_winnerText.text = m_players[m_winner].Character.name + " WINS!!!";
+            m_winnerText.text = m_players[m_winner].Character.name + " WINS THE ENTIRE GAME!!!";
             m_finishedEvent.Invoke();
             return;
         }
         Debug.Log("ROUND: " + (m_roundNumberValue.Value + 1));
-        m_roundNumberValue.Value++;
         StartCoroutine(WinnerText(m_winner, alive));
     }
 
