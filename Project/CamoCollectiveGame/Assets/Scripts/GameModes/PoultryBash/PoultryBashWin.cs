@@ -23,6 +23,8 @@ public class PoultryBashWin : MonoBehaviour
     private float m_numberOfWins;
     [SerializeField]
     private FloatValue m_scoreValues;
+    [SerializeField]
+    private GameEvent m_newRoundEvent;
 
     private bool m_wonGame;
     private int m_winner;
@@ -107,7 +109,6 @@ public class PoultryBashWin : MonoBehaviour
             timer -= Time.deltaTime;
             yield return null;
         }
-        SceneManager.UnloadSceneAsync(gameObject.scene);
-        SceneManager.LoadSceneAsync(gameObject.scene.name, LoadSceneMode.Additive);
+        m_newRoundEvent.Invoke();
     }
 }
