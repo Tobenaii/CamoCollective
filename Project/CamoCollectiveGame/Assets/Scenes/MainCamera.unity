@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 1080172194}
   - component: {fileID: 1080172195}
   - component: {fileID: 1080172196}
+  - component: {fileID: 1080172197}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -530,3 +531,32 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: CustomGameObjectEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+--- !u!114 &1080172197
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080172181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: e4a370dc442b6aa4496ef8cfd872c5e3, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1080172193}
+        m_MethodName: StopDynamicCamera
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

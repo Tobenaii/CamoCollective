@@ -14,12 +14,12 @@ public abstract class PoultryBashPowerup : MonoBehaviour
     [SerializeField]
     private GameObjectPool m_objectPool;
 
-    protected virtual void Awake()
+    private void Awake()
     {
         m_dynamicCameraAddEvent.Invoke(gameObject);
     }
 
-    protected virtual void OnCollisionEnter(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         m_dynamicCameraRemoveEvent.Invoke(gameObject);
     }

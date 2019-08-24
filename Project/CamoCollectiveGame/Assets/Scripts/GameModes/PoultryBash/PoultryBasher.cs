@@ -36,6 +36,8 @@ public class PoultryBasher : MonoBehaviour
     private bool m_punchedLeft;
     private bool m_isPunching;
 
+    private float m_knockbackScale;
+
     private InputMapper m_input;
 
     public bool m_leftPunch;
@@ -54,6 +56,9 @@ public class PoultryBasher : MonoBehaviour
         m_dynamicCameraStartEvent.Invoke();
         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
             rend.material.color = m_playerData.Character.TempColour;
+
+        m_speedScale.Value = 1;
+        m_knockbackScale = 1;
         //Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
     }
 
@@ -92,6 +97,13 @@ public class PoultryBasher : MonoBehaviour
         StartCoroutine(ResetSpeedScale(seconds));
     }
 
+    public void ScaleKnockbackForSeconds(float scale, float seconds)
+    {
+        StopCoroutine("ResetKnockbackScale");
+        m_knockbackScale = scale;
+        StartCoroutine(ResetKnockbackScale(seconds));
+    }
+
     private IEnumerator ResetSpeedScale(float seconds)
     {
         float timer = seconds;
@@ -101,6 +113,17 @@ public class PoultryBasher : MonoBehaviour
             yield return null;
         }
         m_speedScale.Value = 1;
+    }
+
+    private IEnumerator ResetKnockbackScale(float seconds)
+    {
+        float timer = seconds;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        m_knockbackScale = 1;
     }
 
     public void AlternatePunch()
@@ -154,7 +177,7 @@ public class PoultryBasher : MonoBehaviour
         if (Physics.CapsuleCast((transform.position - transform.up / 2) - transform.forward * m_punchRadius, (transform.position + transform.up / 2) - transform.forward * m_punchRadius, m_punchRadius, transform.forward, out hit, m_punchDistance, 1<<10))
         {
             Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
-            rb.AddForce(transform.forward * m_knockback, ForceMode.Impulse);
+            rb.AddForce(transform.forward * m_knockback * m_knockbackScale, ForceMode.Impulse);
             rb.AddForce(Vector3.up * m_knockup, ForceMode.Impulse);
         }
     }

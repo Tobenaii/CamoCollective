@@ -975,7 +975,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_powerupPools:
   - {fileID: 11400000, guid: 4d72e1d3595029f49a7669c15cf69124, type: 2}
-  m_spawnRadius: 20
+  - {fileID: 11400000, guid: 07944f26523bdf84d8350ced2a8d4b44, type: 2}
+  m_spawnRadius: 18
   m_spawnForce: 20
 --- !u!1001 &781129734
 PrefabInstance:
@@ -1473,6 +1474,7 @@ GameObject:
   - component: {fileID: 1391550361}
   - component: {fileID: 1391550362}
   - component: {fileID: 1391550363}
+  - component: {fileID: 1391550364}
   m_Layer: 0
   m_Name: QuitGame
   m_TagString: Untagged
@@ -1640,8 +1642,32 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1391550364}
+        m_MethodName: TriggerEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1391550364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1391550357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9b20837eb84764b9850c991633ecb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gameEvent: {fileID: 11400000, guid: e4a370dc442b6aa4496ef8cfd872c5e3, type: 2}
 --- !u!1001 &1423858578
 PrefabInstance:
   m_ObjectHideFlags: 0

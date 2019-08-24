@@ -2,16 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PoultryBashSpeedPowerup : PoultryBashPowerup
+public class PoultryBashStrengthPowerup : PoultryBashPowerup
 {
     [SerializeField]
-    private float m_speedScale;
+    private float m_strengthScale;
     [SerializeField]
     private float m_seconds;
 
-
     public override void ApplyPowerup(PoultryBasher basher)
     {
-        basher.ScaleSpeedForSeconds(m_speedScale, m_seconds);
+        basher.ScaleKnockbackForSeconds(m_strengthScale, m_seconds);
     }
 }
