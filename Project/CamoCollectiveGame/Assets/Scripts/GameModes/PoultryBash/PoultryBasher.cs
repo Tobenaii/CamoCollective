@@ -69,8 +69,7 @@ public class PoultryBasher : MonoBehaviour
         else if (other.CompareTag("Powerup"))
         {
             PoultryBashPowerup powerup = other.GetComponentInParent<PoultryBashPowerup>();
-            powerup.ApplyPowerup(this);
-            powerup.Destroy();
+            powerup.TriggerEnter(this);
         }
     }
 
@@ -78,6 +77,20 @@ public class PoultryBasher : MonoBehaviour
     {
         if (other.CompareTag("Stop"))
             m_inRing = false;
+        else if (other.CompareTag("Powerup"))
+        {
+            PoultryBashPowerup powerup = other.GetComponentInParent<PoultryBashPowerup>();
+            powerup.TriggerExit(this);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Powerup"))
+        {
+            PoultryBashPowerup powerup = other.GetComponentInParent<PoultryBashPowerup>();
+            powerup.TriggerStay(this);
+        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -88,6 +101,11 @@ public class PoultryBasher : MonoBehaviour
             m_input.DisableInput();
             m_dynamicCameraRemoveEvent.Invoke(gameObject);
         }
+    }
+
+    public void ScaleSpeed(float scale)
+    {
+        m_speedScale.Value = scale;
     }
 
     public void ScaleSpeedForSeconds(float scale, float seconds)

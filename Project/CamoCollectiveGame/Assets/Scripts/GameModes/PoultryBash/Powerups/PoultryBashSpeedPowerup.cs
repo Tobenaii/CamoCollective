@@ -10,8 +10,9 @@ public class PoultryBashSpeedPowerup : PoultryBashPowerup
     private float m_seconds;
 
 
-    public override void ApplyPowerup(PoultryBasher basher)
+    public override void TriggerEnter(PoultryBasher basher)
     {
         basher.ScaleSpeedForSeconds(m_speedScale, m_seconds);
+        Destroy();
     }
 }

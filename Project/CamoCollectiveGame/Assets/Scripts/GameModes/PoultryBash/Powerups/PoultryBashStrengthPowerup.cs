@@ -9,8 +9,9 @@ public class PoultryBashStrengthPowerup : PoultryBashPowerup
     [SerializeField]
     private float m_seconds;
 
-    public override void ApplyPowerup(PoultryBasher basher)
+    public override void TriggerEnter(PoultryBasher basher)
     {
         basher.ScaleKnockbackForSeconds(m_strengthScale, m_seconds);
+        Destroy();
     }
 }

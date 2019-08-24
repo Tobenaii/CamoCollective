@@ -14,17 +14,21 @@ public abstract class PoultryBashPowerup : MonoBehaviour
     [SerializeField]
     private GameObjectPool m_objectPool;
 
-    private void Awake()
+    private void Start()
     {
         m_dynamicCameraAddEvent.Invoke(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    protected virtual void OnCollisionEnter(Collision collision)
     {
         m_dynamicCameraRemoveEvent.Invoke(gameObject);
     }
 
-    public abstract void ApplyPowerup(PoultryBasher basher);
+    public virtual void TriggerEnter(PoultryBasher basher) { }
+
+    public virtual void TriggerStay(PoultryBasher basher) { }
+
+    public virtual void TriggerExit(PoultryBasher basher) { }
 
     public void Destroy()
     {
