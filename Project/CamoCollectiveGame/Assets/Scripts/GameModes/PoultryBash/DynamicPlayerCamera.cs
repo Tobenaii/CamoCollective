@@ -52,7 +52,7 @@ public class DynamicPlayerCamera : MonoBehaviour
         m_gameObjects.Clear();
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
         if (m_gameObjects.Count == 0 || !m_cameraStarted)
             return;

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4430062, g: 0.492195, b: 0.571924, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300658, g: 0.4921953, b: 0.57192475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -235,6 +235,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
         type: 2}
+    - target: {fileID: 5927887481221389035, guid: 93883310e4353ce468150f126b03188b,
+        type: 3}
+      propertyPath: m_speedScale.m_index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9076511092611498391, guid: 93883310e4353ce468150f126b03188b,
+        type: 3}
+      propertyPath: m_moveSpeedScale.m_index
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93883310e4353ce468150f126b03188b, type: 3}
 --- !u!4 &197958207 stripped
@@ -795,6 +805,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
         type: 2}
+    - target: {fileID: 5927887481221389035, guid: 93883310e4353ce468150f126b03188b,
+        type: 3}
+      propertyPath: m_speedScale.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9076511092611498391, guid: 93883310e4353ce468150f126b03188b,
+        type: 3}
+      propertyPath: m_moveSpeedScale.m_index
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93883310e4353ce468150f126b03188b, type: 3}
 --- !u!4 &600674826 stripped
@@ -892,6 +912,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
         type: 2}
+    - target: {fileID: 5927887481221389035, guid: 93883310e4353ce468150f126b03188b,
+        type: 3}
+      propertyPath: m_speedScale.m_index
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9076511092611498391, guid: 93883310e4353ce468150f126b03188b,
+        type: 3}
+      propertyPath: m_moveSpeedScale.m_index
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93883310e4353ce468150f126b03188b, type: 3}
 --- !u!4 &606791833 stripped
@@ -943,14 +973,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ef13405ecd1ef04ba3be1209a7dc96d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_powerupPools:
+  - {fileID: 11400000, guid: 4d72e1d3595029f49a7669c15cf69124, type: 2}
   m_spawnRadius: 20
   m_spawnForce: 20
-  m_powerup: {fileID: 4032792842904502975, guid: df4f2914a6d04f24bbc379be8033b142,
-    type: 3}
-  m_dynamicCameraAddEvent: {fileID: 11400000, guid: 7aab8c4c00d46a84586551841833367c,
-    type: 2}
-  m_dynamicCameraRemoveEvent: {fileID: 11400000, guid: da8749ee3b4074949afc96bb510511b1,
-    type: 2}
 --- !u!1001 &781129734
 PrefabInstance:
   m_ObjectHideFlags: 0

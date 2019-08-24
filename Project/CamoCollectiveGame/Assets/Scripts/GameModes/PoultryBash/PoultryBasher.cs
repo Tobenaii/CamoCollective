@@ -20,6 +20,8 @@ public class PoultryBasher : MonoBehaviour
 
     [Header("Data")]
     [SerializeField]
+    private FloatReference m_speedScale;
+    [SerializeField]
     private PlayerData m_playerData;
     [SerializeField]
     private BoolReference m_deadValue;
@@ -59,6 +61,12 @@ public class PoultryBasher : MonoBehaviour
     {
         if (other.CompareTag("Stop"))
             m_inRing = true;
+        else if (other.CompareTag("Powerup"))
+        {
+            PoultryBashPowerup powerup = other.GetComponentInParent<PoultryBashPowerup>();
+            powerup.ApplyPowerup(this);
+            powerup.Destroy();
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -75,6 +83,24 @@ public class PoultryBasher : MonoBehaviour
             m_input.DisableInput();
             m_dynamicCameraRemoveEvent.Invoke(gameObject);
         }
+    }
+
+    public void ScaleSpeedForSeconds(float scale, float seconds)
+    {
+        StopCoroutine("ResetSpeedScale");
+        m_speedScale.Value = scale;
+        StartCoroutine(ResetSpeedScale(seconds));
+    }
+
+    private IEnumerator ResetSpeedScale(float seconds)
+    {
+        float timer = seconds;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        m_speedScale.Value = 1;
     }
 
     public void AlternatePunch()
