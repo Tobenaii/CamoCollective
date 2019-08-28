@@ -12,6 +12,8 @@ public class CharacterData : ScriptableObject
     [SerializeField]
     private GameObject m_chonkJoustingCharacter;
     [SerializeField]
+    private GameObject m_towerClimbCharacter;
+    [SerializeField]
     private GameObject m_poultryBashCharacter;
 
     [System.NonSerialized]
@@ -20,5 +22,6 @@ public class CharacterData : ScriptableObject
     public Sprite Icon { get { return m_icon; } private set { } }
     public Color TempColour { get { return m_tempColour; } private set { } }
     public GameObject ChonkJoustingCharacter { get { return m_chonkJoustingCharacter; } private set { } }
+    public GameObject TowerClimbCharacter { get { return m_towerClimbCharacter; } private set { } }
     public GameObject PoultryBashCharacter { get { return m_poultryBashCharacter; } private set { } }
 }

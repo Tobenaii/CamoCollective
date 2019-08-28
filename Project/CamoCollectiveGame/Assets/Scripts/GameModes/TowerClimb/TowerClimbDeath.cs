@@ -6,16 +6,16 @@ public class TowerClimbDeath : MonoBehaviour
 {
     [SerializeField]
     private PlayerData m_playerData;
-    [SerializeField]
-    private Renderer m_tempBody;
 
     [Header("Data")]
     [SerializeField]
     private BoolReference m_isDeadValue;
 
-    private void Start()
+    private void Awake()
     {
-        m_tempBody.material.color = m_playerData.Character.TempColour;
+        GameObject character = Instantiate(m_playerData.Character.TowerClimbCharacter, transform);
+        foreach (Renderer rend in character.GetComponentsInChildren<Renderer>())
+            rend.material.color = m_playerData.Character.TempColour;
     }
 
     // Update is called once per frame
