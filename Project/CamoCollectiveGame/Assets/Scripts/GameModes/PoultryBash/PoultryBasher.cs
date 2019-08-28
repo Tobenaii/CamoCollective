@@ -47,6 +47,7 @@ public class PoultryBasher : MonoBehaviour
 
     private void Awake()
     {
+        Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
     }
 
     private void Start()
