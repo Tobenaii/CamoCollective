@@ -116,6 +116,15 @@ public class StandardCharacterController : MonoBehaviour
         }
     }
 
+    private void OnCollisionStay(Collision collision)
+    {
+        Vector3 col = collision.contacts[0].point;
+        float dot = Vector3.Dot((col - transform.position).normalized, m_velocity.normalized);
+        Debug.Log(dot);
+        if (dot > 0.4f)
+            m_velocity = Vector3.zero;
+    }
+
     public void StartDash()
     {
         if (m_dashCooldownTimer > 0)
