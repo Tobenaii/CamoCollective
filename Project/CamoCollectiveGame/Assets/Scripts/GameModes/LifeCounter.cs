@@ -4,7 +4,6 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
-[ExecuteAlways]
 public class LifeCounter : MonoBehaviour
 {
     [SerializeField]
@@ -24,17 +23,10 @@ public class LifeCounter : MonoBehaviour
     private bool m_destroy;
 #endif
 
-    private void Start()
-    {
-        foreach (GameObject obj in m_uiImages)
-            Destroy(obj);
-        m_uiImages.Clear();
-    }
-
     private void Update()
     {
 #if UNITY_EDITOR
-        if (!EditorApplication.isPlaying && m_destroy)
+        if (EditorApplication.isPlaying && m_destroy)
         {
             foreach (GameObject obj in m_uiImages)
                 DestroyImmediate(obj);
@@ -65,7 +57,7 @@ public class LifeCounter : MonoBehaviour
 #if UNITY_EDITOR
     private void OnValidate()
     {
-        if (!EditorApplication.isPlaying)
+        if (EditorApplication.isPlaying)
             m_destroy = true;
     }
 #endif
