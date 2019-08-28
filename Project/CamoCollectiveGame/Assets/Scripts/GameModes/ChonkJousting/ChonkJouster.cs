@@ -134,7 +134,7 @@ public class ChonkJouster : MonoBehaviour
         else
         {
             StartCoroutine(InvincibilityFrame(m_invincibilityFrame));
-            StartCoroutine(Flash(m_invincibilityFrame, m_invincibilityFlashTime));
+            StartCoroutine(Flash(m_invincibilityFrame, m_invincibilityFlashTime, new Color(1,0,0,0.3f)));
         }
     }
 
@@ -183,6 +183,8 @@ public class ChonkJouster : MonoBehaviour
                 m_controller.enabled = true;
                 m_rb.useGravity = true;
                 m_respawnedEvent.Invoke();
+                StartCoroutine(InvincibilityFrame(m_invincibilityFrame));
+                StartCoroutine(Flash(m_invincibilityFrame, m_invincibilityFlashTime, new Color(1, 1, 1, 0.7f)));
             }
         }
 
@@ -225,7 +227,7 @@ public class ChonkJouster : MonoBehaviour
     //    }
     //}
 
-    private IEnumerator Flash(float time, float flashTime)
+    private IEnumerator Flash(float time, float flashTime, Color colour)
     {
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
         Color[] colours = new Color[renderers.Length];
@@ -255,7 +257,7 @@ public class ChonkJouster : MonoBehaviour
                     rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 0.4f);
                 }
                 else
-                    rend.material.color = new Color(1, 0, 0, 0.3f);
+                    rend.material.color = colour;
                 i++;
             }
             if (flashTimer <= 0)
