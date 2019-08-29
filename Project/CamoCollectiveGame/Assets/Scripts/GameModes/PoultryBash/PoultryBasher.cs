@@ -24,6 +24,8 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private ParticleSystemPool m_deathParticleSystemPool;
     [SerializeField]
+    private Vector3 m_rotateTowards;
+    [SerializeField]
     private ParticleSystem m_speedParticleSystem;
 
     [Header("Animation")]
@@ -112,6 +114,7 @@ public class PoultryBasher : MonoBehaviour
             m_input.DisableInput();
             m_dynamicCameraRemoveEvent.Invoke(gameObject);
             ParticleSystem ps = m_deathParticleSystemPool.GetObject();
+            ps.transform.up = (m_rotateTowards - transform.position);
             ps.transform.position = transform.position;
             ps.Play();
             Destroy(gameObject);
