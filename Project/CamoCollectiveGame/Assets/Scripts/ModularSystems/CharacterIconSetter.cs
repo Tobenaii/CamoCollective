@@ -8,10 +8,24 @@ public class CharacterIconSetter : MonoBehaviour
     [SerializeField]
     private PlayerData m_player;
 
+    [SerializeField]
+    private BoolReference m_isDeadValue;
+    [SerializeField]
+    private Color m_deadColourHue;
+
+    private Image image;
+
     // Start is called before the first frame update
     void Start()
     {
-        GetComponent<Image>().sprite = m_player.Character.Icon;
+        image = GetComponent<Image>();
+        image.sprite = m_player.Character.Icon;
+    }
+
+    private void Update()
+    {
+        if (m_isDeadValue != null && m_isDeadValue.Value)
+            image.color = m_deadColourHue;
     }
 
 }

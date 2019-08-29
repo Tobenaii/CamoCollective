@@ -104,6 +104,7 @@ public class PoultryBasher : MonoBehaviour
             ParticleSystem ps = m_deathParticleSystemPool.GetObject();
             ps.transform.position = transform.position;
             ps.Play();
+            Destroy(gameObject);
         }
     }
 

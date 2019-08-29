@@ -466,23 +466,54 @@ PrefabInstance:
       propertyPath: m_Text
       value: Player 2
       objectReference: {fileID: 0}
-    - target: {fileID: 6607832532748933592, guid: 5504e396eea336d49b915465ff04ad6a,
-        type: 3}
-      propertyPath: m_playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
-        type: 2}
     - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_player
       value: 
       objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
         type: 2}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.useConstant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.m_variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d00e7f1be81cd645aa10bdc5b1f92d4,
+        type: 2}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3903810573845222766, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_floatValue.m_index
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6607832532748933592, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
 --- !u!224 &423308825 stripped
@@ -691,23 +722,54 @@ PrefabInstance:
       propertyPath: m_Text
       value: Player 4
       objectReference: {fileID: 0}
-    - target: {fileID: 6607832532748933592, guid: 5504e396eea336d49b915465ff04ad6a,
-        type: 3}
-      propertyPath: m_playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
-        type: 2}
     - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_player
       value: 
       objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
         type: 2}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.useConstant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.m_variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d00e7f1be81cd645aa10bdc5b1f92d4,
+        type: 2}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3903810573845222766, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_floatValue.m_index
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6607832532748933592, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
 --- !u!224 &583318499 stripped
@@ -1095,6 +1157,37 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.useConstant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.m_variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d00e7f1be81cd645aa10bdc5b1f92d4,
+        type: 2}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.b
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6607832532748933592, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
@@ -1793,23 +1886,54 @@ PrefabInstance:
       propertyPath: m_Text
       value: Player 3
       objectReference: {fileID: 0}
-    - target: {fileID: 6607832532748933592, guid: 5504e396eea336d49b915465ff04ad6a,
-        type: 3}
-      propertyPath: m_playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
-        type: 2}
     - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_player
       value: 
       objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
         type: 2}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.useConstant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.m_variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 2d00e7f1be81cd645aa10bdc5b1f92d4,
+        type: 2}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_isDeadValue.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249111135014755360, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_deadColourHue.b
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3903810573845222766, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_floatValue.m_index
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 6607832532748933592, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
 --- !u!224 &1423858579 stripped
