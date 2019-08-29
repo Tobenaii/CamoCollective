@@ -7,6 +7,10 @@ public class TowerClimbDeath : MonoBehaviour
     [SerializeField]
     private PlayerData m_playerData;
 
+    [Header("ParticleEffects")]
+    [SerializeField]
+    private ParticleSystemPool m_particleSystemPool;
+
     [Header("Data")]
     [SerializeField]
     private BoolReference m_isDeadValue;
@@ -29,6 +33,9 @@ public class TowerClimbDeath : MonoBehaviour
     private void OnDeath()
     {
         m_isDeadValue.Value = true;
+        ParticleSystem ps = m_particleSystemPool.GetObject();
+        ps.transform.position = transform.position;
+        ps.Play();
         Destroy(gameObject);
     }
 }

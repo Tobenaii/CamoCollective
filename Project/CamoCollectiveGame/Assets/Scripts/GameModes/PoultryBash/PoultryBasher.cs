@@ -14,6 +14,10 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private float m_knockup;
 
+    [Header("Particles")]
+    [SerializeField]
+    private ParticleSystemPool m_deathParticleSystemPool;
+
     [Header("Animation")]
     [SerializeField]
     private Animator m_animator;
@@ -45,13 +49,9 @@ public class PoultryBasher : MonoBehaviour
     private bool m_punchQueued;
     private bool m_inRing;
 
-    private void Awake()
-    {
-        Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
-    }
-
     private void Start()
     {
+        Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
         m_dynamicCameraAddEvent.Invoke(gameObject);
         m_input = GetComponent<InputMapper>();
         m_dynamicCameraStartEvent.Invoke();
@@ -101,6 +101,9 @@ public class PoultryBasher : MonoBehaviour
             m_deadValue.Value = true;
             m_input.DisableInput();
             m_dynamicCameraRemoveEvent.Invoke(gameObject);
+            ParticleSystem ps = m_deathParticleSystemPool.GetObject();
+            ps.transform.position = transform.position;
+            ps.Play();
         }
     }
 
