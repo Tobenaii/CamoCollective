@@ -43,8 +43,8 @@ public class TowerClimbPlacementUI : MonoBehaviour
         {
             m_images[i].sprite = m_playerData[m_placementSlots[i].index].Character.Icon;
             m_images[i].SetNativeSize();
-            if (m_isDeadValues.GetValue(m_placementSlots[i].index))
-                m_images[i].color = Color.red;
+            //if (m_isDeadValues.GetValue(m_placementSlots[i].index))
+            //    m_images[i].color = Color.red;
         }
     }
 }

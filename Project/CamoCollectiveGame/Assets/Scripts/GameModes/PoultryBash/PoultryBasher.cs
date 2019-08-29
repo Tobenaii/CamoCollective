@@ -14,9 +14,17 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private float m_knockup;
 
+    [Header("Drumsticks")]
+    [SerializeField]
+    private Renderer m_leftDrumstick;
+    [SerializeField]
+    private Renderer m_rightDrumstick;
+
     [Header("Particles")]
     [SerializeField]
     private ParticleSystemPool m_deathParticleSystemPool;
+    [SerializeField]
+    private ParticleSystem m_speedParticleSystem;
 
     [Header("Animation")]
     [SerializeField]
@@ -48,6 +56,8 @@ public class PoultryBasher : MonoBehaviour
 
     private bool m_punchQueued;
     private bool m_inRing;
+    private Coroutine m_speedCo;
+    private Coroutine m_strengthCo;
 
     private void Start()
     {
@@ -115,16 +125,20 @@ public class PoultryBasher : MonoBehaviour
 
     public void ScaleSpeedForSeconds(float scale, float seconds)
     {
-        StopCoroutine("ResetSpeedScale");
+        if (m_speedCo != null)
+            StopCoroutine(m_speedCo);
         m_speedScale.Value = scale;
-        StartCoroutine(ResetSpeedScale(seconds));
+        m_speedCo = StartCoroutine(ResetSpeedScale(seconds));
     }
 
     public void ScaleKnockbackForSeconds(float scale, float seconds)
     {
-        StopCoroutine("ResetKnockbackScale");
+        if (m_strengthCo != null)
+            StopCoroutine(m_strengthCo);
         m_knockbackScale = scale;
-        StartCoroutine(ResetKnockbackScale(seconds));
+        m_strengthCo = StartCoroutine(ResetKnockbackScale(seconds));
+        m_leftDrumstick.material.color = Color.red;
+        m_rightDrumstick.material.color = Color.red;
     }
 
     private IEnumerator ResetSpeedScale(float seconds)
@@ -147,6 +161,8 @@ public class PoultryBasher : MonoBehaviour
             yield return null;
         }
         m_knockbackScale = 1;
+        m_leftDrumstick.material.color = Color.white;
+        m_rightDrumstick.material.color = Color.white;
     }
 
     public void AlternatePunch()

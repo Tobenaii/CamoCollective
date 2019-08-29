@@ -577,6 +577,8 @@ MonoBehaviour:
   m_punchDistance: 2
   m_knockback: 20
   m_knockup: 20
+  m_leftDrumstick: {fileID: 1189380944892775872}
+  m_rightDrumstick: {fileID: 4214093387500635192}
   m_deathParticleSystemPool: {fileID: 11400000, guid: 888eaf3ee1aaa8648beb9a55cec6f92b,
     type: 2}
   m_animator: {fileID: 5199144822259328326}
@@ -1001,6 +1003,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1189380944890484128}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &1189380944892775872 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 62b36087abede5548b2069cfc0d771d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1189380944890484128}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4214093387502935128
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1073,6 +1081,12 @@ PrefabInstance:
 --- !u!4 &4214093387502536408 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 62b36087abede5548b2069cfc0d771d0,
+    type: 3}
+  m_PrefabInstance: {fileID: 4214093387502935128}
+  m_PrefabAsset: {fileID: 0}
+--- !u!23 &4214093387500635192 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 2300000, guid: 62b36087abede5548b2069cfc0d771d0,
     type: 3}
   m_PrefabInstance: {fileID: 4214093387502935128}
   m_PrefabAsset: {fileID: 0}
