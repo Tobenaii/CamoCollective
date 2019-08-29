@@ -22,20 +22,22 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
     private List<Obstacle> m_obstacles;
 
     private List<GameObject> m_liveObstacles = new List<GameObject>();
-    private List<Obstacle> m_possibleObstacles = new List<Obstacle>();
     private float m_frequencyTimer;
     private bool m_spawn;
     private bool m_move;
 
     private void OnValidate()
     {
-        int percents = 0;
-        foreach (Obstacle o in m_obstacles)
-            percents += o.spawnChance;
-        if (percents > 100)
+        for (int i = 0; i < m_obstacles.Count; i++)
         {
-            Debug.LogWarning("Collective percentage cannot be over 100");
-            m_obstacles[m_obstacles.Count - 1].spawnChance = 0;
+            if (i != 0)
+            {
+                if (m_obstacles[i].spawnChance < m_obstacles[i - 1].spawnChance)
+                {
+                    Debug.LogWarning("Range must be higher than previous item");
+                    m_obstacles[i].spawnChance = m_obstacles[i - 1].spawnChance + 1;
+                }
+            }
         }
     }
 
@@ -69,25 +71,25 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
         if (m_frequencyTimer <= 0)
         {
             m_frequencyTimer = m_spawnFrequency;
-            int spawnValue = Random.Range(1, 101);
+            int spawnValue = Random.Range(0, 101);
 
-            m_possibleObstacles.Clear();
+            GameObject obstacle = null;
 
-            foreach (Obstacle obstacle in m_obstacles)
+            foreach (Obstacle obs in m_obstacles)
             {
-                if (obstacle.spawnChance < spawnValue)
-                    m_possibleObstacles.Add(obstacle);
+                if (spawnValue < obs.spawnChance)
+                {
+                    obstacle = obs.objectPool.GetObject();
+                    break;
+                }
             }
 
-            if (m_possibleObstacles.Count > 0)
+            if (obstacle != null)
             {
-                int randObstacle = Random.Range(0, m_possibleObstacles.Count);
-
-                GameObject obstacleObj = m_possibleObstacles[randObstacle].objectPool.GetObject();
-                obstacleObj.transform.rotation = transform.rotation;
-                obstacleObj.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Random.Range(-m_extents, m_extents));
-                obstacleObj.transform.SetParent(transform);
-                m_liveObstacles.Add(obstacleObj);
+                obstacle.transform.rotation = transform.rotation;
+                obstacle.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Random.Range(-m_extents, m_extents));
+                obstacle.transform.SetParent(transform);
+                m_liveObstacles.Add(obstacle);
             }
         }
 

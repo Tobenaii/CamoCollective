@@ -441,7 +441,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_float: {fileID: 11400000, guid: 5e4261c139267984580a96e53eeafa49, type: 2}
-  m_increaseRate: 1
+  m_increaseRate: 0.5
   m_cap: 1
   m_maxCap: 20
 --- !u!4 &587950744
@@ -7303,17 +7303,17 @@ PrefabInstance:
     - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_obstacles.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_obstacles.Array.data[0].spawnChance
-      value: 50
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_obstacles.Array.data[1].spawnChance
-      value: 50
+      value: 70
       objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
@@ -7325,8 +7325,24 @@ PrefabInstance:
         type: 3}
       propertyPath: m_obstacles.Array.data[1].objectPool
       value: 
+      objectReference: {fileID: 11400000, guid: 025f929c6b53b5c4fa717b75a344a0d8,
+        type: 2}
+    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
+        type: 3}
+      propertyPath: m_obstacles.Array.data[2].objectPool
+      value: 
       objectReference: {fileID: 11400000, guid: e11ef45f01ae6aa4bbf533fcd345066c,
         type: 2}
+    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
+        type: 3}
+      propertyPath: m_obstacles.Array.data[2].spawnChance
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
+        type: 3}
+      propertyPath: m_spawnFrequency
+      value: 1.75
+      objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284082, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: gameEvent
