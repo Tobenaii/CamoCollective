@@ -22,6 +22,11 @@ public class ChonkJouster : MonoBehaviour
     [SerializeField]
     private float m_invincibilityFlashTime;
 
+    [Header("Particles")]
+    [SerializeField]
+    private ParticleSystemPool m_gainPointsParticles;
+    private List<ParticleSystem> m_activeParticles = new List<ParticleSystem>();
+
     [Header("Death")]
     [SerializeField]
     private float m_fadeAwayTime;
@@ -79,6 +84,16 @@ public class ChonkJouster : MonoBehaviour
 
     void Update()
     {
+        for (int i = 0; i < m_activeParticles.Count; i++)
+        {
+            if (m_activeParticles[i].isStopped)
+            {
+                m_gainPointsParticles.DestroyObject(m_activeParticles[i]);
+                m_activeParticles.RemoveAt(i);
+                i--;
+            }
+        }
+
         if (m_isRespawning)
         {
             m_respawnTimer.Value -= Time.deltaTime;
@@ -119,6 +134,10 @@ public class ChonkJouster : MonoBehaviour
         else
         {
             m_scoreValue.Value++;
+            ParticleSystem ps = m_gainPointsParticles.GetObject();
+            ps.transform.position = transform.position;
+            m_activeParticles.Add(ps);
+            ps.Play();
             jouster.GetHurt(transform.forward * m_knockbackForce, transform.up * m_knockupForce);
         }
     }
