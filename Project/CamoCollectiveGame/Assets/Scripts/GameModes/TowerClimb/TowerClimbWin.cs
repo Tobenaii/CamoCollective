@@ -12,6 +12,8 @@ public class TowerClimbWin : MonoBehaviour
     private GameEvent m_wonGameEvent;
     [SerializeField]
     private Text m_winnerText;
+    [SerializeField]
+    private FloatValue m_speedScaleValue;
 
     [Header("Data")]
     [SerializeField]
@@ -29,7 +31,10 @@ public class TowerClimbWin : MonoBehaviour
     private void Update()
     {
         if (m_hasWon)
+        {
+            m_speedScaleValue.Value += 10 * Time.deltaTime;
             return;
+        }
         int alive = 0;
 
         int winner = -1;
