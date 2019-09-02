@@ -36,7 +36,7 @@ public class Doorway : MonoBehaviour
         obj.SetActive(true);
         Rigidbody rb = obj.GetComponent<Rigidbody>();
         rb.velocity = Vector3.zero;
-        rb.AddForce(transform.forward * 20, ForceMode.Impulse);
+        rb.AddForce(doorway.transform.forward * 20, ForceMode.Impulse);
         m_doorwayListSet.Add(gameObject);
     }
 
