@@ -40,11 +40,9 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private BoolReference m_deadValue;
     [SerializeField]
-    private GameObjectEvent m_dynamicCameraAddEvent;
-    [SerializeField]
-    private GameObjectEvent m_dynamicCameraRemoveEvent;
-    [SerializeField]
     private GameEvent m_dynamicCameraStartEvent;
+    [SerializeField]
+    private GameObjectListSet m_gameObjectListSet;
 
     private bool m_punchedRight;
     private bool m_punchedLeft;
@@ -64,7 +62,7 @@ public class PoultryBasher : MonoBehaviour
     private void Start()
     {
         Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
-        m_dynamicCameraAddEvent.Invoke(gameObject);
+        m_gameObjectListSet.Add(gameObject);
         m_input = GetComponent<InputMapper>();
         m_dynamicCameraStartEvent.Invoke();
         foreach (Renderer rend in GetComponentsInChildren<Renderer>())
@@ -112,7 +110,6 @@ public class PoultryBasher : MonoBehaviour
         {
             m_deadValue.Value = true;
             m_input.DisableInput();
-            m_dynamicCameraRemoveEvent.Invoke(gameObject);
             ParticleSystem ps = m_deathParticleSystemPool.GetObject();
             ps.transform.up = (m_rotateTowards - transform.position);
             ps.transform.position = transform.position;
@@ -232,6 +229,6 @@ public class PoultryBasher : MonoBehaviour
 
     private void OnDestroy()
     {
-        m_dynamicCameraRemoveEvent.Invoke(gameObject);
+        m_gameObjectListSet.Remove(gameObject);
     }
 }

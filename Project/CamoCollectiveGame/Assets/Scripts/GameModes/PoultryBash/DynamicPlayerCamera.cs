@@ -18,7 +18,9 @@ public class DynamicPlayerCamera : MonoBehaviour
     [SerializeField]
     private AnimationCurve m_zoomCurve;
 
-    private List<GameObject> m_gameObjects = new List<GameObject>();
+    [Header("Data")]
+    [SerializeField]
+    private GameObjectListSet m_gameObjectListSet;
 
     private Vector3 m_basePos;
     private float m_baseDist;
@@ -37,28 +39,13 @@ public class DynamicPlayerCamera : MonoBehaviour
         m_cameraStarted = false;
     }
 
-    public void AddGameObject(GameObject obj)
-    {
-        m_gameObjects.Add(obj);
-    }
-
-    public void RemoveGameObject(GameObject obj)
-    {
-        m_gameObjects.Remove(obj);
-    }
-
-    public void ClearGameObjects()
-    {
-        m_gameObjects.Clear();
-    }
-
     private void FixedUpdate()
     {
-        if (m_gameObjects.Count == 0 || !m_cameraStarted)
+        if (m_gameObjectListSet.Count == 0 || !m_cameraStarted)
             return;
 
-        Bounds bounds = new Bounds(m_gameObjects[0].transform.position, Vector3.zero);
-        foreach (GameObject obj in m_gameObjects)
+        Bounds bounds = new Bounds(m_gameObjectListSet[0].transform.position, Vector3.zero);
+        foreach (GameObject obj in m_gameObjectListSet.List)
             bounds.Encapsulate(obj.transform.position);
 
         m_midPos = bounds.center;

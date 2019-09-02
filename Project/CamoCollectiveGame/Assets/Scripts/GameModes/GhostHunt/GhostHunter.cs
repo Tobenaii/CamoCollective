@@ -10,7 +10,12 @@ public class GhostHunter : MonoBehaviour
     [SerializeField]
     private GameEvent m_startModularCameraEvent;
     [SerializeField]
-    private GameObjectEvent m_modularCameraAddEvent;
+    private GameObjectListSet m_gameObjectListSet;
+
+    private void OnTriggerEnter(Collider other)
+    {
+        other.transform.parent.GetComponent<Doorway>().ExitAnotherDoorway(gameObject);
+    }
 
     private void Awake()
     {
@@ -20,7 +25,7 @@ public class GhostHunter : MonoBehaviour
     void Start()
     {
         Instantiate(m_playerData.ForcedCharacter.GhostHuntCharacter, transform);
-        m_modularCameraAddEvent.Invoke(gameObject);
+        m_gameObjectListSet.Add(gameObject);
         m_startModularCameraEvent.Invoke();
     }
 

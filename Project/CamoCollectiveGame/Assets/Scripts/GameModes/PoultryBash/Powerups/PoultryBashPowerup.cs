@@ -4,24 +4,20 @@ using UnityEngine;
 
 public abstract class PoultryBashPowerup : MonoBehaviour
 {
-    [Header("Camera")]
-    [SerializeField]
-    private GameObjectEvent m_dynamicCameraAddEvent;
-    [SerializeField]
-    private GameObjectEvent m_dynamicCameraRemoveEvent;
-
     [Header("Data")]
     [SerializeField]
     private GameObjectPool m_objectPool;
+    [SerializeField]
+    private GameObjectListSet m_gameObjectListSet;
 
     private void Start()
     {
-        m_dynamicCameraAddEvent.Invoke(gameObject);
+        m_gameObjectListSet.Add(gameObject);
     }
 
     protected virtual void OnCollisionEnter(Collision collision)
     {
-        m_dynamicCameraRemoveEvent.Invoke(gameObject);
+        m_gameObjectListSet.Remove(gameObject);
     }
 
     public virtual void TriggerEnter(PoultryBasher basher) { }

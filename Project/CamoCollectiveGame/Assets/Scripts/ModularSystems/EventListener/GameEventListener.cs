@@ -23,6 +23,8 @@ public class GameEventListener<T, V, U> : MonoBehaviour where T : CustomUnityEve
 
     private void OnDisable()
     {
+        if (gameEvent == null)
+            Debug.Log(gameObject.name);
         gameEvent.DetachListener(this);
     }
 }
