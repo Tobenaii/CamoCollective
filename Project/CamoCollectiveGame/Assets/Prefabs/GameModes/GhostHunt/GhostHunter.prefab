@@ -1,0 +1,316 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4247895556488937488
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4247895556488937491}
+  - component: {fileID: 5024947127787899501}
+  - component: {fileID: 1339612709804535671}
+  - component: {fileID: 8742838980411802970}
+  - component: {fileID: 1658152043215010986}
+  - component: {fileID: 5035709931853747597}
+  - component: {fileID: 5983443004154826704}
+  - component: {fileID: 2385790285381202589}
+  - component: {fileID: 5919996434761363756}
+  m_Layer: 0
+  m_Name: GhostHunter
+  m_TagString: Player
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4247895556488937491
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247895556488937488}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5024947127787899501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247895556488937488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d14932de0e9034abfce6da8ef0ab14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_disableOnAwake: 0
+  m_controllerNumber:
+    m_index: 3
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: f2f096e69a744c44184a66a037b6acbf, type: 2}
+  actions:
+  - actionName: Look
+    buttonA: 0
+    buttonB: 0
+    buttonX: 0
+    buttonY: 0
+    joystickLeft: 0
+    joystickRight: 1
+    triggerLeft: 0
+    triggerRight: 0
+    buttons:
+    - button: 5
+      buttonState: 0
+      prevButtonState: 0
+      delay: 0
+      cooldown: 0
+      onButtonDown: 0
+      onButtonHold: 0
+      onButtonRelease: 0
+      delayTime: 0
+      cooldownTime: 0
+    unityEventButton:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    unityEventJoystick:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8742838980411802970}
+          m_MethodName: Look
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    unityEventTrigger:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - actionName: Move
+    buttonA: 0
+    buttonB: 0
+    buttonX: 0
+    buttonY: 0
+    joystickLeft: 1
+    joystickRight: 0
+    triggerLeft: 0
+    triggerRight: 0
+    buttons:
+    - button: 4
+      buttonState: 0
+      prevButtonState: 0
+      delay: 0
+      cooldown: 0
+      onButtonDown: 0
+      onButtonHold: 0
+      onButtonRelease: 0
+      delayTime: 0
+      cooldownTime: 0
+    unityEventButton:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    unityEventJoystick:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 8742838980411802970}
+          m_MethodName: Move
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    unityEventTrigger:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+--- !u!114 &1339612709804535671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247895556488937488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 416a5d6c6db961948b3d12be0dea3de6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerData: {fileID: 0}
+  m_startModularCameraEvent: {fileID: 11400000, guid: 633775fa49ed707498fd8c0aa6fd1b7e,
+    type: 2}
+  m_modularCameraAddEvent: {fileID: 11400000, guid: 7aab8c4c00d46a84586551841833367c,
+    type: 2}
+--- !u!114 &8742838980411802970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247895556488937488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff6464134e6f33f4a991301d9057948b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_moveSpeed: 10
+  m_moveSpeedScale:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 2d9bd5b9a7b45844c956c583e3de8ad4, type: 2}
+  m_backwardVelocityMultiplier: 0.5
+  m_acceleration: 30
+  m_stopSpeed: 20
+  m_lookRotateSpeed: 2000
+  m_moveRotateSpeed: 2000
+  m_minRotationValue: 0
+  m_dashForceScale:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
+  m_minDashForce: 20
+  m_maxDashForce: 40
+  m_dashChargeSpeed: 1
+  m_dashCooldown: 4
+  m_stamina:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
+  m_staminaRegenSpeed: 0.25
+  m_staminaDecreaseSpeed: 0.25
+  m_sprintMoveSpeed: 40
+--- !u!54 &1658152043215010986
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247895556488937488}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &5035709931853747597
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247895556488937488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: ff1e128af921d9b4a93888c13fe6adcc, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5024947127787899501}
+        m_MethodName: DisableInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &5983443004154826704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247895556488937488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: dfd0cfa86d4cf9f4aa17216767da4c83, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5024947127787899501}
+        m_MethodName: EnableInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &2385790285381202589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247895556488937488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d71ca5736ff84bd4881fccafc1c2eef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_runOnAwake: 0
+  m_unloadAllScenes: 0
+  m_scenesToUnload: []
+  m_scenesToLoad:
+  - m_scene: {fileID: 102900000, guid: 76215b81304c2a9499af2a749c9bbb93, type: 3}
+    m_sceneName: PauseScene
+  m_loadedEvent: {fileID: 0}
+--- !u!136 &5919996434761363756
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4247895556488937488}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.23
+  m_Height: 1.27
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.63, z: 0}

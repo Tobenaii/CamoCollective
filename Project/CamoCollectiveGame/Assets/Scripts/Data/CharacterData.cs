@@ -15,6 +15,8 @@ public class CharacterData : ScriptableObject
     private GameObject m_towerClimbCharacter;
     [SerializeField]
     private GameObject m_poultryBashCharacter;
+    [SerializeField]
+    private GameObject m_ghostHuntCharacter;
 
     [System.NonSerialized]
     public bool inUse;
@@ -24,4 +26,5 @@ public class CharacterData : ScriptableObject
     public GameObject ChonkJoustingCharacter { get { return m_chonkJoustingCharacter; } private set { } }
     public GameObject TowerClimbCharacter { get { return m_towerClimbCharacter; } private set { } }
     public GameObject PoultryBashCharacter { get { return m_poultryBashCharacter; } private set { } }
+    public GameObject GhostHuntCharacter { get { return m_ghostHuntCharacter; } private set { } }
 }

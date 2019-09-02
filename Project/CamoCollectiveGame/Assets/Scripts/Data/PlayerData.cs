@@ -5,12 +5,15 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/PlayerData")]
 public class PlayerData : ScriptableObject
 {
+    [SerializeField]
+    private CharacterData m_forcedCharacter;
     [System.NonSerialized]
     private CharacterData m_currentCharacter;
     [System.NonSerialized]
     private bool m_isPlaying;
 
     public CharacterData Character { get { return m_currentCharacter; } set { m_currentCharacter = value; } }
+    public CharacterData ForcedCharacter { get { return m_forcedCharacter; } private set { } }
     public bool IsPlaying { get { return m_isPlaying; } set { m_isPlaying = value; } }
 
     public void RemoveCharacter()
