@@ -24,6 +24,8 @@ public class CharacterIconSetter : MonoBehaviour
 
     private void Update()
     {
+        if (image.sprite == null)
+            image.sprite = m_player.Character.Icon;
         if (m_isDeadValue != null && m_isDeadValue.Value)
             image.color = m_deadColourHue;
     }

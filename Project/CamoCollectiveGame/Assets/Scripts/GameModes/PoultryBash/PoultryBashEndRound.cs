@@ -24,12 +24,16 @@ public class PoultryBashEndRound : MonoBehaviour
 
     public void OnSceneLoad(Scene scene, LoadSceneMode mode)
     {
+        if (scene.name != "PoultryBashScene")
+            return;
         if (m_roundEnded)
             StartRound();
     }
 
     public void OnSceneUnload(Scene scene)
     {
+        if (scene.name != "PoultryBashScene")
+            return;
         EndRound();
     }
 

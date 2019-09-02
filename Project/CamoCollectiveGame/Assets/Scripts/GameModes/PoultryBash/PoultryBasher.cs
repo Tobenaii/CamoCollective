@@ -164,8 +164,8 @@ public class PoultryBasher : MonoBehaviour
             yield return null;
         }
         m_knockbackScale = 1;
-        m_leftDrumstick.material.color = Color.white;
-        m_rightDrumstick.material.color = Color.white;
+        m_leftDrumstick.material.color = m_playerData.Character.TempColour;
+        m_rightDrumstick.material.color = m_playerData.Character.TempColour;
     }
 
     public void AlternatePunch()

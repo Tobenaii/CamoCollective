@@ -41,7 +41,6 @@ public class CustomBaseInput : BaseInput
 
     public override bool GetButtonDown(string buttonName)
     {
-        state = GamePad.GetState((PlayerIndex)m_controllerNumber.Value - 1);
         switch (buttonName)
         {
             case "ButtonA":

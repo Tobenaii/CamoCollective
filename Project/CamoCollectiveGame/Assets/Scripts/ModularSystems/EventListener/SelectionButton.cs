@@ -33,12 +33,15 @@ public class SelectionButton : MonoBehaviour
     {
         if (EventSystem.current == null)
             return;
-        if (EventSystem.current.currentSelectedGameObject == gameObject && !m_invoked)
+        if (EventSystem.current.currentSelectedGameObject == gameObject)
         {
-            m_text.text = m_name;
-            m_invoked = true;
-            m_hoverEvent.Invoke(m_targetGameObject);
-            m_currentSelectedValue.Value = m_index;
+            if (!m_invoked)
+            {
+                m_text.text = m_name;
+                m_invoked = true;
+                m_hoverEvent.Invoke(m_targetGameObject);
+                m_currentSelectedValue.Value = m_index;
+            }
         }
         else if (EventSystem.current.currentSelectedGameObject != gameObject)
             m_invoked = false;
