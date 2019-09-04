@@ -60,6 +60,7 @@ public class ChonkJouster : MonoBehaviour
     //Components
     private Rigidbody m_rb;
     private StandardCharacterController m_controller;
+    private Animator m_animator;
 
     //State
     private bool m_isInvincible;
@@ -70,6 +71,7 @@ public class ChonkJouster : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody>();
         m_controller = GetComponent<StandardCharacterController>();
+        m_animator = GetComponentInChildren<Animator>();
     }
 
     private void Start()
@@ -84,6 +86,8 @@ public class ChonkJouster : MonoBehaviour
 
     void Update()
     {
+        m_animator.SetFloat("RunSpeedMult", m_controller.Velocity);
+
         for (int i = 0; i < m_activeParticles.Count; i++)
         {
             if (m_activeParticles[i].isStopped)
