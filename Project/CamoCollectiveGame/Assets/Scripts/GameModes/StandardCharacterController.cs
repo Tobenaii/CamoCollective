@@ -167,7 +167,7 @@ public class StandardCharacterController : MonoBehaviour
         float backwardDot = Vector3.Dot(m_velocity, transform.forward);
         float backwardMultiplier = Mathf.InverseLerp(1, -1, backwardDot);
         float multiplier = Mathf.Lerp(1, m_backwardVelocityMultiplier, backwardMultiplier);
-        Vector3 target = new Vector3(joystick.x, 0, joystick.y).normalized * (m_curMoveSpeed);
+        Vector3 target = new Vector3(joystick.x, 0, joystick.y).normalized * (m_curMoveSpeed * joystick.magnitude);
         m_velocity = Vector3.MoveTowards(m_velocity, target, m_acceleration * Time.deltaTime);
     }
 
