@@ -38,6 +38,8 @@ public class StandardCharacterController : MonoBehaviour
     private float m_dashCooldown;
     [Header("Sprint")]
     [SerializeField]
+    private float m_sprintTime;
+    [SerializeField]
     private FloatReference m_stamina;
     [SerializeField]
     [Range(0,1)]
@@ -56,10 +58,14 @@ public class StandardCharacterController : MonoBehaviour
     private bool m_isDashing;
     private float m_dashCooldownTimer;
     private float m_curMoveSpeed;
-    private bool m_isSprinting;
 
     private Rigidbody m_rb;
     private bool m_lookOverride;
+
+    private bool m_isOverridingVelocity;
+    private Vector3 m_overrideVelocity;
+
+    private bool m_overrideSprintMove;
 
     // Start is called before the first frame update
     void Start()
@@ -80,16 +86,22 @@ public class StandardCharacterController : MonoBehaviour
         transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRot, speed * Time.deltaTime);
     }
 
+    public void OverrideVelocity(Vector3 velocity)
+    {
+        m_isOverridingVelocity = true;
+        m_overrideVelocity = velocity;
+    }
+
     private void Update()
     {
-        if (m_isSprinting)
-        {
-            m_stamina.Value = Mathf.MoveTowards(m_stamina.Value, 0, m_staminaDecreaseSpeed * Time.deltaTime);
-            if (m_stamina.Value <= 0)
-                EndSprint();
-        }
-        else
-            m_stamina.Value = Mathf.MoveTowards(m_stamina.Value, 1, m_staminaRegenSpeed * Time.deltaTime);
+        //if (m_isSprinting)
+        //{
+        //    m_stamina.Value = Mathf.MoveTowards(m_stamina.Value, 0, m_staminaDecreaseSpeed * Time.deltaTime);
+        //    if (m_stamina.Value <= 0)
+        //        EndSprint();
+        //}
+        //else
+        //    m_stamina.Value = Mathf.MoveTowards(m_stamina.Value, 1, m_staminaRegenSpeed * Time.deltaTime);
 
         if (m_isDashing)
         {
@@ -105,7 +117,13 @@ public class StandardCharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_stopSpeed * Time.deltaTime);
+        if (m_isOverridingVelocity)
+        {
+            m_isOverridingVelocity = false;
+            m_velocity = m_overrideVelocity;
+        }
+        else
+            m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_stopSpeed * Time.deltaTime);
         if (!m_isDashing && !m_lookOverride)
         {
             RotateChonkOverTime(m_velocity, m_moveRotateSpeed);
@@ -146,12 +164,25 @@ public class StandardCharacterController : MonoBehaviour
 
     public void StartSprint()
     {
-        m_isSprinting = true;
+        m_velocity = transform.forward * m_sprintMoveSpeed;
+        StopCoroutine(SprintTimer());
+        StartCoroutine(SprintTimer());
+    }
+
+    private IEnumerator SprintTimer()
+    {
+        m_overrideSprintMove = false;
+        float timer = m_sprintTime;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        m_overrideSprintMove = true;
     }
 
     public void EndSprint()
     {
-        m_isSprinting = false;
     }
 
     public void Move(Vector2 joystick)
@@ -162,13 +193,14 @@ public class StandardCharacterController : MonoBehaviour
         if (m_isDashing)
             Look(joystick);
 
-        m_curMoveSpeed = (m_isSprinting ? m_sprintMoveSpeed : m_moveSpeed) * m_moveSpeedScale.Value;
+        m_curMoveSpeed =  m_moveSpeed * m_moveSpeedScale.Value;
 
         float backwardDot = Vector3.Dot(m_velocity, transform.forward);
         float backwardMultiplier = Mathf.InverseLerp(1, -1, backwardDot);
         float multiplier = Mathf.Lerp(1, m_backwardVelocityMultiplier, backwardMultiplier);
         Vector3 target = new Vector3(joystick.x, 0, joystick.y).normalized * (m_curMoveSpeed * joystick.magnitude);
-        m_velocity = Vector3.MoveTowards(m_velocity, target, m_acceleration * Time.deltaTime);
+        if (m_velocity.magnitude < m_curMoveSpeed || m_overrideSprintMove)
+            m_velocity = Vector3.MoveTowards(m_velocity, target, m_acceleration * Time.deltaTime);
     }
 
     public void Look(Vector2 joystick)

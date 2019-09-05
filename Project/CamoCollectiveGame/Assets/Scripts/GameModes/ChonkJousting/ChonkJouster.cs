@@ -67,6 +67,7 @@ public class ChonkJouster : MonoBehaviour
     private bool m_isRespawning;
     private bool m_triggeredRespawn;
 
+
     void Awake()
     {
         m_rb = GetComponent<Rigidbody>();
@@ -84,6 +85,8 @@ public class ChonkJouster : MonoBehaviour
         m_scoreValue.Reset();
         m_chonkSpeedScale.Value = 1;
     }
+
+
 
     void Update()
     {

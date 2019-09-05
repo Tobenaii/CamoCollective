@@ -160,6 +160,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2828889236900428929}
     m_Modifications:
+    - target: {fileID: 100006, guid: d170007a848b59f4387dd11dd91a9307, type: 3}
+      propertyPath: m_Name
+      value: SM_Penelope
+      objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: d170007a848b59f4387dd11dd91a9307, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -216,10 +220,26 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: d170007a848b59f4387dd11dd91a9307, type: 3}
-      propertyPath: m_Name
-      value: SM_Penelope
-      objectReference: {fileID: 0}
+    - target: {fileID: 2300002, guid: d170007a848b59f4387dd11dd91a9307, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1c29d7b9b5e64ba33c704ddee0dd8, type: 2}
+    - target: {fileID: 2300000, guid: d170007a848b59f4387dd11dd91a9307, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1c29d7b9b5e64ba33c704ddee0dd8, type: 2}
+    - target: {fileID: 2300000, guid: d170007a848b59f4387dd11dd91a9307, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1c29d7b9b5e64ba33c704ddee0dd8, type: 2}
+    - target: {fileID: 2300004, guid: d170007a848b59f4387dd11dd91a9307, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1c29d7b9b5e64ba33c704ddee0dd8, type: 2}
+    - target: {fileID: 2300004, guid: d170007a848b59f4387dd11dd91a9307, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 11c1c29d7b9b5e64ba33c704ddee0dd8, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d170007a848b59f4387dd11dd91a9307, type: 3}
 --- !u!4 &9138277911138840708 stripped
