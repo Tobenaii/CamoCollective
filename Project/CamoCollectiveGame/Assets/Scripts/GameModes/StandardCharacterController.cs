@@ -61,6 +61,9 @@ public class StandardCharacterController : MonoBehaviour
     private Rigidbody m_rb;
     private bool m_lookOverride;
 
+    private bool m_isOverridingVelocity;
+    private Vector3 m_overrideVelocity;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -78,6 +81,12 @@ public class StandardCharacterController : MonoBehaviour
         m_targetRot = newRot;
         transform.rotation = prevRot;
         transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRot, speed * Time.deltaTime);
+    }
+
+    public void OverrideVelocity(Vector3 velocity)
+    {
+        m_isOverridingVelocity = true;
+        m_overrideVelocity = velocity;
     }
 
     private void Update()
@@ -105,7 +114,13 @@ public class StandardCharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_stopSpeed * Time.deltaTime);
+        if (m_isOverridingVelocity)
+        {
+            m_isOverridingVelocity = false;
+            m_velocity = m_overrideVelocity;
+        }
+        else
+            m_velocity = Vector3.MoveTowards(m_velocity, Vector3.zero, m_stopSpeed * Time.deltaTime);
         if (!m_isDashing && !m_lookOverride)
         {
             RotateChonkOverTime(m_velocity, m_moveRotateSpeed);
