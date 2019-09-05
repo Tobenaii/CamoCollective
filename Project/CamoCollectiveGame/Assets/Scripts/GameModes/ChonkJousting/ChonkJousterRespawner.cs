@@ -54,12 +54,20 @@ public class ChonkJousterRespawner : MonoBehaviour
         chonk.transform.position = m_respawnPoint.position;
         chonk.transform.rotation = m_respawnPoint.rotation;
         chonk.SetActive(true);
-        yield return null;
         Rigidbody rb = chonk.GetComponent<Rigidbody>();
         rb.isKinematic = false;
         //rb.useGravity = false;
-        rb.velocity = chonk.transform.forward * 10;
         rb.detectCollisions = true;
+
+        StandardCharacterController controller = chonk.GetComponent<StandardCharacterController>();
+        controller.enabled = true;
+        float timer = 1;
+        while (timer > 0)
+        {
+            controller.OverrideVelocity(chonk.transform.forward * 10);
+            timer -= Time.deltaTime;
+            yield return null;
+        }
         //rb.AddForce(chonk.transform.forward * m_respawnForce, ForceMode.Impulse);
     }
 

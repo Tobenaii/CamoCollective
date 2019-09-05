@@ -67,22 +67,26 @@ public class ChonkJouster : MonoBehaviour
     private bool m_isRespawning;
     private bool m_triggeredRespawn;
 
+
     void Awake()
     {
         m_rb = GetComponent<Rigidbody>();
         m_controller = GetComponent<StandardCharacterController>();
-        m_animator = GetComponentInChildren<Animator>();
+        m_animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
         GameObject character = Instantiate(m_player.Character.ChonkJoustingCharacter, transform);
+        m_animator.Rebind();
         character.transform.localPosition = Vector3.zero;
         character.transform.localRotation = Quaternion.identity;
         m_livesValue.Reset();
         m_scoreValue.Reset();
         m_chonkSpeedScale.Value = 1;
     }
+
+
 
     void Update()
     {
