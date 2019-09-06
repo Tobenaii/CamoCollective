@@ -38,6 +38,8 @@ public class StandardCharacterController : MonoBehaviour
     private float m_dashCooldown;
     [Header("Sprint")]
     [SerializeField]
+    private float m_sprintCooldown;
+    [SerializeField]
     private float m_sprintTime;
     [SerializeField]
     private FloatReference m_stamina;
@@ -63,6 +65,7 @@ public class StandardCharacterController : MonoBehaviour
     private bool m_lookOverride;
 
     private bool m_isOverridingVelocity;
+    private bool m_canSprint;
     private Vector3 m_overrideVelocity;
 
     private bool m_overrideSprintMove;
@@ -70,6 +73,7 @@ public class StandardCharacterController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        m_canSprint = true;
         m_rb = GetComponent<Rigidbody>();
         m_curMoveSpeed = m_moveSpeed;
     }
@@ -94,15 +98,6 @@ public class StandardCharacterController : MonoBehaviour
 
     private void Update()
     {
-        //if (m_isSprinting)
-        //{
-        //    m_stamina.Value = Mathf.MoveTowards(m_stamina.Value, 0, m_staminaDecreaseSpeed * Time.deltaTime);
-        //    if (m_stamina.Value <= 0)
-        //        EndSprint();
-        //}
-        //else
-        //    m_stamina.Value = Mathf.MoveTowards(m_stamina.Value, 1, m_staminaRegenSpeed * Time.deltaTime);
-
         if (m_isDashing)
         {
             m_dashForceScale.Value = Mathf.MoveTowards(m_dashForceScale.Value, 1, m_dashChargeSpeed * Time.deltaTime);
@@ -164,9 +159,26 @@ public class StandardCharacterController : MonoBehaviour
 
     public void StartSprint()
     {
+        if (!m_canSprint)
+            return;
         m_velocity = transform.forward * m_sprintMoveSpeed;
         StopCoroutine(SprintTimer());
         StartCoroutine(SprintTimer());
+
+        StopCoroutine(SprintCooldown());
+        StartCoroutine(SprintCooldown());
+    }
+
+    private IEnumerator SprintCooldown()
+    {
+        m_canSprint = false;
+        float timer = m_sprintCooldown;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        m_canSprint = true;
     }
 
     private IEnumerator SprintTimer()
