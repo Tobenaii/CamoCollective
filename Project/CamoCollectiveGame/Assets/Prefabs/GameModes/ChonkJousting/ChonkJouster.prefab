@@ -142,6 +142,8 @@ MonoBehaviour:
   m_maxDashForce: 40
   m_dashChargeSpeed: 1
   m_dashCooldown: 4
+  m_sprintCooldown: 2
+  m_sprintTime: 0.4
   m_stamina:
     m_index: 0
     useConstant: 1
@@ -149,7 +151,7 @@ MonoBehaviour:
     m_variable: {fileID: 0}
   m_staminaRegenSpeed: 0.25
   m_staminaDecreaseSpeed: 0.25
-  m_sprintMoveSpeed: 40
+  m_sprintMoveSpeed: 25
 --- !u!54 &1306612043750070397
 Rigidbody:
   m_ObjectHideFlags: 0

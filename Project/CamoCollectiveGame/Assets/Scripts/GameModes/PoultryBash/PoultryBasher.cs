@@ -208,12 +208,12 @@ public class PoultryBasher : MonoBehaviour
         QueueNextPunch("RightPunch");
     }
 
-    public void Punch()
+    public void Punch(float rightOffset)
     {
         if (!m_inRing)
             return;
         RaycastHit hit;
-        if (Physics.CapsuleCast((transform.position - transform.up / 2) - transform.forward * m_punchRadius, (transform.position + transform.up / 2) - transform.forward * m_punchRadius, m_punchRadius, transform.forward, out hit, m_punchDistance, 1<<10))
+        if (Physics.CapsuleCast(((transform.position - transform.up / 2) - transform.forward * m_punchRadius) + transform.right * rightOffset, (transform.position + transform.up / 2) - transform.forward * m_punchRadius, m_punchRadius, transform.forward, out hit, m_punchDistance, 1<<10))
         {
             Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * m_knockback * m_knockbackScale, ForceMode.Impulse);
