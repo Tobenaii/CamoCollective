@@ -445,22 +445,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
         type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
-        type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_scoreValue.m_index
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_livesValue.m_index
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_scoreValue.m_index
@@ -491,6 +475,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_scoreLossOnDeath
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_scoreValue.m_index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_livesValue.m_index
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 161683513231905873, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
@@ -5758,22 +5758,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
         type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
-        type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_scoreValue.m_index
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_livesValue.m_index
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_scoreValue.m_index
@@ -5803,6 +5787,22 @@ PrefabInstance:
     - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_scoreLossOnDeath
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_scoreValue.m_index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_livesValue.m_index
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 161683513231905873, guid: c7c83928f081c524b91dca87891fd0f6,
@@ -8068,14 +8068,14 @@ PrefabInstance:
       propertyPath: m_chonkSpeedScale.m_index
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 161683513231905873, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_moveSpeedScale.m_index
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6947285510579088598, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 161683513231905873, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_moveSpeedScale.m_index
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -8373,22 +8373,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
         type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
-        type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_scoreValue.m_index
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_livesValue.m_index
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_scoreValue.m_index
@@ -8413,6 +8397,22 @@ PrefabInstance:
     - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_chonkSpeedScale.m_index
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
+        type: 2}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_scoreValue.m_index
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_livesValue.m_index
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 161683513231905873, guid: c7c83928f081c524b91dca87891fd0f6,
@@ -8982,22 +8982,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
         type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
-        type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_scoreValue.m_index
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_livesValue.m_index
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_scoreValue.m_index
@@ -9022,6 +9006,22 @@ PrefabInstance:
     - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_chonkSpeedScale.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
+        type: 2}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_scoreValue.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_livesValue.m_index
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 161683513231905873, guid: c7c83928f081c524b91dca87891fd0f6,
@@ -9548,22 +9548,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
         type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
-        type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_scoreValue.m_index
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_livesValue.m_index
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_scoreValue.m_index
@@ -9588,6 +9572,22 @@ PrefabInstance:
     - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_chonkSpeedScale.m_index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_scoreValue.m_index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_livesValue.m_index
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 161683513231905873, guid: c7c83928f081c524b91dca87891fd0f6,
@@ -10141,22 +10141,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
         type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_playerData
-      value: 
-      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
-        type: 2}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_scoreValue.m_index
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
-        type: 3}
-      propertyPath: m_livesValue.m_index
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_scoreValue.m_index
@@ -10187,6 +10171,22 @@ PrefabInstance:
         type: 3}
       propertyPath: m_scoreLossOnDeath
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_playerData
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
+        type: 2}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_scoreValue.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2538854164580634275, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_livesValue.m_index
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 161683513231905873, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
