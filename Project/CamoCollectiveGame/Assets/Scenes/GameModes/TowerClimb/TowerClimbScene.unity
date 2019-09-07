@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300634, g: 0.4921952, b: 0.5719241, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -240,6 +240,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7657142759090313019, guid: f4685d99b07e10b46a6b94a88ed42328,
+        type: 3}
+      propertyPath: m_Text
+      value: Player 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995119703738187806, guid: f4685d99b07e10b46a6b94a88ed42328,
+        type: 3}
+      propertyPath: m_isDeadValue.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995119703738187806, guid: f4685d99b07e10b46a6b94a88ed42328,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4685d99b07e10b46a6b94a88ed42328, type: 3}
 --- !u!224 &143480669 stripped
@@ -1101,7 +1117,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &902753410
 Transform:
   m_ObjectHideFlags: 0
@@ -2016,6 +2032,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7657142759090313019, guid: f4685d99b07e10b46a6b94a88ed42328,
+        type: 3}
+      propertyPath: m_Text
+      value: Player 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995119703738187806, guid: f4685d99b07e10b46a6b94a88ed42328,
+        type: 3}
+      propertyPath: m_isDeadValue.m_index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995119703738187806, guid: f4685d99b07e10b46a6b94a88ed42328,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4685d99b07e10b46a6b94a88ed42328, type: 3}
 --- !u!224 &1372187894 stripped
@@ -7763,6 +7795,22 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7657142759090313019, guid: f4685d99b07e10b46a6b94a88ed42328,
+        type: 3}
+      propertyPath: m_Text
+      value: Player 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995119703738187806, guid: f4685d99b07e10b46a6b94a88ed42328,
+        type: 3}
+      propertyPath: m_isDeadValue.m_index
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8995119703738187806, guid: f4685d99b07e10b46a6b94a88ed42328,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f4685d99b07e10b46a6b94a88ed42328, type: 3}
 --- !u!224 &2131954328 stripped

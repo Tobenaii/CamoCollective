@@ -17,6 +17,7 @@ public class TowerClimbDeath : MonoBehaviour
 
     private void Awake()
     {
+        m_isDeadValue.Value = false;
         GameObject character = Instantiate(m_playerData.Character.TowerClimbCharacter, transform);
         foreach (Renderer rend in character.GetComponentsInChildren<Renderer>())
             rend.material.color = m_playerData.Character.TempColour;

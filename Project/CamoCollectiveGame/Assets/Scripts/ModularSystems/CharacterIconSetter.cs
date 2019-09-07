@@ -20,6 +20,7 @@ public class CharacterIconSetter : MonoBehaviour
     {
         image = GetComponent<Image>();
         image.sprite = m_player.Character.Icon;
+        image.color = Color.white;
     }
 
     private void Update()
