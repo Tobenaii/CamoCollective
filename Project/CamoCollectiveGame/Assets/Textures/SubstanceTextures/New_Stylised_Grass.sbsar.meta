@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 86f5ef0ac9f501245b495e40e3081df5
+guid: be5447b0a7cda804fa8c0b47b62dad64
 ScriptedImporter:
   fileIDToRecycleName:
-    2100000: Stylised_grass
-    2800000: Stylised_grass - baseColor
-    2800002: Stylised_grass - normal
-    2800004: Stylised_grass - metallic
-    2800006: Stylised_grass - height
-    2800008: Stylised_grass - ambientOcclusion
+    2100000: Stylised_Grass
+    2800000: Stylised_Grass - baseColor
+    2800002: Stylised_Grass - normal
+    2800004: Stylised_Grass - metallic
+    2800006: Stylised_Grass - height
+    2800008: Stylised_Grass - ambientOcclusion
     11400000: sbsar
     11400002: graph0
   externalObjects: {}
@@ -17,12 +17,12 @@ ScriptedImporter:
   script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
   version: 19
   mGraphInstanceData:
-  - graphLabel: Stylised_grass
-    prototypeName: Stylised_grass
+  - graphLabel: Stylised_Grass
+    prototypeName: Stylised_Grass
     graphDescIndex: 0
     generateAllOutputs: 0
     generateMipMaps: 1
-    preset: " <sbspreset pkgurl=\"pkg://Stylised_grass\" label=\"\" >\n </sbspreset>\n"
+    preset: " <sbspreset pkgurl=\"pkg://Stylised_Grass\" label=\"\" >\n </sbspreset>\n"
     shaderName: Standard
     outputNames: baseColor,normal,metallic,height,ambientOcclusion
     materialProperties:
@@ -31,7 +31,7 @@ ScriptedImporter:
       lightmapFlags: 4
       texEnvs:
       - name: _BumpMap
-        texture: {fileID: 2800002, guid: 86f5ef0ac9f501245b495e40e3081df5, type: 3}
+        texture: {fileID: 2800002, guid: be5447b0a7cda804fa8c0b47b62dad64, type: 3}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _DetailAlbedoMap
@@ -51,19 +51,19 @@ ScriptedImporter:
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _MainTex
-        texture: {fileID: 2800000, guid: 86f5ef0ac9f501245b495e40e3081df5, type: 3}
+        texture: {fileID: 2800000, guid: be5447b0a7cda804fa8c0b47b62dad64, type: 3}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _MetallicGlossMap
-        texture: {fileID: 2800004, guid: 86f5ef0ac9f501245b495e40e3081df5, type: 3}
+        texture: {fileID: 2800004, guid: be5447b0a7cda804fa8c0b47b62dad64, type: 3}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _OcclusionMap
-        texture: {fileID: 2800008, guid: 86f5ef0ac9f501245b495e40e3081df5, type: 3}
+        texture: {fileID: 2800008, guid: be5447b0a7cda804fa8c0b47b62dad64, type: 3}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _ParallaxMap
-        texture: {fileID: 2800006, guid: 86f5ef0ac9f501245b495e40e3081df5, type: 3}
+        texture: {fileID: 2800006, guid: be5447b0a7cda804fa8c0b47b62dad64, type: 3}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       floats:
@@ -118,27 +118,27 @@ ScriptedImporter:
     - outputName: ambientOcclusion
       alphaSource: ambientOcclusion
     textureParameters:
-    - textureName: Stylised_grass - roughness
+    - textureName: Stylised_Grass - roughness
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: Stylised_grass - baseColor
+    - textureName: Stylised_Grass - baseColor
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: Stylised_grass - normal
+    - textureName: Stylised_Grass - normal
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: Stylised_grass - metallic
+    - textureName: Stylised_Grass - metallic
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: Stylised_grass - height
+    - textureName: Stylised_Grass - height
       wrapMode: 0
       filterMode: 1
       aniso: 1
-    - textureName: Stylised_grass - ambientOcclusion
+    - textureName: Stylised_Grass - ambientOcclusion
       wrapMode: 0
       filterMode: 1
       aniso: 1
@@ -163,10 +163,10 @@ ScriptedImporter:
       textureHeight: 256
       textureFormat: 0
       bGenerateOnLoad: 1
-    material: {fileID: 2100000, guid: 86f5ef0ac9f501245b495e40e3081df5, type: 3}
+    material: {fileID: 2100000, guid: be5447b0a7cda804fa8c0b47b62dad64, type: 3}
     generatedTextures:
-    - {fileID: 2800000, guid: 86f5ef0ac9f501245b495e40e3081df5, type: 3}
-    - {fileID: 2800002, guid: 86f5ef0ac9f501245b495e40e3081df5, type: 3}
-    - {fileID: 2800004, guid: 86f5ef0ac9f501245b495e40e3081df5, type: 3}
-    - {fileID: 2800006, guid: 86f5ef0ac9f501245b495e40e3081df5, type: 3}
-    - {fileID: 2800008, guid: 86f5ef0ac9f501245b495e40e3081df5, type: 3}
+    - {fileID: 2800000, guid: be5447b0a7cda804fa8c0b47b62dad64, type: 3}
+    - {fileID: 2800002, guid: be5447b0a7cda804fa8c0b47b62dad64, type: 3}
+    - {fileID: 2800004, guid: be5447b0a7cda804fa8c0b47b62dad64, type: 3}
+    - {fileID: 2800006, guid: be5447b0a7cda804fa8c0b47b62dad64, type: 3}
+    - {fileID: 2800008, guid: be5447b0a7cda804fa8c0b47b62dad64, type: 3}
