@@ -76,7 +76,7 @@ public class PoultryBasher : MonoBehaviour
     private void Update()
     {
         if (m_animator)
-            m_animator.SetFloat("MoveSpeed", m_controller.Velocity);
+            m_animator.SetFloat("MoveSpeed", m_controller.Velocity, 1f, Time.deltaTime * 10f);
     }
 
     private void OnTriggerEnter(Collider other)
