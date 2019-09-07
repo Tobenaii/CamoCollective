@@ -72,13 +72,12 @@ public class ChonkJouster : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody>();
         m_controller = GetComponent<StandardCharacterController>();
-        m_animator = GetComponent<Animator>();
     }
 
     private void Start()
     {
         GameObject character = Instantiate(m_player.Character.ChonkJoustingCharacter, transform);
-        m_animator.Rebind();
+        m_animator = GetComponentInChildren<Animator>();
         character.transform.localPosition = Vector3.zero;
         character.transform.localRotation = Quaternion.identity;
         m_livesValue.Reset();
@@ -90,7 +89,8 @@ public class ChonkJouster : MonoBehaviour
 
     void Update()
     {
-        m_animator.SetFloat("RunSpeedMult", m_controller.Velocity);
+        if (m_animator)
+            m_animator.SetFloat("RunSpeedMult", m_controller.Velocity);
 
         for (int i = 0; i < m_activeParticles.Count; i++)
         {

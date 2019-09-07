@@ -28,10 +28,6 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private ParticleSystem m_speedParticleSystem;
 
-    [Header("Animation")]
-    [SerializeField]
-    private Animator m_animator;
-
     [Header("Data")]
     [SerializeField]
     private FloatReference m_speedScale;
@@ -51,6 +47,8 @@ public class PoultryBasher : MonoBehaviour
     private float m_knockbackScale;
 
     private InputMapper m_input;
+    private Animator m_animator;
+    private StandardCharacterController m_controller;
 
     public bool m_leftPunch;
 
@@ -61,16 +59,24 @@ public class PoultryBasher : MonoBehaviour
 
     private void Start()
     {
+        m_controller = GetComponent<StandardCharacterController>();
         Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
         m_gameObjectListSet.Add(gameObject);
         m_input = GetComponent<InputMapper>();
         m_dynamicCameraStartEvent.Invoke();
-        foreach (Renderer rend in GetComponentsInChildren<Renderer>())
-            rend.material.color = m_playerData.Character.TempColour;
+        //foreach (Renderer rend in GetComponentsInChildren<Renderer>())
+        //    rend.material.color = m_playerData.Character.TempColour;
+        m_animator = GetComponentInChildren<Animator>();
 
         m_speedScale.Value = 1;
         m_knockbackScale = 1;
         //Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
+    }
+
+    private void Update()
+    {
+        if (m_animator)
+            m_animator.SetFloat("MoveSpeed", m_controller.Velocity);
     }
 
     private void OnTriggerEnter(Collider other)
