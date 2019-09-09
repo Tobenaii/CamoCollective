@@ -13,6 +13,8 @@ public class PoultryBasher : MonoBehaviour
     private float m_knockback;
     [SerializeField]
     private float m_knockup;
+    [SerializeField]
+    private float m_punchTime;
 
     [Header("Drumsticks")]
     [SerializeField]
@@ -186,6 +188,8 @@ public class PoultryBasher : MonoBehaviour
         if (!m_inRing)
             return;
         m_animator.SetTrigger(anim);
+        StopCoroutine(PunchTimer());
+        StartCoroutine(PunchTimer());
     }
 
     public void LeftPunch(float trigger)
@@ -225,6 +229,17 @@ public class PoultryBasher : MonoBehaviour
             rb.AddForce(transform.forward * m_knockback * m_knockbackScale, ForceMode.Impulse);
             rb.AddForce(Vector3.up * m_knockup, ForceMode.Impulse);
         }
+    }
+
+    private IEnumerator PunchTimer()
+    {
+        float timer = m_punchTime;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        Punch(0);
     }
 
     public void OnPunchEnd()
