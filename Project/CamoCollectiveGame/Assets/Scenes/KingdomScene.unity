@@ -17748,12 +17748,12 @@ GameObject:
   - component: {fileID: 546587861}
   - component: {fileID: 546587860}
   m_Layer: 0
-  m_Name: KingdomFootprint(250x250)
+  m_Name: KingdomCollider
   m_TagString: Finish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!65 &546587860
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17774,7 +17774,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 546587859}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -24835,7 +24835,7 @@ TerrainCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751122399}
   m_Material: {fileID: 0}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: f3cef4477ad093649b43865ecc6314f8, type: 2}
   m_EnableTreeColliders: 1
 --- !u!218 &751122401
