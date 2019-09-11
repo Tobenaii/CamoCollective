@@ -87,7 +87,7 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
             if (obstacle != null)
             {
                 obstacle.transform.rotation = transform.rotation;
-                obstacle.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Random.Range(-m_extents, m_extents));
+                obstacle.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Random.Range(-m_extents - 1, m_extents + 1));
                 obstacle.transform.SetParent(transform);
                 m_liveObstacles.Add(obstacle);
             }

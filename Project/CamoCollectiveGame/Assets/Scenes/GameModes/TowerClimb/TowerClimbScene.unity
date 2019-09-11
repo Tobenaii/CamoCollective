@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300658, g: 0.4921953, b: 0.57192475, a: 1}
+  m_IndirectSpecularColor: {r: 0.4430062, g: 0.492195, b: 0.571924, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -936,7 +936,7 @@ Transform:
   m_Children:
   - {fileID: 401803486}
   m_Father: {fileID: 1859315375}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &874272707
 MonoBehaviour:
@@ -1194,7 +1194,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 13.74}
   m_Children: []
   m_Father: {fileID: 1859315375}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1018236362
 BoxCollider:
@@ -1447,7 +1447,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1204173548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2547,9 +2547,10 @@ Transform:
   m_LocalRotation: {x: -0.5, y: 0.5, z: 0.5, w: 0.5}
   m_LocalPosition: {x: -55.740692, y: 78.8, z: -6.0124435}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2090856282}
   m_Father: {fileID: 1859315375}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 90, z: 0}
 --- !u!114 &1779671908
 MonoBehaviour:
@@ -2658,7 +2659,7 @@ Transform:
   - {fileID: 217304001}
   - {fileID: 1446310480}
   m_Father: {fileID: 1859315375}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1859315374
 GameObject:
@@ -2687,7 +2688,6 @@ Transform:
   m_LocalPosition: {x: 192.94069, y: 33.837234, z: 61.012444}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2090856282}
   - {fileID: 1779671907}
   - {fileID: 1784714175}
   - {fileID: 1863603100}
@@ -7450,7 +7450,7 @@ Transform:
   m_LocalScale: {x: 0.85, y: 1, z: 0.6}
   m_Children: []
   m_Father: {fileID: 1859315375}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1941880290
 GameObject:
@@ -7544,7 +7544,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1859315375}
+    m_TransformParent: {fileID: 1779671907}
     m_Modifications:
     - target: {fileID: 1326521789482284095, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
@@ -7554,37 +7554,37 @@ PrefabInstance:
     - target: {fileID: 1326521789482284092, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -56.240692
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284092, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 78
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284092, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.572445
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284092, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.5
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284092, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.5
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284092, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.5
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284092, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1326521789482284092, guid: f23ac636c5498864a8b2b33bfc091b3e,
         type: 3}
