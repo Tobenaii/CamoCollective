@@ -95,10 +95,10 @@ public class PoultryBasher : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Stop"))
-{
-OnDeath();
+        {
+            OnDeath();
             m_inRing = false;
-}
+        }
         else if (other.CompareTag("Powerup"))
         {
             PoultryBashPowerup powerup = other.GetComponentInParent<PoultryBashPowerup>();
@@ -120,17 +120,16 @@ OnDeath();
 
     }
 
-	private void OnDeath()
-{
-            m_deadValue.Value = true;
-            m_input.DisableInput();
-            ParticleSystem ps = m_deathParticleSystemPool.GetObject();
-            ps.transform.up = (m_rotateTowards - transform.position);
-            ps.transform.position = transform.position;
-            ps.Play();
-            Destroy(gameObject);
-        
-}
+    private void OnDeath()
+    {
+        m_deadValue.Value = true;
+        m_input.DisableInput();
+        ParticleSystem ps = m_deathParticleSystemPool.GetObject();
+        ps.transform.up = (m_rotateTowards - transform.position);
+        ps.transform.position = transform.position;
+        ps.Play();
+        Destroy(gameObject);
+    }
 
     public void ScaleSpeed(float scale)
     {
@@ -239,19 +238,21 @@ OnDeath();
 
     private IEnumerator PunchTimer()
     {
+        m_punchQueued = true;
         float timer = m_punchTime;
+        Punch(0);
         while (timer > 0)
         {
             timer -= Time.deltaTime;
             yield return null;
         }
-        Punch(0);
+        m_punchQueued = false;
     }
 
     public void OnPunchEnd()
     {
-        m_punchQueued = false;
-        m_leftPunch = !m_leftPunch;
+        //m_punchQueued = false;
+        //m_leftPunch = !m_leftPunch;
     }
 
     private void OnDestroy()
