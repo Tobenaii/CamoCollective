@@ -95,7 +95,10 @@ public class PoultryBasher : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Stop"))
+{
+OnDeath();
             m_inRing = false;
+}
         else if (other.CompareTag("Powerup"))
         {
             PoultryBashPowerup powerup = other.GetComponentInParent<PoultryBashPowerup>();
@@ -114,8 +117,11 @@ public class PoultryBasher : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.CompareTag("Finish"))
-        {
+
+    }
+
+	private void OnDeath()
+{
             m_deadValue.Value = true;
             m_input.DisableInput();
             ParticleSystem ps = m_deathParticleSystemPool.GetObject();
@@ -123,8 +129,8 @@ public class PoultryBasher : MonoBehaviour
             ps.transform.position = transform.position;
             ps.Play();
             Destroy(gameObject);
-        }
-    }
+        
+}
 
     public void ScaleSpeed(float scale)
     {
