@@ -6,6 +6,8 @@ using UnityEngine.Events;
 public class Countdown : MonoBehaviour
 {
     [SerializeField]
+    private float m_offset;
+    [SerializeField]
     private bool m_startOnAwake;
     [SerializeField]
     private float m_startTime;
@@ -36,7 +38,7 @@ public class Countdown : MonoBehaviour
             return;
         m_countdown -= Time.deltaTime;
         if (m_timeValue != null)
-            m_timeValue.Value = m_countdown;
+            m_timeValue.Value = (int)(m_countdown + m_offset);
         if (m_countdown <= 0)
         {
             StopCountdown();
