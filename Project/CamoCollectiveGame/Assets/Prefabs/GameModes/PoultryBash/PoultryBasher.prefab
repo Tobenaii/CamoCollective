@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 4701930102948008256}
   - component: {fileID: 6317290997429816093}
   - component: {fileID: 2719880172548093520}
+  - component: {fileID: 8330564433507255507}
   m_Layer: 0
   m_Name: PoultryBasher
   m_TagString: Player
@@ -52,7 +53,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01d14932de0e9034abfce6da8ef0ab14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_disableOnAwake: 0
+  m_disableOnAwake: 1
   m_controllerNumber:
     m_index: 0
     useConstant: 0
@@ -630,6 +631,35 @@ MonoBehaviour:
   - m_scene: {fileID: 102900000, guid: 76215b81304c2a9499af2a749c9bbb93, type: 3}
     m_sceneName: PauseScene
   m_loadedEvent: {fileID: 0}
+--- !u!114 &8330564433507255507
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4490508311226598621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 3c48b6d3fc8691749b47fcf87474bcfc, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4692400956267613856}
+        m_MethodName: EnableInput
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &6248029183551616882
 GameObject:
   m_ObjectHideFlags: 0
