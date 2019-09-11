@@ -231,6 +231,7 @@ public class PoultryBasher : MonoBehaviour
         if (Physics.CapsuleCast(((transform.position - transform.up / 2) - transform.forward * m_punchRadius) + transform.right * rightOffset, (transform.position + transform.up / 2) - transform.forward * m_punchRadius, m_punchRadius, transform.forward, out hit, m_punchDistance, 1<<10))
         {
             Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+            rb.velocity = Vector3.zero;
             rb.AddForce(transform.forward * m_knockback * m_knockbackScale, ForceMode.Impulse);
             rb.AddForce(Vector3.up * m_knockup, ForceMode.Impulse);
         }
