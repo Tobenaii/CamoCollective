@@ -487,7 +487,10 @@ MonoBehaviour:
   m_punchDistance: 2
   m_knockback: 20
   m_knockup: 20
-  m_punchTime: 0.5
+  m_punchTime: 0.25
+  m_blockKnockback: 0
+  m_blockKnockup: 0
+  m_blockMoveSpeedMultiplier: 0
   m_leftDrumstick: {fileID: 0}
   m_rightDrumstick: {fileID: 0}
   m_deathParticleSystemPool: {fileID: 11400000, guid: 888eaf3ee1aaa8648beb9a55cec6f92b,
@@ -509,7 +512,6 @@ MonoBehaviour:
     type: 2}
   m_gameObjectListSet: {fileID: 11400000, guid: 1fa4373eacc98754a807c58314adab96,
     type: 2}
-  m_leftPunch: 0
 --- !u!54 &1414134112084113511
 Rigidbody:
   m_ObjectHideFlags: 0
