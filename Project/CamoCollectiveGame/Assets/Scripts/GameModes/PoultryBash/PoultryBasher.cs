@@ -16,6 +16,14 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private float m_punchTime;
 
+    [Header("Blocking")]
+    [SerializeField]
+    private float m_blockKnockback;
+    [SerializeField]
+    private float m_blockKnockup;
+    [SerializeField]
+    private float m_blockMoveSpeedMultiplier;
+
     [Header("Drumsticks")]
     [SerializeField]
     private Renderer m_leftDrumstick;
@@ -51,8 +59,6 @@ public class PoultryBasher : MonoBehaviour
     private InputMapper m_input;
     private Animator m_animator;
     private StandardCharacterController m_controller;
-
-    public bool m_leftPunch;
 
     private bool m_punchQueued;
     private bool m_inRing;
@@ -178,14 +184,6 @@ public class PoultryBasher : MonoBehaviour
         m_rightDrumstick.material.color = m_playerData.Character.TempColour;
     }
 
-    public void AlternatePunch()
-    {
-        if (m_leftPunch)
-            QueueNextPunch("LeftPunch");
-        else
-            QueueNextPunch("RightPunch");
-    }
-
     private void QueueNextPunch(string anim)
     {
         if (m_punchQueued)
@@ -241,13 +239,23 @@ public class PoultryBasher : MonoBehaviour
     {
         m_punchQueued = true;
         float timer = m_punchTime;
-        Punch(0);
         while (timer > 0)
         {
             timer -= Time.deltaTime;
             yield return null;
         }
+        Punch(0);
         m_punchQueued = false;
+    }
+
+    public void StartBlock()
+    {
+        m_speedScale.Value = m_blockMoveSpeedMultiplier;
+    }
+
+    public void EndBlock()
+    {
+        m_speedScale.Value = 1;
     }
 
     public void OnPunchEnd()

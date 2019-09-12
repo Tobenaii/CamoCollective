@@ -254,16 +254,20 @@ public class ChonkJouster : MonoBehaviour
     //    }
     //}
 
+    List<Material> m_materials = new List<Material>();
+
     private IEnumerator Flash(float time, float flashTime, Color colour)
     {
         Renderer[] renderers = GetComponentsInChildren<Renderer>();
-        Color[] colours = new Color[renderers.Length];
+        
+        m_materials.Clear();
 
-        int i = 0;
         foreach (Renderer rend in renderers)
         {
-            colours[i] = rend.material.color;
-            i++;
+            foreach (Material mat in rend.materials)
+            {
+                m_materials.Add(mat);
+            }
         }
 
         m_isInvincible = true;
@@ -275,17 +279,12 @@ public class ChonkJouster : MonoBehaviour
             timer -= Time.deltaTime;
             flashTimer -= Time.deltaTime;
 
-            i = 0;
-            foreach (Renderer rend in renderers)
+            foreach (Material mat in m_materials)
             {
                 if (flash)
-                {
-                    rend.material.color = colours[i];
-                    rend.material.color = new Color(rend.material.color.r, rend.material.color.g, rend.material.color.b, 0.4f);
-                }
+                    mat.SetColor("_EmissionColor", Color.black);
                 else
-                    rend.material.color = colour;
-                i++;
+                    mat.SetColor("_EmissionColor", colour);
             }
             if (flashTimer <= 0)
             {
@@ -295,12 +294,8 @@ public class ChonkJouster : MonoBehaviour
 
             yield return null;
         }
-        i = 0;
-        foreach (Renderer rend in renderers)
-        {
-            rend.material.color = colours[i];
-            i++;
-        }
+        foreach (Material mat in m_materials)
+            mat.SetColor("_EmissionColor", Color.black);
     }
 
     private IEnumerator InvincibilityFrame(float time)
