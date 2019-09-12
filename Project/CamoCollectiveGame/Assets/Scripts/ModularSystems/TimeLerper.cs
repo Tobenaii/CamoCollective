@@ -39,4 +39,17 @@ public class TimeLerper
         float lerpPercent = GetPercent(timeToFinish);
         return Quaternion.Lerp(init, end, lerpPercent);
     }
+
+    public Quaternion Slerp(Quaternion init, Quaternion end, float timeToFinish)
+    {
+        float lerpPercent = GetPercent(timeToFinish);
+        return Quaternion.Slerp(init, end, lerpPercent);
+    }
+
+    public Vector3 BezierCurve(Vector3 p0, Vector3 p1, Vector3 p2, float timeToFinish)
+    {
+        float t = GetPercent(timeToFinish);
+        t = Mathf.Clamp(t, 0, 1);
+        return Mathf.Pow(1 - t, 2) * p0 + 2 * (1 - t) * t * p1 + Mathf.Pow(t, 2) * p2;
+    }
 }
