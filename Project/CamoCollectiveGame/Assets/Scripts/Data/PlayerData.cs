@@ -11,10 +11,13 @@ public class PlayerData : ScriptableObject
     private CharacterData m_currentCharacter;
     [System.NonSerialized]
     private bool m_isPlaying;
+    [SerializeField]
+    private Color m_indicatorColour;
 
     public CharacterData Character { get { return m_currentCharacter; } set { m_currentCharacter = value; } }
     public CharacterData ForcedCharacter { get { return m_forcedCharacter; } private set { } }
     public bool IsPlaying { get { return m_isPlaying; } set { m_isPlaying = value; } }
+    public Color IndicatorColour { get { return m_indicatorColour; } private set { } }
 
     public void RemoveCharacter()
     {

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4430062, g: 0.492195, b: 0.571924, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311992, g: 0.38074034, b: 0.35872713, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -497,6 +497,12 @@ PrefabInstance:
       propertyPath: m_moveSpeedScale.m_index
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7949313155288584193, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c83928f081c524b91dca87891fd0f6, type: 3}
 --- !u!4 &116916459 stripped
@@ -5890,6 +5896,12 @@ PrefabInstance:
       propertyPath: m_moveSpeedScale.m_index
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7949313155288584193, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c83928f081c524b91dca87891fd0f6, type: 3}
 --- !u!4 &257955586 stripped
@@ -6964,6 +6976,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddcf4367a038cc439c4ea3bcff69fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_offset: 0
   m_startOnAwake: 1
   m_startTime: 3
   m_timeValue: {fileID: 0}
@@ -8580,6 +8593,12 @@ PrefabInstance:
       propertyPath: m_moveSpeedScale.m_index
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7949313155288584193, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c83928f081c524b91dca87891fd0f6, type: 3}
 --- !u!4 &899565425 stripped
@@ -9189,6 +9208,12 @@ PrefabInstance:
       propertyPath: m_moveSpeedScale.m_index
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7949313155288584193, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c83928f081c524b91dca87891fd0f6, type: 3}
 --- !u!4 &1079008815 stripped
@@ -9913,6 +9938,12 @@ PrefabInstance:
       propertyPath: m_moveSpeedScale.m_index
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7949313155288584193, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c83928f081c524b91dca87891fd0f6, type: 3}
 --- !u!4 &1162523106 stripped
@@ -10512,6 +10543,12 @@ PrefabInstance:
       propertyPath: m_moveSpeedScale.m_index
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7949313155288584193, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7c83928f081c524b91dca87891fd0f6, type: 3}
 --- !u!4 &1365435603 stripped
@@ -11407,6 +11444,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bddcf4367a038cc439c4ea3bcff69fc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_offset: 0
   m_startOnAwake: 0
   m_startTime: 90
   m_timeValue: {fileID: 11400000, guid: fdbdd42193fb97146a1b4a9b9e87af3c, type: 2}
