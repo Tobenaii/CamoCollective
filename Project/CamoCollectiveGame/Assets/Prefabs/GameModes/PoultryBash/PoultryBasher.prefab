@@ -267,17 +267,17 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-  - actionName: AlternatePunch
-    buttonA: 1
+  - actionName: Pause
+    buttonA: 0
     buttonB: 0
     buttonX: 0
-    buttonY: 0
+    buttonY: 1
     joystickLeft: 0
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 0
     buttons:
-    - button: 0
+    - button: 2
       buttonState: 0
       prevButtonState: 0
       delay: 0
@@ -290,8 +290,20 @@ MonoBehaviour:
     unityEventButton:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 5927887481221389035}
-          m_MethodName: AlternatePunch
+        - m_Target: {fileID: 4692400956267613856}
+          m_MethodName: SetToControllerNum
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 11400000, guid: 172dc2899a71e6f4eb8b58c393dd6ca5,
+              type: 2}
+            m_ObjectArgumentAssemblyTypeName: FloatValue, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 2719880172548093520}
+          m_MethodName: Load
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -335,17 +347,17 @@ MonoBehaviour:
           m_CallState: 2
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
-  - actionName: Pause
-    buttonA: 0
+  - actionName: BlockStart
+    buttonA: 1
     buttonB: 0
     buttonX: 0
-    buttonY: 1
+    buttonY: 0
     joystickLeft: 0
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 0
     buttons:
-    - button: 2
+    - button: 0
       buttonState: 0
       prevButtonState: 0
       delay: 0
@@ -358,20 +370,76 @@ MonoBehaviour:
     unityEventButton:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 4692400956267613856}
-          m_MethodName: SetToControllerNum
-          m_Mode: 2
+        - m_Target: {fileID: 5927887481221389035}
+          m_MethodName: StartBlock
+          m_Mode: 1
           m_Arguments:
-            m_ObjectArgument: {fileID: 11400000, guid: 172dc2899a71e6f4eb8b58c393dd6ca5,
-              type: 2}
-            m_ObjectArgumentAssemblyTypeName: FloatValue, Assembly-CSharp
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-        - m_Target: {fileID: 2719880172548093520}
-          m_MethodName: Load
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    unityEventJoystick:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 9076511092611498391}
+          m_MethodName: Move
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    unityEventTrigger:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5927887481221389035}
+          m_MethodName: RightPunch
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+  - actionName: BlockEnd
+    buttonA: 1
+    buttonB: 0
+    buttonX: 0
+    buttonY: 0
+    joystickLeft: 0
+    joystickRight: 0
+    triggerLeft: 0
+    triggerRight: 0
+    buttons:
+    - button: 0
+      buttonState: 0
+      prevButtonState: 0
+      delay: 0
+      cooldown: 0
+      onButtonDown: 0
+      onButtonHold: 0
+      onButtonRelease: 1
+      delayTime: 0
+      cooldownTime: 0
+    unityEventButton:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5927887481221389035}
+          m_MethodName: EndBlock
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -488,11 +556,9 @@ MonoBehaviour:
   m_knockback: 20
   m_knockup: 20
   m_punchTime: 0.25
-  m_blockKnockback: 0
-  m_blockKnockup: 0
-  m_blockMoveSpeedMultiplier: 0
-  m_leftDrumstick: {fileID: 0}
-  m_rightDrumstick: {fileID: 0}
+  m_blockKnockbackScale: 0.25
+  m_blockKnockupScale: 0.25
+  m_blockMoveSpeedMultiplier: 0.25
   m_deathParticleSystemPool: {fileID: 11400000, guid: 888eaf3ee1aaa8648beb9a55cec6f92b,
     type: 2}
   m_rotateTowards: {x: -83, y: 20, z: 62}

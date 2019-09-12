@@ -18,17 +18,11 @@ public class PoultryBasher : MonoBehaviour
 
     [Header("Blocking")]
     [SerializeField]
-    private float m_blockKnockback;
+    private float m_blockKnockbackScale;
     [SerializeField]
-    private float m_blockKnockup;
+    private float m_blockKnockupScale;
     [SerializeField]
     private float m_blockMoveSpeedMultiplier;
-
-    [Header("Drumsticks")]
-    [SerializeField]
-    private Renderer m_leftDrumstick;
-    [SerializeField]
-    private Renderer m_rightDrumstick;
 
     [Header("Particles")]
     [SerializeField]
@@ -50,11 +44,14 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private GameObjectListSet m_gameObjectListSet;
 
+    private float m_currentBlockKnockbackScale;
+
     private bool m_punchedRight;
     private bool m_punchedLeft;
     private bool m_isPunching;
 
     private float m_knockbackScale;
+    private float m_currentBlockScale;
 
     private InputMapper m_input;
     private Animator m_animator;
@@ -156,8 +153,6 @@ public class PoultryBasher : MonoBehaviour
             StopCoroutine(m_strengthCo);
         m_knockbackScale = scale;
         m_strengthCo = StartCoroutine(ResetKnockbackScale(seconds));
-        m_leftDrumstick.material.color = Color.red;
-        m_rightDrumstick.material.color = Color.red;
     }
 
     private IEnumerator ResetSpeedScale(float seconds)
@@ -180,8 +175,6 @@ public class PoultryBasher : MonoBehaviour
             yield return null;
         }
         m_knockbackScale = 1;
-        m_leftDrumstick.material.color = m_playerData.Character.TempColour;
-        m_rightDrumstick.material.color = m_playerData.Character.TempColour;
     }
 
     private void QueueNextPunch(string anim)
@@ -229,8 +222,9 @@ public class PoultryBasher : MonoBehaviour
         if (Physics.CapsuleCast(((transform.position - transform.up / 2) - transform.forward * m_punchRadius) + transform.right * rightOffset, (transform.position + transform.up / 2) - transform.forward * m_punchRadius, m_punchRadius, transform.forward, out hit, m_punchDistance, 1<<10))
         {
             Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+            PoultryBasher pb = hit.transform.GetComponent<PoultryBasher>();
             rb.velocity = Vector3.zero;
-            rb.AddForce(transform.forward * m_knockback * m_knockbackScale, ForceMode.Impulse);
+            rb.AddForce(transform.forward * m_knockback * m_knockbackScale * pb.m_currentBlockKnockbackScale, ForceMode.Impulse);
             rb.AddForce(Vector3.up * m_knockup, ForceMode.Impulse);
         }
     }
@@ -251,11 +245,13 @@ public class PoultryBasher : MonoBehaviour
     public void StartBlock()
     {
         m_speedScale.Value = m_blockMoveSpeedMultiplier;
+        m_currentBlockKnockbackScale = m_blockKnockbackScale;
     }
 
     public void EndBlock()
     {
         m_speedScale.Value = 1;
+        m_currentBlockKnockbackScale = 1;
     }
 
     public void OnPunchEnd()
