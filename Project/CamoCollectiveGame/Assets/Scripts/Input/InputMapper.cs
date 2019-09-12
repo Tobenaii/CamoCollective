@@ -20,7 +20,7 @@ public class InputMapper : MonoBehaviour
     [System.Serializable]
     public class InputAction
     {
-        public enum Button { A, B, Y, X, LeftJoystick, RightJoystick, LeftTrigger, RightTrigger };
+        public enum Button { A, B, Y, X, Start, LeftJoystick, RightJoystick, LeftTrigger, RightTrigger};
 
         public static implicit operator InputAction(string action)
         {
@@ -49,6 +49,7 @@ public class InputMapper : MonoBehaviour
             buttonB = false;
             buttonX = false;
             buttonY = false;
+            buttonStart = false;
             joystickLeft = false;
             joystickRight = false;
             triggerLeft = false;
@@ -83,6 +84,7 @@ public class InputMapper : MonoBehaviour
         public bool buttonB;
         public bool buttonX;
         public bool buttonY;
+        public bool buttonStart;
         public bool joystickLeft;
         public bool joystickRight;
         public bool triggerLeft;
@@ -223,6 +225,10 @@ public class InputMapper : MonoBehaviour
                 AddButton(action, InputAction.Button.Y);
             else
                 RemoveButton(action, InputAction.Button.Y);
+            if (action.buttonStart)
+                AddButton(action, InputAction.Button.Start);
+            else
+                RemoveButton(action, InputAction.Button.Start);
             if (action.joystickLeft)
                 AddButton(action, InputAction.Button.LeftJoystick);
             else
@@ -288,6 +294,10 @@ public class InputMapper : MonoBehaviour
                     case InputAction.Button.Y:
                         button.buttonState = state.Buttons.Y;
                         button.prevButtonState = prevState.Buttons.Y;
+                        break;
+                    case InputAction.Button.Start:
+                        button.buttonState = state.Buttons.Start;
+                        button.prevButtonState = prevState.Buttons.Start;
                         break;
                 }
             }

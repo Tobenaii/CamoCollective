@@ -117,6 +117,7 @@ public class InputWindow : EditorWindow
         DrawButton(new Rect(330, 200, 40, 40), circle, circleHover, style, InputMapper.InputAction.Button.X);
         DrawButton(new Rect(360, 170, 40, 40), circle, circleHover, style, InputMapper.InputAction.Button.Y);
         DrawButton(new Rect(392, 200, 40, 40), circle, circleHover, style, InputMapper.InputAction.Button.B);
+        DrawButton(new Rect(270, 200, 40, 40), circle, circleHover, style, InputMapper.InputAction.Button.Start);
 
         DrawButton(new Rect(117, 195, 55, 55), circle, circleHover, style, InputMapper.InputAction.Button.LeftJoystick);
         DrawButton(new Rect(293, 263, 55, 55), circle, circleHover, style, InputMapper.InputAction.Button.RightJoystick);
