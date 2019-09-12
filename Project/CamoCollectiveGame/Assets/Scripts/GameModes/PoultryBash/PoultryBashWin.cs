@@ -85,7 +85,7 @@ public class PoultryBashWin : MonoBehaviour
         if (m_winner >= 0 && m_scoreValues.GetValue(m_winner) == m_numberOfWins)
         {
             m_winnerText.gameObject.SetActive(true);
-            m_winnerText.text = m_players[m_winner].Character.name + " WINS THE ENTIRE GAME!!!";
+            m_winnerText.text = "PLAYER " + (m_winner + 1) + " WINS THE GAME!";
             m_finishedEvent.Invoke();
             return;
         }
@@ -97,10 +97,10 @@ public class PoultryBashWin : MonoBehaviour
     {
         m_winnerText.gameObject.SetActive(true);
         if (alive == 0)
-            m_winnerText.text = "NOBODY WINS!!!";
+            m_winnerText.text = "NOBODY WINS!";
         else
         {
-            m_winnerText.text = m_players[winner].Character.name + " WINS!!!";
+            m_winnerText.text = "PLAYER " + (winner + 1) + " WINS THE ROUND!";
             m_scoreValues.SetValue(winner, m_scoreValues.GetValue(winner) + 1);
         }
         float timer = 3;

@@ -50,7 +50,7 @@ public class TowerClimbWin : MonoBehaviour
         }
         if (alive == 1)
         {
-            m_winnerText.text = m_playerData[winner].Character.name + " Wins!";
+            m_winnerText.text = "PLAYER " + (winner + 1) + " WINS!";
             m_winnerText.gameObject.SetActive(true);
             
             m_wonGameEvent.Invoke();
