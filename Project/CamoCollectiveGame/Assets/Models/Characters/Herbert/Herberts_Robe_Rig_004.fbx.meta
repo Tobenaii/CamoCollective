@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 6cbcfe12fb3c3494790f412a9636c583
+guid: 2ba59739e9b0c4c438f5a37f180b9873
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -87,9 +87,11 @@ ModelImporter:
     100162: JNT_Waist
     100164: JNT_Wrist_L
     100166: JNT_Wrist_R
-    100168: LOC_GRP
-    100170: LOC_Hip_L
-    100172: LOC_Hip_R
+    100168: L_Poly_GRP
+    100170: L_Poly_Robe
+    100172: LOC_GRP
+    100174: LOC_Hip_L
+    100176: LOC_Hip_R
     400000: CTRL_Elbow_L
     400002: CTRL_Elbow_R
     400004: CTRL_GRP_Elbow_L
@@ -174,11 +176,15 @@ ModelImporter:
     400162: JNT_Waist
     400164: JNT_Wrist_L
     400166: JNT_Wrist_R
-    400168: LOC_GRP
-    400170: LOC_Hip_L
-    400172: LOC_Hip_R
-    7400000: Herbert_Run_2
+    400168: L_Poly_GRP
+    400170: L_Poly_Robe
+    400172: LOC_GRP
+    400174: LOC_Hip_L
+    400176: LOC_Hip_R
+    2100000: lambert2
+    4300000: L_Poly_Robe
     9500000: //RootNode
+    13700000: L_Poly_Robe
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -206,35 +212,7 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations:
-    - serializedVersion: 16
-      name: Herbert_Run_2
-      takeName: Take 001
-      firstFrame: 0
-      lastFrame: 30
-      wrapMode: 0
-      orientationOffsetY: 0
-      level: 0
-      cycleOffset: 0
-      loop: 0
-      hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 0
-      loopBlendOrientation: 0
-      loopBlendPositionY: 0
-      loopBlendPositionXZ: 0
-      keepOriginalOrientation: 0
-      keepOriginalPositionY: 1
-      keepOriginalPositionXZ: 0
-      heightFromFeet: 0
-      mirror: 0
-      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
-      curves: []
-      events: []
-      transformMask: []
-      maskType: 3
-      maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+    clipAnimations: []
     isReadable: 1
   meshes:
     lODScreenPercentages: []
@@ -259,7 +237,7 @@ ModelImporter:
     secondaryUVHardAngle: 88
     secondaryUVPackMargin: 4
     useFileScale: 1
-    previousCalculatedGlobalScale: 0.19999999
+    previousCalculatedGlobalScale: 0.01
     hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
