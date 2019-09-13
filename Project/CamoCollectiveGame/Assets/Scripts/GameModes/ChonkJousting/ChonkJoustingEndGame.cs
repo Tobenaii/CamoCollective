@@ -39,7 +39,7 @@ public class ChonkJoustingEndGame : MonoBehaviour
         }
 
         m_winnerText.gameObject.SetActive(true);
-        m_winnerText.text = m_players[winner].Character.name + " WINS!!!";
+        m_winnerText.text = "PLAYER" + (winner + 1) + " WINS!";
         m_rulerScoreValue.SetValue(winner, m_rulerScoreValue.GetValue(winner) + 1);
         StartCoroutine(FinishUpGame());
     }
