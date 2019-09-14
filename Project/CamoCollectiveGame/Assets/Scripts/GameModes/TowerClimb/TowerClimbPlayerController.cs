@@ -35,6 +35,9 @@ public class TowerClimbPlayerController : MonoBehaviour
     private Rigidbody m_rb;
     private float m_climbScale;
 
+    private bool m_pressedLeft;
+    private bool m_pressedRight;
+
     private void Awake()
     {
         m_leftClimbRot = Quaternion.Euler(20, 0, 0);
@@ -91,6 +94,34 @@ public class TowerClimbPlayerController : MonoBehaviour
             m_targetRot = m_leftClimbRot;
         else
             m_targetRot = m_rightClimbRot;
+        m_atTargetRot = false;
+    }
+
+    public void ClimbLeft(float trigger)
+    {
+        //if (trigger != 0)
+        //    MovePlayer(Vector3.left);
+        if (trigger <= 0 || m_pressedLeft || !m_atTargetRot || !m_climbLeft)
+            return;
+        if (m_climbLeft)
+            m_targetRot = m_leftClimbRot;
+        m_pressedLeft = true;
+        m_pressedRight = false;
+        m_climbLeft = !m_climbLeft;
+        m_atTargetRot = false;
+    }
+
+    public void ClimbRight(float trigger)
+    {
+        //if (trigger != 0)
+        //    MovePlayer(Vector3.right);
+        if (trigger <= 0 || m_climbLeft || m_pressedRight || !m_atTargetRot)
+            return;
+        if (!m_climbLeft)
+            m_targetRot = m_rightClimbRot;
+        m_pressedLeft = false;
+        m_pressedRight = true;
+        m_climbLeft = !m_climbLeft;
         m_atTargetRot = false;
     }
 
