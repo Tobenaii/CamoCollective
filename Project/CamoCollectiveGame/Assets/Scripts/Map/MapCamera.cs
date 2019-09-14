@@ -10,6 +10,8 @@ public class MapCamera : MonoBehaviour
     private float m_rotateTime;
     [SerializeField]
     private float m_bezierTime;
+    [SerializeField]
+    private GameEvent m_cameraReachedTargetEvent;
     private GameObject m_currentTarget;
     private bool m_atTarget;
     private Vector3 m_velocity;
@@ -47,11 +49,19 @@ public class MapCamera : MonoBehaviour
         else
             targetRot = m_currentTarget.transform.rotation;
 
+        Quaternion prevRot = transform.rotation;
+        transform.forward = targetPos - transform.position;
+        Quaternion newRot = transform.rotation;
+        transform.rotation = prevRot;
         //transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, m_rotateTime * Time.deltaTime);
-        transform.rotation = Quaternion.Slerp(transform.rotation, m_currentTarget.transform.rotation, m_rotateTime * Time.deltaTime);
+        transform.rotation = Quaternion.Euler(Vector3.SmoothDamp(transform.rotation.eulerAngles, m_currentTarget.transform.rotation.eulerAngles,
+                                                                                ref m_rotateVelocity, m_panTime));
 
         if (Vector3.Distance(transform.position, targetPos) < 0.01f && transform.rotation == m_currentTarget.transform.rotation)
+        {
+            m_cameraReachedTargetEvent.Invoke();
             m_atTarget = true;
+        }
     }
 
     public void SetTarget(GameObject target)

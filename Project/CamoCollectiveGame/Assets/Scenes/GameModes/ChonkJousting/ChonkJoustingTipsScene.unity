@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4430062, g: 0.492195, b: 0.571924, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -201,7 +201,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 433627071}
-  - component: {fileID: 433627070}
+  - component: {fileID: 433627069}
   m_Layer: 0
   m_Name: StartupEvents
   m_TagString: Untagged
@@ -209,7 +209,7 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &433627070
+--- !u!114 &433627069
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,23 +218,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 433627068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4aa95380f08e0804eb99c69efda12612, type: 3}
+  m_Script: {fileID: 11500000, guid: 16bdba6062a29964798a64eea81322b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_move: 1
-  m_rotate: 1
-  m_targetPos: {x: 37, y: 20, z: -29.55}
-  m_targetRot: {x: 75, y: 0, z: 0}
-  m_snap: 0
-  m_smooth: 1
-  m_moveSpeed:
-    m_index: 0
-    useConstant: 1
-    m_constant: 2
-    m_variable: {fileID: 0}
-  m_timeInstead: 1
-  m_rotationSpeed: 2
-  m_onCameraMoved: {fileID: 11400000, guid: ea840f825e823fa4c82d778e6f293af4, type: 2}
+  m_changeCameraTargetEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274,
+    type: 2}
 --- !u!4 &433627071
 Transform:
   m_ObjectHideFlags: 0
@@ -242,13 +230,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 433627068}
-  m_LocalRotation: {x: 0.60134804, y: 0, z: 0, w: 0.7989872}
-  m_LocalPosition: {x: 37, y: 16.01, z: -28.67}
+  m_LocalRotation: {x: 0.60876137, y: 0, z: 0, w: 0.7933534}
+  m_LocalPosition: {x: 37, y: 20, z: -29.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 70, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 75, y: 0, z: 0}
 --- !u!1001 &739898372
 PrefabInstance:
   m_ObjectHideFlags: 0
