@@ -16,11 +16,7 @@ public class TowerClimbPlacementUI : MonoBehaviour
     [SerializeField]
     private List<PlayerData> m_playerData;
     [SerializeField]
-    private BoolValue m_isDeadValues;
-    [SerializeField]
     private FloatValue m_yPosValues;
-    [SerializeField]
-    private List<Image> m_images;
 
     private List<PlacementSlot> m_placementSlots = new List<PlacementSlot>();
 
@@ -39,12 +35,6 @@ public class TowerClimbPlacementUI : MonoBehaviour
     {
         m_placementSlots = m_placementSlots.OrderBy(x => -x.yPos).ToList();
 
-        for (int i = 0; i < m_placementSlots.Count; i++)
-        {
-            m_images[i].sprite = m_playerData[m_placementSlots[i].index].Character.Icon;
-            m_images[i].SetNativeSize();
-            //if (m_isDeadValues.GetValue(m_placementSlots[i].index))
-            //    m_images[i].color = Color.red;
-        }
+        Camera.main.transform.position = new Vector3(Camera.main.transform.position.x, m_placementSlots[0].yPos, Camera.main.transform.position.z);
     }
 }
