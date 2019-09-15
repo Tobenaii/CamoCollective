@@ -13,6 +13,7 @@ public class GameModeReadyUp : MonoBehaviour
     private GameEvent m_playerReadyEvent;
     [SerializeField]
     private Text m_playerStatusText;
+    private bool m_ready;
 
     private void Awake()
     {
@@ -21,7 +22,10 @@ public class GameModeReadyUp : MonoBehaviour
 
     public void ReadyUp()
     {
+        if (m_ready)
+            return;
         m_playerReadyEvent.Invoke();
         m_playerStatusText.text = "Player " + m_playerNum + " Ready!";
+        m_ready = true;
     }
 }
