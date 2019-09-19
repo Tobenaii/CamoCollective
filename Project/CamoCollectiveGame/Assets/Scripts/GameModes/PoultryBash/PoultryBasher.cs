@@ -62,6 +62,8 @@ public class PoultryBasher : MonoBehaviour
     private Coroutine m_speedCo;
     private Coroutine m_strengthCo;
 
+    private bool m_leftPunch;
+
     private void Start()
     {
         m_controller = GetComponent<StandardCharacterController>();
@@ -81,7 +83,10 @@ public class PoultryBasher : MonoBehaviour
     private void Update()
     {
         if (m_animator)
-            m_animator.SetFloat("MoveSpeed", m_controller.Velocity, 1f, Time.deltaTime * 10f);
+        {
+            m_animator.SetFloat("MoveSpeed", m_controller.Speed, 1f, Time.deltaTime * 10f);
+            m_animator.SetFloat("StrafeSpeed", Mathf.Lerp(1,0, Mathf.Abs(Vector3.Dot(transform.forward, m_controller.Velocity))) * m_controller.Speed, 1f, Time.deltaTime * 10f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -239,25 +244,44 @@ public class PoultryBasher : MonoBehaviour
             yield return null;
         }
         Punch(0);
+        m_leftPunch = !m_leftPunch;
         m_punchQueued = false;
     }
 
-    public void StartBlock()
+    public void AlternatePunch()
     {
-        m_speedScale.Value = m_blockMoveSpeedMultiplier;
-        m_currentBlockKnockbackScale = m_blockKnockbackScale;
+        if (m_leftPunch)
+            LeftPunch(1);
+        else
+            RightPunch(1);
+    }
+
+    public void StartBlock(float trigger)
+    {
+        if (trigger > 0)
+        {
+            m_speedScale.Value = m_blockMoveSpeedMultiplier;
+            m_currentBlockKnockbackScale = m_blockKnockbackScale;
+            m_animator.ResetTrigger("StopDefend");
+            m_animator.SetTrigger("StartDefend");
+        }
+        else
+            EndBlock();
     }
 
     public void EndBlock()
     {
         m_speedScale.Value = 1;
         m_currentBlockKnockbackScale = 1;
+        m_animator.ResetTrigger("StartDefend");
+        m_animator.SetTrigger("StopDefend");
     }
 
     public void OnPunchEnd()
     {
         //m_punchQueued = false;
         //m_leftPunch = !m_leftPunch;
+        m_leftPunch = !m_leftPunch;
     }
 
     private void OnDestroy()

@@ -23,6 +23,8 @@ public class TowerClimbPlayerController : MonoBehaviour
     [Header("Data")]
     [SerializeField]
     private FloatReference m_yPosValue;
+    [SerializeField]
+    private Animator m_animator;
 
     private Quaternion m_leftClimbRot;
     private Quaternion m_rightClimbRot;
@@ -34,6 +36,9 @@ public class TowerClimbPlayerController : MonoBehaviour
     private bool m_stopMoving;
     private Rigidbody m_rb;
     private float m_climbScale;
+
+    private bool m_pressedLeft;
+    private bool m_pressedRight;
 
     private void Awake()
     {
@@ -48,6 +53,7 @@ public class TowerClimbPlayerController : MonoBehaviour
     private void Start()
     {
         m_climbScale = 1;
+        m_animator = GetComponentInChildren<Animator>();
     }
 
     public void GiveControl()
@@ -88,10 +94,40 @@ public class TowerClimbPlayerController : MonoBehaviour
             return;
         m_climbLeft = !m_climbLeft;
         if (m_climbLeft)
-            m_targetRot = m_leftClimbRot;
+            m_animator.SetTrigger("ClimbLeft");
         else
-            m_targetRot = m_rightClimbRot;
+            m_animator.SetTrigger("ClimbRight");
         m_atTargetRot = false;
+    }
+
+    public void ClimbLeft(float trigger)
+    {
+        //if (trigger != 0)
+        //    MovePlayer(Vector3.left);
+        if (trigger <= 0 || m_pressedLeft || !m_atTargetRot || !m_climbLeft)
+            return;
+        if (m_climbLeft)
+            m_targetRot = m_leftClimbRot;
+        m_pressedLeft = true;
+        m_pressedRight = false;
+        m_climbLeft = !m_climbLeft;
+        m_atTargetRot = false;
+        m_animator.SetTrigger("ClimbLeft");
+    }
+
+    public void ClimbRight(float trigger)
+    {
+        //if (trigger != 0)
+        //    MovePlayer(Vector3.right);
+        if (trigger <= 0 || m_climbLeft || m_pressedRight || !m_atTargetRot)
+            return;
+        if (!m_climbLeft)
+            m_targetRot = m_rightClimbRot;
+        m_pressedLeft = false;
+        m_pressedRight = true;
+        m_climbLeft = !m_climbLeft;
+        m_atTargetRot = false;
+        m_animator.SetTrigger("ClimbRight");
     }
 
     private void Update()
@@ -116,13 +152,15 @@ public class TowerClimbPlayerController : MonoBehaviour
             Climb();
         }
 
-        transform.rotation = Quaternion.RotateTowards(transform.rotation, m_targetRot, m_rotateSpeed * Time.deltaTime);
-        if (transform.rotation == m_targetRot)
-            m_atTargetRot = true;
-        else if (m_playerHasControl && !hitUp)
-            transform.position = new Vector3(transform.position.x, transform.position.y + m_climbSpeed * m_climbScale * Time.deltaTime, transform.position.z);
+        if (!m_atTargetRot && m_playerHasControl && !hitUp)
+            transform.position += Vector3.up * m_climbSpeed * Time.deltaTime;
         if (m_playerFalling)
             transform.position += Vector3.down * m_fallSpeed.Value * Time.deltaTime;
+    }
+
+    public void OnAnimationFinished()
+    {
+        m_atTargetRot = true;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -21,6 +21,8 @@ public class ChonkJouster : MonoBehaviour
     private float m_invincibilityFrame;
     [SerializeField]
     private float m_invincibilityFlashTime;
+    [SerializeField]
+    private float m_attackFrequency;
 
     [Header("Particles")]
     [SerializeField]
@@ -67,6 +69,8 @@ public class ChonkJouster : MonoBehaviour
     private bool m_isRespawning;
     private bool m_triggeredRespawn;
 
+    private float m_attackFrequencyTimer;
+
 
     void Awake()
     {
@@ -90,7 +94,7 @@ public class ChonkJouster : MonoBehaviour
     void Update()
     {
         if (m_animator)
-            m_animator.SetFloat("RunSpeedMult", m_controller.Velocity);
+            m_animator.SetFloat("RunSpeedMult", m_controller.Speed);
 
         for (int i = 0; i < m_activeParticles.Count; i++)
         {
@@ -122,14 +126,17 @@ public class ChonkJouster : MonoBehaviour
         //        CheckAttack(jouster);
         //    }
         //}
+        if (m_attackFrequencyTimer > 0)
+            m_attackFrequencyTimer -= Time.deltaTime;
     }
 
     //Check if lance hit shield
     public void CheckAttack(ChonkJouster jouster)
     {
         //If the other jouster is respawning, ignore it
-        if (jouster.m_isRespawning)
+        if (jouster.m_isRespawning || m_attackFrequencyTimer > 0)
             return;
+        m_attackFrequencyTimer = m_attackFrequency;
         float dot = Vector3.Dot(transform.forward, jouster.transform.forward);
         float shield = Mathf.Lerp(-1, 1, Mathf.InverseLerp(0, 180, m_shieldAngle));
         //Did hit shield
@@ -192,7 +199,7 @@ public class ChonkJouster : MonoBehaviour
         m_livesValue.Reset();
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if (other.transform.CompareTag("Lance"))
         {
@@ -201,8 +208,11 @@ public class ChonkJouster : MonoBehaviour
             ChonkJouster jouster = other.transform.GetComponentInParent<ChonkJouster>();
             jouster.CheckAttack(this);
         }
+    }
 
-        else if (other.CompareTag("Respawner"))
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Respawner"))
         {
             if (!m_triggeredRespawn)
             {
