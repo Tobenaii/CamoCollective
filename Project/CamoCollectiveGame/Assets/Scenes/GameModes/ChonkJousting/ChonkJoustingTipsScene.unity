@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300658, g: 0.4921953, b: 0.57192475, a: 1}
+  m_IndirectSpecularColor: {r: 0.4430062, g: 0.492195, b: 0.571924, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -372,6 +372,14 @@ PrefabInstance:
         Move - Left Stick
 
         Dash - A'
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462816624328055652, guid: a7f76a404a51b14449afafbc0011becd,
+        type: 3}
+      propertyPath: m_Text
+      value: '[Players] ride atop their Chonker steeds, wielding a mighty lance and
+        a sturdy shield. [Players] are awarded a point everytime they hit an opponent.
+        Be careful. If you''re hit too many times you will fall off your Chonker.
+        The [Player] with the most points, when time runs out, wins!'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f76a404a51b14449afafbc0011becd, type: 3}
