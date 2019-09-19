@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class StandardCharacterController : MonoBehaviour
 {
-    public float Velocity { get { return m_velocity.magnitude; } private set { } }
+    public float Speed { get { return m_velocity.magnitude; } private set { } }
+    public Vector3 Velocity { get { return m_velocity; } private set { } }
 
     [Header("Movement")]
     [SerializeField]

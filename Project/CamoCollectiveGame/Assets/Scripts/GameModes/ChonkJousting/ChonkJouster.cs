@@ -94,7 +94,7 @@ public class ChonkJouster : MonoBehaviour
     void Update()
     {
         if (m_animator)
-            m_animator.SetFloat("RunSpeedMult", m_controller.Velocity);
+            m_animator.SetFloat("RunSpeedMult", m_controller.Speed);
 
         for (int i = 0; i < m_activeParticles.Count; i++)
         {

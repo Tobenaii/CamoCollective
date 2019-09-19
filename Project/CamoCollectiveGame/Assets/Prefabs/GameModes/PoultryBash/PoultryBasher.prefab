@@ -201,7 +201,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 5927887481221389035}
-          m_MethodName: LeftPunch
+          m_MethodName: StartBlock
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -259,8 +259,8 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 5927887481221389035}
-          m_MethodName: RightPunch
-          m_Mode: 0
+          m_MethodName: AlternatePunch
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

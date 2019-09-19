@@ -10,6 +10,8 @@ public class SeamlessHairSpawner : MonoBehaviour
     private int m_initAmmount;
     [SerializeField]
     private GameEvent m_stopMovingHairEvent;
+    [SerializeField]
+    private float m_offset;
     private float m_height;
     private List<GameObject> m_hair = new List<GameObject>();
     private bool m_queueStopSpawn;
@@ -18,10 +20,10 @@ public class SeamlessHairSpawner : MonoBehaviour
 
     private void OnEnable()
     {
-        m_height = m_hairPrefab.GetComponent<Renderer>().bounds.size.y;
+        m_height = m_hairPrefab.GetComponentInChildren<Renderer>().bounds.size.y;
         for (int i = 0; i < m_initAmmount; i++)
         {
-            GameObject hair = Instantiate(m_hairPrefab, new Vector3(transform.position.x, transform.position.y - (m_height) * (i), transform.position.z), transform.rotation, transform);
+            GameObject hair = Instantiate(m_hairPrefab, new Vector3(transform.position.x, transform.position.y - (m_height - m_offset) * (i), transform.position.z), transform.rotation, transform);
             m_hair.Add(hair);
         }
     }
