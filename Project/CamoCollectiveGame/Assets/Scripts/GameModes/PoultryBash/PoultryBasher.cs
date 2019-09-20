@@ -85,7 +85,7 @@ public class PoultryBasher : MonoBehaviour
         if (m_animator)
         {
             m_animator.SetFloat("MoveSpeed", m_controller.Speed, 1f, Time.deltaTime * 10f);
-            m_animator.SetFloat("StrafeSpeed", Mathf.Lerp(1,0, Mathf.Abs(Vector3.Dot(transform.forward, m_controller.Velocity))) * m_controller.Speed, 1f, Time.deltaTime * 10f);
+            //m_animator.SetFloat("StrafeSpeed", Mathf.Lerp(1,0, Mathf.Abs(Vector3.Dot(transform.forward, m_controller.Velocity))) * m_controller.Speed, 1f, Time.deltaTime * 10f);
         }
     }
 
@@ -248,8 +248,11 @@ public class PoultryBasher : MonoBehaviour
         m_punchQueued = false;
     }
 
-    public void AlternatePunch()
+    public void AlternatePunch(float trigger)
     {
+        if (trigger == 0)
+            return;
+
         if (m_leftPunch)
             LeftPunch(1);
         else
@@ -282,6 +285,8 @@ public class PoultryBasher : MonoBehaviour
         //m_punchQueued = false;
         //m_leftPunch = !m_leftPunch;
         m_leftPunch = !m_leftPunch;
+        m_punchedRight = false;
+        m_punchedLeft = false;
     }
 
     private void OnDestroy()
