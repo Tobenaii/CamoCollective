@@ -152,6 +152,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1462816624534061689}
     m_Modifications:
+    - target: {fileID: 3125874520389063673, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479473461272098, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_Name
+      value: TipsPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 8956479473461272110, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -257,15 +267,35 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 8956479473461272098, guid: 61b532e376d73b347aa5131e933a3eb4,
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
-      propertyPath: m_Name
-      value: TipsPanel
+      propertyPath: m_AnchorMin.x
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8956479474548986023, guid: 61b532e376d73b347aa5131e933a3eb4,
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 160
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -50
       objectReference: {fileID: 0}
     - target: {fileID: 8956479474548986023, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
@@ -277,20 +307,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 1200
       objectReference: {fileID: 0}
-    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -697
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 440
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474438288490, guid: 61b532e376d73b347aa5131e933a3eb4,
+    - target: {fileID: 8956479474548986023, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 300
+      value: 160
       objectReference: {fileID: 0}
     - target: {fileID: 8956479474438288490, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
@@ -303,6 +323,35 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: e731530a27b460d47b6426229d3fb60b,
         type: 3}
+    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 87b1c770f66909f4698cf02085979141,
+        type: 3}
+    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_Text
+      value: 'CONTROLS
+
+        Move - Left Stick
+
+        Turn - Right Stick
+
+        Attack - A or RT
+
+        Block - B or LT'
+      objectReference: {fileID: 0}
     - target: {fileID: 8956479473960534666, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
       propertyPath: m_FontData.m_Font
@@ -317,41 +366,9 @@ PrefabInstance:
     - target: {fileID: 8956479473960534666, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
       propertyPath: m_Text
-      value: Blah blah blah. This is how to play the game. Blahhdy blah
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479473960534666, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_FontData.m_FontStyle
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 87b1c770f66909f4698cf02085979141,
-        type: 3}
-    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_FontData.m_FontStyle
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_Text
-      value: 'CONTROLS
-
-        Move - Left Stick
-
-        Turn - Right Stick
-
-        Attack - RT
-
-        Block - LT'
+      value: '[Players] fight each other in the Royal Arena, each armed with two turkey
+        drumsticks. [Players] must knock each other out of the arena. The last one
+        standing gains a point. The first [Player] to reach three points is the winner!'
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61b532e376d73b347aa5131e933a3eb4, type: 3}
