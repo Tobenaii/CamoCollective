@@ -101,7 +101,7 @@ MonoBehaviour:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 4508574378673596377}
-          m_MethodName: Climb
+          m_MethodName: ClimbFaster
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -425,15 +425,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c53bc0c0be3124e986d10785cd1b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_rotateSpeed: 500
-  m_climbSpeed: 100
+  m_baseClimbSpeed: 10
+  m_climbSpeedIncrease: 5
+  m_climbSpeedDecrease: 25
+  m_maxClimbSpeed: 28
+  m_climbAcceleration: 10
   m_fallSpeed:
     m_index: 0
     useConstant: 0
     m_constant: 0
     m_variable: {fileID: 11400000, guid: 5e4261c139267984580a96e53eeafa49, type: 2}
   m_strafeSpeed: 5
-  m_autoClimbMoveSpeed: 12
   m_stickyMovementScale: 0.5
   m_yPosValue:
     m_index: 0

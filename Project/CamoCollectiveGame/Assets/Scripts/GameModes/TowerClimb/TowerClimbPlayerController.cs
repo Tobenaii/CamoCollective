@@ -6,15 +6,19 @@ public class TowerClimbPlayerController : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField]
-    private float m_rotateSpeed;
+    private float m_baseClimbSpeed;
     [SerializeField]
-    private float m_climbSpeed;
+    private float m_climbSpeedIncrease;
+    [SerializeField]
+    private float m_climbSpeedDecrease;
+    [SerializeField]
+    private float m_maxClimbSpeed;
+    [SerializeField]
+    private float m_climbAcceleration;
     [SerializeField]
     private FloatReference m_fallSpeed;
     [SerializeField]
     private float m_strafeSpeed;
-    [SerializeField]
-    private float m_autoClimbMoveSpeed;
 
     [Header("Sticky Obstacle")]
     [SerializeField]
@@ -29,26 +33,21 @@ public class TowerClimbPlayerController : MonoBehaviour
     private Quaternion m_leftClimbRot;
     private Quaternion m_rightClimbRot;
     private Quaternion m_targetRot;
-    private bool m_climbLeft;
-    private bool m_atTargetRot;
     private bool m_playerHasControl;
     private bool m_playerFalling;
     private bool m_stopMoving;
-    private Rigidbody m_rb;
-    private float m_climbScale;
 
-    private bool m_pressedLeft;
-    private bool m_pressedRight;
+    private Rigidbody m_rb;
 
     private Vector3 m_targetPos;
 
-    private bool m_climb;
+    private float m_currentClimbSpeed;
+    private float m_targetClimbSpeed;
 
     private void Awake()
     {
         m_leftClimbRot = Quaternion.Euler(20, 0, 0);
         m_rightClimbRot = Quaternion.Euler(-20, 0, 0);
-        m_atTargetRot = true;
         m_playerHasControl = false;
         m_rb = GetComponent<Rigidbody>();
         TakeControl();
@@ -56,9 +55,14 @@ public class TowerClimbPlayerController : MonoBehaviour
 
     private void Start()
     {
-        m_climbScale = 1;
         m_targetPos = transform.position;
         m_animator = GetComponentInChildren<Animator>();
+        m_currentClimbSpeed = m_baseClimbSpeed;
+    }
+
+    public void ClimbFaster()
+    {
+        m_targetClimbSpeed += m_climbSpeedIncrease;
     }
 
     public void GiveControl()
@@ -86,58 +90,24 @@ public class TowerClimbPlayerController : MonoBehaviour
     public void MovePlayer(Vector2 joystick)
     {
         RaycastHit hit;
-        Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - joystick.x * m_strafeSpeed * m_climbScale * Time.deltaTime);
+        Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - joystick.x * m_strafeSpeed * Time.deltaTime);
         if (!Physics.Raycast(transform.position, newPos - transform.position, out hit, 0.5f))
             transform.position = newPos;
     }
 
-    public void Climb()
-    {
-        m_climb = true;
-        m_targetPos = transform.position + Vector3.up * 3;
-        if (!m_atTargetRot)
-            return;
-        m_climbLeft = !m_climbLeft;
-        if (m_climbLeft)
-            m_animator.SetTrigger("ClimbLeft");
-        else
-            m_animator.SetTrigger("ClimbRight");
-        m_atTargetRot = false;
-    }
-
-    public void ClimbLeft(float trigger)
-    {
-        //if (trigger != 0)
-        //    MovePlayer(Vector3.left);
-        if (trigger <= 0 || m_pressedLeft || !m_atTargetRot || !m_climbLeft)
-            return;
-        if (m_climbLeft)
-            m_targetRot = m_leftClimbRot;
-        m_pressedLeft = true;
-        m_pressedRight = false;
-        m_climbLeft = !m_climbLeft;
-        m_atTargetRot = false;
-        m_animator.SetTrigger("ClimbLeft");
-    }
-
-    public void ClimbRight(float trigger)
-    {
-        //if (trigger != 0)
-        //    MovePlayer(Vector3.right);
-        if (trigger <= 0 || m_climbLeft || m_pressedRight || !m_atTargetRot)
-            return;
-        if (!m_climbLeft)
-            m_targetRot = m_rightClimbRot;
-        m_pressedLeft = false;
-        m_pressedRight = true;
-        m_climbLeft = !m_climbLeft;
-        m_atTargetRot = false;
-        m_animator.SetTrigger("ClimbRight");
-    }
-
     private void Update()
     {
-        m_animator.SetFloat("ClimbScale", m_fallSpeed.Value);
+        if (!Mathf.Approximately(m_currentClimbSpeed, m_targetClimbSpeed))
+            m_currentClimbSpeed = Mathf.MoveTowards(m_currentClimbSpeed, m_targetClimbSpeed, m_climbAcceleration * Time.deltaTime);
+        m_targetClimbSpeed = Mathf.MoveTowards(m_targetClimbSpeed, m_baseClimbSpeed, m_climbSpeedDecrease * Time.deltaTime);
+
+        m_currentClimbSpeed = Mathf.Clamp(m_currentClimbSpeed, 0, m_fallSpeed.Value + 3);
+        m_targetClimbSpeed = Mathf.Clamp(m_targetClimbSpeed, 0, m_fallSpeed.Value + 3);
+
+        Debug.Log("Current Speed: " + m_currentClimbSpeed);
+        Debug.Log("Target Speed: " + m_targetClimbSpeed);
+
+        m_animator.SetFloat("ClimbScale", m_currentClimbSpeed);
         m_yPosValue.Value = transform.position.y;
         if (m_stopMoving)
             return;
@@ -152,33 +122,28 @@ public class TowerClimbPlayerController : MonoBehaviour
         }
         if (hitUp)
             transform.position = new Vector3(transform.position.x, hit.point.y - 1.0f, transform.position.z);
-        if (!m_playerHasControl && !hitUp)
-        {
+        if (m_playerHasControl)
+            transform.position += Vector3.up * m_currentClimbSpeed * Time.deltaTime;
+        else
             transform.position += Vector3.up * m_fallSpeed.Value * Time.deltaTime;
-            Climb();
-        }
 
-        if (m_climb && m_playerHasControl && !hitUp)
-            transform.position = Vector3.MoveTowards(transform.position, m_targetPos, m_climbSpeed * m_climbScale * Time.deltaTime);
         if (m_playerFalling)
             transform.position += Vector3.down * m_fallSpeed.Value * Time.deltaTime;
-        m_climb = false;
     }
 
-    public void OnAnimationFinished()
+    private void OnTriggerStay(Collider other)
     {
-        m_atTargetRot = true;
+        if (other.CompareTag("Mud"))
+            m_currentClimbSpeed = Mathf.MoveTowards(m_currentClimbSpeed, m_baseClimbSpeed, m_climbSpeedDecrease * Time.deltaTime);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Mud"))
-            m_climbScale = m_stickyMovementScale;
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Mud"))
-            m_climbScale = 1;
+
     }
 }
