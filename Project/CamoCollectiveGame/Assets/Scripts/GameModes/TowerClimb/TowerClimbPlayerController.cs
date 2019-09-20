@@ -40,6 +40,10 @@ public class TowerClimbPlayerController : MonoBehaviour
     private bool m_pressedLeft;
     private bool m_pressedRight;
 
+    private Vector3 m_targetPos;
+
+    private bool m_climb;
+
     private void Awake()
     {
         m_leftClimbRot = Quaternion.Euler(20, 0, 0);
@@ -53,6 +57,7 @@ public class TowerClimbPlayerController : MonoBehaviour
     private void Start()
     {
         m_climbScale = 1;
+        m_targetPos = transform.position;
         m_animator = GetComponentInChildren<Animator>();
     }
 
@@ -83,13 +88,13 @@ public class TowerClimbPlayerController : MonoBehaviour
         RaycastHit hit;
         Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - joystick.x * m_strafeSpeed * m_climbScale * Time.deltaTime);
         if (!Physics.Raycast(transform.position, newPos - transform.position, out hit, 0.5f))
-        {
             transform.position = newPos;
-        }
     }
 
     public void Climb()
     {
+        m_climb = true;
+        m_targetPos = transform.position + Vector3.up * 3;
         if (!m_atTargetRot)
             return;
         m_climbLeft = !m_climbLeft;
@@ -132,6 +137,7 @@ public class TowerClimbPlayerController : MonoBehaviour
 
     private void Update()
     {
+        m_animator.SetFloat("ClimbScale", m_fallSpeed.Value);
         m_yPosValue.Value = transform.position.y;
         if (m_stopMoving)
             return;
@@ -152,10 +158,11 @@ public class TowerClimbPlayerController : MonoBehaviour
             Climb();
         }
 
-        if (!m_atTargetRot && m_playerHasControl && !hitUp)
-            transform.position += Vector3.up * m_climbSpeed * Time.deltaTime;
+        if (m_climb && m_playerHasControl && !hitUp)
+            transform.position = Vector3.MoveTowards(transform.position, m_targetPos, m_climbSpeed * m_climbScale * Time.deltaTime);
         if (m_playerFalling)
             transform.position += Vector3.down * m_fallSpeed.Value * Time.deltaTime;
+        m_climb = false;
     }
 
     public void OnAnimationFinished()
