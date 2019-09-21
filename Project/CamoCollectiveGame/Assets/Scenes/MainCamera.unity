@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300658, g: 0.4921953, b: 0.57192475, a: 1}
+  m_IndirectSpecularColor: {r: 0.11638748, g: 0.062276885, b: 0.057283122, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1080172184}
   - component: {fileID: 1080172183}
+  - component: {fileID: 1080172192}
+  - component: {fileID: 1080172191}
   - component: {fileID: 1080172182}
   - component: {fileID: 1080172186}
   - component: {fileID: 1080172185}
@@ -130,8 +132,6 @@ GameObject:
   - component: {fileID: 1080172188}
   - component: {fileID: 1080172189}
   - component: {fileID: 1080172190}
-  - component: {fileID: 1080172192}
-  - component: {fileID: 1080172191}
   - component: {fileID: 1080172193}
   - component: {fileID: 1080172195}
   - component: {fileID: 1080172197}
@@ -182,12 +182,12 @@ Camera:
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 1815
-  m_RenderingPath: -1
+  m_RenderingPath: 3
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
-  m_AllowMSAA: 1
+  m_AllowMSAA: 0
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 1
   m_OcclusionCulling: 1
