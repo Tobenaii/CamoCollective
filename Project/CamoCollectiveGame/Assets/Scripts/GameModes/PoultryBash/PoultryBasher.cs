@@ -61,6 +61,7 @@ public class PoultryBasher : MonoBehaviour
     private bool m_inRing;
     private Coroutine m_speedCo;
     private Coroutine m_strengthCo;
+    private bool m_isBlocking;
 
     private bool m_leftPunch;
 
@@ -208,6 +209,8 @@ public class PoultryBasher : MonoBehaviour
 
     public void RightPunch(float trigger)
     {
+        if (m_isBlocking)
+            return;
         if (trigger == 0)
         {
             m_punchedRight = false;
@@ -263,6 +266,7 @@ public class PoultryBasher : MonoBehaviour
     {
         if (trigger > 0)
         {
+            m_isBlocking = true;
             m_speedScale.Value = m_blockMoveSpeedMultiplier;
             m_currentBlockKnockbackScale = m_blockKnockbackScale;
             m_animator.ResetTrigger("StopDefend");
@@ -278,6 +282,7 @@ public class PoultryBasher : MonoBehaviour
         m_currentBlockKnockbackScale = 1;
         m_animator.ResetTrigger("StartDefend");
         m_animator.SetTrigger("StopDefend");
+        m_isBlocking = false;
     }
 
     public void OnPunchEnd()
