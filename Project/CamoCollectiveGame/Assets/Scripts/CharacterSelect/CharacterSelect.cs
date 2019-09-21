@@ -95,6 +95,8 @@ public class CharacterSelect : MonoBehaviour
     {
         if (!m_initialized && m_playerData.IsPlaying)
             Init();
+        else if (m_initialized && !m_playerData.IsPlaying)
+            Disconnect();
         if (m_playerData.Character == null)
         {
             if (m_playerData.GhostCharacter == null)
@@ -128,6 +130,8 @@ public class CharacterSelect : MonoBehaviour
         m_playerData.RemoveCharacter();
         m_image.gameObject.SetActive(false);
         m_initialized = false;
+        m_joinText.SetActive(true);
+        m_playerNumberText.SetActive(false);
     }
 
     //public void GetNextCharacter(float trigger)

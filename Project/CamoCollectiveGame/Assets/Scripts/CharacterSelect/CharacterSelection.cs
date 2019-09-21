@@ -13,10 +13,27 @@ public class CharacterSelection : MonoBehaviour
     private RectTransform m_rect;
     private Image[] m_images;
 
+    private PlayerData m_assignedPlayer;
+    private Button m_button;
+
     private void Start()
     {
         m_rect = GetComponent<RectTransform>();
         m_images = GetComponentsInChildren<Image>();
+        m_button = GetComponentInChildren<Button>();
+    }
+
+    private void Update()
+    {
+        if (m_assignedPlayer == null)
+            return;
+        if (m_assignedPlayer.Character == null)
+        {
+            foreach (Image image in m_images)
+                image.color = new Color(1,1,1,1);
+            m_button.interactable = true;
+            m_assignedPlayer = null;
+        }
     }
 
     public void OnHoverEnter(PlayerData player)
@@ -34,6 +51,7 @@ public class CharacterSelection : MonoBehaviour
     public void OnCursorClick(PlayerData player)
     {
         player.Character = m_character;
+        m_assignedPlayer = player;
         Debug.Log("Setting " + player.name + "Character to " + m_character.name);
         Color c = player.IndicatorColour;
         foreach (Image image in m_images)
