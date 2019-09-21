@@ -27,7 +27,11 @@ public class CharacterSelection : MonoBehaviour
         foreach (PlayerData player in m_players)
         {
             if (player.IsPlaying && player.Character == m_character)
+            {
+                m_button.interactable = false;
                 OnCursorClick(player);
+                break;
+            }
         }
     }
 

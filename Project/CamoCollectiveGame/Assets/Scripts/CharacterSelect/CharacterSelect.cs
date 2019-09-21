@@ -7,6 +7,8 @@ using XInputDotNetPure;
 public class CharacterSelect : MonoBehaviour
 {
     [SerializeField]
+    private GameObject m_panel;
+    [SerializeField]
     private Image m_image;
     [SerializeField]
     private PlayerData m_playerData;
@@ -30,6 +32,17 @@ public class CharacterSelect : MonoBehaviour
         m_playerNumberText.SetActive(false);
         if (m_playerData.IsPlaying)
             Connect();
+    }
+
+    public void PlayCheck()
+    {
+        if (!m_playerData.IsPlaying)
+            m_panel.SetActive(false);
+    }
+
+    public void Show()
+    {
+        m_panel.SetActive(true);
     }
 
     private void Init()
