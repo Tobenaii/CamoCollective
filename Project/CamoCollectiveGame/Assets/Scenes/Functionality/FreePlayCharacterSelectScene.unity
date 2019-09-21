@@ -244,7 +244,7 @@ Transform:
   - {fileID: 953316755}
   - {fileID: 747292055}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &747292054
 PrefabInstance:
@@ -401,7 +401,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &897293011
 PrefabInstance:
@@ -815,8 +815,9 @@ GameObject:
   - component: {fileID: 1305953364}
   - component: {fileID: 1305953366}
   - component: {fileID: 1305953367}
+  - component: {fileID: 1305953368}
   m_Layer: 0
-  m_Name: SceneLoader
+  m_Name: BeginGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -850,12 +851,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1305953363}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 66.13382, y: 477.40002, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1305953366
 MonoBehaviour:
@@ -929,8 +930,8 @@ MonoBehaviour:
     unityEventButton:
       m_PersistentCalls:
         m_Calls:
-        - m_Target: {fileID: 1305953364}
-          m_MethodName: Load
+        - m_Target: {fileID: 1305953368}
+          m_MethodName: Begin
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -952,6 +953,23 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
+--- !u!114 &1305953368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305953363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea4f05c9d6285f04fb017b37af8f7050, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_players:
+  - {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590, type: 2}
+  - {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b, type: 2}
+  - {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61, type: 2}
+  - {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9, type: 2}
 --- !u!1001 &1316722053
 PrefabInstance:
   m_ObjectHideFlags: 0
