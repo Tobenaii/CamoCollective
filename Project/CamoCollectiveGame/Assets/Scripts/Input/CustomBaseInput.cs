@@ -8,14 +8,36 @@ using XInputDotNetPure;
 public class CustomBaseInput : BaseInput
 {
     [SerializeField]
-    private FloatValue m_controllerNumber;
-    GamePadState state;
-    GamePadState prevState;
+    private PlayerData m_playerData;
+    [SerializeField]
+    private FloatReference m_controllerNumber;
+    [SerializeField]
+    private Vector3Reference m_cursorPosValue;
+    [SerializeField]
+    private float m_cursorMoveSpeed;
+    private GamePadState state;
+    private GamePadState prevState;
+    private Vector2 m_cursorPos;
+    private bool m_firstUpdate;
+
+    public PlayerData Player {get { return m_playerData; } private set { } }
+
+    protected override void Start()
+    {
+        
+    }
 
     private void Update()
     {
+        if (!m_firstUpdate)
+        {
+            m_cursorPos = m_cursorPosValue.Value;
+            m_firstUpdate = true;
+        }
         prevState = state;
-        state = GamePad.GetState((PlayerIndex)m_controllerNumber.Value - 1);
+        state = GamePad.GetState((PlayerIndex)m_controllerNumber.Value - 1, GamePadDeadZone.Circular);
+        m_cursorPos += new Vector2(state.ThumbSticks.Left.X, state.ThumbSticks.Left.Y) * m_cursorMoveSpeed * Time.deltaTime;
+        m_cursorPosValue.Value = m_cursorPos;
     }
 
     public override float GetAxisRaw(string axisName)
@@ -57,13 +79,13 @@ public class CustomBaseInput : BaseInput
 
     public override bool GetMouseButtonDown(int button)
     {
-        return false;
+        return state.Buttons.A == ButtonState.Pressed && prevState.Buttons.A == ButtonState.Released;
     }
 
     public override bool GetMouseButtonUp(int button)
     {
-        return false;
+        return state.Buttons.A == ButtonState.Released && prevState.Buttons.A == ButtonState.Pressed;
     }
 
-    public override Vector2 mousePosition => Vector3.zero;
+    public override Vector2 mousePosition => m_cursorPos;
 }

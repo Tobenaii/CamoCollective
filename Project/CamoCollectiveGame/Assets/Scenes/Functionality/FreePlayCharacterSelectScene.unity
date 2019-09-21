@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300634, g: 0.4921952, b: 0.5719241, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300658, g: 0.4921953, b: 0.57192475, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -546,6 +546,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
         type: 2}
+    - target: {fileID: 7299654288684776066, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_cursorPos.useConstant
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7299654288684776069, guid: d1621947e4b387143bb8b108d3681fd6,
         type: 3}
       propertyPath: actions.Array.data[3].unityEventButton.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -809,6 +814,7 @@ GameObject:
   - component: {fileID: 1305953365}
   - component: {fileID: 1305953364}
   - component: {fileID: 1305953366}
+  - component: {fileID: 1305953367}
   m_Layer: 0
   m_Name: SceneLoader
   m_TagString: Untagged
@@ -830,7 +836,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_runOnAwake: 0
   m_unloadAllScenes: 0
-  m_scenesToUnload: []
+  m_scenesToUnload:
+  - m_scene: {fileID: 102900000, guid: e1cbfc1dcac84b64dad6e04fac1db539, type: 3}
+    m_sceneName: CharacterSelectionsScene
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
     m_sceneName: ModeSelectionScene
@@ -878,6 +886,72 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1305953367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305953363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01d14932de0e9034abfce6da8ef0ab14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_disableOnAwake: 0
+  m_controllerNumber:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: f2f096e69a744c44184a66a037b6acbf, type: 2}
+  actions:
+  - actionName: Start
+    buttonA: 0
+    buttonB: 0
+    buttonX: 0
+    buttonY: 0
+    buttonStart: 1
+    joystickLeft: 0
+    joystickRight: 0
+    triggerLeft: 0
+    triggerRight: 0
+    buttons:
+    - button: 4
+      buttonState: 0
+      prevButtonState: 0
+      delay: 0
+      cooldown: 0
+      onButtonDown: 1
+      onButtonHold: 0
+      onButtonRelease: 0
+      delayTime: 0
+      cooldownTime: 0
+    unityEventButton:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1305953364}
+          m_MethodName: Load
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    unityEventJoystick:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    unityEventTrigger:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
 --- !u!1001 &1316722053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1021,6 +1095,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
         type: 2}
+    - target: {fileID: 7299654288684776066, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_cursorPos.useConstant
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7299654288684776069, guid: d1621947e4b387143bb8b108d3681fd6,
         type: 3}
       propertyPath: actions.Array.data[2].unityEventButton.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1167,12 +1246,6 @@ GameObject:
   - component: {fileID: 1956740462}
   - component: {fileID: 1956740461}
   - component: {fileID: 1956740460}
-  - component: {fileID: 1956740464}
-  - component: {fileID: 1956740466}
-  - component: {fileID: 1956740465}
-  - component: {fileID: 1956740467}
-  - component: {fileID: 1956740468}
-  - component: {fileID: 1956740469}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1263,196 +1336,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!95 &1956740464
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956740459}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 831bcb554b8a85e4abd2982768d246da, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &1956740465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956740459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01d14932de0e9034abfce6da8ef0ab14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_disableOnAwake: 1
-  m_controllerNumber:
-    m_index: 0
-    useConstant: 0
-    m_constant: 0
-    m_variable: {fileID: 11400000, guid: cd4124caeda9bf14b9381ee841503190, type: 2}
-  actions:
-  - actionName: CloseCharacterSelect
-    buttonA: 1
-    buttonB: 0
-    buttonX: 0
-    buttonY: 0
-    joystickLeft: 0
-    joystickRight: 0
-    triggerLeft: 0
-    triggerRight: 0
-    buttons:
-    - button: 0
-      buttonState: 0
-      prevButtonState: 0
-      delay: 0
-      cooldown: 0
-      onButtonDown: 1
-      onButtonHold: 0
-      onButtonRelease: 0
-      delayTime: 0
-      cooldownTime: 0
-    unityEventButton:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1956740466}
-          m_MethodName: CloseCharacterSelect
-          m_Mode: 1
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-        Culture=neutral, PublicKeyToken=null
-    unityEventJoystick:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
-    unityEventTrigger:
-      m_PersistentCalls:
-        m_Calls: []
-      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-        PublicKeyToken=null
---- !u!114 &1956740466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956740459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3efa385e3437d046be6a1bfc62ff1d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_isOpen: {fileID: 11400000, guid: c672e64a5c15b9d40af29796a3b45822, type: 2}
-  m_playerData:
-  - {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590, type: 2}
-  - {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b, type: 2}
-  - {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61, type: 2}
-  - {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9, type: 2}
-  m_closeEvent: {fileID: 11400000, guid: d9100db3e4056784b8a7e6dde985d60d, type: 2}
---- !u!114 &1956740467
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956740459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 187a09abbdf04924689fd788a7f64eb4, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1956740465}
-        m_MethodName: EnableInput
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &1956740468
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956740459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: d9100db3e4056784b8a7e6dde985d60d, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1956740465}
-        m_MethodName: DisableInput
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
---- !u!114 &1956740469
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1956740459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: f9ffc6b41fb41b6459b0b41f6c152f59, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1956740466}
-        m_MethodName: OpenCharacterSelect
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &1981802768
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1596,6 +1479,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
         type: 2}
+    - target: {fileID: 7299654288684776066, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_cursorPos.useConstant
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7299654288684776069, guid: d1621947e4b387143bb8b108d3681fd6,
         type: 3}
       propertyPath: actions.Array.data[3].unityEventButton.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -1956,6 +1844,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_characterPool
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7299654288684776066, guid: d1621947e4b387143bb8b108d3681fd6,
+        type: 3}
+      propertyPath: m_cursorPos.useConstant
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7299654288684776069, guid: d1621947e4b387143bb8b108d3681fd6,
         type: 3}

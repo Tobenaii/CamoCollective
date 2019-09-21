@@ -6,8 +6,12 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(CustomBaseInput))]
 public class CustomInputModule : StandaloneInputModule
 {
+    private CustomBaseInput m_baseInput;
+    public PlayerData Player {get { return m_baseInput.Player; } private set { } }
+
     protected override void Awake()
     {
-        base.m_InputOverride = gameObject.GetComponent<CustomBaseInput>();
+        m_baseInput = gameObject.GetComponent<CustomBaseInput>();
+        base.m_InputOverride = m_baseInput;
     }
 }

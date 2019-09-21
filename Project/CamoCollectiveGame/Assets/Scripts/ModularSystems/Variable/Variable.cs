@@ -13,6 +13,7 @@ public abstract class Variable<T> : ScriptableObject, ISerializationCallbackRece
     [System.NonSerialized]
     private T[] m_runtimeValues;
     public T Value { get { return m_runtimeValues[0]; } set { m_runtimeValues[0] = value; } }
+    public int Count { get { return amount; } private set { } }
     public T GetValue(int index)
     {
         return m_runtimeValues[index];

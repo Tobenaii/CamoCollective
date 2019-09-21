@@ -10,6 +10,8 @@ public class PlayerData : ScriptableObject
     [System.NonSerialized]
     private CharacterData m_currentCharacter;
     [System.NonSerialized]
+    private CharacterData m_ghostCharacter;
+    [System.NonSerialized]
     private bool m_isPlaying;
     [SerializeField]
     private Color m_indicatorColour;
@@ -18,6 +20,12 @@ public class PlayerData : ScriptableObject
     public CharacterData ForcedCharacter { get { return m_forcedCharacter; } private set { } }
     public bool IsPlaying { get { return m_isPlaying; } set { m_isPlaying = value; } }
     public Color IndicatorColour { get { return m_indicatorColour; } private set { } }
+    public CharacterData GhostCharacter { get { return m_ghostCharacter; } private set { } }
+
+    public void SetGhostCharacter(CharacterData character)
+    {
+        m_ghostCharacter = character;
+    }
 
     public void RemoveCharacter()
     {
