@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class CharacterSelection : MonoBehaviour
 {
     [SerializeField]
+    private List<PlayerData> m_players;
+    [SerializeField]
     private CharacterData m_character;
     [SerializeField]
     private Vector3Value m_playerCursors;
@@ -21,6 +23,12 @@ public class CharacterSelection : MonoBehaviour
         m_rect = GetComponent<RectTransform>();
         m_images = GetComponentsInChildren<Image>();
         m_button = GetComponentInChildren<Button>();
+
+        foreach (PlayerData player in m_players)
+        {
+            if (player.IsPlaying && player.Character == m_character)
+                OnCursorClick(player);
+        }
     }
 
     private void Update()
