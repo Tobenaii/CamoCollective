@@ -18,6 +18,8 @@ public class PoultryBasher : MonoBehaviour
 
     [Header("Blocking")]
     [SerializeField]
+    private GameObject m_shield;
+    [SerializeField]
     private float m_blockKnockbackScale;
     [SerializeField]
     private float m_blockKnockupScale;
@@ -222,6 +224,7 @@ public class PoultryBasher : MonoBehaviour
         QueueNextPunch("RightPunch");
     }
 
+
     public void Punch(float rightOffset)
     {
         if (!m_inRing)
@@ -232,7 +235,9 @@ public class PoultryBasher : MonoBehaviour
             Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
             PoultryBasher pb = hit.transform.GetComponent<PoultryBasher>();
             rb.velocity = Vector3.zero;
-            rb.AddForce(transform.forward * m_knockback * m_knockbackScale * pb.m_currentBlockKnockbackScale, ForceMode.Impulse);
+            float dot = Vector3.Dot(transform.forward, rb.transform.forward);
+            float knockbackScale = (dot < -0.7f)?pb.m_currentBlockKnockbackScale:1;
+            rb.AddForce(transform.forward * m_knockback * m_knockbackScale * knockbackScale, ForceMode.Impulse);
             rb.AddForce(Vector3.up * m_knockup, ForceMode.Impulse);
         }
     }
@@ -271,6 +276,7 @@ public class PoultryBasher : MonoBehaviour
             m_currentBlockKnockbackScale = m_blockKnockbackScale;
             m_animator.ResetTrigger("StopDefend");
             m_animator.SetTrigger("StartDefend");
+            m_shield.SetActive(true);
         }
         else
             EndBlock();
@@ -278,6 +284,7 @@ public class PoultryBasher : MonoBehaviour
 
     public void EndBlock()
     {
+        m_shield.SetActive(false);
         m_speedScale.Value = 1;
         m_currentBlockKnockbackScale = 1;
         m_animator.ResetTrigger("StartDefend");
