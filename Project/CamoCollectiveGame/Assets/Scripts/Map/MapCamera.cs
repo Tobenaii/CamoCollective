@@ -59,13 +59,13 @@ public class MapCamera : MonoBehaviour
         transform.rotation = Quaternion.Euler(Vector3.SmoothDamp(transform.rotation.eulerAngles, m_currentTarget.transform.rotation.eulerAngles,
                                                                                 ref m_rotateVelocity, m_panTime));
 
-        if (!m_triggeredEvent && Vector3.Distance(transform.position, targetPos) < 0.5f)
+        if (!m_triggeredEvent && Vector3.Distance(transform.position, m_currentTarget.transform.position) < 0.5f)
         {
             m_triggeredEvent = true;
             m_cameraReachedTargetEvent.Invoke();
         }
 
-        if (Vector3.Distance(transform.position, targetPos) < 0.001f && transform.rotation == m_currentTarget.transform.rotation)
+        if (Vector3.Distance(transform.position, m_currentTarget.transform.position) < 0.1f && transform.rotation == m_currentTarget.transform.rotation)
         {
             transform.position = targetPos;
             m_atTarget = true;
