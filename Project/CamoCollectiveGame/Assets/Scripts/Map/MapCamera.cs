@@ -22,6 +22,8 @@ public class MapCamera : MonoBehaviour
     private TimeLerper m_lerper = new TimeLerper();
     private Vector3 m_prevPos;
 
+    private bool m_triggeredEvent;
+
     private void Awake()
     {
         GetComponent<Camera>().depth = -1;
@@ -57,16 +59,22 @@ public class MapCamera : MonoBehaviour
         transform.rotation = Quaternion.Euler(Vector3.SmoothDamp(transform.rotation.eulerAngles, m_currentTarget.transform.rotation.eulerAngles,
                                                                                 ref m_rotateVelocity, m_panTime));
 
-        if (Vector3.Distance(transform.position, targetPos) < 0.1f && transform.rotation == m_currentTarget.transform.rotation)
+        if (!m_triggeredEvent && Vector3.Distance(transform.position, targetPos) < 0.5f)
+        {
+            m_triggeredEvent = true;
+            m_cameraReachedTargetEvent.Invoke();
+        }
+
+        if (Vector3.Distance(transform.position, targetPos) < 0.001f && transform.rotation == m_currentTarget.transform.rotation)
         {
             transform.position = targetPos;
-            m_cameraReachedTargetEvent.Invoke();
             m_atTarget = true;
         }
     }
 
     public void SetTarget(GameObject target)
     {
+        m_triggeredEvent = false;
         m_currentTarget = target;
         m_atTarget = false;
         m_initPos = transform.position;
