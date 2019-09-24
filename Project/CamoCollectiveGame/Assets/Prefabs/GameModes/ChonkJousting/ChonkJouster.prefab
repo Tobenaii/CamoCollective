@@ -62,6 +62,8 @@ MonoBehaviour:
   m_invincibilityFrame: 2
   m_invincibilityFlashTime: 0.1
   m_attackFrequency: 0.25
+  m_vibrationTime: 0.1
+  m_vibrationAmount: 1
   m_gainPointsParticles: {fileID: 11400000, guid: 711db7db6e8090344904cf410d9a15ea,
     type: 2}
   m_fadeAwayTime: 2
@@ -786,11 +788,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1306612043750070392}
     m_Modifications:
-    - target: {fileID: 522741158364361424, guid: 35f35d2ec49c760488512a4c4c751227,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerIndicator
-      objectReference: {fileID: 0}
     - target: {fileID: 522741158364361426, guid: 35f35d2ec49c760488512a4c4c751227,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -860,6 +857,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 522741158364361424, guid: 35f35d2ec49c760488512a4c4c751227,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerIndicator
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35f35d2ec49c760488512a4c4c751227, type: 3}

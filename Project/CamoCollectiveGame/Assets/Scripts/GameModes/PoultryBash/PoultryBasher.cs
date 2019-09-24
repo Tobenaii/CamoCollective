@@ -15,6 +15,8 @@ public class PoultryBasher : MonoBehaviour
     private float m_knockup;
     [SerializeField]
     private float m_punchTime;
+
+    [Header("Controller Vibration")]
     [SerializeField]
     private float m_vibrationTime;
     [SerializeField]

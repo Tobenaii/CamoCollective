@@ -24,6 +24,13 @@ public class ChonkJouster : MonoBehaviour
     [SerializeField]
     private float m_attackFrequency;
 
+    [Header("Controller Vibration")]
+    [SerializeField]
+    private float m_vibrationTime;
+    [SerializeField]
+    [Range(0, 1)]
+    private float m_vibrationAmount;
+
     [Header("Particles")]
     [SerializeField]
     private ParticleSystemPool m_gainPointsParticles;
@@ -63,6 +70,7 @@ public class ChonkJouster : MonoBehaviour
     private Rigidbody m_rb;
     private StandardCharacterController m_controller;
     private Animator m_animator;
+    private InputMapper m_input;
 
     //State
     private bool m_isInvincible;
@@ -76,6 +84,7 @@ public class ChonkJouster : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody>();
         m_controller = GetComponent<StandardCharacterController>();
+        m_input = GetComponent<InputMapper>();
     }
 
     private void Start()
@@ -88,8 +97,6 @@ public class ChonkJouster : MonoBehaviour
         m_scoreValue.Reset();
         m_chonkSpeedScale.Value = 1;
     }
-
-
 
     void Update()
     {
@@ -162,6 +169,9 @@ public class ChonkJouster : MonoBehaviour
         //Lost points and a life
         Knockback(knockbackForce);
         Knockback(knockupForce);
+
+        m_input.Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
+
         m_livesValue.Value--;
         if (m_livesValue.Value <= 0)
             Die();
