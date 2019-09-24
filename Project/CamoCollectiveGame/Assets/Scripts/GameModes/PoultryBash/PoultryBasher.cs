@@ -18,7 +18,7 @@ public class PoultryBasher : MonoBehaviour
 
     [Header("Blocking")]
     [SerializeField]
-    private GameObject m_shield;
+    private Renderer m_shield;
     [SerializeField]
     private float m_blockKnockbackScale;
     [SerializeField]
@@ -66,6 +66,7 @@ public class PoultryBasher : MonoBehaviour
     private bool m_isBlocking;
 
     private bool m_leftPunch;
+    private TimeLerper m_shieldLerper = new TimeLerper();
 
     private void Start()
     {
@@ -271,25 +272,46 @@ public class PoultryBasher : MonoBehaviour
     {
         if (trigger > 0)
         {
+            if (!m_isBlocking)
+            {
+                m_shieldLerper.Reset();
+                StartCoroutine(FadeInShield());
+            }
             m_isBlocking = true;
             m_speedScale.Value = m_blockMoveSpeedMultiplier;
             m_currentBlockKnockbackScale = m_blockKnockbackScale;
             m_animator.ResetTrigger("StopDefend");
             m_animator.SetTrigger("StartDefend");
-            m_shield.SetActive(true);
+            m_shield.gameObject.SetActive(true);
         }
         else
             EndBlock();
     }
 
+    private IEnumerator FadeInShield()
+    {
+        float time = 0.5f;
+        float timer = time;
+        Color c = m_shield.material.color;
+        m_shield.material.color = new Color(c.r, c.g, c.b, 0);
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            c.a = m_shieldLerper.Lerp(0, 0.5f, time);
+            m_shield.material.color = new Color(c.r, c.g, c.b, c.a);
+            yield return null;
+        }
+    }
+
     public void EndBlock()
     {
-        m_shield.SetActive(false);
+        m_shield.gameObject.SetActive(false);
         m_speedScale.Value = 1;
         m_currentBlockKnockbackScale = 1;
         m_animator.ResetTrigger("StartDefend");
         m_animator.SetTrigger("StopDefend");
         m_isBlocking = false;
+        StopCoroutine(FadeInShield());
     }
 
     public void OnPunchEnd()
