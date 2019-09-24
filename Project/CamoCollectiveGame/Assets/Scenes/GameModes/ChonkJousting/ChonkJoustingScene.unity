@@ -7290,6 +7290,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590,
         type: 2}
+    - target: {fileID: 693771883047700884, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 693771883885622244, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -7339,11 +7344,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 693771883047700884, guid: 5504e396eea336d49b915465ff04ad6a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
@@ -10138,6 +10138,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
         type: 2}
+    - target: {fileID: 693771883047700884, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 693771883885622244, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_SizeDelta.y
@@ -10187,11 +10192,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 693771883047700884, guid: 5504e396eea336d49b915465ff04ad6a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
@@ -11247,6 +11247,8 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
     m_sceneName: FreePlayCharacterSelectScene
+  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
+    m_sceneName: ModeSelectionScene
   m_loadedEvent: {fileID: 0}
 --- !u!4 &1541438027
 Transform:
