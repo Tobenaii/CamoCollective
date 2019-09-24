@@ -15,6 +15,11 @@ public class PoultryBasher : MonoBehaviour
     private float m_knockup;
     [SerializeField]
     private float m_punchTime;
+    [SerializeField]
+    private float m_vibrationTime;
+    [SerializeField]
+    [Range(0, 1)]
+    private float m_vibrationAmount;
 
     [Header("Blocking")]
     [SerializeField]
@@ -240,6 +245,7 @@ public class PoultryBasher : MonoBehaviour
             float knockbackScale = (dot < -0.7f)?pb.m_currentBlockKnockbackScale:1;
             rb.AddForce(transform.forward * m_knockback * m_knockbackScale * knockbackScale, ForceMode.Impulse);
             rb.AddForce(Vector3.up * m_knockup, ForceMode.Impulse);
+            hit.transform.GetComponent<InputMapper>().Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
         }
     }
 

@@ -263,6 +263,24 @@ public class InputMapper : MonoBehaviour
         value.Value = m_controllerNumber.Value;
     }
 
+    public void Vibrate(float seconds, float leftMotor, float rightMotor)
+    {
+        StopCoroutine(VibrateForSeconds(0));
+        GamePad.SetVibration((PlayerIndex)m_controllerNumber.Value - 1, leftMotor, rightMotor);
+        StartCoroutine(VibrateForSeconds(seconds));
+    }
+
+    private IEnumerator VibrateForSeconds(float seconds)
+    {
+        float timer = seconds;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        GamePad.SetVibration((PlayerIndex)m_controllerNumber.Value - 1, 0, 0);
+    }
+
     private void Update()
     {
         if (m_disabled)
