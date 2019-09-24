@@ -359,6 +359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b9b20837eb84764b9850c991633ecb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_triggerOnAwake: 0
   m_gameEvent: {fileID: 11400000, guid: 5aa731d1e79153c42a409d8eaa426dda, type: 2}
 --- !u!114 &617840852
 MonoBehaviour:
@@ -767,7 +768,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8806af405c2232c4d8b56a0b0d88e797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_controllerNumber: {fileID: 11400000, guid: 172dc2899a71e6f4eb8b58c393dd6ca5, type: 2}
+  m_playerData: {fileID: 0}
+  m_controllerNumber:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 172dc2899a71e6f4eb8b58c393dd6ca5, type: 2}
+  m_cursorPosValue:
+    m_index: 0
+    useConstant: 1
+    m_constant: {x: 0, y: 0, z: 0}
+    m_variable: {fileID: 0}
+  m_cursorMoveSpeed: 0
 --- !u!114 &1439817187
 MonoBehaviour:
   m_ObjectHideFlags: 0
