@@ -269,10 +269,10 @@ public class InputMapper : MonoBehaviour
             return;
         prevState = state;
         state = GamePad.GetState((PlayerIndex)m_controllerNumber.Value - 1, GamePadDeadZone.Circular);
-        if (state.Buttons.X == ButtonState.Pressed)
-            GamePad.SetVibration((PlayerIndex)m_controllerNumber.Value - 1, 1, 1);
-        else
-            GamePad.SetVibration((PlayerIndex)m_controllerNumber.Value - 1, 0, 0);
+        //if (state.Buttons.X == ButtonState.Pressed)
+        //    GamePad.SetVibration((PlayerIndex)m_controllerNumber.Value - 1, 1, 1);
+        //else
+        //    GamePad.SetVibration((PlayerIndex)m_controllerNumber.Value - 1, 0, 0);
         foreach (InputAction action in actions)
         {
             foreach (ButtonMod button in action.buttons)
