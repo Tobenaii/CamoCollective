@@ -214,6 +214,7 @@ public class PoultryBasher : MonoBehaviour
         if (m_punchedLeft)
             return;
         m_punchedLeft = true;
+        m_animator.ResetTrigger("RightPunch");
         QueueNextPunch("LeftPunch");
     }
 
@@ -229,6 +230,7 @@ public class PoultryBasher : MonoBehaviour
         if (m_punchedRight)
             return;
         m_punchedRight = true;
+        m_animator.ResetTrigger("LeftPunch");
         QueueNextPunch("RightPunch");
     }
 
@@ -238,13 +240,13 @@ public class PoultryBasher : MonoBehaviour
         if (!m_inRing)
             return;
         RaycastHit hit;
-        if (Physics.CapsuleCast(((transform.position - transform.up / 2) - transform.forward * m_punchRadius) + transform.right * rightOffset, (transform.position + transform.up / 2) - transform.forward * m_punchRadius, m_punchRadius, transform.forward, out hit, m_punchDistance, 1<<10))
+        if (Physics.CapsuleCast(((transform.position - transform.up / 2) - transform.forward * m_punchRadius) + transform.right * rightOffset, (transform.position + transform.up / 2) - transform.forward * m_punchRadius, m_punchRadius, transform.forward, out hit, m_punchDistance, 1 << 10))
         {
             Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
             PoultryBasher pb = hit.transform.GetComponent<PoultryBasher>();
             rb.velocity = Vector3.zero;
             float dot = Vector3.Dot(transform.forward, rb.transform.forward);
-            float knockbackScale = (dot < -0.7f)?pb.m_currentBlockKnockbackScale:1;
+            float knockbackScale = (dot < -0.7f) ? pb.m_currentBlockKnockbackScale : 1;
             rb.AddForce(transform.forward * m_knockback * m_knockbackScale * knockbackScale, ForceMode.Impulse);
             rb.AddForce(Vector3.up * m_knockup, ForceMode.Impulse);
             hit.transform.GetComponent<InputMapper>().Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
@@ -254,6 +256,7 @@ public class PoultryBasher : MonoBehaviour
     private IEnumerator PunchTimer()
     {
         m_punchQueued = true;
+        m_isPunching = true;
         float timer = m_punchTime;
         while (timer > 0)
         {
@@ -261,13 +264,13 @@ public class PoultryBasher : MonoBehaviour
             yield return null;
         }
         Punch(0);
-        m_leftPunch = !m_leftPunch;
+        OnPunchEnd();
         m_punchQueued = false;
     }
 
     public void AlternatePunch(float trigger)
     {
-        if (trigger == 0)
+        if (m_isPunching || trigger == 0)
             return;
 
         if (m_leftPunch)
@@ -326,6 +329,7 @@ public class PoultryBasher : MonoBehaviour
     {
         //m_punchQueued = false;
         //m_leftPunch = !m_leftPunch;
+        m_isPunching = false;
         m_leftPunch = !m_leftPunch;
         m_punchedRight = false;
         m_punchedLeft = false;
