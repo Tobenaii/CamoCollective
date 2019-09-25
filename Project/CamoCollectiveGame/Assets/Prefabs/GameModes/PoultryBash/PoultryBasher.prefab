@@ -565,7 +565,7 @@ MonoBehaviour:
   m_knockback: 20
   m_knockup: 20
   m_punchTime: 0.25
-  m_vibrationTime: 0.1
+  m_vibrationTime: 0.2
   m_vibrationAmount: 1
   m_shield: {fileID: 8751498917275123623}
   m_blockKnockbackScale: 0.25
@@ -863,7 +863,7 @@ PrefabInstance:
     - target: {fileID: 1412511323144363714, guid: 4a9e01016cb88fd45b2c3e20873bab66,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.3
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 1412511323144363714, guid: 4a9e01016cb88fd45b2c3e20873bab66,
         type: 3}
@@ -908,12 +908,17 @@ PrefabInstance:
     - target: {fileID: 1412511323144363714, guid: 4a9e01016cb88fd45b2c3e20873bab66,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.025000015
+      value: 0.025
       objectReference: {fileID: 0}
     - target: {fileID: 1412511323144363714, guid: 4a9e01016cb88fd45b2c3e20873bab66,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.010000004
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412511323144363714, guid: 4a9e01016cb88fd45b2c3e20873bab66,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.025
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a9e01016cb88fd45b2c3e20873bab66, type: 3}

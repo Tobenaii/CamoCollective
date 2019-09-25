@@ -305,7 +305,7 @@ public class PoultryBasher : MonoBehaviour
         while (timer > 0)
         {
             timer -= Time.deltaTime;
-            c.a = m_shieldLerper.Lerp(0, 0.5f, time);
+            c.a = m_shieldLerper.Lerp(0, 0.75f, time);
             m_shield.material.color = new Color(c.r, c.g, c.b, c.a);
             yield return null;
         }
