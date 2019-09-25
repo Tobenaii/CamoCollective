@@ -53,6 +53,7 @@ public class StandardCharacterController : MonoBehaviour
     [SerializeField]
     private float m_sprintMoveSpeed;
     [Header("Input")]
+    [SerializeField]
     private float m_joystickDeadZone;
 
     private Vector3 m_velocity;
@@ -201,6 +202,7 @@ public class StandardCharacterController : MonoBehaviour
     public void Move(Vector2 joystick)
     {
         float mag = joystick.magnitude;
+        Debug.Log(mag);
         if (mag <= m_joystickDeadZone || mag == 0)
             return;
         if (m_isDashing)
