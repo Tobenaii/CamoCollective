@@ -33,6 +33,7 @@ RectTransform:
   - {fileID: 5456496191711419699}
   - {fileID: 4319740337976310816}
   - {fileID: 8667903516812299929}
+  - {fileID: 531502316805977061}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -78,6 +79,85 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!1 &8375450556898126828
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 531502316805977061}
+  - component: {fileID: 3316923178983184360}
+  - component: {fileID: 3700837003527603568}
+  m_Layer: 5
+  m_Name: StartPrompt
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &531502316805977061
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375450556898126828}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2610587086302799794}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 800, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3316923178983184360
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375450556898126828}
+  m_CullTransparentMesh: 0
+--- !u!114 &3700837003527603568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375450556898126828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: a8b199bca694f024bb7b6c9e04c72f5b, type: 3}
+    m_FontSize: 14
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 10
+    m_MaxSize: 60
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: READY TO PLAY - START
 --- !u!1001 &28580016868648965
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,6 +169,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player2ReadyCheck
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466480716795245835, guid: eb538fba6906a8d45a520b9fb3d6a10a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5466480716795245878, guid: eb538fba6906a8d45a520b9fb3d6a10a,
         type: 3}
@@ -195,6 +280,18 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 952236009120425716, guid: eb538fba6906a8d45a520b9fb3d6a10a,
+        type: 3}
+      propertyPath: m_controllerNumber.m_index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466480716795245834, guid: eb538fba6906a8d45a520b9fb3d6a10a,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Player 2
+
+        Press A To Ready Up'
+      objectReference: {fileID: 0}
     - target: {fileID: 5466480716795245877, guid: eb538fba6906a8d45a520b9fb3d6a10a,
         type: 3}
       propertyPath: m_playerData
@@ -212,18 +309,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
         type: 2}
-    - target: {fileID: 952236009120425716, guid: eb538fba6906a8d45a520b9fb3d6a10a,
-        type: 3}
-      propertyPath: m_controllerNumber.m_index
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5466480716795245834, guid: eb538fba6906a8d45a520b9fb3d6a10a,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Player 2
-
-        Press A To Ready Up'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb538fba6906a8d45a520b9fb3d6a10a, type: 3}
 --- !u!224 &5456496191711419699 stripped
@@ -243,6 +328,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player4ReadyCheck
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466480716795245835, guid: eb538fba6906a8d45a520b9fb3d6a10a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5466480716795245878, guid: eb538fba6906a8d45a520b9fb3d6a10a,
         type: 3}
@@ -349,6 +439,18 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 952236009120425716, guid: eb538fba6906a8d45a520b9fb3d6a10a,
+        type: 3}
+      propertyPath: m_controllerNumber.m_index
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466480716795245834, guid: eb538fba6906a8d45a520b9fb3d6a10a,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Player 4
+
+        Press A To Ready Up'
+      objectReference: {fileID: 0}
     - target: {fileID: 5466480716795245877, guid: eb538fba6906a8d45a520b9fb3d6a10a,
         type: 3}
       propertyPath: m_playerData
@@ -366,18 +468,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
         type: 2}
-    - target: {fileID: 952236009120425716, guid: eb538fba6906a8d45a520b9fb3d6a10a,
-        type: 3}
-      propertyPath: m_controllerNumber.m_index
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 5466480716795245834, guid: eb538fba6906a8d45a520b9fb3d6a10a,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Player 4
-
-        Press A To Ready Up'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb538fba6906a8d45a520b9fb3d6a10a, type: 3}
 --- !u!224 &8667903516812299929 stripped
@@ -397,6 +487,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player1ReadyCheck
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466480716795245835, guid: eb538fba6906a8d45a520b9fb3d6a10a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5466480716795245878, guid: eb538fba6906a8d45a520b9fb3d6a10a,
         type: 3}
@@ -528,6 +623,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player3ReadyCheck
       objectReference: {fileID: 0}
+    - target: {fileID: 5466480716795245835, guid: eb538fba6906a8d45a520b9fb3d6a10a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5466480716795245878, guid: eb538fba6906a8d45a520b9fb3d6a10a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -633,6 +733,18 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 952236009120425716, guid: eb538fba6906a8d45a520b9fb3d6a10a,
+        type: 3}
+      propertyPath: m_controllerNumber.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5466480716795245834, guid: eb538fba6906a8d45a520b9fb3d6a10a,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Player 3
+
+        Press A To Ready Up'
+      objectReference: {fileID: 0}
     - target: {fileID: 5466480716795245877, guid: eb538fba6906a8d45a520b9fb3d6a10a,
         type: 3}
       propertyPath: m_playerData
@@ -650,18 +762,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
         type: 2}
-    - target: {fileID: 952236009120425716, guid: eb538fba6906a8d45a520b9fb3d6a10a,
-        type: 3}
-      propertyPath: m_controllerNumber.m_index
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5466480716795245834, guid: eb538fba6906a8d45a520b9fb3d6a10a,
-        type: 3}
-      propertyPath: m_Text
-      value: 'Player 3
-
-        Press A To Ready Up'
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eb538fba6906a8d45a520b9fb3d6a10a, type: 3}
 --- !u!224 &4319740337976310816 stripped
