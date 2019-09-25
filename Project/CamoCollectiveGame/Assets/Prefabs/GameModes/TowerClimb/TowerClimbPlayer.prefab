@@ -425,18 +425,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 46c53bc0c0be3124e986d10785cd1b98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_baseClimbSpeed: 5
+  m_baseClimbSpeed: 0
   m_climbSpeedIncrease: 10
-  m_climbSpeedDecrease: 25
+  m_climbSpeedDecrease: 10
   m_maxClimbSpeed: 30
-  m_climbAcceleration: 10
+  m_climbAcceleration: 15
   m_fallSpeed:
     m_index: 0
     useConstant: 0
     m_constant: 0
     m_variable: {fileID: 11400000, guid: 5e4261c139267984580a96e53eeafa49, type: 2}
   m_strafeSpeed: 5
-  m_stickyMovementScale: 0.5
+  m_stickyMovementScale: 0.35
   m_yPosValue:
     m_index: 0
     useConstant: 0
