@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.11480207, g: 0.11976777, b: 0.10575655, a: 1}
+  m_IndirectSpecularColor: {r: 0.28331694, g: 0.15188117, b: 0.13986865, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -294,6 +294,16 @@ PrefabInstance:
       value: Competitors race to the top of the tower, testing their speed and endurance.
         Competitors must dodge any obstacle in their path. If a Competitors falls
         too far behind, they are eliminated. The last Competitor climbing is the victor!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462816624328055653, guid: a7f76a404a51b14449afafbc0011becd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 105
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462816623984012676, guid: a7f76a404a51b14449afafbc0011becd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -160
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f76a404a51b14449afafbc0011becd, type: 3}
