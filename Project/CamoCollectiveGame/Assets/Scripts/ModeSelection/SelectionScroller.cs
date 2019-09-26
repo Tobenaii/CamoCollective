@@ -20,12 +20,12 @@ public class SelectionScroller : MonoBehaviour
     private void Start()
     {
         m_rect = GetComponent<RectTransform>();
-        m_rect.anchoredPosition = new Vector3((m_currentSelectionValue.Value - 1) * -160, m_rect.anchoredPosition.y, 0);
+        m_rect.anchoredPosition = new Vector3((m_currentSelectionValue.Value - 1) * -m_spacing, m_rect.anchoredPosition.y, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        m_rect.anchoredPosition = Vector3.MoveTowards(m_rect.anchoredPosition, new Vector3((m_currentSelectionValue.Value - 1) * -160, m_rect.anchoredPosition.y, 0), 300 * Time.deltaTime);
+        m_rect.anchoredPosition = Vector3.MoveTowards(m_rect.anchoredPosition, new Vector3((m_currentSelectionValue.Value - 1) * -m_spacing, m_rect.anchoredPosition.y, 0), 300 * Time.deltaTime);
     }
 }
