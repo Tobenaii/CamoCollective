@@ -10,27 +10,37 @@ public class GameObjectSwitch : MonoBehaviour
     private bool m_enableOnAwake;
     [SerializeField]
     private GameObject m_gameObject;
+    [SerializeField]
+    private List<GameObject> m_gameObjects;
 
     private void Awake()
     {
         if (m_disableOnWake)
-            m_gameObject.SetActive(false);
+            DisableGameObject();
         if (m_enableOnAwake)
-            m_gameObject.SetActive(true);
+            EnableGameObject();
     }
 
     public void EnableGameObject()
     {
-        m_gameObject.SetActive(true);
+        foreach (GameObject obj in m_gameObjects)
+            obj.SetActive(true);
+        if (m_gameObject)
+            m_gameObject.SetActive(true);
     }
 
     public void DisableGameObject()
     {
-        m_gameObject.SetActive(false);
+        foreach (GameObject obj in m_gameObjects)
+            obj.SetActive(false);
+        if (m_gameObject)
+            m_gameObject.SetActive(false);
     }
 
     public void SwitchGameObject()
     {
         m_gameObject.SetActive(!m_gameObject.activeSelf);
+        foreach (GameObject obj in m_gameObjects)
+            obj.SetActive(!obj.activeSelf);
     }
 }

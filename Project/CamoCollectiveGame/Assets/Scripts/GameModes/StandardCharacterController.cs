@@ -202,7 +202,6 @@ public class StandardCharacterController : MonoBehaviour
     public void Move(Vector2 joystick)
     {
         float mag = joystick.magnitude;
-        Debug.Log(mag);
         if (mag <= m_joystickDeadZone || mag == 0)
             return;
         if (m_isDashing)

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28331694, g: 0.15188117, b: 0.13986865, a: 1}
+  m_IndirectSpecularColor: {r: 0.28331804, g: 0.1518619, b: 0.1397635, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -249,11 +249,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameModeTipsCanvas
       objectReference: {fileID: 0}
-    - target: {fileID: 4856691330125842967, guid: a7f76a404a51b14449afafbc0011becd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1462816624534061689, guid: a7f76a404a51b14449afafbc0011becd,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -380,6 +375,11 @@ PrefabInstance:
         a sturdy shield. Competitors are awarded a point everytime they hit an opponent.
         Be careful. If you're hit too many times you will fall off your Chonker. The
         Competitor with the most points, when time runs out, wins!
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462816623587680083, guid: a7f76a404a51b14449afafbc0011becd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -63.899902
       objectReference: {fileID: 0}
     - target: {fileID: 6957551740849100368, guid: a7f76a404a51b14449afafbc0011becd,
         type: 3}
