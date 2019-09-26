@@ -29,7 +29,8 @@ public class SeamlessHairSpawner : MonoBehaviour
             hair.transform.position = new Vector3(transform.position.x, transform.position.y - (m_height - m_offset) * (i), transform.position.z);
             hair.transform.rotation = transform.rotation;
             hair.transform.SetParent(transform);
-            m_prevHair = hair;
+            if (i == 0)
+                m_prevHair = hair;
         }
     }
 
@@ -45,7 +46,7 @@ public class SeamlessHairSpawner : MonoBehaviour
         if (m_prevHair.transform.position.y < transform.position.y - m_height)
         {
             GameObject hair = m_hairPool.GetObject();
-            hair.transform.position = new Vector3(transform.position.x, m_prevHair.transform.position.y + m_height, transform.position.z);
+            hair.transform.position = new Vector3(transform.position.x, m_prevHair.transform.position.y + (m_height - m_offset), transform.position.z);
             hair.transform.rotation = transform.rotation;
             hair.transform.SetParent(transform);
             m_prevHair = hair;

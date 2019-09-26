@@ -2222,7 +2222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1204173548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3724,7 +3724,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1779671907}
   - component: {fileID: 1779671908}
-  - component: {fileID: 1779671909}
   - component: {fileID: 1779671910}
   m_Layer: 0
   m_Name: SeamlessHair
@@ -3764,36 +3763,7 @@ MonoBehaviour:
   m_initAmmount: 30
   m_stopMovingHairEvent: {fileID: 11400000, guid: 3bffa24ac133068439a1afcc2a8c4258,
     type: 2}
-  m_offset: 0.2
---- !u!114 &1779671909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1779671906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 675c4246f4669bb47814312dbc42bff2, type: 2}
-  response:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1779671908}
-        m_MethodName: StopSpawningHair
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
+  m_offset: 0.05
 --- !u!114 &1779671910
 MonoBehaviour:
   m_ObjectHideFlags: 0
