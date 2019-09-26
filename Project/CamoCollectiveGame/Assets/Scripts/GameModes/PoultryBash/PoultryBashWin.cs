@@ -86,6 +86,7 @@ public class PoultryBashWin : MonoBehaviour
         {
             m_winnerText.gameObject.SetActive(true);
             m_winnerText.text = "PLAYER " + (m_winner + 1) + " WINS THE GAME!";
+            m_scoreValues.SetValue(m_winner, m_scoreValues.GetValue(m_winner) + 1);
             m_finishedEvent.Invoke();
             return;
         }
