@@ -2202,7 +2202,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1204173548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9104,6 +9104,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
+        type: 3}
+      propertyPath: m_obstacles.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
+        type: 3}
+      propertyPath: m_obstacles.Array.data[0].spawnChance
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
+        type: 3}
+      propertyPath: m_obstacles.Array.data[1].spawnChance
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f23ac636c5498864a8b2b33bfc091b3e, type: 3}
