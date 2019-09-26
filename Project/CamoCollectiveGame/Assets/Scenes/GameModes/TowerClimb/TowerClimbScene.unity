@@ -2222,7 +2222,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1204173548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3759,8 +3759,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490c72c5ad6887f49a4e11c73c296c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hairPrefab: {fileID: 7166411169322488396, guid: c5546d2521b37404f883d673c3988487,
-    type: 3}
+  m_hairPool: {fileID: 11400000, guid: 287e48d4edd511f48a5cffbe33ca13dc, type: 2}
+  m_moveValue: {fileID: 11400000, guid: 7651bdd1b1c9e8f419849644b4eb55b1, type: 2}
   m_initAmmount: 30
   m_stopMovingHairEvent: {fileID: 11400000, guid: 3bffa24ac133068439a1afcc2a8c4258,
     type: 2}
@@ -3811,7 +3811,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1779671908}
-        m_MethodName: HairIsMoving
+        m_MethodName: StartMoving
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9124,59 +9124,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2090856284, guid: f23ac636c5498864a8b2b33bfc091b3e, type: 3}
-      propertyPath: response.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Destruct
-      objectReference: {fileID: 0}
-    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
-        type: 3}
-      propertyPath: m_obstacles.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
-        type: 3}
-      propertyPath: m_obstacles.Array.data[0].spawnChance
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
-        type: 3}
-      propertyPath: m_obstacles.Array.data[1].spawnChance
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
-        type: 3}
-      propertyPath: m_obstacles.Array.data[0].objectPool
-      value: 
-      objectReference: {fileID: 11400000, guid: 863059b3964031d44b140777469accaf,
-        type: 2}
-    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
-        type: 3}
-      propertyPath: m_obstacles.Array.data[1].objectPool
-      value: 
-      objectReference: {fileID: 11400000, guid: 025f929c6b53b5c4fa717b75a344a0d8,
-        type: 2}
-    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
-        type: 3}
-      propertyPath: m_obstacles.Array.data[2].objectPool
-      value: 
-      objectReference: {fileID: 11400000, guid: e11ef45f01ae6aa4bbf533fcd345066c,
-        type: 2}
-    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
-        type: 3}
-      propertyPath: m_obstacles.Array.data[2].spawnChance
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 1326521789482284093, guid: f23ac636c5498864a8b2b33bfc091b3e,
-        type: 3}
-      propertyPath: m_spawnFrequency
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1326521789482284082, guid: f23ac636c5498864a8b2b33bfc091b3e,
-        type: 3}
-      propertyPath: gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 044d86fc67f501946ba6f990d9153bee,
-        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f23ac636c5498864a8b2b33bfc091b3e, type: 3}
 --- !u!4 &2090856282 stripped

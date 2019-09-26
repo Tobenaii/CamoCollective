@@ -20,11 +20,11 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
     private float m_extents;
     [SerializeField]
     private List<Obstacle> m_obstacles;
+    [SerializeField]
+    private BoolValue m_moveValue;
 
-    private List<GameObject> m_liveObstacles = new List<GameObject>();
     private float m_frequencyTimer;
     private bool m_spawn;
-    private bool m_move;
 
     private void OnValidate()
     {
@@ -47,10 +47,6 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
         m_frequencyTimer = m_spawnFrequency;
     }
 
-    public void Destruct()
-    {
-        Destroy(gameObject);
-    }
 
     public void StopSpawning()
     {
@@ -59,7 +55,7 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
 
     public void StartMoving()
     {
-        m_move = true;
+        m_moveValue.Value = true;
     }
 
     private void Update()
@@ -89,16 +85,7 @@ public class TowerClimbObstacleSpawner : MonoBehaviour
                 obstacle.transform.rotation = transform.rotation;
                 obstacle.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + Random.Range(-m_extents - 1, m_extents + 1));
                 obstacle.transform.SetParent(transform);
-                m_liveObstacles.Add(obstacle);
             }
-        }
-
-        if (!m_move)
-            return;
-        for (int i = 0; i < m_liveObstacles.Count; i++)
-        {
-            GameObject obstacle = m_liveObstacles[i];
-            obstacle.transform.position += Vector3.down * m_moveSpeed.Value * Time.deltaTime;
         }
     }
 }

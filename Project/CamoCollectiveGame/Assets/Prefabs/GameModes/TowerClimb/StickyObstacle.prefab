@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 5555234416644263532}
   - component: {fileID: 2831196406367667500}
   - component: {fileID: 6395619359264266755}
+  - component: {fileID: 3025131589207372791}
+  - component: {fileID: 4592915762673574308}
+  - component: {fileID: 6799453714497948445}
   m_Layer: 0
   m_Name: StickyObstacle
   m_TagString: Mud
@@ -108,3 +111,58 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3025131589207372791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213974306221984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7089c139884d5543a3939c9bf912c27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fallSpeed: {fileID: 11400000, guid: 5e4261c139267984580a96e53eeafa49, type: 2}
+  m_moveValue: {fileID: 11400000, guid: 7651bdd1b1c9e8f419849644b4eb55b1, type: 2}
+--- !u!114 &4592915762673574308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213974306221984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 675c4246f4669bb47814312dbc42bff2, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3025131589207372791}
+        m_MethodName: Destruct
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &6799453714497948445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 436213974306221984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b2447a27cac9ae4f86433839651b91a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
