@@ -107,7 +107,6 @@ public class TowerClimbPlayerController : MonoBehaviour
         Debug.Log("Current Speed: " + m_currentClimbSpeed);
         Debug.Log("Target Speed: " + m_targetClimbSpeed);
 
-        m_animator.SetFloat("ClimbScale", m_currentClimbSpeed);
         m_yPosValue.Value = transform.position.y;
         if (m_stopMoving)
             return;
@@ -118,17 +117,18 @@ public class TowerClimbPlayerController : MonoBehaviour
         if (hitUp && hit.transform.CompareTag("StopClimber"))
         {
             m_stopMoving = true;
+            m_animator.SetFloat("ClimbScale", 0);
             return;
         }
         if (hitUp)
             transform.position = new Vector3(transform.position.x, hit.point.y - 1.0f, transform.position.z);
-        if (m_playerHasControl)
-            transform.position += Vector3.up * m_currentClimbSpeed * Time.deltaTime;
-        else
-            transform.position += Vector3.up * m_fallSpeed.Value * Time.deltaTime;
 
+        if (!m_playerHasControl)
+            m_currentClimbSpeed = m_fallSpeed.Value;
+        transform.position += Vector3.up * m_currentClimbSpeed * Time.deltaTime;
         if (m_playerFalling)
             transform.position += Vector3.down * m_fallSpeed.Value * Time.deltaTime;
+        m_animator.SetFloat("ClimbScale", m_currentClimbSpeed);
     }
 
     private void OnTriggerStay(Collider other)

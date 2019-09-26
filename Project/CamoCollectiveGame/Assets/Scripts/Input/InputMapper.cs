@@ -263,6 +263,11 @@ public class InputMapper : MonoBehaviour
         value.Value = m_controllerNumber.Value;
     }
 
+    private void OnDestroy()
+    {
+        GamePad.SetVibration((PlayerIndex)m_controllerNumber.Value - 1, 0, 0);
+    }
+
     public void Vibrate(float seconds, float leftMotor, float rightMotor)
     {
         StopCoroutine(VibrateForSeconds(0));
