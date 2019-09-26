@@ -38,13 +38,13 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28331804, g: 0.1518619, b: 0.1397635, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -354,11 +354,6 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1462816623872379208, guid: a7f76a404a51b14449afafbc0011becd,
-        type: 3}
-      propertyPath: m_Text
-      value: CHONK JOUSTING
-      objectReference: {fileID: 0}
     - target: {fileID: 1462816623984012679, guid: a7f76a404a51b14449afafbc0011becd,
         type: 3}
       propertyPath: m_Text
@@ -380,6 +375,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -63.899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462816623872379208, guid: a7f76a404a51b14449afafbc0011becd,
+        type: 3}
+      propertyPath: m_Text
+      value: CHONK JOUSTING
       objectReference: {fileID: 0}
     - target: {fileID: 6957551740849100368, guid: a7f76a404a51b14449afafbc0011becd,
         type: 3}
