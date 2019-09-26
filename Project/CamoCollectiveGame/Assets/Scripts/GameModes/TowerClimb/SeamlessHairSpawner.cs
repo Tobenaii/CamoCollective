@@ -5,7 +5,9 @@ using UnityEngine;
 public class SeamlessHairSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObject m_hairPrefab;
+    private GameObjectPool m_hairPool;
+    [SerializeField]
+    private BoolValue m_moveValue;
     [SerializeField]
     private int m_initAmmount;
     [SerializeField]
@@ -13,47 +15,42 @@ public class SeamlessHairSpawner : MonoBehaviour
     [SerializeField]
     private float m_offset;
     private float m_height;
-    private List<GameObject> m_hair = new List<GameObject>();
+    private GameObject m_prevHair;
     private bool m_queueStopSpawn;
     private bool m_stopSpawn;
-    private bool m_hairIsMoving;
 
     private void OnEnable()
     {
-        m_height = m_hairPrefab.GetComponentInChildren<Renderer>().bounds.size.y;
+        GameObject hairPeek = m_hairPool.PeekObject();
+        m_height = hairPeek.GetComponentInChildren<Renderer>().bounds.size.y;
         for (int i = 0; i < m_initAmmount; i++)
         {
-            GameObject hair = Instantiate(m_hairPrefab, new Vector3(transform.position.x, transform.position.y - (m_height - m_offset) * (i), transform.position.z), transform.rotation, transform);
-            m_hair.Add(hair);
+            GameObject hair = m_hairPool.GetObject();
+            hair.transform.position = new Vector3(transform.position.x, transform.position.y - (m_height - m_offset) * (i), transform.position.z);
+            hair.transform.rotation = transform.rotation;
+            hair.transform.SetParent(transform);
+            m_prevHair = hair;
         }
     }
 
-    public void HairIsMoving()
+    public void StartMoving()
     {
-        m_hairIsMoving = true;
-    }
-
-    public void StopSpawningHair()
-    {
-        m_queueStopSpawn = true;
+        m_moveValue.Value = true;
     }
 
     private void LateUpdate()
     {
-        if (!m_hairIsMoving && m_queueStopSpawn)
-            m_stopMovingHairEvent.Invoke();
-        if (m_hair.Count == 0 || m_hair[0] == null || m_stopSpawn)
+        if (m_prevHair == null)
             return;
-        if (m_hair[0].transform.position.y < transform.position.y - m_height)
+        if (m_prevHair.transform.position.y < transform.position.y - m_height)
         {
-            GameObject hair = Instantiate(m_hairPrefab, new Vector3(transform.position.x, m_hair[0].transform.position.y + m_height, transform.position.z), transform.rotation, transform);
-            hair.GetComponent<HairController>().StartMoving();
-            m_hair.Insert(0, hair);
+            GameObject hair = m_hairPool.GetObject();
+            hair.transform.position = new Vector3(transform.position.x, m_prevHair.transform.position.y + m_height, transform.position.z);
+            hair.transform.rotation = transform.rotation;
+            hair.transform.SetParent(transform);
+            m_prevHair = hair;
             if (m_queueStopSpawn)
-            {
                 m_stopSpawn = true;
-                m_stopMovingHairEvent.Invoke();
-            }
         }
     }
 }

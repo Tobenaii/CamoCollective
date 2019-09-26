@@ -43,6 +43,9 @@ public class GameObjectPool : ScriptableObject
     private void AddObject()
     {
         GameObject obj = Instantiate(objectPrefab, parent);
+        GameObjectPoolInstance inst = obj.GetComponent<GameObjectPoolInstance>();
+        if (inst)
+            inst.SetPool(this);
         obj.SetActive(false);
         pool.Push(obj);
     }
@@ -55,13 +58,23 @@ public class GameObjectPool : ScriptableObject
         if (pool.Count == 0)
             AddObject();
         if (pool.Peek() == null)
-        {
             Reset();
-        }
         //Kick the gameObject out of the house and chuck into the big cruel world after preparing it :(
         pool.Peek().transform.SetParent(parent);
         pool.Peek().gameObject.SetActive(true);
         return pool.Pop();
+    }
+
+    public GameObject PeekObject()
+    {
+        if (!initialized)
+            Init();
+        //Add an object if pool is empty
+        if (pool.Count == 0)
+            AddObject();
+        if (pool.Peek() == null)
+            Reset();
+        return pool.Peek();
     }
 
     public void DestroyObject(GameObject obj)

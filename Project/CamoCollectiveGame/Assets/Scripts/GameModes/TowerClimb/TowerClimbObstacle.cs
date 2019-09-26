@@ -3,29 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(GameObjectPoolInstance))]
-public class HairController : MonoBehaviour
+public class TowerClimbObstacle : MonoBehaviour
 {
     [SerializeField]
-    private FloatValue m_moveSpeed;
+    private FloatValue m_fallSpeed;
     [SerializeField]
     private BoolValue m_moveValue;
-    private Renderer m_renderer;
-    private bool m_moveHair;
-    private float m_offset;
     private GameObjectPoolInstance m_poolInst;
 
     private void Awake()
     {
-        m_renderer = GetComponent<Renderer>();
-        m_moveHair = false;
         m_poolInst = GetComponent<GameObjectPoolInstance>();
     }
 
-    private void Update()
+    public void Destruct()
+    {
+        Destroy(gameObject);
+    }
+
+    // Update is called once per frame
+    void LateUpdate()
     {
         if (!m_moveValue.Value)
             return;
-        transform.position += Vector3.down * m_moveSpeed.Value * Time.deltaTime;
+        transform.position += Vector3.down * m_fallSpeed.Value * Time.deltaTime;
 
         if (transform.position.y < -5)
             m_poolInst.Pool.DestroyObject(gameObject);
