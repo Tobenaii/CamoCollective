@@ -364,6 +364,7 @@ GameObject:
   - component: {fileID: 5996862906994743130}
   - component: {fileID: 5391735006565237509}
   - component: {fileID: 7451010795836427494}
+  - component: {fileID: 7040486345729901325}
   m_Layer: 5
   m_Name: Player1Selection
   m_TagString: Untagged
@@ -427,3 +428,22 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
+--- !u!114 &7040486345729901325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8581315287481977052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f34346b8694a2e24aaa86b3f112e51e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_player: {fileID: 0}
+  m_isDeadValue:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 2d00e7f1be81cd645aa10bdc5b1f92d4, type: 2}
+  m_deadColourHue: {r: 1, g: 0.43867922, b: 0.43867922, a: 0.39215687}
