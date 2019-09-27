@@ -25,7 +25,7 @@ PrefabInstance:
     - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.68
+      value: 2.19
       objectReference: {fileID: 0}
     - target: {fileID: 1935663014798726212, guid: f3115669f0ece00459bf49544501d117,
         type: 3}
@@ -72,11 +72,6 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1370531727991467594, guid: f3115669f0ece00459bf49544501d117,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3115669f0ece00459bf49544501d117, type: 3}
 --- !u!4 &8577447274753362749 stripped
@@ -92,10 +87,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8577447274753362749}
     m_Modifications:
-    - target: {fileID: 100170, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
-      propertyPath: m_Name
-      value: Pig_Jousting_Kneil
-      objectReference: {fileID: 0}
     - target: {fileID: 400170, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -152,6 +143,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 100170, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
+      propertyPath: m_Name
+      value: Pig_Jousting_Kneil
+      objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
       propertyPath: m_Controller
       value: 
@@ -160,7 +155,7 @@ PrefabInstance:
     - target: {fileID: 13700002, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: ee6aa992044a0fd459591014a6c80d0f, type: 2}
+      objectReference: {fileID: 2100000, guid: 2d13067020a09484c9c3842c5175bd02, type: 2}
     - target: {fileID: 13700004, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -186,18 +181,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 62911f09a086b2047b73a620e790cdae, type: 2}
     - target: {fileID: 400244, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2635686
-      objectReference: {fileID: 0}
-    - target: {fileID: 400244, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2635686
-      objectReference: {fileID: 0}
-    - target: {fileID: 400244, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2635686
-      objectReference: {fileID: 0}
-    - target: {fileID: 400244, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0216
       objectReference: {fileID: 0}
@@ -208,6 +191,18 @@ PrefabInstance:
     - target: {fileID: 400244, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0.0241
+      objectReference: {fileID: 0}
+    - target: {fileID: 400244, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2635686
+      objectReference: {fileID: 0}
+    - target: {fileID: 400244, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2635686
+      objectReference: {fileID: 0}
+    - target: {fileID: 400244, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.2635686
       objectReference: {fileID: 0}
     - target: {fileID: 2300006, guid: 298b38d08297d28439c7d5c4bba8e6fc, type: 3}
       propertyPath: m_Materials.Array.data[0]
