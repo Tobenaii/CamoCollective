@@ -20,8 +20,6 @@ public class CustomBaseInput : BaseInput
     private Vector2 m_cursorPos;
     private bool m_firstUpdate;
 
-    private bool m_horizontal;
-
     public PlayerData Player {get { return m_playerData; } private set { } }
 
     protected override void Start()
@@ -42,11 +40,6 @@ public class CustomBaseInput : BaseInput
         m_cursorPosValue.Value = m_cursorPos;
     }
 
-    public void SetHorizontal(bool enabled)
-    {
-        m_horizontal = enabled;
-    }
-
     public override float GetAxisRaw(string axisName)
     {
         string[] inputs = axisName.Split('.');
@@ -54,13 +47,13 @@ public class CustomBaseInput : BaseInput
         {
             case "LeftJoystick":
                 if (inputs[1] == "X")
-                    return m_horizontal?state.ThumbSticks.Left.X:0;
+                    return state.ThumbSticks.Left.X;
                 else if (inputs[1] == "Y")
                     return state.ThumbSticks.Left.Y;
                 break;
             case "RightJoystick":
                 if (inputs[1] == "X")
-                    return m_horizontal?state.ThumbSticks.Right.X:0;
+                    return state.ThumbSticks.Right.X;
                 else if (inputs[1] == "Y")
                     return state.ThumbSticks.Right.Y;
                 break;

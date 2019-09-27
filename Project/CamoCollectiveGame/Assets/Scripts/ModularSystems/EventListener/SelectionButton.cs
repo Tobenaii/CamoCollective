@@ -23,17 +23,10 @@ public class SelectionButton : MonoBehaviour
     private int m_index;
     private bool m_invoked;
 
-    public int Index => m_index;
-
     private void Start()
     {
         if (m_currentSelectedValue.Value == m_index)
             SetHover();
-    }
-
-    public void SetIndex(int index)
-    {
-        m_index = index;
     }
 
     private void Update()
