@@ -39,6 +39,11 @@ public class SeamlessHairSpawner : MonoBehaviour
         m_moveValue.Value = true;
     }
 
+    public void StopMoving()
+    {
+        m_moveValue.Value = false;
+    }
+
     private void LateUpdate()
     {
         if (m_prevHair == null)
