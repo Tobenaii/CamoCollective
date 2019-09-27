@@ -8,6 +8,7 @@ public class CustomInputModule : StandaloneInputModule
 {
     private CustomBaseInput m_baseInput;
     public PlayerData Player {get { return m_baseInput.Player; } private set { } }
+    public CustomBaseInput BaseInput => m_baseInput;
 
     protected override void Awake()
     {
