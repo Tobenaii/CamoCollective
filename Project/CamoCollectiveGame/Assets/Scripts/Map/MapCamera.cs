@@ -57,7 +57,7 @@ public class MapCamera : MonoBehaviour
         transform.rotation = prevRot;
         //transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, m_rotateTime * Time.deltaTime);
         transform.rotation = Quaternion.Euler(Vector3.SmoothDamp(transform.rotation.eulerAngles, m_currentTarget.transform.rotation.eulerAngles,
-                                                                                ref m_rotateVelocity, m_panTime));
+                                                                                ref m_rotateVelocity, m_rotateTime));
 
         if (!m_triggeredEvent && Vector3.Distance(transform.position, m_currentTarget.transform.position) < 0.5f)
         {
