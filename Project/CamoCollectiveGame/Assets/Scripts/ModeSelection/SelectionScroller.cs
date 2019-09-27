@@ -29,6 +29,7 @@ public class SelectionScroller : MonoBehaviour
 
     private void Start()
     {
+        m_currentSelectionValue.Value = (int)Mathf.Repeat(m_currentSelectionValue.Value, m_selections.Count);
         m_rect = GetComponent<RectTransform>();
         m_rect.anchoredPosition = new Vector3((m_currentSelectionValue.Value - 1) * -m_spacing, m_rect.anchoredPosition.y, 0);
         InfiniteScroll();
@@ -48,6 +49,14 @@ public class SelectionScroller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (EventSystem.current.currentSelectedGameObject == null)
+        {
+            int curIndex = (int)Mathf.Repeat(m_currentSelectionValue.Value, m_selections.Count);
+            EventSystem.current.SetSelectedGameObject(m_selections[curIndex]);
+            UpdateTransforms();
+        }
+
         Vector2 newPos = new Vector2((m_currentSelectionValue.Value - 1) * -m_spacing, m_rect.anchoredPosition.y);
         if (m_rect.anchoredPosition != newPos)
         {
