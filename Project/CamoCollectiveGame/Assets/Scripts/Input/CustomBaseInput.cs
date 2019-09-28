@@ -37,6 +37,14 @@ public class CustomBaseInput : BaseInput
         prevState = state;
         state = GamePad.GetState((PlayerIndex)m_controllerNumber.Value - 1, GamePadDeadZone.Circular);
         m_cursorPos += new Vector2(state.ThumbSticks.Left.X, state.ThumbSticks.Left.Y) * m_cursorMoveSpeed * Time.deltaTime;
+        if (m_cursorPos.x < 0)
+            m_cursorPos.x = 0;
+        if (m_cursorPos.y < 0)
+            m_cursorPos.y = 0;
+        if (m_cursorPos.x > Screen.width)
+            m_cursorPos.x = Screen.width;
+        if (m_cursorPos.y > Screen.height)
+            m_cursorPos.y = Screen.height;
         m_cursorPosValue.Value = m_cursorPos;
     }
 
