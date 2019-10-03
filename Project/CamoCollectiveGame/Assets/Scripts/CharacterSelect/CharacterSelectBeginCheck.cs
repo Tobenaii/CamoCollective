@@ -12,6 +12,18 @@ public class CharacterSelectBeginCheck : MonoBehaviour
     private List<PlayerData> m_players;
     [SerializeField]
     private GameEvent m_closeEvent;
+    [SerializeField]
+    private BoolValue m_characterSelectOpen;
+
+    private void Awake()
+    {
+        m_characterSelectOpen.Value = true;
+    }
+
+    private void OnDestroy()
+    {
+        m_characterSelectOpen.Value = false;
+    }
 
     private void Update()
     {

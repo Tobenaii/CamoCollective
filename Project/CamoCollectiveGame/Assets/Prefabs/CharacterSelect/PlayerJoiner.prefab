@@ -61,6 +61,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 0
       buttonState: 0
@@ -98,6 +100,55 @@ MonoBehaviour:
         m_Calls: []
       m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
         PublicKeyToken=null
+  - actionName: Leave
+    buttonA: 0
+    buttonB: 1
+    buttonX: 0
+    buttonY: 0
+    buttonStart: 0
+    joystickLeft: 0
+    joystickRight: 0
+    triggerLeft: 0
+    triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
+    buttons:
+    - button: 1
+      buttonState: 0
+      prevButtonState: 0
+      delay: 0
+      cooldown: 0
+      onButtonDown: 1
+      onButtonHold: 0
+      onButtonRelease: 0
+      delayTime: 0
+      cooldownTime: 0
+    unityEventButton:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 4150182348119539744}
+          m_MethodName: Leave
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+      m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+        Culture=neutral, PublicKeyToken=null
+    unityEventJoystick:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: InputMapper+JoystickEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
+    unityEventTrigger:
+      m_PersistentCalls:
+        m_Calls: []
+      m_TypeName: InputMapper+TriggerEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+        PublicKeyToken=null
 --- !u!114 &4150182348119539744
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,7 +166,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b, type: 2}
   - {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61, type: 2}
   - {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9, type: 2}
+  m_characters:
+  - {fileID: 11400000, guid: 8979679f2c94479469438680b6aa2e76, type: 2}
+  - {fileID: 11400000, guid: 5d57d745b40efe64c8c338ad811826b6, type: 2}
+  - {fileID: 11400000, guid: 2018c1f2ae5c570448022a83fa016e0a, type: 2}
+  - {fileID: 11400000, guid: 1839e13808afb264a9703c3f7c9530e7, type: 2}
   m_playerControllers: {fileID: 11400000, guid: f2f096e69a744c44184a66a037b6acbf,
+    type: 2}
+  m_characterSelectOpen: {fileID: 11400000, guid: 1c6f7bbc7279dc844b0061e09a1b8a9f,
     type: 2}
   m_currentPlayerIndex:
     m_index: 0
