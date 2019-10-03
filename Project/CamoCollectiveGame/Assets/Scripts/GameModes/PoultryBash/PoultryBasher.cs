@@ -32,6 +32,8 @@ public class PoultryBasher : MonoBehaviour
     private float m_blockKnockupScale;
     [SerializeField]
     private float m_blockMoveSpeedMultiplier;
+    [SerializeField]
+    private float m_blockCooldownAfterPunch;
 
     [Header("Particles")]
     [SerializeField]
@@ -61,6 +63,7 @@ public class PoultryBasher : MonoBehaviour
 
     private float m_knockbackScale;
     private float m_currentBlockScale;
+    private float m_blockCooldownAfterPunchTimer;
     private Rigidbody m_rb;
 
     private InputMapper m_input;
@@ -269,6 +272,7 @@ public class PoultryBasher : MonoBehaviour
     {
         if (!m_inRing)
             return;
+        m_blockCooldownAfterPunchTimer = m_blockCooldownAfterPunch;
         RaycastHit hit;
         if (Physics.CapsuleCast(((transform.position - transform.up / 2) - transform.forward * m_punchRadius) + transform.right * rightOffset, (transform.position + transform.up / 2) - transform.forward * m_punchRadius, m_punchRadius, transform.forward, out hit, m_punchDistance, 1 << 10))
         {
@@ -311,8 +315,15 @@ public class PoultryBasher : MonoBehaviour
 
     public void StartBlock(float trigger)
     {
+        if (m_blockCooldownAfterPunchTimer > 0)
+        {
+            m_blockCooldownAfterPunchTimer -= Time.deltaTime;
+            return;
+        }
         if (trigger > 0)
         {
+            if (m_isPunching)
+                return;
             if (!m_isBlocking)
             {
                 m_shieldLerper.Reset();
@@ -325,7 +336,7 @@ public class PoultryBasher : MonoBehaviour
             m_animator.SetTrigger("StartDefend");
             m_shield.gameObject.SetActive(true);
         }
-        else
+        else if (m_isBlocking)
             EndBlock();
     }
 
