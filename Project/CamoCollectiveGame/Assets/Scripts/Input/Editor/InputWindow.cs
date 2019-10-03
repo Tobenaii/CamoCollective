@@ -125,6 +125,9 @@ public class InputWindow : EditorWindow
         DrawButton(new Rect(117, 90, 55, 55), oval, ovalHover, style, InputMapper.InputAction.Button.LeftTrigger);
         DrawButton(new Rect(350, 90, 55, 55), oval, ovalHover, style, InputMapper.InputAction.Button.RightTrigger);
 
+        DrawButton(new Rect(117, 60, 55, 55), oval, ovalHover, style, InputMapper.InputAction.Button.LeftBumper);
+        DrawButton(new Rect(350, 60, 55, 55), oval, ovalHover, style, InputMapper.InputAction.Button.RightBumper);
+
         if (canDisplay && actionProps.Count > 0)
         {
             botToolBar = GUILayout.Toolbar(botToolBar, new string[] { "Events", "Modifiers" });
@@ -188,9 +191,7 @@ public class InputWindow : EditorWindow
     private void DrawButton(Rect rect, Texture2D sprite, Texture2D spriteSelected, GUIStyle guiStyle, InputMapper.InputAction.Button button)
     {
         if (GUI.Button(rect, sprite, guiStyle))
-        {
             currentButton = button;
-        }
         if (currentButton == button)
             GUI.Box(rect, spriteSelected);
     }

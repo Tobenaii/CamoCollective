@@ -72,6 +72,8 @@ MonoBehaviour:
     joystickRight: 1
     triggerLeft: 0
     triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 6
       buttonState: 0
@@ -119,6 +121,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 5
       buttonState: 0
@@ -166,6 +170,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 1
     triggerRight: 0
+    leftBumper: 1
+    rightBumper: 0
     buttons:
     - button: 7
       buttonState: 0
@@ -177,9 +183,30 @@ MonoBehaviour:
       onButtonRelease: 0
       delayTime: 0
       cooldownTime: 0
+    - button: 9
+      buttonState: 0
+      prevButtonState: 0
+      delay: 0
+      cooldown: 0
+      onButtonDown: 1
+      onButtonHold: 0
+      onButtonRelease: 0
+      delayTime: 0
+      cooldownTime: 0
     unityEventButton:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 5927887481221389035}
+          m_MethodName: LeftPunch
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     unityEventJoystick:
@@ -224,6 +251,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 1
+    leftBumper: 0
+    rightBumper: 1
     buttons:
     - button: 8
       buttonState: 0
@@ -235,9 +264,30 @@ MonoBehaviour:
       onButtonRelease: 0
       delayTime: 0
       cooldownTime: 0
+    - button: 10
+      buttonState: 0
+      prevButtonState: 0
+      delay: 0
+      cooldown: 0
+      onButtonDown: 1
+      onButtonHold: 0
+      onButtonRelease: 0
+      delayTime: 0
+      cooldownTime: 0
     unityEventButton:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 5927887481221389035}
+          m_MethodName: RightPunch
+          m_Mode: 4
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 1
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     unityEventJoystick:
@@ -282,6 +332,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 4
       buttonState: 0
@@ -363,6 +415,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 0
       buttonState: 0
@@ -432,6 +486,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 0
       buttonState: 0

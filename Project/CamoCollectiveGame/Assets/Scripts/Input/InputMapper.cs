@@ -20,7 +20,7 @@ public class InputMapper : MonoBehaviour
     [System.Serializable]
     public class InputAction
     {
-        public enum Button { A, B, Y, X, Start, LeftJoystick, RightJoystick, LeftTrigger, RightTrigger};
+        public enum Button { A, B, Y, X, Start, LeftJoystick, RightJoystick, LeftTrigger, RightTrigger, LeftBumper, RightBumper};
 
         public static implicit operator InputAction(string action)
         {
@@ -54,6 +54,8 @@ public class InputMapper : MonoBehaviour
             joystickRight = false;
             triggerLeft = false;
             triggerRight = false;
+            leftBumper = false;
+            rightBumper = false;
             buttons.Clear();
             unityEventButton = new UnityEvent();
             unityEventJoystick = new JoystickEvent();
@@ -89,6 +91,8 @@ public class InputMapper : MonoBehaviour
         public bool joystickRight;
         public bool triggerLeft;
         public bool triggerRight;
+        public bool leftBumper;
+        public bool rightBumper;
         [HideInInspector]
         public List<ButtonMod> buttons = new List<ButtonMod>();
         [HideInInspector]
@@ -245,6 +249,14 @@ public class InputMapper : MonoBehaviour
                 AddButton(action, InputAction.Button.RightTrigger);
             else
                 RemoveButton(action, InputAction.Button.RightTrigger);
+            if (action.leftBumper)
+                AddButton(action, InputAction.Button.LeftBumper);
+            else
+                RemoveButton(action, InputAction.Button.LeftBumper);
+            if (action.rightBumper)
+                AddButton(action, InputAction.Button.RightBumper);
+            else
+                RemoveButton(action, InputAction.Button.RightBumper);
         }
     }
 
@@ -321,6 +333,14 @@ public class InputMapper : MonoBehaviour
                     case InputAction.Button.Start:
                         button.buttonState = state.Buttons.Start;
                         button.prevButtonState = prevState.Buttons.Start;
+                        break;
+                    case InputAction.Button.LeftBumper:
+                        button.buttonState = state.Buttons.LeftShoulder;
+                        button.prevButtonState = prevState.Buttons.LeftShoulder;
+                        break;
+                    case InputAction.Button.RightBumper:
+                        button.buttonState = state.Buttons.RightShoulder;
+                        button.prevButtonState = prevState.Buttons.RightShoulder;
                         break;
                 }
             }
