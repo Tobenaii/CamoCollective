@@ -837,11 +837,6 @@ PrefabInstance:
       propertyPath: m_Text
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 693771883047700884, guid: 5504e396eea336d49b915465ff04ad6a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4874686190131761869, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -903,6 +898,11 @@ PrefabInstance:
       propertyPath: m_isDeadValue.m_index
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 693771883047700884, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
 --- !u!224 &423308825 stripped
@@ -940,8 +940,8 @@ Transform:
   m_Children:
   - {fileID: 2046482290}
   - {fileID: 940918712}
-  - {fileID: 1120846491}
   - {fileID: 571680057}
+  - {fileID: 1120846491}
   m_Father: {fileID: 40172992}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1168,7 +1168,7 @@ GameObject:
   - component: {fileID: 571680058}
   - component: {fileID: 571680060}
   m_Layer: 0
-  m_Name: Spawn4
+  m_Name: Spawn3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1187,7 +1187,7 @@ Transform:
   m_Children:
   - {fileID: 606791833}
   m_Father: {fileID: 433966826}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!33 &571680058
 MeshFilter:
@@ -1632,7 +1632,7 @@ PrefabInstance:
     - target: {fileID: 4692400956267613856, guid: 93883310e4353ce468150f126b03188b,
         type: 3}
       propertyPath: m_controllerNumber.m_index
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4692400956267613856, guid: 93883310e4353ce468150f126b03188b,
         type: 3}
@@ -1755,7 +1755,7 @@ PrefabInstance:
     - target: {fileID: 4692400956267613856, guid: 93883310e4353ce468150f126b03188b,
         type: 3}
       propertyPath: m_controllerNumber.m_index
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4692400956267613856, guid: 93883310e4353ce468150f126b03188b,
         type: 3}
@@ -2231,7 +2231,7 @@ GameObject:
   - component: {fileID: 1120846492}
   - component: {fileID: 1120846494}
   m_Layer: 0
-  m_Name: Spawn3
+  m_Name: Spawn4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2250,7 +2250,7 @@ Transform:
   m_Children:
   - {fileID: 600674826}
   m_Father: {fileID: 433966826}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1120846492
 MeshFilter:
