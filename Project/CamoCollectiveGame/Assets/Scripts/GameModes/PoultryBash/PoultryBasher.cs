@@ -102,22 +102,21 @@ public class PoultryBasher : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Stop"))
+        if (other.CompareTag("Ring"))
             m_inRing = true;
         else if (other.CompareTag("Powerup"))
         {
             PoultryBashPowerup powerup = other.GetComponentInParent<PoultryBashPowerup>();
             powerup.TriggerEnter(this);
         }
+        else if (other.CompareTag("Stop"))
+            OnDeath();
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Stop"))
-        {
-            OnDeath();
+        if (other.CompareTag("Ring"))
             m_inRing = false;
-        }
         else if (other.CompareTag("Powerup"))
         {
             PoultryBashPowerup powerup = other.GetComponentInParent<PoultryBashPowerup>();
