@@ -61,6 +61,7 @@ public class PoultryBasher : MonoBehaviour
 
     private float m_knockbackScale;
     private float m_currentBlockScale;
+    private Rigidbody m_rb;
 
     private InputMapper m_input;
     private Animator m_animator;
@@ -75,9 +76,14 @@ public class PoultryBasher : MonoBehaviour
     private bool m_leftPunch;
     private TimeLerper m_shieldLerper = new TimeLerper();
 
+    private Rigidbody[] m_rbRagdolls;
+    private Collider[] m_colRagdolls;
+    private CharacterJoint[] m_jointRagdolls;
+
     private void Start()
     {
         m_controller = GetComponent<StandardCharacterController>();
+        m_rb = GetComponent<Rigidbody>();
         Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
         m_gameObjectListSet.Add(gameObject);
         m_input = GetComponent<InputMapper>();
@@ -85,9 +91,20 @@ public class PoultryBasher : MonoBehaviour
         //foreach (Renderer rend in GetComponentsInChildren<Renderer>())
         //    rend.material.color = m_playerData.Character.TempColour;
         m_animator = GetComponentInChildren<Animator>();
+        m_animator.enabled = true;
 
         m_speedScale.Value = 1;
         m_knockbackScale = 1;
+        m_rbRagdolls = GetComponentsInChildren<Rigidbody>();
+        m_colRagdolls = GetComponentsInChildren<Collider>();
+        m_jointRagdolls = GetComponentsInChildren<CharacterJoint>();
+        for (int i = 1; i < m_rbRagdolls.Length; i++)
+        {
+            m_rbRagdolls[i].useGravity = false;
+            m_rbRagdolls[i].detectCollisions = false;
+            m_rbRagdolls[i].isKinematic = true;
+        }
+
         //Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
     }
 
@@ -100,6 +117,7 @@ public class PoultryBasher : MonoBehaviour
         }
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Ring"))
@@ -109,8 +127,6 @@ public class PoultryBasher : MonoBehaviour
             PoultryBashPowerup powerup = other.GetComponentInParent<PoultryBashPowerup>();
             powerup.TriggerEnter(this);
         }
-        else if (other.CompareTag("Stop"))
-            OnDeath();
     }
 
     private void OnTriggerExit(Collider other)
@@ -135,18 +151,33 @@ public class PoultryBasher : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-
+        if (collision.transform.CompareTag("Stop"))
+            OnDeath();
     }
 
     private void OnDeath()
     {
         m_deadValue.Value = true;
         m_input.DisableInput();
-        ParticleSystem ps = m_deathParticleSystemPool.GetObject();
-        ps.transform.up = (m_rotateTowards - transform.position);
-        ps.transform.position = transform.position;
-        ps.Play();
-        Destroy(gameObject);
+        for (int i = 1; i < m_rbRagdolls.Length; i++)
+        {
+            m_rbRagdolls[i].useGravity = true;
+            m_rbRagdolls[i].detectCollisions = true;
+            m_rbRagdolls[i].isKinematic = false;
+        }
+        for (int i = 1; i < m_colRagdolls.Length; i++)
+        {
+            m_colRagdolls[i].enabled = true;
+        }
+        m_animator.enabled = false;
+        m_rb.detectCollisions = false;
+        m_rb.isKinematic = true;
+        //ParticleSystem ps = m_deathParticleSystemPool.GetObject();
+        //ps.transform.up = (m_rotateTowards - transform.position);
+        //ps.transform.position = transform.position;
+        //ps.Play();
+        //Destroy(gameObject);
+        m_gameObjectListSet.Remove(gameObject);
     }
 
     public void ScaleSpeed(float scale)

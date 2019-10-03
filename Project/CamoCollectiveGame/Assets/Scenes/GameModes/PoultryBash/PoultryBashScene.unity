@@ -172,7 +172,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 65425015}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1953,12 +1953,12 @@ PrefabInstance:
     - target: {fileID: 693771883116399719, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 210
+      value: -110
       objectReference: {fileID: 0}
     - target: {fileID: 693771883116399719, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -150
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 693771883116399719, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
@@ -3855,7 +3855,6 @@ GameObject:
   - component: {fileID: 2068452267}
   - component: {fileID: 2068452269}
   - component: {fileID: 2068452268}
-  - component: {fileID: 2068452270}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -4018,50 +4017,6 @@ MonoBehaviour:
   m_enableOnAwake: 0
   m_gameObject: {fileID: 1704828012}
   m_gameObjects: []
---- !u!114 &2068452270
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068452262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff6464134e6f33f4a991301d9057948b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_moveSpeed: 0
-  m_moveSpeedScale:
-    m_index: 0
-    useConstant: 1
-    m_constant: 0
-    m_variable: {fileID: 0}
-  m_backwardVelocityMultiplier: 0
-  m_acceleration: 0
-  m_stopSpeed: 0
-  m_lookRotateSpeed: 0
-  m_moveRotateSpeed: 0
-  m_minRotationValue: 0
-  m_dashForceScale:
-    m_index: 0
-    useConstant: 1
-    m_constant: 0
-    m_variable: {fileID: 0}
-  m_minDashForce: 0
-  m_maxDashForce: 0
-  m_dashChargeSpeed: 0
-  m_dashCooldown: 0
-  m_sprintCooldown: 0
-  m_sprintTime: 0
-  m_stamina:
-    m_index: 0
-    useConstant: 1
-    m_constant: 0
-    m_variable: {fileID: 0}
-  m_staminaRegenSpeed: 0
-  m_staminaDecreaseSpeed: 0
-  m_sprintMoveSpeed: 0
-  m_joystickDeadZone: 0
 --- !u!1001 &4490508310066785028
 PrefabInstance:
   m_ObjectHideFlags: 0
