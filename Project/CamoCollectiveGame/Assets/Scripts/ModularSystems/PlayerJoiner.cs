@@ -23,7 +23,6 @@ public class PlayerJoiner : MonoBehaviour
     {
         if (m_currentPlayerIndex.Value != -1 && m_players[(int)m_currentPlayerIndex.Value].IsPlaying)
             return;
-
         int index = 0;
         foreach (PlayerData player in m_players)
         {
@@ -37,10 +36,5 @@ public class PlayerJoiner : MonoBehaviour
             }
             index++;
         }
-    }
-
-    public void Back()
-    {
-        
     }
 }

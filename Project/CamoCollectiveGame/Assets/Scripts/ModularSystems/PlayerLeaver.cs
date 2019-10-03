@@ -6,12 +6,17 @@ public class PlayerLeaver : MonoBehaviour
 {
     [SerializeField]
     private PlayerData m_playerData;
+    [SerializeField]
+    private FloatReference m_currentPlayerIndex;
 
     public void Leave()
     {
         if (m_playerData.IsPlaying && m_playerData.Character != null)
             m_playerData.Character = null;
-        else if (m_playerData.IsPlaying)
+        else
+        {
             m_playerData.IsPlaying = false;
+            m_currentPlayerIndex.Value = -1;
+        }
     }
 }

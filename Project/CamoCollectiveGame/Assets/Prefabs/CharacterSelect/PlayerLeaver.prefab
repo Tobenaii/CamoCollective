@@ -61,6 +61,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 1
       buttonState: 0
@@ -111,3 +113,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerData: {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590, type: 2}
+  m_currentPlayerIndex:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 7138fcb45acda654391d61a3ee4da956, type: 2}
