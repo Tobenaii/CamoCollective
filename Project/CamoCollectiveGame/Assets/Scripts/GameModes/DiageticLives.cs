@@ -14,8 +14,6 @@ public class DiageticLives : MonoBehaviour
     private float m_distanceFromCentre;
     [SerializeField]
     private float m_angleOffset;
-    [SerializeField]
-    private float m_rotateSpeed;
 
     float m_currentAngleOffset;
 
@@ -53,7 +51,7 @@ public class DiageticLives : MonoBehaviour
         GameObject sprite = m_livesObjects[index];
         sprite.transform.localPosition = Vector3.zero;
         sprite.transform.localRotation = Quaternion.identity;
-        m_currentAngleOffset = Mathf.MoveTowards(m_currentAngleOffset, 90 + (Vector3.Angle(Vector3.right, transform.parent.forward) * ((transform.parent.forward.z > 0) ? 1 : -1)), m_rotateSpeed * Time.deltaTime);
+        m_currentAngleOffset = 90 + (Vector3.Angle(Vector3.right, transform.parent.forward) * ((transform.parent.forward.z > 0) ? 1 : -1));
         sprite.transform.RotateAround(transform.position, Vector3.up, angle * (left ? -1 : 1) + m_currentAngleOffset);
         sprite.transform.position += sprite.transform.up * m_distanceFromCentre;
         sprite.gameObject.SetActive(true);
