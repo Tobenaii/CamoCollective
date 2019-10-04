@@ -24,6 +24,10 @@ public class ChonkJouster : MonoBehaviour
     [SerializeField]
     private float m_attackFrequency;
 
+    [Header("Colliders")]
+    [SerializeField]
+    private List<Collider> m_colliders;
+
     [Header("Controller Vibration")]
     [SerializeField]
     private float m_vibrationTime;
@@ -70,6 +74,10 @@ public class ChonkJouster : MonoBehaviour
     [SerializeField]
     private BoolReference m_fullyDeadValue;
 
+    private Rigidbody[] m_rbRagdolls;
+    private Collider[] m_colRagdolls;
+    private CharacterJoint[] m_jointRagdolls;
+
     //Components
     private Rigidbody m_rb;
     private StandardCharacterController m_controller;
@@ -102,6 +110,13 @@ public class ChonkJouster : MonoBehaviour
         m_chonkSpeedScale.Value = 1;
         m_isDeadValue.Value = false;
         m_fullyDeadValue.Value = false;
+        m_rbRagdolls = GetComponentsInChildren<Rigidbody>();
+        for (int i = 1; i < m_rbRagdolls.Length; i++)
+        {
+            m_rbRagdolls[i].useGravity = false;
+            m_rbRagdolls[i].detectCollisions = false;
+            m_rbRagdolls[i].isKinematic = true;
+        }
     }
 
     void Update()
@@ -143,6 +158,12 @@ public class ChonkJouster : MonoBehaviour
         //}
         if (m_attackFrequencyTimer > 0)
             m_attackFrequencyTimer -= Time.deltaTime;
+    }
+
+    private void ToggleColliders(bool enable)
+    {
+        foreach (Collider col in m_colliders)
+            col.enabled = enable;
     }
 
     //Check if lance hit shield
@@ -210,9 +231,10 @@ public class ChonkJouster : MonoBehaviour
         //StartCoroutine(FadeAway());
         m_isRespawning = true;
         m_triggeredRespawn = false;
-        m_rb.detectCollisions = false;
-        //m_animator.SetTrigger("Die");
+        //m_rb.detectCollisions = false;
+        m_animator.SetTrigger("Die");
         m_isDeadValue.Value = true;
+        StartCoroutine(ToggleRagdoll());
     }
 
     public void Respawn()
@@ -222,6 +244,33 @@ public class ChonkJouster : MonoBehaviour
         m_isRespawning = false;
         //m_livesValue.Reset();
         m_isDeadValue.Value = false;
+        for (int i = 1; i < m_rbRagdolls.Length; i++)
+        {
+            m_rbRagdolls[i].useGravity = false;
+            m_rbRagdolls[i].detectCollisions = false;
+            m_rbRagdolls[i].isKinematic = true;
+        }
+        m_animator.enabled = true;
+        ToggleColliders(true);
+    }
+
+    private IEnumerator ToggleRagdoll()
+    {
+        float timer = 0.533f;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+
+        m_animator.enabled = false;
+        for (int i = 1; i < m_rbRagdolls.Length; i++)
+        {
+            m_rbRagdolls[i].useGravity = true;
+            m_rbRagdolls[i].detectCollisions = true;
+            m_rbRagdolls[i].isKinematic = false;
+        }
+        ToggleColliders(false);
     }
 
     private void OnTriggerStay(Collider other)

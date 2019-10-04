@@ -80,8 +80,6 @@ public class PoultryBasher : MonoBehaviour
     private TimeLerper m_shieldLerper = new TimeLerper();
 
     private Rigidbody[] m_rbRagdolls;
-    private Collider[] m_colRagdolls;
-    private CharacterJoint[] m_jointRagdolls;
 
     private void Start()
     {
@@ -99,8 +97,6 @@ public class PoultryBasher : MonoBehaviour
         m_speedScale.Value = 1;
         m_knockbackScale = 1;
         m_rbRagdolls = GetComponentsInChildren<Rigidbody>();
-        m_colRagdolls = GetComponentsInChildren<Collider>();
-        m_jointRagdolls = GetComponentsInChildren<CharacterJoint>();
         for (int i = 1; i < m_rbRagdolls.Length; i++)
         {
             m_rbRagdolls[i].useGravity = false;
@@ -167,10 +163,6 @@ public class PoultryBasher : MonoBehaviour
             m_rbRagdolls[i].useGravity = true;
             m_rbRagdolls[i].detectCollisions = true;
             m_rbRagdolls[i].isKinematic = false;
-        }
-        for (int i = 1; i < m_colRagdolls.Length; i++)
-        {
-            m_colRagdolls[i].enabled = true;
         }
         m_animator.enabled = false;
         m_rb.detectCollisions = false;
