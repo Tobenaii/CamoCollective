@@ -144,8 +144,10 @@ public class ChonkJouster : MonoBehaviour
     public void CheckAttack(ChonkJouster jouster)
     {
         //If the other jouster is respawning, ignore it
-        if (jouster.m_isRespawning || m_attackFrequencyTimer > 0)
+        if (jouster.m_isRespawning || m_attackFrequencyTimer > 0 || m_controller.Velocity == Vector3.zero)
+        {
             return;
+        }
         m_attackFrequencyTimer = m_attackFrequency;
         float dot = Vector3.Dot(transform.forward, jouster.transform.forward);
         float shield = Mathf.Lerp(-1, 1, Mathf.InverseLerp(0, 180, m_shieldAngle));
