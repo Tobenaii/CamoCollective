@@ -65,6 +65,8 @@ public class ChonkJouster : MonoBehaviour
     private GameEvent m_respawnedEvent;
     [SerializeField]
     private FloatReference m_chonkSpeedScale;
+    [SerializeField]
+    private BoolReference m_isDeadValue;
 
     //Components
     private Rigidbody m_rb;
@@ -96,6 +98,7 @@ public class ChonkJouster : MonoBehaviour
         m_livesValue.Reset();
         m_scoreValue.Reset();
         m_chonkSpeedScale.Value = 1;
+        m_isDeadValue.Value = false;
     }
 
     void Update()
@@ -199,6 +202,7 @@ public class ChonkJouster : MonoBehaviour
         m_isRespawning = true;
         m_triggeredRespawn = false;
         m_rb.detectCollisions = false;
+        m_isDeadValue.Value = true;
     }
 
     public void Respawn()
@@ -207,6 +211,7 @@ public class ChonkJouster : MonoBehaviour
         m_respawnEvent.Invoke(gameObject);
         m_isRespawning = false;
         m_livesValue.Reset();
+        m_isDeadValue.Value = false;
     }
 
     private void OnTriggerStay(Collider other)
