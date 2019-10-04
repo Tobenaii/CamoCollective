@@ -994,7 +994,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_float: {fileID: 11400000, guid: 5e4261c139267984580a96e53eeafa49, type: 2}
-  m_increaseRate: 1
+  m_increaseRate: 0.75
   m_cap: 1
   m_maxCap: 25
 --- !u!4 &587950744
@@ -2141,6 +2141,8 @@ MonoBehaviour:
     useConstant: 0
     m_constant: 0
     m_variable: {fileID: 11400000, guid: 0005bf9fe8db7f64ca93a3de77f1be39, type: 2}
+  m_toInt: 0
+  m_offset: 0
   m_text: {fileID: 1178316996}
 --- !u!114 &1178316996
 MonoBehaviour:
