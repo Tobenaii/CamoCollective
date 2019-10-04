@@ -9,6 +9,8 @@ public class SeamlessTower : MonoBehaviour
     [SerializeField]
     private Material m_towerMat;
     private bool m_started;
+    [SerializeField]
+    private float m_scale;
 
     public void StartMoving()
     {
@@ -24,7 +26,7 @@ public class SeamlessTower : MonoBehaviour
     {
         if (!m_started)
             return;
-        m_towerMat.mainTextureOffset += Vector2.up * m_fallSpeed.Value * (Time.deltaTime / 11);
+        m_towerMat.mainTextureOffset += Vector2.up * m_fallSpeed.Value * Time.deltaTime * m_scale;
     }
 
 
