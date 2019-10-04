@@ -93,6 +93,16 @@ MonoBehaviour:
     useConstant: 0
     m_constant: 0
     m_variable: {fileID: 11400000, guid: 2d9bd5b9a7b45844c956c583e3de8ad4, type: 2}
+  m_isDeadValue:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
+  m_fullyDeadValue:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
 --- !u!114 &161683513231905873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -796,6 +806,29 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!114 &1974218857824953544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7949313155288584196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5a89e637e97e14bbf1ec1dc11aa9c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_sprite: {fileID: 2778880894521456950, guid: 903bd3891794c344f863459668fd533e,
+    type: 3}
+  m_lives:
+    m_index: 0
+    useConstant: 1
+    m_constant: 3
+    m_variable: {fileID: 0}
+  m_livesObjects: []
+  m_distanceFromCentre: 1.25
+  m_angleOffset: 60
+  m_rotateSpeed: 100
 --- !u!1001 &7570696533551112916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -885,6 +918,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 63f81d9b89575ed4a89d88815001dc95, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35f35d2ec49c760488512a4c4c751227, type: 3}
+--- !u!1 &7949313155288584196 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 522741158364361424, guid: 35f35d2ec49c760488512a4c4c751227,
+    type: 3}
+  m_PrefabInstance: {fileID: 7570696533551112916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7949313155288584198 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 522741158364361426, guid: 35f35d2ec49c760488512a4c4c751227,

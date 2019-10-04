@@ -67,6 +67,8 @@ public class ChonkJouster : MonoBehaviour
     private FloatReference m_chonkSpeedScale;
     [SerializeField]
     private BoolReference m_isDeadValue;
+    [SerializeField]
+    private BoolReference m_fullyDeadValue;
 
     //Components
     private Rigidbody m_rb;
@@ -99,10 +101,13 @@ public class ChonkJouster : MonoBehaviour
         m_scoreValue.Reset();
         m_chonkSpeedScale.Value = 1;
         m_isDeadValue.Value = false;
+        m_fullyDeadValue.Value = false;
     }
 
     void Update()
     {
+        if (m_fullyDeadValue.Value)
+            return;
         if (m_animator)
             m_animator.SetFloat("RunSpeedMult", m_controller.Speed);
 
@@ -178,13 +183,15 @@ public class ChonkJouster : MonoBehaviour
         m_input.Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
 
         m_livesValue.Value--;
+        Die();
         if (m_livesValue.Value <= 0)
-            Die();
-        else
-        {
-            StartCoroutine(InvincibilityFrame(m_invincibilityFrame));
-            StartCoroutine(Flash(m_invincibilityFrame, m_invincibilityFlashTime, new Color(1,0,0,0.3f)));
-        }
+            m_fullyDeadValue.Value = true;
+        
+        //else
+        //{
+        //    StartCoroutine(InvincibilityFrame(m_invincibilityFrame));
+        //    StartCoroutine(Flash(m_invincibilityFrame, m_invincibilityFlashTime, new Color(1,0,0,0.3f)));
+        //}
     }
 
     public void Knockback(Vector3 force)
@@ -204,6 +211,7 @@ public class ChonkJouster : MonoBehaviour
         m_isRespawning = true;
         m_triggeredRespawn = false;
         m_rb.detectCollisions = false;
+        //m_animator.SetTrigger("Die");
         m_isDeadValue.Value = true;
     }
 
@@ -212,7 +220,7 @@ public class ChonkJouster : MonoBehaviour
         m_rb.isKinematic = true;
         m_respawnEvent.Invoke(gameObject);
         m_isRespawning = false;
-        m_livesValue.Reset();
+        //m_livesValue.Reset();
         m_isDeadValue.Value = false;
     }
 

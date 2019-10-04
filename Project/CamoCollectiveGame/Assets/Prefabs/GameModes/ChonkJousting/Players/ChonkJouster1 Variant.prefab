@@ -67,6 +67,17 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1974218857824953544, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_lives.useConstant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1974218857824953544, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_lives.m_variable
+      value: 
+      objectReference: {fileID: 11400000, guid: fbc00d6342149864aa6501ec8a064f7e,
+        type: 2}
     - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
       propertyPath: m_player
@@ -83,6 +94,17 @@ PrefabInstance:
       propertyPath: m_isDeadValue.m_variable
       value: 
       objectReference: {fileID: 11400000, guid: 2d00e7f1be81cd645aa10bdc5b1f92d4,
+        type: 2}
+    - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_fullyDeadValue.useConstant
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7977383903260922302, guid: c7c83928f081c524b91dca87891fd0f6,
+        type: 3}
+      propertyPath: m_fullyDeadValue.m_variable
+      value: 
+      objectReference: {fileID: 11400000, guid: 1c710cd70ef5303458645b6a8edffe08,
         type: 2}
     - target: {fileID: 2659406844423747302, guid: c7c83928f081c524b91dca87891fd0f6,
         type: 3}
