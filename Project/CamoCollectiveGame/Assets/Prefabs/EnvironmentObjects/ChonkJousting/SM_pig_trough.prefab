@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 752463835662109723}
   - component: {fileID: 752463835660979931}
   - component: {fileID: 25549742458510691}
+  - component: {fileID: 615023994573215035}
   m_Layer: 0
   m_Name: SM_pig_trough
   m_TagString: Untagged
@@ -91,3 +92,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.8214576, y: 0.6, z: 0.99938726}
   m_Center: {x: -1.4260496, y: 0.17544484, z: -0.3729396}
+--- !u!114 &615023994573215035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752463835658719259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50bede432d99d4f4d8f4b4d52f615091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_renderer: {fileID: 752463835660979931}
+  m_layer: Lives
+  m_sortingOrder: 0
