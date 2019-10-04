@@ -12,13 +12,20 @@ public class VirtualCursor : MonoBehaviour
     private RectTransform m_rectTransform;
     private Image m_image;
 
+    private Vector2 m_basePos;
+
     private void Start()
     {
         m_rectTransform = GetComponent<RectTransform>();
         m_image = GetComponent<Image>();
         m_cursorPos.Value = RectTransformUtility.WorldToScreenPoint(null, m_rectTransform.position);
         m_image.color = m_playerData.IndicatorColour;
+        m_basePos = m_cursorPos.Value;
+    }
 
+    private void OnEnable()
+    {
+        m_cursorPos.Value = m_basePos;
     }
 
     private void Update()

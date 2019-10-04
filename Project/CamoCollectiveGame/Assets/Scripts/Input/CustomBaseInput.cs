@@ -29,11 +29,14 @@ public class CustomBaseInput : BaseInput
 
     private void Update()
     {
+        if (m_firstUpdate && m_cursorPos != (Vector2)m_cursorPosValue.Value)
+            m_cursorPos = m_cursorPosValue.Value;
         if (!m_firstUpdate)
         {
             m_cursorPos = m_cursorPosValue.Value;
             m_firstUpdate = true;
         }
+
         prevState = state;
         state = GamePad.GetState((PlayerIndex)m_controllerNumber.Value - 1, GamePadDeadZone.Circular);
         m_cursorPos += new Vector2(state.ThumbSticks.Left.X, state.ThumbSticks.Left.Y) * m_cursorMoveSpeed * Time.deltaTime;
@@ -45,6 +48,7 @@ public class CustomBaseInput : BaseInput
             m_cursorPos.x = Screen.width;
         if (m_cursorPos.y > Screen.height)
             m_cursorPos.y = Screen.height;
+
         m_cursorPosValue.Value = m_cursorPos;
     }
 
