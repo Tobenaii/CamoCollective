@@ -55,7 +55,7 @@ public class CustomBaseInput : BaseInput
         {
             case "LeftJoystick":
                 if (inputs[1] == "X")
-                    return state.ThumbSticks.Left.X;
+                    return state.ThumbSticks.Left.X != 0?state.ThumbSticks.Left.X:state.DPad.Left == ButtonState.Pressed?-1:state.DPad.Right == ButtonState.Pressed?1:0;
                 else if (inputs[1] == "Y")
                     return state.ThumbSticks.Left.Y;
                 break;
