@@ -903,6 +903,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6944240787660650640, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 156
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724855466431333601, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
 --- !u!224 &423308825 stripped
@@ -1548,6 +1559,17 @@ PrefabInstance:
       propertyPath: m_isDeadValue.m_index
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 6944240787660650640, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 156
+      objectReference: {fileID: 0}
+    - target: {fileID: 8724855466431333601, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
 --- !u!224 &583318499 stripped
@@ -2108,6 +2130,12 @@ PrefabInstance:
       value: 251.86
       objectReference: {fileID: 0}
     - target: {fileID: 7040486345729901325, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590,
+        type: 2}
+    - target: {fileID: 8724855466431333601, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_player
       value: 
@@ -3297,6 +3325,12 @@ PrefabInstance:
       propertyPath: m_isDeadValue.m_index
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8724855466431333601, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
 --- !u!224 &1423858579 stripped
@@ -3532,6 +3566,8 @@ MonoBehaviour:
     useConstant: 0
     m_constant: 0
     m_variable: {fileID: 11400000, guid: 0005bf9fe8db7f64ca93a3de77f1be39, type: 2}
+  m_toInt: 0
+  m_offset: 0
   m_text: {fileID: 1704828014}
 --- !u!1001 &1817315225
 PrefabInstance:
