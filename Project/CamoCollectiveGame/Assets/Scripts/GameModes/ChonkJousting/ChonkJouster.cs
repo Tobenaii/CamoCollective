@@ -232,7 +232,7 @@ public class ChonkJouster : MonoBehaviour
         m_isRespawning = true;
         m_triggeredRespawn = false;
         //m_rb.detectCollisions = false;
-        m_animator.SetTrigger("Die");
+        //m_animator.SetTrigger("Die");
         m_isDeadValue.Value = true;
         StartCoroutine(ToggleRagdoll());
     }
@@ -256,7 +256,8 @@ public class ChonkJouster : MonoBehaviour
 
     private IEnumerator ToggleRagdoll()
     {
-        float timer = 0.533f;
+        //float timer = 0.533f;
+        float timer = 0;
         while (timer > 0)
         {
             timer -= Time.deltaTime;
