@@ -5400,7 +5400,7 @@ GameObject:
   - component: {fileID: 209207507}
   - component: {fileID: 209207506}
   - component: {fileID: 209207505}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7045,11 +7045,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590,
         type: 2}
-    - target: {fileID: 693771883047700884, guid: 5504e396eea336d49b915465ff04ad6a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6944240787660650640, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_RootOrder
@@ -7074,6 +7069,11 @@ PrefabInstance:
     - target: {fileID: 693771883047700882, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 693771883047700884, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7176,7 +7176,7 @@ GameObject:
   - component: {fileID: 627372444}
   - component: {fileID: 627372443}
   - component: {fileID: 627372442}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7629,7 +7629,7 @@ GameObject:
   - component: {fileID: 781281046}
   - component: {fileID: 781281045}
   - component: {fileID: 781281044}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9660,11 +9660,6 @@ PrefabInstance:
       propertyPath: m_isDeadValue.m_index
       value: 2
       objectReference: {fileID: 0}
-    - target: {fileID: 693771883047700884, guid: 5504e396eea336d49b915465ff04ad6a,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6944240787660650640, guid: 5504e396eea336d49b915465ff04ad6a,
         type: 3}
       propertyPath: m_RootOrder
@@ -9710,6 +9705,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_floatValue.m_index
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 693771883047700884, guid: 5504e396eea336d49b915465ff04ad6a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5504e396eea336d49b915465ff04ad6a, type: 3}
@@ -10485,7 +10485,7 @@ GameObject:
   - component: {fileID: 1512998909}
   - component: {fileID: 1512998908}
   - component: {fileID: 1512998907}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Wall (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12049,7 +12049,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2115646980}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Arena
   m_TagString: Untagged
   m_Icon: {fileID: 0}

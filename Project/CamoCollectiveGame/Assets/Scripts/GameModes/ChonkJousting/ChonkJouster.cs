@@ -121,8 +121,6 @@ public class ChonkJouster : MonoBehaviour
 
     void Update()
     {
-        if (m_fullyDeadValue.Value)
-            return;
         if (m_animator)
             m_animator.SetFloat("RunSpeedMult", m_controller.Speed);
 
@@ -136,7 +134,7 @@ public class ChonkJouster : MonoBehaviour
             }
         }
 
-        if (m_isRespawning)
+        if (m_isRespawning && !m_fullyDeadValue.Value)
         {
             m_respawnTimer.Value -= Time.deltaTime;
             if (m_respawnTimer.Value <= 0)

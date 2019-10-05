@@ -25,10 +25,12 @@ public class VirtualCursor : MonoBehaviour
 
     private void OnEnable()
     {
-        m_cursorPos.Value = m_basePos;
+        if (m_playerData.JustJoined)
+            m_cursorPos.Value = m_basePos;
+        m_playerData.JustJoined = false;
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         Vector2 pos;
         RectTransformUtility.ScreenPointToLocalPointInRectangle(m_image.canvas.transform as RectTransform, m_cursorPos.Value, m_image.canvas.worldCamera, out pos);

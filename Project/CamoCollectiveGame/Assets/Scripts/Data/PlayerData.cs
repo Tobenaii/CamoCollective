@@ -17,6 +17,8 @@ public class PlayerData : ScriptableObject
     private Color m_indicatorColour;
     [SerializeField]
     private Color32 m_bannerColour;
+    [System.NonSerialized]
+    private bool m_justJoined;
 
     public CharacterData Character { get { return m_currentCharacter; } set { if (m_currentCharacter != null) m_currentCharacter.inUse = false; m_currentCharacter = value; if (m_currentCharacter != null) m_currentCharacter.inUse = true; } }
     public CharacterData ForcedCharacter { get { return m_forcedCharacter; } private set { } }
@@ -24,6 +26,7 @@ public class PlayerData : ScriptableObject
     public Color IndicatorColour { get { return m_indicatorColour; } private set { } }
     public Color BannerColour { get { return m_bannerColour; } private set { } }
     public CharacterData GhostCharacter { get { return m_ghostCharacter; } private set { } }
+    public bool JustJoined { get { return m_justJoined; } set { m_justJoined = value; } }
 
     public void SetGhostCharacter(CharacterData character)
     {

@@ -167,6 +167,7 @@ public class PoultryBasher : MonoBehaviour
         m_animator.enabled = false;
         m_rb.detectCollisions = false;
         m_rb.isKinematic = true;
+        EndBlock();
         //ParticleSystem ps = m_deathParticleSystemPool.GetObject();
         //ps.transform.up = (m_rotateTowards - transform.position);
         //ps.transform.position = transform.position;

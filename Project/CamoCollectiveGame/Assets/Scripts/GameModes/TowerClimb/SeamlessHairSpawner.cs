@@ -23,6 +23,7 @@ public class SeamlessHairSpawner : MonoBehaviour
     private void OnEnable()
     {
         GameObject hairPeek = m_hairPool.PeekObject();
+        hairPeek.transform.localScale = new Vector3(2, 2, 2);
         m_height = hairPeek.GetComponentInChildren<Renderer>().bounds.size.y;
         for (int i = 0; i < m_initAmmount; i++)
         {
@@ -30,6 +31,7 @@ public class SeamlessHairSpawner : MonoBehaviour
             hair.transform.position = new Vector3(transform.position.x, transform.position.y - (m_height - m_offset) * (i), transform.position.z);
             hair.transform.rotation = transform.rotation;
             hair.transform.SetParent(transform);
+            hair.transform.localScale = new Vector3(2, 2, 2);
             if (i == 0)
                 m_prevHair = hair;
         }
@@ -55,6 +57,7 @@ public class SeamlessHairSpawner : MonoBehaviour
             hair.transform.position = new Vector3(transform.position.x, m_prevHair.transform.position.y + (m_height - m_offset), transform.position.z);
             hair.transform.rotation = transform.rotation;
             hair.transform.SetParent(transform);
+            hair.transform.localScale = new Vector3(2, 2, 2);
             m_prevHair = hair;
             if (m_queueStopSpawn)
             {
@@ -62,6 +65,7 @@ public class SeamlessHairSpawner : MonoBehaviour
                 hair.transform.position = new Vector3(transform.position.x, m_prevHair.transform.position.y + (m_height - m_offset), transform.position.z);
                 hair.transform.rotation = transform.rotation;
                 hair.transform.SetParent(transform);
+                hair.transform.localScale = new Vector3(2, 2, 2);
                 m_prevHair = hair;
                 m_stopSpawn = true;
                 m_moveValue.Value = false;

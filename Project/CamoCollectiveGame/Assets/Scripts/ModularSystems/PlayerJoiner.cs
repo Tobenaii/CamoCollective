@@ -53,6 +53,7 @@ public class PlayerJoiner : MonoBehaviour
             if (!player.IsPlaying)
             {
                 player.IsPlaying = true;
+                player.JustJoined = true;
                 m_currentPlayerIndex.Value = index;
                 m_playerControllers.SetValue(index, controllerNum);
                 m_currentPlayer = player;
