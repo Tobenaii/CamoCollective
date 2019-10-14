@@ -119,6 +119,24 @@ public class ChonkJouster : MonoBehaviour
         }
     }
 
+    public void Reinit()
+    {
+        Destroy(transform.GetChild(0));
+        GameObject character = Instantiate(m_player.Character.ChonkJoustingCharacter, transform);
+        m_animator = GetComponentInChildren<Animator>();
+        character.transform.localPosition = Vector3.zero;
+        character.transform.localRotation = Quaternion.identity;
+
+        m_chonkSpeedScale.Value = 1;
+        m_rbRagdolls = GetComponentsInChildren<Rigidbody>();
+        for (int i = 1; i < m_rbRagdolls.Length; i++)
+        {
+            m_rbRagdolls[i].useGravity = false;
+            m_rbRagdolls[i].detectCollisions = false;
+            m_rbRagdolls[i].isKinematic = true;
+        }
+    }
+
     void Update()
     {
         if (m_animator)
@@ -230,7 +248,7 @@ public class ChonkJouster : MonoBehaviour
         m_isRespawning = true;
         m_triggeredRespawn = false;
         //m_rb.detectCollisions = false;
-        //m_animator.SetTrigger("Die");
+        m_animator.SetTrigger("Die");
         m_isDeadValue.Value = true;
         StartCoroutine(ToggleRagdoll());
     }

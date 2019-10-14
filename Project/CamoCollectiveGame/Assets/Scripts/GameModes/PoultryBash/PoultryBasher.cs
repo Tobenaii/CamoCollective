@@ -15,6 +15,8 @@ public class PoultryBasher : MonoBehaviour
     private float m_knockup;
     [SerializeField]
     private float m_punchTime;
+    [SerializeField]
+    private float m_punchQueueTime;
 
     [Header("Controller Vibration")]
     [SerializeField]
@@ -64,6 +66,7 @@ public class PoultryBasher : MonoBehaviour
     private float m_knockbackScale;
     private float m_currentBlockScale;
     private float m_blockCooldownAfterPunchTimer;
+    private float m_punchQueueResetTimer;
     private Rigidbody m_rb;
 
     private InputMapper m_input;
@@ -114,6 +117,9 @@ public class PoultryBasher : MonoBehaviour
             m_animator.SetFloat("MoveSpeed", m_controller.Speed, 1f, Time.deltaTime * 10f);
             //m_animator.SetFloat("StrafeSpeed", Mathf.Lerp(1,0, Mathf.Abs(Vector3.Dot(transform.forward, m_controller.Velocity))) * m_controller.Speed, 1f, Time.deltaTime * 10f);
         }
+
+        if (m_punchQueueResetTimer > 0)
+            m_punchQueueResetTimer -= Time.deltaTime;
     }
 
 
@@ -221,8 +227,12 @@ public class PoultryBasher : MonoBehaviour
 
     private void QueueNextPunch(string anim)
     {
-        if (m_punchQueued)
+        if (m_isPunching)
+        {
+            m_punchQueued = true;
+            m_punchQueueResetTimer = m_punchQueueTime;
             return;
+        }
         if (!m_inRing)
             return;
         m_animator.SetTrigger(anim);
@@ -282,7 +292,6 @@ public class PoultryBasher : MonoBehaviour
 
     private IEnumerator PunchTimer()
     {
-        m_punchQueued = true;
         m_isPunching = true;
         float timer = m_punchTime;
         while (timer > 0)
@@ -292,7 +301,6 @@ public class PoultryBasher : MonoBehaviour
         }
         Punch(0);
         OnPunchEnd();
-        m_punchQueued = false;
     }
 
     public void AlternatePunch(float trigger)
@@ -367,6 +375,9 @@ public class PoultryBasher : MonoBehaviour
         m_leftPunch = !m_leftPunch;
         m_punchedRight = false;
         m_punchedLeft = false;
+        if (m_punchQueued && m_punchQueueResetTimer > 0)
+            AlternatePunch(1);
+        m_punchQueued = false;
     }
 
     private void OnDestroy()
