@@ -58,7 +58,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_shieldAngle: 20
-  m_shieldKnockbackForce: 12
+  m_shieldKnockbackForce: 30
   m_lanceTransform: {fileID: 6947285510579088598}
   m_knockbackForce: 10
   m_knockupForce: 15
@@ -977,11 +977,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1306612043750070392}
     m_Modifications:
-    - target: {fileID: 522741158364361424, guid: 35f35d2ec49c760488512a4c4c751227,
-        type: 3}
-      propertyPath: m_Name
-      value: PlayerIndicator
-      objectReference: {fileID: 0}
     - target: {fileID: 522741158364361426, guid: 35f35d2ec49c760488512a4c4c751227,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1051,6 +1046,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 522741158364361424, guid: 35f35d2ec49c760488512a4c4c751227,
+        type: 3}
+      propertyPath: m_Name
+      value: PlayerIndicator
       objectReference: {fileID: 0}
     - target: {fileID: 522741158364361427, guid: 35f35d2ec49c760488512a4c4c751227,
         type: 3}
