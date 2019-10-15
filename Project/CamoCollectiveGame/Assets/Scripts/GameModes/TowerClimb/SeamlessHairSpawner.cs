@@ -27,6 +27,7 @@ public class SeamlessHairSpawner : MonoBehaviour
         GameObject hairPeek = m_hairPool.PeekObject();
         hairPeek.transform.localScale = new Vector3(2, 2, 2);
         m_height = hairPeek.GetComponentInChildren<Renderer>().bounds.size.y;
+        m_moveValue.Value = false;
         for (int i = 0; i < m_initAmmount; i++)
         {
             GameObject hair = m_hairPool.GetObject();
