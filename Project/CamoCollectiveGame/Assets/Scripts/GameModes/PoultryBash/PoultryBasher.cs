@@ -14,7 +14,9 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private float m_knockup;
     [SerializeField]
-    private float m_punchTime;
+    private float m_punchHitTime;
+    [SerializeField]
+    private float m_punchEndTime;
     [SerializeField]
     private float m_punchQueueTime;
 
@@ -59,8 +61,6 @@ public class PoultryBasher : MonoBehaviour
 
     private float m_currentBlockKnockbackScale;
 
-    private bool m_punchedRight;
-    private bool m_punchedLeft;
     private bool m_isPunching;
 
     private float m_knockbackScale;
@@ -236,38 +236,72 @@ public class PoultryBasher : MonoBehaviour
         if (!m_inRing)
             return;
         m_animator.SetTrigger(anim);
-        StopCoroutine(PunchTimer());
-        StartCoroutine(PunchTimer());
+        Debug.Log(anim);
+        StopCoroutine(PunchHitTimer());
+        StartCoroutine(PunchHitTimer());
+
+        StopCoroutine(PunchEndTimer());
+        StartCoroutine(PunchEndTimer());
+    }
+
+    private IEnumerator PunchHitTimer()
+    {
+        m_isPunching = true;
+        float timer = m_punchHitTime;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        Punch(0);
+    }
+
+    private IEnumerator PunchEndTimer()
+    {
+        float timer = m_punchEndTime;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        OnPunchEnd();
+    }
+
+    public void OnPunchEnd()
+    {
+        m_isPunching = false;
+        m_leftPunch = !m_leftPunch;
+        if (m_punchQueued && m_punchQueueResetTimer > 0)
+            AlternatePunch(1);
     }
 
     public void LeftPunch(float trigger)
     {
-        if (trigger == 0)
-        {
-            m_punchedLeft = false;
+        if (trigger == 0 || m_isBlocking)
             return;
-        }
-        if (m_punchedLeft)
-            return;
-        m_punchedLeft = true;
+
         m_animator.ResetTrigger("RightPunch");
         QueueNextPunch("LeftPunch");
     }
 
     public void RightPunch(float trigger)
     {
-        if (m_isBlocking)
+        if (trigger == 0 || m_isBlocking)
             return;
-        if (trigger == 0)
-        {
-            m_punchedRight = false;
-            return;
-        }
-        if (m_punchedRight)
-            return;
-        m_punchedRight = true;
+
         m_animator.ResetTrigger("LeftPunch");
         QueueNextPunch("RightPunch");
+    }
+
+    public void AlternatePunch(float trigger)
+    {
+        if (trigger == 0 || m_isBlocking)
+            return;
+
+        if (m_leftPunch)
+            LeftPunch(1);
+        else
+            RightPunch(1);
     }
 
 
@@ -288,30 +322,6 @@ public class PoultryBasher : MonoBehaviour
             rb.AddForce(Vector3.up * m_knockup, ForceMode.Impulse);
             hit.transform.GetComponent<InputMapper>().Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
         }
-    }
-
-    private IEnumerator PunchTimer()
-    {
-        m_isPunching = true;
-        float timer = m_punchTime;
-        while (timer > 0)
-        {
-            timer -= Time.deltaTime;
-            yield return null;
-        }
-        Punch(0);
-        OnPunchEnd();
-    }
-
-    public void AlternatePunch(float trigger)
-    {
-        if (m_isPunching || trigger == 0)
-            return;
-
-        if (m_leftPunch)
-            LeftPunch(1);
-        else
-            RightPunch(1);
     }
 
     public void StartBlock(float trigger)
@@ -365,19 +375,6 @@ public class PoultryBasher : MonoBehaviour
         m_animator.SetTrigger("StopDefend");
         m_isBlocking = false;
         StopCoroutine(FadeInShield());
-    }
-
-    public void OnPunchEnd()
-    {
-        //m_punchQueued = false;
-        //m_leftPunch = !m_leftPunch;
-        m_isPunching = false;
-        m_leftPunch = !m_leftPunch;
-        m_punchedRight = false;
-        m_punchedLeft = false;
-        if (m_punchQueued && m_punchQueueResetTimer > 0)
-            AlternatePunch(1);
-        m_punchQueued = false;
     }
 
     private void OnDestroy()
