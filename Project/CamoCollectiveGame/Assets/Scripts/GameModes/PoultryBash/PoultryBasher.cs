@@ -73,6 +73,8 @@ public class PoultryBasher : MonoBehaviour
     private GameEvent m_dynamicCameraStartEvent;
     [SerializeField]
     private GameObjectListSet m_gameObjectListSet;
+    [SerializeField]
+    private GameObject m_playerIndicator;
 
     private float m_currentBlockKnockbackScale;
 
@@ -203,6 +205,7 @@ public class PoultryBasher : MonoBehaviour
         m_rb.detectCollisions = false;
         m_rb.isKinematic = true;
         EndBlock();
+        m_playerIndicator.SetActive(false);
         //ParticleSystem ps = m_deathParticleSystemPool.GetObject();
         //ps.transform.up = (m_rotateTowards - transform.position);
         //ps.transform.position = transform.position;
