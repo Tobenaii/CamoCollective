@@ -48,6 +48,10 @@ public class PoultryBasher : MonoBehaviour
     private float m_shieldRegenDelay;
     [SerializeField]
     private float m_shieldDecayRate;
+    [SerializeField]
+    private float m_blockKnockbackForce;
+    [SerializeField]
+    private float m_blockKnockupForce;
 
 
     [Header("Particles")]
@@ -341,7 +345,11 @@ public class PoultryBasher : MonoBehaviour
             Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
             PoultryBasher pb = hit.transform.GetComponent<PoultryBasher>();
             if (pb.m_isBlocking)
+            {
                 pb.m_shieldHealth -= m_shieldBreakPercentOnHit;
+                m_rb.AddForce(pb.transform.forward * pb.m_blockKnockbackForce, ForceMode.Impulse);
+                m_rb.AddForce(Vector3.up * pb.m_blockKnockupForce, ForceMode.Impulse);
+            }
             rb.velocity = Vector3.zero;
             float dot = Vector3.Dot(transform.forward, rb.transform.forward);
             float knockbackScale = (dot < -0.7f) ? pb.m_currentBlockKnockbackScale : 1;
