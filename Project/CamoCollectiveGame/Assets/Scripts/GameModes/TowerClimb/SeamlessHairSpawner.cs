@@ -68,11 +68,19 @@ public class SeamlessHairSpawner : MonoBehaviour
             	hair.transform.rotation = transform.rotation;
             	hair.transform.SetParent(transform);
             	hair.transform.localScale = new Vector3(2, 2, 2);
-                m_spawnedLastHairEvent.Invoke();
             	m_prevHair = hair;
+
+                m_spawnedLastHairEvent.Invoke();
                 m_stopSpawn = true;
                 m_moveValue.Value = false;
+
             }
+        }
+        else if (m_queueStopSpawn && m_moveValue.Value == false)
+        {
+            m_spawnedLastHairEvent.Invoke();
+            m_stopSpawn = true;
+            m_moveValue.Value = false;
         }
     }
 }

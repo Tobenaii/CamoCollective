@@ -15,6 +15,8 @@ public class SpawnChecker : MonoBehaviour
     private List<Transform> m_spawnTransforms;
     [SerializeField]
     private BoolValue m_spawnTempPlayers;
+    [SerializeField]
+    private GameObject m_gameObjectToEnable;
 
     private void OnValidate()
     {
@@ -31,6 +33,8 @@ public class SpawnChecker : MonoBehaviour
             players += Convert.ToInt32(((m_spawnTempPlayers.Value)?player.TempIsPlaying:player.IsPlaying));
         if (players == m_playerAmmount)
         {
+            if (m_gameObjectToEnable)
+                m_gameObjectToEnable.SetActive(true);
             int index = 0;
             int spawnIndex = 0;
             foreach (PlayerData player in m_playerData)
@@ -44,6 +48,11 @@ public class SpawnChecker : MonoBehaviour
                 }
                 index++;
             }
+        }
+        else
+        {
+            if (m_gameObjectToEnable)
+                m_gameObjectToEnable.SetActive(false);
         }
     }
 }
