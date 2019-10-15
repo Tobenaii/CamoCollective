@@ -19,6 +19,8 @@ public class PlayerData : ScriptableObject
     private Color32 m_bannerColour;
     [System.NonSerialized]
     private bool m_justJoined;
+    [System.NonSerialized]
+    private bool m_tempIsPlaying;
 
     public CharacterData Character { get { return m_currentCharacter; } set { if (m_currentCharacter != null) m_currentCharacter.inUse = false; m_currentCharacter = value; if (m_currentCharacter != null) m_currentCharacter.inUse = true; } }
     public CharacterData ForcedCharacter { get { return m_forcedCharacter; } private set { } }
@@ -27,6 +29,7 @@ public class PlayerData : ScriptableObject
     public Color BannerColour { get { return m_bannerColour; } private set { } }
     public CharacterData GhostCharacter { get { return m_ghostCharacter; } private set { } }
     public bool JustJoined { get { return m_justJoined; } set { m_justJoined = value; } }
+    public bool TempIsPlaying { get { return m_tempIsPlaying; } set { m_tempIsPlaying = value; } }
 
     public void SetGhostCharacter(CharacterData character)
     {

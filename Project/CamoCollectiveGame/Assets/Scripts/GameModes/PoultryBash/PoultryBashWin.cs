@@ -20,14 +20,15 @@ public class PoultryBashWin : MonoBehaviour
     [SerializeField]
     private FloatValue m_roundNumberValue;
     [SerializeField]
-    private float m_numberOfWins;
-    [SerializeField]
     private FloatValue m_scoreValues;
     [SerializeField]
     private GameEvent m_newRoundEvent;
+    [SerializeField]
+    private BoolValue m_spawnTempPlayers;
 
     private bool m_wonGame;
     private int m_winner;
+    private List<PlayerData> m_highestPlayers = new List<PlayerData>();
 
     private void Start()
     {
@@ -82,28 +83,48 @@ public class PoultryBashWin : MonoBehaviour
     {
         m_wonGame = true;
         m_roundNumberValue.Value++;
-        if (m_winner >= 0 && m_scoreValues.GetValue(m_winner) == m_numberOfWins)
+        m_scoreValues.SetValue(m_winner, m_scoreValues.GetValue(m_winner) + 1);
+
+        m_highestPlayers.Clear();
+
+        for (int i = 0; i < m_scoreValues.Count; i++)
         {
-            m_winnerText.gameObject.SetActive(true);
-            m_winnerText.text = "PLAYER " + (m_winner + 1) + " WINS THE GAME!";
-            m_scoreValues.SetValue(m_winner, m_scoreValues.GetValue(m_winner) + 1);
-            m_finishedEvent.Invoke();
+            if (m_scoreValues.GetValue(i) == 1)
+                m_players[i].TempIsPlaying = true;
+            else if (m_scoreValues.GetValue(i) == 2)
+            {
+                WinGame();
+                return;
+            }
+        }
+
+        if (m_roundNumberValue.Value == 3)
+        {
+            m_spawnTempPlayers.Value = true;
+            StartCoroutine(WinRound("Tie Breaker!"));
             return;
         }
-        Debug.Log("ROUND: " + (m_roundNumberValue.Value + 1));
-        StartCoroutine(WinnerText(m_winner, alive));
+
+        if (alive == 0)
+            StartCoroutine(WinRound("Nobody Wins!"));
+        else
+            StartCoroutine(WinRound("PLAYER " + (m_winner + 1) + " WINS THE ROUND!"));
     }
 
-    IEnumerator WinnerText(int winner, int alive)
+    private void WinGame()
     {
         m_winnerText.gameObject.SetActive(true);
-        if (alive == 0)
-            m_winnerText.text = "NOBODY WINS!";
-        else
-        {
-            m_winnerText.text = "PLAYER " + (winner + 1) + " WINS THE ROUND!";
-            m_scoreValues.SetValue(winner, m_scoreValues.GetValue(winner) + 1);
-        }
+        m_winnerText.text = "PLAYER " + (m_winner + 1) + " WINS THE GAME!";
+        foreach (PlayerData player in m_players)
+            player.TempIsPlaying = false;
+        m_spawnTempPlayers.Value = false;
+        m_finishedEvent.Invoke();
+    }
+
+    IEnumerator WinRound(string text)
+    {
+        m_winnerText.gameObject.SetActive(true);
+        m_winnerText.text = text;
         float timer = 3;
         while (timer > 0)
         {

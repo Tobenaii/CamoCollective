@@ -9,13 +9,41 @@ public class SpawnChecker : MonoBehaviour
     private int m_playerAmmount;
     [SerializeField]
     private List<PlayerData> m_playerData;
+    [SerializeField]
+    private List<GameObject> m_playerObjects;
+    [SerializeField]
+    private List<Transform> m_spawnTransforms;
+    [SerializeField]
+    private BoolValue m_spawnTempPlayers;
+
+    private void OnValidate()
+    {
+        while (m_spawnTransforms.Count < m_playerAmmount)
+            m_spawnTransforms.Add(null);
+        while (m_spawnTransforms.Count > m_playerAmmount)
+            m_spawnTransforms.RemoveAt(m_spawnTransforms.Count - 1);
+    }
 
     private void Awake()
     {
         int players = 0;
         foreach (PlayerData player in m_playerData)
-            players += Convert.ToInt32(player.IsPlaying);
-        if (players != m_playerAmmount)
-            gameObject.SetActive(false);
+            players += Convert.ToInt32(((m_spawnTempPlayers.Value)?player.TempIsPlaying:player.IsPlaying));
+        if (players == m_playerAmmount)
+        {
+            int index = 0;
+            int spawnIndex = 0;
+            foreach (PlayerData player in m_playerData)
+            {
+                if ((m_spawnTempPlayers.Value) ? player.TempIsPlaying : player.IsPlaying)
+                {
+                    GameObject p = Instantiate(m_playerObjects[index], m_spawnTransforms[spawnIndex]);
+                    p.transform.localPosition = Vector3.zero;
+                    p.transform.localRotation = Quaternion.identity;
+                    spawnIndex++;
+                }
+                index++;
+            }
+        }
     }
 }
