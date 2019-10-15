@@ -62,7 +62,7 @@ public class SeamlessHairSpawner : MonoBehaviour
             if (m_queueStopSpawn)
             {
                 hair = m_hairPool.GetObject();
-            	hair.transform.position = new Vector3(transform.position.x, m_prevHair.transform.position.y + (m_height - m_offset), transform.position.z);
+            	hair.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             	hair.transform.rotation = transform.rotation;
             	hair.transform.SetParent(transform);
             	hair.transform.localScale = new Vector3(2, 2, 2);
