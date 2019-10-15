@@ -13,6 +13,8 @@ public class SeamlessHairSpawner : MonoBehaviour
     [SerializeField]
     private GameEvent m_stopMovingHairEvent;
     [SerializeField]
+    private GameEvent m_spawnedLastHairEvent;
+    [SerializeField]
     private float m_offset;
     private float m_height;
     private GameObject m_prevHair;
@@ -66,6 +68,7 @@ public class SeamlessHairSpawner : MonoBehaviour
             	hair.transform.rotation = transform.rotation;
             	hair.transform.SetParent(transform);
             	hair.transform.localScale = new Vector3(2, 2, 2);
+                m_spawnedLastHairEvent.Invoke();
             	m_prevHair = hair;
                 m_stopSpawn = true;
                 m_moveValue.Value = false;

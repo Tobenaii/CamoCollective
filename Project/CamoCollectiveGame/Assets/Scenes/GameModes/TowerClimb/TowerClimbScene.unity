@@ -1691,7 +1691,7 @@ Transform:
   m_Children:
   - {fileID: 401803486}
   m_Father: {fileID: 1859315375}
-  m_RootOrder: 4
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &874272707
 MonoBehaviour:
@@ -1705,7 +1705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 675c4246f4669bb47814312dbc42bff2, type: 2}
+  gameEvent: {fileID: 11400000, guid: a528a5b58f733a84d997dbdb685ef5c1, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -4159,6 +4159,8 @@ MonoBehaviour:
   m_initAmmount: 45
   m_stopMovingHairEvent: {fileID: 11400000, guid: 3bffa24ac133068439a1afcc2a8c4258,
     type: 2}
+  m_spawnedLastHairEvent: {fileID: 11400000, guid: a528a5b58f733a84d997dbdb685ef5c1,
+    type: 2}
   m_offset: 1
 --- !u!114 &1779671909
 MonoBehaviour:
@@ -4249,7 +4251,7 @@ Transform:
   - {fileID: 1748238506}
   - {fileID: 1082740277}
   m_Father: {fileID: 1859315375}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1825759965
 PrefabInstance:
@@ -4450,9 +4452,9 @@ Transform:
   m_Children:
   - {fileID: 2090856282}
   - {fileID: 1779671907}
+  - {fileID: 874272706}
   - {fileID: 1784714175}
   - {fileID: 1863603100}
-  - {fileID: 874272706}
   - {fileID: 1018236361}
   - {fileID: 730412461062450550}
   - {fileID: 2974976527220736773}
@@ -9213,7 +9215,7 @@ Transform:
   m_LocalScale: {x: 0.85, y: 1, z: 0.6}
   m_Children: []
   m_Father: {fileID: 1859315375}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!1 &1885840445
 GameObject:
