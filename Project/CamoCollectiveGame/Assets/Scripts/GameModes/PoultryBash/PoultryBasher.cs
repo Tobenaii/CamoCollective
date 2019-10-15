@@ -20,6 +20,7 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private float m_punchQueueTime;
 
+
     [Header("Controller Vibration")]
     [SerializeField]
     private float m_vibrationTime;
@@ -38,6 +39,16 @@ public class PoultryBasher : MonoBehaviour
     private float m_blockMoveSpeedMultiplier;
     [SerializeField]
     private float m_blockCooldownAfterPunch;
+    [SerializeField]
+    [Range(0, 1)]
+    private float m_shieldBreakPercentOnHit;
+    [SerializeField]
+    private float m_shieldRegenRate;
+    [SerializeField]
+    private float m_shieldRegenDelay;
+    [SerializeField]
+    private float m_shieldDecayRate;
+
 
     [Header("Particles")]
     [SerializeField]
@@ -78,14 +89,21 @@ public class PoultryBasher : MonoBehaviour
     private Coroutine m_speedCo;
     private Coroutine m_strengthCo;
     private bool m_isBlocking;
+    private bool m_regenShield;
 
     private bool m_leftPunch;
     private TimeLerper m_shieldLerper = new TimeLerper();
 
     private Rigidbody[] m_rbRagdolls;
 
+    private float m_shieldHealth;
+    private Vector3 m_initShieldScale;
+    private bool m_shieldBroke;
+
     private void Start()
     {
+        m_shieldHealth = 1;
+        m_initShieldScale = m_shield.transform.localScale;
         m_controller = GetComponent<StandardCharacterController>();
         m_rb = GetComponent<Rigidbody>();
         Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
@@ -120,6 +138,13 @@ public class PoultryBasher : MonoBehaviour
 
         if (m_punchQueueResetTimer > 0)
             m_punchQueueResetTimer -= Time.deltaTime;
+
+        if (m_regenShield)
+        {
+            m_shieldHealth += m_shieldRegenRate * Time.deltaTime;
+            m_shieldHealth = Mathf.Clamp(m_shieldHealth, 0, 1);
+        }
+        m_shield.transform.localScale = m_initShieldScale * m_shieldHealth;
     }
 
 
@@ -315,6 +340,8 @@ public class PoultryBasher : MonoBehaviour
         {
             Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
             PoultryBasher pb = hit.transform.GetComponent<PoultryBasher>();
+            if (pb.m_isBlocking)
+                pb.m_shieldHealth -= m_shieldBreakPercentOnHit;
             rb.velocity = Vector3.zero;
             float dot = Vector3.Dot(transform.forward, rb.transform.forward);
             float knockbackScale = (dot < -0.7f) ? pb.m_currentBlockKnockbackScale : 1;
@@ -326,6 +353,15 @@ public class PoultryBasher : MonoBehaviour
 
     public void StartBlock(float trigger)
     {
+        if (m_shieldHealth <= 0)
+        {
+            if (m_isBlocking)
+            {
+                m_shieldBroke = true;
+                EndBlock();
+            }
+            return;
+        }
         if (m_blockCooldownAfterPunchTimer > 0)
         {
             m_blockCooldownAfterPunchTimer -= Time.deltaTime;
@@ -333,13 +369,16 @@ public class PoultryBasher : MonoBehaviour
         }
         if (trigger > 0)
         {
-            if (m_isPunching)
+            if (m_isPunching || m_shieldBroke)
                 return;
             if (!m_isBlocking)
             {
                 m_shieldLerper.Reset();
                 StartCoroutine(FadeInShield());
             }
+            m_shieldHealth -= m_shieldDecayRate * Time.deltaTime;
+            m_shieldHealth = Mathf.Clamp(m_shieldHealth, 0, 1);
+            m_regenShield = false;
             m_isBlocking = true;
             m_speedScale.Value = m_blockMoveSpeedMultiplier;
             m_currentBlockKnockbackScale = m_blockKnockbackScale;
@@ -348,7 +387,22 @@ public class PoultryBasher : MonoBehaviour
             m_shield.gameObject.SetActive(true);
         }
         else if (m_isBlocking)
+        {
             EndBlock();
+        }
+        else
+            m_shieldBroke = false;
+    }
+
+    private IEnumerator ShieldRegenDelay()
+    {
+        float timer = m_shieldRegenDelay;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        m_regenShield = true;
     }
 
     private IEnumerator FadeInShield()
@@ -368,6 +422,8 @@ public class PoultryBasher : MonoBehaviour
 
     public void EndBlock()
     {
+        StopCoroutine(ShieldRegenDelay());
+        StartCoroutine(ShieldRegenDelay());
         m_shield.gameObject.SetActive(false);
         m_speedScale.Value = 1;
         m_currentBlockKnockbackScale = 1;
