@@ -82,9 +82,13 @@ public class PoultryBashWin : MonoBehaviour
     private void WinGame(int alive)
     {
         m_wonGame = true;
+        if (alive == 0)
+        {
+            StartCoroutine(WinRound("NOBODY WINS!"));
+            return;
+        }
         m_roundNumberValue.Value++;
         m_scoreValues.SetValue(m_winner, m_scoreValues.GetValue(m_winner) + 1);
-
         m_highestPlayers.Clear();
 
         for (int i = 0; i < m_scoreValues.Count; i++)
