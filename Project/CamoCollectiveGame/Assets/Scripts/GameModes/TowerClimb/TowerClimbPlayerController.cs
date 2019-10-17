@@ -91,8 +91,32 @@ public class TowerClimbPlayerController : MonoBehaviour
     {
         RaycastHit hit;
         Vector3 newPos = new Vector3(transform.position.x, transform.position.y, transform.position.z - joystick.x * m_strafeSpeed * Time.deltaTime);
-        if (!Physics.Raycast(transform.position, newPos - transform.position, out hit, 0.5f))
+        if (Physics.Raycast(transform.position, newPos - transform.position, out hit, 0.5f))
+        {
+            if (hit.transform.CompareTag("Player") && !(Physics.Raycast(hit.transform.position, newPos - transform.position, 0.5f)))
+            {
+                transform.position = newPos;
+                MoveOtherPlayer(joystick, hit.transform);
+            }
+        }
+        else
             transform.position = newPos;
+    }
+
+    public void MoveOtherPlayer(Vector2 joystick, Transform t)
+    {
+        RaycastHit hit;
+        Vector3 newPos = new Vector3(t.position.x, t.position.y, t.position.z - joystick.x * m_strafeSpeed * Time.deltaTime);
+        if (Physics.Raycast(t.position, newPos - t.position, out hit, 0.5f))
+        {
+            if (hit.transform.CompareTag("Player") && !(Physics.Raycast(hit.transform.position, newPos - t.position, 0.5f)))
+            {
+                t.position = newPos;
+                MoveOtherPlayer(joystick, hit.transform);
+            }
+        }
+        else
+            t.position = newPos;
     }
 
     private void Update()
