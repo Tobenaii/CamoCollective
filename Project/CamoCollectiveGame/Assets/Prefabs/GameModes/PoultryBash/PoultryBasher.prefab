@@ -621,8 +621,14 @@ MonoBehaviour:
   m_knockback: 20
   m_knockup: 20
   m_punchHitTime: 0.25
-  m_punchEndTime: 0.5
+  m_punchEndTime: 0.75
   m_punchQueueTime: 0
+  m_powerCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   m_vibrationTime: 0.2
   m_vibrationAmount: 1
   m_shield: {fileID: 8751498917275123623}
@@ -640,6 +646,7 @@ MonoBehaviour:
     type: 2}
   m_rotateTowards: {x: -83, y: 20, z: 62}
   m_speedParticleSystem: {fileID: 0}
+  m_arenaCentre: {x: -83, y: 4, z: 62}
   m_speedScale:
     m_index: 0
     useConstant: 0
@@ -970,21 +977,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1412511323144363714, guid: 4a9e01016cb88fd45b2c3e20873bab66,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.025
-      objectReference: {fileID: 0}
-    - target: {fileID: 1412511323144363714, guid: 4a9e01016cb88fd45b2c3e20873bab66,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1412511323144363714, guid: 4a9e01016cb88fd45b2c3e20873bab66,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.025
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4a9e01016cb88fd45b2c3e20873bab66, type: 3}
