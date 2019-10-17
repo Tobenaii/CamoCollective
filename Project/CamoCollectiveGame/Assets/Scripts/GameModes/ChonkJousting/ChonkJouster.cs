@@ -187,15 +187,14 @@ public class ChonkJouster : MonoBehaviour
     {
         //If the other jouster is respawning, ignore it
         if (jouster.m_isRespawning || m_attackFrequencyTimer > 0 || m_controller.Velocity == Vector3.zero)
-        {
             return;
-        }
         m_attackFrequencyTimer = m_attackFrequency;
         float dot = Vector3.Dot(transform.forward, jouster.transform.forward);
         float shield = Mathf.Lerp(-1, 1, Mathf.InverseLerp(0, 180, m_shieldAngle));
         //Did hit shield
         if (dot < shield)
         {
+            Debug.Log("HIT!");
             jouster.Knockback(transform.forward * m_shieldKnockbackForce);
             Knockback(transform.forward * -1 * m_shieldKnockbackForce);
         }
@@ -233,7 +232,8 @@ public class ChonkJouster : MonoBehaviour
 
     public void Knockback(Vector3 force)
     {
-        m_rb.AddForce(force, ForceMode.Impulse);
+        m_rb.velocity = force;
+        //m_rb.AddForce(force, ForceMode.Impulse);
     }
 
     public void Die()
@@ -325,35 +325,6 @@ public class ChonkJouster : MonoBehaviour
         if (other.CompareTag("Mud"))
             m_chonkSpeedScale.Value = 1;
     }
-
-    //private IEnumerator FadeAway()
-    //{
-    //    //Set fade away ammount in shader to 1 over time
-    //    TimeLerper lerper = new TimeLerper();
-    //    Renderer[] renderers = GetComponentsInChildren<Renderer>();
-
-    //    foreach (Renderer rend in renderers)
-    //        rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-
-    //    float fadeTimer = m_fadeAwayTime;
-    //    while (fadeTimer > 0)
-    //    {
-    //        fadeTimer -= Time.deltaTime;
-    //        foreach (Renderer rend in renderers)
-    //        {
-    //            float dissolve = lerper.Lerp(0, 1, m_fadeAwayTime);
-    //            rend.material.SetFloat("_Amount", dissolve);
-    //        }
-    //        yield return null;
-    //    }
-    //    transform.position += Vector3.up * 1000;
-    //    yield return null;
-    //    foreach (Renderer rend in renderers)
-    //    {
-    //        rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-    //        rend.material.SetFloat("_Amount", 0);
-    //    }
-    //}
 
     List<Material> m_materials = new List<Material>();
 
