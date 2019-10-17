@@ -354,7 +354,7 @@ public class PoultryBasher : MonoBehaviour
             }
             rb.velocity = Vector3.zero;
             float dot = Vector3.Dot(transform.forward, rb.transform.forward);
-            float knockbackScale = (dot < -0.7f) ? pb.m_currentBlockKnockbackScale : 1;
+            float knockbackScale = (dot < -0.15f) ? pb.m_currentBlockKnockbackScale : 1;
             rb.velocity = (transform.forward * m_knockback * m_knockbackScale * knockbackScale) + (Vector3.up * m_knockup);
             hit.transform.GetComponent<InputMapper>().Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
         }
