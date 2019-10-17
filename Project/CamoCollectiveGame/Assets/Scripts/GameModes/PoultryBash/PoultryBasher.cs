@@ -350,14 +350,12 @@ public class PoultryBasher : MonoBehaviour
             if (pb.m_isBlocking)
             {
                 pb.m_shieldHealth -= m_shieldBreakPercentOnHit;
-                m_rb.AddForce(pb.transform.forward * pb.m_blockKnockbackForce, ForceMode.Impulse);
-                m_rb.AddForce(Vector3.up * pb.m_blockKnockupForce, ForceMode.Impulse);
+                rb.velocity = (pb.transform.forward * pb.m_blockKnockbackForce) + (Vector3.up * pb.m_blockKnockupForce);
             }
             rb.velocity = Vector3.zero;
             float dot = Vector3.Dot(transform.forward, rb.transform.forward);
             float knockbackScale = (dot < -0.7f) ? pb.m_currentBlockKnockbackScale : 1;
-            rb.AddForce(transform.forward * m_knockback * m_knockbackScale * knockbackScale, ForceMode.Impulse);
-            rb.AddForce(Vector3.up * m_knockup, ForceMode.Impulse);
+            rb.velocity = (transform.forward * m_knockback * m_knockbackScale * knockbackScale) + (Vector3.up * m_knockup);
             hit.transform.GetComponent<InputMapper>().Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
         }
     }
