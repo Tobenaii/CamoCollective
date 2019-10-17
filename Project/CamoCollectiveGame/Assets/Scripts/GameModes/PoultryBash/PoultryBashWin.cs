@@ -32,7 +32,7 @@ public class PoultryBashWin : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < m_deadValues.Count; i++)
         {
             m_deadValues.SetValue(i, false);
         }
@@ -58,12 +58,19 @@ public class PoultryBashWin : MonoBehaviour
         {
             if (!m_players[i].IsPlaying)
                 continue;
-            bool dead = m_deadValues.GetValue(i);
-            alive += Convert.ToInt32(!m_deadValues.GetValue(i));
+            bool dead = (m_spawnTempPlayers.Value && !m_players[i].TempIsPlaying)?true:m_deadValues.GetValue(i);
+            alive += Convert.ToInt32(!dead);
             if (!dead)
                 m_winner = i;
         }
         return alive;
+    }
+
+    public void ResetValues()
+    {
+        foreach (PlayerData player in m_players)
+            player.TempIsPlaying = false;
+        m_spawnTempPlayers.Value = false;
     }
 
     private IEnumerator DrawCheck()
@@ -117,6 +124,9 @@ public class PoultryBashWin : MonoBehaviour
 
     private void WinGame()
     {
+        foreach (PlayerData player in m_players)
+            player.TempIsPlaying = false;
+        m_spawnTempPlayers.Value = false;
         m_winnerText.gameObject.SetActive(true);
         m_winnerText.text = "PLAYER " + (m_winner + 1) + " WINS THE GAME!";
         foreach (PlayerData player in m_players)
