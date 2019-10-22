@@ -248,7 +248,7 @@ public class ChonkJouster : MonoBehaviour
         m_isRespawning = true;
         m_triggeredRespawn = false;
         //m_rb.detectCollisions = false;
-        m_animator.SetTrigger("Die");
+        //m_animator.SetTrigger("Die");
         m_isDeadValue.Value = true;
         StartCoroutine(ToggleRagdoll());
     }
