@@ -22,6 +22,8 @@ public class SelectionButton : MonoBehaviour
     [SerializeField]
     private int m_index;
     private bool m_invoked;
+    [SerializeField]
+    private Image m_characterSpriteImage;
 
     private void Start()
     {
@@ -37,14 +39,18 @@ public class SelectionButton : MonoBehaviour
         {
             if (!m_invoked)
             {
+                m_characterSpriteImage.color = Color.black;
                 m_text.text = m_name;
                 m_invoked = true;
                 m_hoverEvent.Invoke(m_targetGameObject);
                 m_currentSelectedValue.Value = m_index;
             }
         }
-        else if (EventSystem.current.currentSelectedGameObject != gameObject)
+        else if (EventSystem.current.currentSelectedGameObject != gameObject && m_invoked)
+        {
             m_invoked = false;
+            m_characterSpriteImage.color = Color.white;
+        }
     }
 
     public void SetHover()
