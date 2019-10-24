@@ -219,9 +219,10 @@ public class ChonkJouster : MonoBehaviour
         m_input.Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
 
         m_livesValue.Value--;
-        Die();
         if (m_livesValue.Value <= 0)
             m_fullyDeadValue.Value = true;
+        Die();
+
         
         //else
         //{
@@ -250,7 +251,20 @@ public class ChonkJouster : MonoBehaviour
         //m_rb.detectCollisions = false;
         //m_animator.SetTrigger("Die");
         m_isDeadValue.Value = true;
-        StartCoroutine(ToggleRagdoll());
+        m_animator.enabled = false;
+        if (m_fullyDeadValue.Value)
+        {
+            m_rb.detectCollisions = false;
+            return;
+        }
+        ToggleColliders(false);
+        for (int i = 1; i < m_rbRagdolls.Length; i++)
+        {
+            m_rbRagdolls[i].useGravity = true;
+            m_rbRagdolls[i].detectCollisions = true;
+            m_rbRagdolls[i].isKinematic = false;
+        }
+        //StartCoroutine(ToggleRagdoll());
     }
 
     public void Respawn()
@@ -279,15 +293,6 @@ public class ChonkJouster : MonoBehaviour
             timer -= Time.deltaTime;
             yield return null;
         }
-
-        m_animator.enabled = false;
-        for (int i = 1; i < m_rbRagdolls.Length; i++)
-        {
-            m_rbRagdolls[i].useGravity = true;
-            m_rbRagdolls[i].detectCollisions = true;
-            m_rbRagdolls[i].isKinematic = false;
-        }
-        ToggleColliders(false);
     }
 
     private void OnTriggerStay(Collider other)
