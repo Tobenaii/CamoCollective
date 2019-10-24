@@ -5,13 +5,13 @@ using UnityEngine;
 public class BarrelSpawner : MonoBehaviour
 {
     [SerializeField]
-    private GameObjectPool m_barrelPool;
-    [SerializeField]
     private float m_spawnRadius;
     [SerializeField]
     private float m_minSpawnTime;
     [SerializeField]
     private float m_maxSpawnTime;
+    [SerializeField]
+    private GameObject m_barrelPrefab;
 
     private float m_timer;
     private bool m_spawn;
@@ -23,7 +23,8 @@ public class BarrelSpawner : MonoBehaviour
         m_timer -= Time.deltaTime;
         if (m_timer < 0)
         {
-            GameObject barrel = m_barrelPool.GetObject();
+            GameObject barrel = Instantiate(m_barrelPrefab);
+            barrel.transform.SetParent(transform);
             Vector2 unitCirc = Random.insideUnitCircle * m_spawnRadius;
             Vector3 randDir = new Vector3(unitCirc.x, 0, unitCirc.y);
             barrel.transform.position = transform.position + randDir;
@@ -40,5 +41,10 @@ public class BarrelSpawner : MonoBehaviour
     {
         GetRandomTime();
         m_spawn = true;
+    }
+
+    public void StopSpawning()
+    {
+        m_spawn = false;
     }
 }

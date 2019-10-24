@@ -211,6 +211,12 @@ public class PoultryBasher : MonoBehaviour
         //ps.transform.position = transform.position;
         //ps.Play();
         //Destroy(gameObject);
+        StartCoroutine(RemoveCameraDelay());
+    }
+
+    private IEnumerator RemoveCameraDelay()
+    {
+        yield return new WaitForSeconds(1);
         m_gameObjectListSet.Remove(gameObject);
     }
 

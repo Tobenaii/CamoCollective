@@ -2659,6 +2659,7 @@ GameObject:
   - component: {fileID: 1615212662}
   - component: {fileID: 1615212663}
   - component: {fileID: 1615212664}
+  - component: {fileID: 1615212666}
   m_Layer: 0
   m_Name: BarrelSpawner
   m_TagString: Untagged
@@ -2692,10 +2693,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a158bdea970a6644b1cee0025d3e262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_barrelPool: {fileID: 11400000, guid: f91c0c6a062f9ff4b9d27268a57eb90d, type: 2}
   m_spawnRadius: 7.5
-  m_minSpawnTime: 5
-  m_maxSpawnTime: 10
+  m_minSpawnTime: 2
+  m_maxSpawnTime: 5
+  m_barrelPrefab: {fileID: 7669919476923149696, guid: 076570eff46715d409667850e500b4c3,
+    type: 3}
 --- !u!114 &1615212664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2714,6 +2716,35 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1615212663}
         m_MethodName: StartSpawning
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+--- !u!114 &1615212666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615212661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 165dd59c0d5120341bd39c5fd2eb5558, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1615212663}
+        m_MethodName: StopSpawning
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3184,6 +3215,7 @@ MonoBehaviour:
   m_deadValues: {fileID: 11400000, guid: 2d00e7f1be81cd645aa10bdc5b1f92d4, type: 2}
   m_winnerText: {fileID: 1276482117}
   m_finishedEvent: {fileID: 11400000, guid: 3099c6222d6989b42abd823b3386e4a2, type: 2}
+  m_roundEndEvent: {fileID: 11400000, guid: 165dd59c0d5120341bd39c5fd2eb5558, type: 2}
   m_winnerCheckInterval: 0.5
   m_roundNumberValue: {fileID: 11400000, guid: 789cf0f6ca30bbb4cba2e13672597ed4, type: 2}
   m_scoreValues: {fileID: 11400000, guid: be05ff3b4e44b704f892246306e76baa, type: 2}

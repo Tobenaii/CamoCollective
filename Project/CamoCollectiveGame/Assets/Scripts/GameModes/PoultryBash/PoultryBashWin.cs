@@ -16,6 +16,8 @@ public class PoultryBashWin : MonoBehaviour
     [SerializeField]
     private GameEvent m_finishedEvent;
     [SerializeField]
+    private GameEvent m_roundEndEvent;
+    [SerializeField]
     private float m_winnerCheckInterval;
     [SerializeField]
     private FloatValue m_roundNumberValue;
@@ -124,6 +126,7 @@ public class PoultryBashWin : MonoBehaviour
 
     private void WinGame()
     {
+        m_roundEndEvent.Invoke();
         foreach (PlayerData player in m_players)
             player.TempIsPlaying = false;
         m_spawnTempPlayers.Value = false;
@@ -137,6 +140,7 @@ public class PoultryBashWin : MonoBehaviour
 
     IEnumerator WinRound(string text)
     {
+        m_roundEndEvent.Invoke();
         m_winnerText.gameObject.SetActive(true);
         m_winnerText.text = text;
         float timer = 3;
