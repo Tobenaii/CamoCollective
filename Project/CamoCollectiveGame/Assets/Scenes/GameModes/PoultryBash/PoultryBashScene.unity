@@ -2666,7 +2666,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1615212662
 Transform:
   m_ObjectHideFlags: 0
@@ -2675,7 +2675,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1615212661}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -83, y: 15.28, z: 62}
+  m_LocalPosition: {x: -83, y: 21.2, z: 62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2694,8 +2694,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_spawnRadius: 7.5
-  m_minSpawnTime: 2
-  m_maxSpawnTime: 5
+  m_minSpawnTime: 0
+  m_maxSpawnTime: 1
   m_barrelPrefab: {fileID: 7669919476923149696, guid: 076570eff46715d409667850e500b4c3,
     type: 3}
 --- !u!114 &1615212664
