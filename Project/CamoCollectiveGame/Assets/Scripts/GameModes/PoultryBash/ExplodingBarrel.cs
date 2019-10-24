@@ -66,7 +66,7 @@ public class ExplodingBarrel : MonoBehaviour
         m_shadow.transform.SetParent(transform.parent);
         m_shadow.transform.position = new Vector3(transform.position.x, m_shadowYPos, transform.position.z);
         m_shadow.transform.localScale = Vector3.zero;
-        m_playerGameObjects.Add(m_shadow);
+        //m_playerGameObjects.Add(m_shadow);
     }
 
     private IEnumerator FallDelay()
@@ -117,7 +117,7 @@ public class ExplodingBarrel : MonoBehaviour
     private IEnumerator RemoveShadow()
     {
         yield return new WaitForEndOfFrame();
-        m_playerGameObjects.Remove(m_shadow);
+        //m_playerGameObjects.Remove(m_shadow);
         m_shadowPool.DestroyObject(m_shadow);
     }
 
