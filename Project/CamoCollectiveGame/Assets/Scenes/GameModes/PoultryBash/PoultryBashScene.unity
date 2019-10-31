@@ -2693,9 +2693,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a158bdea970a6644b1cee0025d3e262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_spawnRadius: 12
+  m_startTime: 5
+  m_spawnRadius: 10
   m_minSpawnTime: 1
   m_maxSpawnTime: 5
+  m_minSpawnTimeDecreaseRate: 0.1
+  m_minMinSpawnTime: 0
+  m_maxSpawnTimeDecreaseRate: 0.2
+  m_minMaxSpawnTime: 2
   m_spiralSpawnSpeed: 0
   m_barrelOffset: 15
   m_spiralOffset: 0.1
