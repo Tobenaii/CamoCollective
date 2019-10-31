@@ -62,6 +62,8 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private ParticleSystem m_speedParticleSystem;
 
+    private ParticleSystem[] m_punchParticles;
+
     [Header("Data")]
     [SerializeField]
     private FloatReference m_speedScale;
@@ -106,8 +108,13 @@ public class PoultryBasher : MonoBehaviour
     private Vector3 m_initShieldScale;
     private bool m_shieldBroke;
 
+    private ParticleSystem m_leftSwipeParticles;
+    private ParticleSystem m_rightSwipeParticles;
+
     private void Start()
     {
+
+
         m_shieldHealth = 1;
         m_initShieldScale = m_shield.transform.localScale;
         m_controller = GetComponent<StandardCharacterController>();
@@ -130,7 +137,15 @@ public class PoultryBasher : MonoBehaviour
             m_rbRagdolls[i].detectCollisions = false;
             m_rbRagdolls[i].isKinematic = true;
         }
+        m_punchParticles = gameObject.GetComponentsInChildren<ParticleSystem>();
 
+        foreach (ParticleSystem ps in m_punchParticles)
+        {
+            if (ps.transform.CompareTag("LeftSwipe"))
+                m_leftSwipeParticles = ps;
+            else if (ps.transform.CompareTag("RightSwipe"))
+                m_rightSwipeParticles = ps;
+        }
         //Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
     }
 
@@ -274,6 +289,10 @@ public class PoultryBasher : MonoBehaviour
         if (!m_inRing)
             return;
         m_animator.SetTrigger(anim);
+        if (m_leftPunch)
+            m_leftSwipeParticles.Play();
+        else
+            m_rightSwipeParticles.Play();
         Debug.Log(anim);
         StopCoroutine(PunchHitTimer());
         StartCoroutine(PunchHitTimer());
@@ -308,6 +327,10 @@ public class PoultryBasher : MonoBehaviour
     public void OnPunchEnd()
     {
         m_isPunching = false;
+        if (m_leftPunch)
+            m_leftSwipeParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        else
+            m_rightSwipeParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         m_leftPunch = !m_leftPunch;
         if (m_punchQueued && m_punchQueueResetTimer > 0)
             AlternatePunch(1);
