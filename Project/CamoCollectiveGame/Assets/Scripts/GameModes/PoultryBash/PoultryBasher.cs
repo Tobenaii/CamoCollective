@@ -22,7 +22,6 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private float m_punchPreezeTime;
 
-
     [Header("Controller Vibration")]
     [SerializeField]
     private float m_vibrationTime;
@@ -58,11 +57,9 @@ public class PoultryBasher : MonoBehaviour
 
     [Header("Particles")]
     [SerializeField]
-    private ParticleSystemPool m_deathParticleSystemPool;
-    [SerializeField]
     private Vector3 m_rotateTowards;
     [SerializeField]
-    private ParticleSystem m_speedParticleSystem;
+    private ParticleSystemPool m_runParticlePool;
 
     private ParticleSystem[] m_punchParticles;
 
@@ -115,10 +112,10 @@ public class PoultryBasher : MonoBehaviour
     private ParticleSystem m_leftSwipeParticles;
     private ParticleSystem m_rightSwipeParticles;
 
+    private float m_runParticleTimer;
+
     private void Start()
     {
-
-
         m_shieldHealth = 1;
         m_initShieldScale = m_shield.transform.localScale;
         m_controller = GetComponent<StandardCharacterController>();
@@ -170,6 +167,18 @@ public class PoultryBasher : MonoBehaviour
             m_shieldHealth = Mathf.Clamp(m_shieldHealth, 0, 1);
         }
         m_shield.transform.localScale = m_initShieldScale * m_shieldHealth;
+        if (m_controller.Velocity.sqrMagnitude > 20)
+        {
+            m_runParticleTimer -= Time.deltaTime;
+            if (m_runParticleTimer <= 0)
+            {
+                m_runParticleTimer = 0.25f;
+                ParticleSystem ps = m_runParticlePool.GetObject();
+                ps.transform.position = transform.position;
+                ps.transform.rotation = transform.rotation;
+                ps.Play();
+            }
+        }
     }
 
 
