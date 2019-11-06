@@ -19,6 +19,8 @@ public class PoultryBasher : MonoBehaviour
     private float m_punchEndTime;
     [SerializeField]
     private float m_punchQueueTime;
+    [SerializeField]
+    private float m_punchPreezeTime;
 
 
     [Header("Controller Vibration")]
@@ -77,6 +79,8 @@ public class PoultryBasher : MonoBehaviour
     private GameObjectListSet m_gameObjectListSet;
     [SerializeField]
     private GameObject m_playerIndicator;
+    [SerializeField]
+    private GameEvent m_cameraShakeEvent;
 
     private float m_currentBlockKnockbackScale;
 
@@ -267,6 +271,27 @@ public class PoultryBasher : MonoBehaviour
         m_speedScale.Value = 1;
     }
 
+    public void Freeze(float seconds, Vector3 newVelocity)
+    {
+        StartCoroutine(FreezeForSeconds(seconds, newVelocity));
+    }
+
+    private IEnumerator FreezeForSeconds(float seconds, Vector3 newVelocity)
+    {
+        float prevSpeed = m_animator.speed;
+        m_animator.speed = prevSpeed * 0.25f;
+
+        float timer = seconds;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        m_animator.speed = prevSpeed;
+        if (newVelocity != Vector3.zero)
+            m_rb.velocity = newVelocity;
+    }
+
     private IEnumerator ResetKnockbackScale(float seconds)
     {
         float timer = seconds;
@@ -384,8 +409,12 @@ public class PoultryBasher : MonoBehaviour
             rb.velocity = Vector3.zero;
             float dot = Vector3.Dot(transform.forward, rb.transform.forward);
             float knockbackScale = (dot < -0.15f) ? pb.m_currentBlockKnockbackScale : 1;
-            rb.velocity = (transform.forward * m_knockback * m_knockbackScale * knockbackScale) + (Vector3.up * m_knockup);
+            Vector3 newVelocity = (transform.forward * m_knockback * m_knockbackScale * knockbackScale) + (Vector3.up * m_knockup);
             hit.transform.GetComponent<InputMapper>().Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
+            rb.velocity = newVelocity;
+            m_cameraShakeEvent.Invoke();
+            //Freeze(m_punchPreezeTime, Vector3.zero);
+            //pb.Freeze(m_punchPreezeTime, newVelocity);
         }
     }
 
