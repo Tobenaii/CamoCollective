@@ -269,6 +269,7 @@ public class ChonkJouster : MonoBehaviour
 
     public void Respawn()
     {
+        m_chonkSpeedScale.Value = 1;
         m_rb.isKinematic = true;
         m_respawnEvent.Invoke(gameObject);
         m_isRespawning = false;
