@@ -15,7 +15,7 @@ public class PoultryBashNPC : MonoBehaviour
 
     public void Cheer()
     {
-        m_animator.SetTrigger("Cheer");
+        m_animator.SetTrigger("Cheer" + Random.Range(1, 5).ToString());
     }
 
     // Start is called before the first frame update
