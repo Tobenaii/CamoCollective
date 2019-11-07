@@ -63,6 +63,12 @@ public class PoultryBasher : MonoBehaviour
 
     private ParticleSystem[] m_punchParticles;
 
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioSource m_onHitSound;
+    [SerializeField]
+    private AudioSource m_onBlockSound;
+
     [Header("Data")]
     [SerializeField]
     private FloatReference m_speedScale;
@@ -414,6 +420,7 @@ public class PoultryBasher : MonoBehaviour
             {
                 pb.m_shieldHealth -= m_shieldBreakPercentOnHit;
                 rb.velocity = (pb.transform.forward * pb.m_blockKnockbackForce) + (Vector3.up * pb.m_blockKnockupForce);
+                pb.m_onBlockSound.Play();
             }
             rb.velocity = Vector3.zero;
             float dot = Vector3.Dot(transform.forward, rb.transform.forward);
@@ -422,6 +429,7 @@ public class PoultryBasher : MonoBehaviour
             hit.transform.GetComponent<InputMapper>().Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
             rb.velocity = newVelocity;
             m_cameraShakeEvent.Invoke();
+            m_onHitSound.Play();
             //Freeze(m_punchPreezeTime, Vector3.zero);
             //pb.Freeze(m_punchPreezeTime, newVelocity);
         }
