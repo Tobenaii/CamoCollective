@@ -419,8 +419,9 @@ public class PoultryBasher : MonoBehaviour
             if (pb.m_isBlocking)
             {
                 pb.m_shieldHealth -= m_shieldBreakPercentOnHit;
-                rb.velocity = (pb.transform.forward * pb.m_blockKnockbackForce) + (Vector3.up * pb.m_blockKnockupForce);
+                m_rb.velocity = (pb.transform.forward * pb.m_blockKnockbackForce) + (Vector3.up * pb.m_blockKnockupForce);
                 pb.m_onBlockSound.Play();
+                return;
             }
             rb.velocity = Vector3.zero;
             float dot = Vector3.Dot(transform.forward, rb.transform.forward);
