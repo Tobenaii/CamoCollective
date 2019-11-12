@@ -24,6 +24,10 @@ public class ChonkJouster : MonoBehaviour
     [SerializeField]
     private float m_attackFrequency;
 
+    [Header("Colliders")]
+    [SerializeField]
+    private List<Collider> m_colliders;
+
     [Header("Controller Vibration")]
     [SerializeField]
     private float m_vibrationTime;
@@ -67,6 +71,12 @@ public class ChonkJouster : MonoBehaviour
     private FloatReference m_chonkSpeedScale;
     [SerializeField]
     private BoolReference m_isDeadValue;
+    [SerializeField]
+    private BoolReference m_fullyDeadValue;
+
+    private Rigidbody[] m_rbRagdolls;
+    private Collider[] m_colRagdolls;
+    private CharacterJoint[] m_jointRagdolls;
 
     //Components
     private Rigidbody m_rb;
@@ -99,6 +109,32 @@ public class ChonkJouster : MonoBehaviour
         m_scoreValue.Reset();
         m_chonkSpeedScale.Value = 1;
         m_isDeadValue.Value = false;
+        m_fullyDeadValue.Value = false;
+        m_rbRagdolls = GetComponentsInChildren<Rigidbody>();
+        for (int i = 1; i < m_rbRagdolls.Length; i++)
+        {
+            m_rbRagdolls[i].useGravity = false;
+            m_rbRagdolls[i].detectCollisions = false;
+            m_rbRagdolls[i].isKinematic = true;
+        }
+    }
+
+    public void Reinit()
+    {
+        Destroy(transform.GetChild(0));
+        GameObject character = Instantiate(m_player.Character.ChonkJoustingCharacter, transform);
+        m_animator = GetComponentInChildren<Animator>();
+        character.transform.localPosition = Vector3.zero;
+        character.transform.localRotation = Quaternion.identity;
+
+        m_chonkSpeedScale.Value = 1;
+        m_rbRagdolls = GetComponentsInChildren<Rigidbody>();
+        for (int i = 1; i < m_rbRagdolls.Length; i++)
+        {
+            m_rbRagdolls[i].useGravity = false;
+            m_rbRagdolls[i].detectCollisions = false;
+            m_rbRagdolls[i].isKinematic = true;
+        }
     }
 
     void Update()
@@ -116,7 +152,7 @@ public class ChonkJouster : MonoBehaviour
             }
         }
 
-        if (m_isRespawning)
+        if (m_isRespawning && !m_fullyDeadValue.Value)
         {
             m_respawnTimer.Value -= Time.deltaTime;
             if (m_respawnTimer.Value <= 0)
@@ -140,20 +176,25 @@ public class ChonkJouster : MonoBehaviour
             m_attackFrequencyTimer -= Time.deltaTime;
     }
 
+    private void ToggleColliders(bool enable)
+    {
+        foreach (Collider col in m_colliders)
+            col.enabled = enable;
+    }
+
     //Check if lance hit shield
     public void CheckAttack(ChonkJouster jouster)
     {
         //If the other jouster is respawning, ignore it
         if (jouster.m_isRespawning || m_attackFrequencyTimer > 0 || m_controller.Velocity == Vector3.zero)
-        {
             return;
-        }
         m_attackFrequencyTimer = m_attackFrequency;
         float dot = Vector3.Dot(transform.forward, jouster.transform.forward);
         float shield = Mathf.Lerp(-1, 1, Mathf.InverseLerp(0, 180, m_shieldAngle));
         //Did hit shield
         if (dot < shield)
         {
+            Debug.Log("HIT!");
             jouster.Knockback(transform.forward * m_shieldKnockbackForce);
             Knockback(transform.forward * -1 * m_shieldKnockbackForce);
         }
@@ -179,17 +220,21 @@ public class ChonkJouster : MonoBehaviour
 
         m_livesValue.Value--;
         if (m_livesValue.Value <= 0)
-            Die();
-        else
-        {
-            StartCoroutine(InvincibilityFrame(m_invincibilityFrame));
-            StartCoroutine(Flash(m_invincibilityFrame, m_invincibilityFlashTime, new Color(1,0,0,0.3f)));
-        }
+            m_fullyDeadValue.Value = true;
+        Die();
+
+        
+        //else
+        //{
+        //    StartCoroutine(InvincibilityFrame(m_invincibilityFrame));
+        //    StartCoroutine(Flash(m_invincibilityFrame, m_invincibilityFlashTime, new Color(1,0,0,0.3f)));
+        //}
     }
 
     public void Knockback(Vector3 force)
     {
-        m_rb.AddForce(force, ForceMode.Impulse);
+        m_rb.velocity = force;
+        //m_rb.AddForce(force, ForceMode.Impulse);
     }
 
     public void Die()
@@ -203,8 +248,23 @@ public class ChonkJouster : MonoBehaviour
         //StartCoroutine(FadeAway());
         m_isRespawning = true;
         m_triggeredRespawn = false;
-        m_rb.detectCollisions = false;
+        //m_rb.detectCollisions = false;
+        //m_animator.SetTrigger("Die");
         m_isDeadValue.Value = true;
+        m_animator.enabled = false;
+        if (m_fullyDeadValue.Value)
+        {
+            m_rb.detectCollisions = false;
+            return;
+        }
+        ToggleColliders(false);
+        for (int i = 1; i < m_rbRagdolls.Length; i++)
+        {
+            m_rbRagdolls[i].useGravity = true;
+            m_rbRagdolls[i].detectCollisions = true;
+            m_rbRagdolls[i].isKinematic = false;
+        }
+        //StartCoroutine(ToggleRagdoll());
     }
 
     public void Respawn()
@@ -212,8 +272,27 @@ public class ChonkJouster : MonoBehaviour
         m_rb.isKinematic = true;
         m_respawnEvent.Invoke(gameObject);
         m_isRespawning = false;
-        m_livesValue.Reset();
+        //m_livesValue.Reset();
         m_isDeadValue.Value = false;
+        for (int i = 1; i < m_rbRagdolls.Length; i++)
+        {
+            m_rbRagdolls[i].useGravity = false;
+            m_rbRagdolls[i].detectCollisions = false;
+            m_rbRagdolls[i].isKinematic = true;
+        }
+        m_animator.enabled = true;
+        ToggleColliders(true);
+    }
+
+    private IEnumerator ToggleRagdoll()
+    {
+        //float timer = 0.533f;
+        float timer = 0;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
     }
 
     private void OnTriggerStay(Collider other)
@@ -251,35 +330,6 @@ public class ChonkJouster : MonoBehaviour
         if (other.CompareTag("Mud"))
             m_chonkSpeedScale.Value = 1;
     }
-
-    //private IEnumerator FadeAway()
-    //{
-    //    //Set fade away ammount in shader to 1 over time
-    //    TimeLerper lerper = new TimeLerper();
-    //    Renderer[] renderers = GetComponentsInChildren<Renderer>();
-
-    //    foreach (Renderer rend in renderers)
-    //        rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-
-    //    float fadeTimer = m_fadeAwayTime;
-    //    while (fadeTimer > 0)
-    //    {
-    //        fadeTimer -= Time.deltaTime;
-    //        foreach (Renderer rend in renderers)
-    //        {
-    //            float dissolve = lerper.Lerp(0, 1, m_fadeAwayTime);
-    //            rend.material.SetFloat("_Amount", dissolve);
-    //        }
-    //        yield return null;
-    //    }
-    //    transform.position += Vector3.up * 1000;
-    //    yield return null;
-    //    foreach (Renderer rend in renderers)
-    //    {
-    //        rend.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
-    //        rend.material.SetFloat("_Amount", 0);
-    //    }
-    //}
 
     List<Material> m_materials = new List<Material>();
 

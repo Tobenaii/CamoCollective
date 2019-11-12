@@ -13,22 +13,28 @@ public class SeamlessHairSpawner : MonoBehaviour
     [SerializeField]
     private GameEvent m_stopMovingHairEvent;
     [SerializeField]
+    private GameEvent m_spawnedLastHairEvent;
+    [SerializeField]
     private float m_offset;
     private float m_height;
     private GameObject m_prevHair;
     private bool m_queueStopSpawn;
     private bool m_stopSpawn;
 
+
     private void OnEnable()
     {
         GameObject hairPeek = m_hairPool.PeekObject();
+        hairPeek.transform.localScale = new Vector3(2, 2, 2);
         m_height = hairPeek.GetComponentInChildren<Renderer>().bounds.size.y;
+        m_moveValue.Value = false;
         for (int i = 0; i < m_initAmmount; i++)
         {
             GameObject hair = m_hairPool.GetObject();
             hair.transform.position = new Vector3(transform.position.x, transform.position.y - (m_height - m_offset) * (i), transform.position.z);
             hair.transform.rotation = transform.rotation;
             hair.transform.SetParent(transform);
+            hair.transform.localScale = new Vector3(2, 2, 2);
             if (i == 0)
                 m_prevHair = hair;
         }
@@ -41,22 +47,41 @@ public class SeamlessHairSpawner : MonoBehaviour
 
     public void StopMoving()
     {
-        m_moveValue.Value = false;
+        m_queueStopSpawn = true;
     }
 
     private void LateUpdate()
     {
         if (m_prevHair == null)
             return;
-        if (m_prevHair.transform.position.y < transform.position.y - m_height)
+        if (m_prevHair.transform.position.y < transform.position.y - (m_height + m_offset))
         {
             GameObject hair = m_hairPool.GetObject();
             hair.transform.position = new Vector3(transform.position.x, m_prevHair.transform.position.y + (m_height - m_offset), transform.position.z);
             hair.transform.rotation = transform.rotation;
             hair.transform.SetParent(transform);
+            hair.transform.localScale = new Vector3(2, 2, 2);
             m_prevHair = hair;
             if (m_queueStopSpawn)
+            {
+                hair = m_hairPool.GetObject();
+            	hair.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            	hair.transform.rotation = transform.rotation;
+            	hair.transform.SetParent(transform);
+            	hair.transform.localScale = new Vector3(2, 2, 2);
+            	m_prevHair = hair;
+
+                m_spawnedLastHairEvent.Invoke();
                 m_stopSpawn = true;
+                m_moveValue.Value = false;
+
+            }
+        }
+        else if (m_queueStopSpawn && m_moveValue.Value == false)
+        {
+            m_spawnedLastHairEvent.Invoke();
+            m_stopSpawn = true;
+            m_moveValue.Value = false;
         }
     }
 }

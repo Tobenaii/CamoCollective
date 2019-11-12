@@ -19,29 +19,49 @@ public class ChonkJoustingEndGame : MonoBehaviour
     private FloatValue m_scoreValues;
     [SerializeField]
     private FloatValue m_rulerScoreValue;
+    [SerializeField]
+    private BoolValue m_fullyDeadValue;
+    [SerializeField]
+    private GameEvent m_joustingFinishedEvent;
+
+    private bool m_wonGame;
 
     private void Awake()
     {
         m_winnerText.gameObject.SetActive(false);
     }
 
-    //We're in the end game now
-    public void EndGame()
+    private void Update()
     {
+        if (m_wonGame)
+            return;
         int winner = -1;
-
         int index = 0;
         foreach (PlayerData player in m_players)
         {
-            if (player.IsPlaying && (winner == -1 || m_scoreValues.GetValue(index) > m_scoreValues.GetValue(winner)))
-                winner = index;
+            if (player.IsPlaying)
+            {
+                if (!m_fullyDeadValue.GetValue(index))
+                {
+                    if (winner != -1)
+                        return;
+                    winner = index;
+                }
+            }
             index++;
         }
+        EndGame(winner);
+    }
 
+    //We're in the end game now
+    public void EndGame(int winner)
+    {
+        m_wonGame = true;
         m_winnerText.gameObject.SetActive(true);
         m_winnerText.text = "PLAYER " + (winner + 1) + " WINS!";
         m_rulerScoreValue.SetValue(winner, m_rulerScoreValue.GetValue(winner) + 1);
         StartCoroutine(FinishUpGame());
+        m_joustingFinishedEvent.Invoke();
     }
 
     IEnumerator FinishUpGame()

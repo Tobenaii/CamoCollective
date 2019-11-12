@@ -29,6 +29,8 @@ public class CharacterIconSetter : MonoBehaviour
             image.sprite = m_player.Character.Icon;
         if (m_isDeadValue != null && m_isDeadValue.Value)
             image.color = m_deadColourHue;
+        else
+            image.color = Color.white;
     }
 
 }

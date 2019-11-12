@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 5688225889928405963}
   m_Layer: 0
   m_Name: TowerClimbPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -86,6 +86,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 0
       buttonState: 0
@@ -133,6 +135,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 5
       buttonState: 0
@@ -191,6 +195,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 4
       buttonState: 0
@@ -261,6 +267,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 1
     triggerRight: 0
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 7
       buttonState: 0
@@ -342,6 +350,8 @@ MonoBehaviour:
     joystickRight: 0
     triggerLeft: 0
     triggerRight: 1
+    leftBumper: 0
+    rightBumper: 0
     buttons:
     - button: 8
       buttonState: 0

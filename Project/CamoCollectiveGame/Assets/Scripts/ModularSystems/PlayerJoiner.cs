@@ -17,6 +17,12 @@ public class PlayerJoiner : MonoBehaviour
 
     private PlayerData m_currentPlayer;
 
+    private void Start()
+    {
+        if (m_currentPlayerIndex.Value != -1)
+            m_currentPlayer = m_players[(int)m_currentPlayerIndex.Value];
+    }
+
     public void Disconnected()
     {
         m_players[(int)m_currentPlayerIndex.Value].IsPlaying = false;
@@ -47,6 +53,7 @@ public class PlayerJoiner : MonoBehaviour
             if (!player.IsPlaying)
             {
                 player.IsPlaying = true;
+                player.JustJoined = true;
                 m_currentPlayerIndex.Value = index;
                 m_playerControllers.SetValue(index, controllerNum);
                 m_currentPlayer = player;

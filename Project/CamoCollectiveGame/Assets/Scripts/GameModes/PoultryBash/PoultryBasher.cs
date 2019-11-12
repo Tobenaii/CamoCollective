@@ -14,7 +14,12 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private float m_knockup;
     [SerializeField]
-    private float m_punchTime;
+    private float m_punchHitTime;
+    [SerializeField]
+    private float m_punchEndTime;
+    [SerializeField]
+    private float m_punchQueueTime;
+
 
     [Header("Controller Vibration")]
     [SerializeField]
@@ -34,6 +39,20 @@ public class PoultryBasher : MonoBehaviour
     private float m_blockMoveSpeedMultiplier;
     [SerializeField]
     private float m_blockCooldownAfterPunch;
+    [SerializeField]
+    [Range(0, 1)]
+    private float m_shieldBreakPercentOnHit;
+    [SerializeField]
+    private float m_shieldRegenRate;
+    [SerializeField]
+    private float m_shieldRegenDelay;
+    [SerializeField]
+    private float m_shieldDecayRate;
+    [SerializeField]
+    private float m_blockKnockbackForce;
+    [SerializeField]
+    private float m_blockKnockupForce;
+
 
     [Header("Particles")]
     [SerializeField]
@@ -54,16 +73,17 @@ public class PoultryBasher : MonoBehaviour
     private GameEvent m_dynamicCameraStartEvent;
     [SerializeField]
     private GameObjectListSet m_gameObjectListSet;
+    [SerializeField]
+    private GameObject m_playerIndicator;
 
     private float m_currentBlockKnockbackScale;
 
-    private bool m_punchedRight;
-    private bool m_punchedLeft;
     private bool m_isPunching;
 
     private float m_knockbackScale;
     private float m_currentBlockScale;
     private float m_blockCooldownAfterPunchTimer;
+    private float m_punchQueueResetTimer;
     private Rigidbody m_rb;
 
     private InputMapper m_input;
@@ -75,16 +95,21 @@ public class PoultryBasher : MonoBehaviour
     private Coroutine m_speedCo;
     private Coroutine m_strengthCo;
     private bool m_isBlocking;
+    private bool m_regenShield;
 
     private bool m_leftPunch;
     private TimeLerper m_shieldLerper = new TimeLerper();
 
     private Rigidbody[] m_rbRagdolls;
-    private Collider[] m_colRagdolls;
-    private CharacterJoint[] m_jointRagdolls;
+
+    private float m_shieldHealth;
+    private Vector3 m_initShieldScale;
+    private bool m_shieldBroke;
 
     private void Start()
     {
+        m_shieldHealth = 1;
+        m_initShieldScale = m_shield.transform.localScale;
         m_controller = GetComponent<StandardCharacterController>();
         m_rb = GetComponent<Rigidbody>();
         Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
@@ -99,8 +124,6 @@ public class PoultryBasher : MonoBehaviour
         m_speedScale.Value = 1;
         m_knockbackScale = 1;
         m_rbRagdolls = GetComponentsInChildren<Rigidbody>();
-        m_colRagdolls = GetComponentsInChildren<Collider>();
-        m_jointRagdolls = GetComponentsInChildren<CharacterJoint>();
         for (int i = 1; i < m_rbRagdolls.Length; i++)
         {
             m_rbRagdolls[i].useGravity = false;
@@ -118,6 +141,16 @@ public class PoultryBasher : MonoBehaviour
             m_animator.SetFloat("MoveSpeed", m_controller.Speed, 1f, Time.deltaTime * 10f);
             //m_animator.SetFloat("StrafeSpeed", Mathf.Lerp(1,0, Mathf.Abs(Vector3.Dot(transform.forward, m_controller.Velocity))) * m_controller.Speed, 1f, Time.deltaTime * 10f);
         }
+
+        if (m_punchQueueResetTimer > 0)
+            m_punchQueueResetTimer -= Time.deltaTime;
+
+        if (m_regenShield)
+        {
+            m_shieldHealth += m_shieldRegenRate * Time.deltaTime;
+            m_shieldHealth = Mathf.Clamp(m_shieldHealth, 0, 1);
+        }
+        m_shield.transform.localScale = m_initShieldScale * m_shieldHealth;
     }
 
 
@@ -168,18 +201,22 @@ public class PoultryBasher : MonoBehaviour
             m_rbRagdolls[i].detectCollisions = true;
             m_rbRagdolls[i].isKinematic = false;
         }
-        for (int i = 1; i < m_colRagdolls.Length; i++)
-        {
-            m_colRagdolls[i].enabled = true;
-        }
         m_animator.enabled = false;
         m_rb.detectCollisions = false;
         m_rb.isKinematic = true;
+        EndBlock();
+        m_playerIndicator.SetActive(false);
         //ParticleSystem ps = m_deathParticleSystemPool.GetObject();
         //ps.transform.up = (m_rotateTowards - transform.position);
         //ps.transform.position = transform.position;
         //ps.Play();
         //Destroy(gameObject);
+        StartCoroutine(RemoveCameraDelay());
+    }
+
+    private IEnumerator RemoveCameraDelay()
+    {
+        yield return new WaitForSeconds(1);
         m_gameObjectListSet.Remove(gameObject);
     }
 
@@ -228,43 +265,81 @@ public class PoultryBasher : MonoBehaviour
 
     private void QueueNextPunch(string anim)
     {
-        if (m_punchQueued)
+        if (m_isPunching)
+        {
+            m_punchQueued = true;
+            m_punchQueueResetTimer = m_punchQueueTime;
             return;
+        }
         if (!m_inRing)
             return;
         m_animator.SetTrigger(anim);
-        StopCoroutine(PunchTimer());
-        StartCoroutine(PunchTimer());
+        Debug.Log(anim);
+        StopCoroutine(PunchHitTimer());
+        StartCoroutine(PunchHitTimer());
+
+        StopCoroutine(PunchEndTimer());
+        StartCoroutine(PunchEndTimer());
+    }
+
+    private IEnumerator PunchHitTimer()
+    {
+        m_isPunching = true;
+        float timer = m_punchHitTime;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        Punch(0);
+    }
+
+    private IEnumerator PunchEndTimer()
+    {
+        float timer = m_punchEndTime;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        OnPunchEnd();
+    }
+
+    public void OnPunchEnd()
+    {
+        m_isPunching = false;
+        m_leftPunch = !m_leftPunch;
+        if (m_punchQueued && m_punchQueueResetTimer > 0)
+            AlternatePunch(1);
     }
 
     public void LeftPunch(float trigger)
     {
-        if (trigger == 0)
-        {
-            m_punchedLeft = false;
+        if (trigger == 0 || m_isBlocking)
             return;
-        }
-        if (m_punchedLeft)
-            return;
-        m_punchedLeft = true;
+
         m_animator.ResetTrigger("RightPunch");
         QueueNextPunch("LeftPunch");
     }
 
     public void RightPunch(float trigger)
     {
-        if (m_isBlocking)
+        if (trigger == 0 || m_isBlocking)
             return;
-        if (trigger == 0)
-        {
-            m_punchedRight = false;
-            return;
-        }
-        if (m_punchedRight)
-            return;
-        m_punchedRight = true;
+
         m_animator.ResetTrigger("LeftPunch");
         QueueNextPunch("RightPunch");
+    }
+
+    public void AlternatePunch(float trigger)
+    {
+        if (trigger == 0 || m_isBlocking)
+            return;
+
+        if (m_leftPunch)
+            LeftPunch(1);
+        else
+            RightPunch(1);
     }
 
 
@@ -278,43 +353,30 @@ public class PoultryBasher : MonoBehaviour
         {
             Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
             PoultryBasher pb = hit.transform.GetComponent<PoultryBasher>();
+            if (pb.m_isBlocking)
+            {
+                pb.m_shieldHealth -= m_shieldBreakPercentOnHit;
+                rb.velocity = (pb.transform.forward * pb.m_blockKnockbackForce) + (Vector3.up * pb.m_blockKnockupForce);
+            }
             rb.velocity = Vector3.zero;
             float dot = Vector3.Dot(transform.forward, rb.transform.forward);
-            float knockbackScale = (dot < -0.7f) ? pb.m_currentBlockKnockbackScale : 1;
-            rb.AddForce(transform.forward * m_knockback * m_knockbackScale * knockbackScale, ForceMode.Impulse);
-            rb.AddForce(Vector3.up * m_knockup, ForceMode.Impulse);
+            float knockbackScale = (dot < -0.15f) ? pb.m_currentBlockKnockbackScale : 1;
+            rb.velocity = (transform.forward * m_knockback * m_knockbackScale * knockbackScale) + (Vector3.up * m_knockup);
             hit.transform.GetComponent<InputMapper>().Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
         }
     }
 
-    private IEnumerator PunchTimer()
-    {
-        m_punchQueued = true;
-        m_isPunching = true;
-        float timer = m_punchTime;
-        while (timer > 0)
-        {
-            timer -= Time.deltaTime;
-            yield return null;
-        }
-        Punch(0);
-        OnPunchEnd();
-        m_punchQueued = false;
-    }
-
-    public void AlternatePunch(float trigger)
-    {
-        if (m_isPunching || trigger == 0)
-            return;
-
-        if (m_leftPunch)
-            LeftPunch(1);
-        else
-            RightPunch(1);
-    }
-
     public void StartBlock(float trigger)
     {
+        if (m_shieldHealth <= 0)
+        {
+            if (m_isBlocking)
+            {
+                m_shieldBroke = true;
+                EndBlock();
+            }
+            return;
+        }
         if (m_blockCooldownAfterPunchTimer > 0)
         {
             m_blockCooldownAfterPunchTimer -= Time.deltaTime;
@@ -322,13 +384,16 @@ public class PoultryBasher : MonoBehaviour
         }
         if (trigger > 0)
         {
-            if (m_isPunching)
+            if (m_isPunching || m_shieldBroke)
                 return;
             if (!m_isBlocking)
             {
                 m_shieldLerper.Reset();
                 StartCoroutine(FadeInShield());
             }
+            m_shieldHealth -= m_shieldDecayRate * Time.deltaTime;
+            m_shieldHealth = Mathf.Clamp(m_shieldHealth, 0, 1);
+            m_regenShield = false;
             m_isBlocking = true;
             m_speedScale.Value = m_blockMoveSpeedMultiplier;
             m_currentBlockKnockbackScale = m_blockKnockbackScale;
@@ -337,7 +402,22 @@ public class PoultryBasher : MonoBehaviour
             m_shield.gameObject.SetActive(true);
         }
         else if (m_isBlocking)
+        {
             EndBlock();
+        }
+        else
+            m_shieldBroke = false;
+    }
+
+    private IEnumerator ShieldRegenDelay()
+    {
+        float timer = m_shieldRegenDelay;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        m_regenShield = true;
     }
 
     private IEnumerator FadeInShield()
@@ -357,6 +437,8 @@ public class PoultryBasher : MonoBehaviour
 
     public void EndBlock()
     {
+        StopCoroutine(ShieldRegenDelay());
+        StartCoroutine(ShieldRegenDelay());
         m_shield.gameObject.SetActive(false);
         m_speedScale.Value = 1;
         m_currentBlockKnockbackScale = 1;
@@ -364,16 +446,6 @@ public class PoultryBasher : MonoBehaviour
         m_animator.SetTrigger("StopDefend");
         m_isBlocking = false;
         StopCoroutine(FadeInShield());
-    }
-
-    public void OnPunchEnd()
-    {
-        //m_punchQueued = false;
-        //m_leftPunch = !m_leftPunch;
-        m_isPunching = false;
-        m_leftPunch = !m_leftPunch;
-        m_punchedRight = false;
-        m_punchedLeft = false;
     }
 
     private void OnDestroy()

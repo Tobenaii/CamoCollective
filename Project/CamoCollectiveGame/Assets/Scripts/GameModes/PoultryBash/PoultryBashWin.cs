@@ -16,22 +16,25 @@ public class PoultryBashWin : MonoBehaviour
     [SerializeField]
     private GameEvent m_finishedEvent;
     [SerializeField]
+    private GameEvent m_roundEndEvent;
+    [SerializeField]
     private float m_winnerCheckInterval;
     [SerializeField]
     private FloatValue m_roundNumberValue;
     [SerializeField]
-    private float m_numberOfWins;
-    [SerializeField]
     private FloatValue m_scoreValues;
     [SerializeField]
     private GameEvent m_newRoundEvent;
+    [SerializeField]
+    private BoolValue m_spawnTempPlayers;
 
     private bool m_wonGame;
     private int m_winner;
+    private List<PlayerData> m_highestPlayers = new List<PlayerData>();
 
     private void Start()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < m_deadValues.Count; i++)
         {
             m_deadValues.SetValue(i, false);
         }
@@ -57,12 +60,19 @@ public class PoultryBashWin : MonoBehaviour
         {
             if (!m_players[i].IsPlaying)
                 continue;
-            bool dead = m_deadValues.GetValue(i);
-            alive += Convert.ToInt32(!m_deadValues.GetValue(i));
+            bool dead = (m_spawnTempPlayers.Value && !m_players[i].TempIsPlaying)?true:m_deadValues.GetValue(i);
+            alive += Convert.ToInt32(!dead);
             if (!dead)
                 m_winner = i;
         }
         return alive;
+    }
+
+    public void ResetValues()
+    {
+        foreach (PlayerData player in m_players)
+            player.TempIsPlaying = false;
+        m_spawnTempPlayers.Value = false;
     }
 
     private IEnumerator DrawCheck()
@@ -81,29 +91,58 @@ public class PoultryBashWin : MonoBehaviour
     private void WinGame(int alive)
     {
         m_wonGame = true;
-        m_roundNumberValue.Value++;
-        if (m_winner >= 0 && m_scoreValues.GetValue(m_winner) == m_numberOfWins)
+        if (alive == 0)
         {
-            m_winnerText.gameObject.SetActive(true);
-            m_winnerText.text = "PLAYER " + (m_winner + 1) + " WINS THE GAME!";
-            m_scoreValues.SetValue(m_winner, m_scoreValues.GetValue(m_winner) + 1);
-            m_finishedEvent.Invoke();
+            StartCoroutine(WinRound("NOBODY WINS!"));
             return;
         }
-        Debug.Log("ROUND: " + (m_roundNumberValue.Value + 1));
-        StartCoroutine(WinnerText(m_winner, alive));
+        m_roundNumberValue.Value++;
+        m_scoreValues.SetValue(m_winner, m_scoreValues.GetValue(m_winner) + 1);
+        m_highestPlayers.Clear();
+
+        for (int i = 0; i < m_scoreValues.Count; i++)
+        {
+            if (m_scoreValues.GetValue(i) == 1)
+                m_players[i].TempIsPlaying = true;
+            else if (m_scoreValues.GetValue(i) == 2)
+            {
+                WinGame();
+                return;
+            }
+        }
+
+        if (m_roundNumberValue.Value == 3)
+        {
+            m_spawnTempPlayers.Value = true;
+            StartCoroutine(WinRound("Tie Breaker!"));
+            return;
+        }
+
+        if (alive == 0)
+            StartCoroutine(WinRound("Nobody Wins!"));
+        else
+            StartCoroutine(WinRound("PLAYER " + (m_winner + 1) + " WINS THE ROUND!"));
     }
 
-    IEnumerator WinnerText(int winner, int alive)
+    private void WinGame()
     {
+        m_roundEndEvent.Invoke();
+        foreach (PlayerData player in m_players)
+            player.TempIsPlaying = false;
+        m_spawnTempPlayers.Value = false;
         m_winnerText.gameObject.SetActive(true);
-        if (alive == 0)
-            m_winnerText.text = "NOBODY WINS!";
-        else
-        {
-            m_winnerText.text = "PLAYER " + (winner + 1) + " WINS THE ROUND!";
-            m_scoreValues.SetValue(winner, m_scoreValues.GetValue(winner) + 1);
-        }
+        m_winnerText.text = "PLAYER " + (m_winner + 1) + " WINS THE GAME!";
+        foreach (PlayerData player in m_players)
+            player.TempIsPlaying = false;
+        m_spawnTempPlayers.Value = false;
+        m_finishedEvent.Invoke();
+    }
+
+    IEnumerator WinRound(string text)
+    {
+        m_roundEndEvent.Invoke();
+        m_winnerText.gameObject.SetActive(true);
+        m_winnerText.text = text;
         float timer = 3;
         while (timer > 0)
         {

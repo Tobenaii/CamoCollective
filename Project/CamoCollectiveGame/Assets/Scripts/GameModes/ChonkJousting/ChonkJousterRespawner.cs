@@ -60,6 +60,8 @@ public class ChonkJousterRespawner : MonoBehaviour
         rb.detectCollisions = true;
 
         StandardCharacterController controller = chonk.GetComponent<StandardCharacterController>();
+        ChonkJouster jouster = chonk.GetComponent<ChonkJouster>();
+        //jouster.Reinit();
         controller.enabled = true;
         float timer = 1;
         while (timer > 0)
