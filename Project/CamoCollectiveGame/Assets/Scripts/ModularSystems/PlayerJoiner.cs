@@ -61,16 +61,16 @@ public class PlayerJoiner : MonoBehaviour
             }
             index++;
         }
-        if (!m_characterSelectOpen.Value)
-        {
-            foreach (CharacterData character in m_characters)
-            {
-                if (!character.inUse)
-                {
-                    m_currentPlayer.Character = character;
-                    break;
-                }
-            }
-        }
+        //if (!m_characterSelectOpen.Value)
+        //{
+        //    foreach (CharacterData character in m_characters)
+        //    {
+        //        if (!character.inUse)
+        //        {
+        //            m_currentPlayer.Character = character;
+        //            break;
+        //        }
+        //    }
+        //}
     }
 }

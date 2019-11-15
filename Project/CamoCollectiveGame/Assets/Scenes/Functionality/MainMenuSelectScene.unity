@@ -681,7 +681,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: 028cc803818b34c49bb00e2e537d7464, type: 2}
+  gameEvent: {fileID: 11400000, guid: 5a6ce1619a908fb499b581b5aa0e72ad, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -713,10 +713,8 @@ MonoBehaviour:
   m_runOnAwake: 0
   m_unloadAllScenes: 0
   m_scenesToUnload:
-  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
-    m_sceneName: FreePlayCharacterSelectScene
-  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
-    m_sceneName: ModeSelectionScene
+  - m_scene: {fileID: 102900000, guid: 52b693c24f8fe54468700c937db0a07c, type: 3}
+    m_sceneName: MainMenuSelectScene
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: 82900495f16e88945a0350feb99a28fe, type: 3}
     m_sceneName: PoultryBashTipsScene
@@ -747,7 +745,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585492970}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0.000030517578, y: 30, z: -109.2}
+  m_LocalPosition: {x: 0.000030517578, y: 13.68, z: 59.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -768,11 +766,15 @@ MonoBehaviour:
   m_runOnAwake: 0
   m_unloadAllScenes: 0
   m_scenesToUnload:
-  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
-    m_sceneName: ModeSelectionScene
+  - m_scene: {fileID: 102900000, guid: 52b693c24f8fe54468700c937db0a07c, type: 3}
+    m_sceneName: MainMenuSelectScene
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: e1cbfc1dcac84b64dad6e04fac1db539, type: 3}
     m_sceneName: CharacterSelectionsScene
+  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
+    m_sceneName: CharacterScene
+  - m_scene: {fileID: 102900000, guid: 2f4fb484aefec904f90f10dc527a5bdf, type: 3}
+    m_sceneName: StoryModeCharacterSelectionsEventsScene
   m_loadedEvent: {fileID: 0}
 --- !u!114 &585492973
 MonoBehaviour:
@@ -786,7 +788,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: f9ffc6b41fb41b6459b0b41f6c152f59, type: 2}
+  gameEvent: {fileID: 11400000, guid: 92005a1d4aa70c945ae7730e1e32a229, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -1068,10 +1070,8 @@ MonoBehaviour:
   m_runOnAwake: 0
   m_unloadAllScenes: 0
   m_scenesToUnload:
-  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
-    m_sceneName: FreePlayCharacterSelectScene
-  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
-    m_sceneName: ModeSelectionScene
+  - m_scene: {fileID: 102900000, guid: 52b693c24f8fe54468700c937db0a07c, type: 3}
+    m_sceneName: MainMenuSelectScene
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
     m_sceneName: TowerClimbTipsScene
@@ -1088,7 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: a948d242716a3114f952825b62eb5fb3, type: 2}
+  gameEvent: {fileID: 11400000, guid: b36fd6fb3a36dc14894d76cf240971fb, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -1113,7 +1113,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647668883}
   m_LocalRotation: {x: 0.18301274, y: 0.6830127, z: -0.18301274, w: 0.6830127}
-  m_LocalPosition: {x: 82.68, y: 30, z: 55}
+  m_LocalPosition: {x: 50, y: 30, z: -1.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1166,10 +1166,8 @@ MonoBehaviour:
   m_runOnAwake: 0
   m_unloadAllScenes: 0
   m_scenesToUnload:
-  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
-    m_sceneName: FreePlayCharacterSelectScene
-  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
-    m_sceneName: ModeSelectionScene
+  - m_scene: {fileID: 102900000, guid: 52b693c24f8fe54468700c937db0a07c, type: 3}
+    m_sceneName: MainMenuSelectScene
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
     m_sceneName: ChonkJoustingTipsScene
@@ -1186,7 +1184,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: a9fbe7f47cf7c974e8515a67832ae9b3, type: 2}
+  gameEvent: {fileID: 11400000, guid: 42a4c7303a6009a498bff0d5e8a8f3aa, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -1556,10 +1554,8 @@ MonoBehaviour:
   m_runOnAwake: 0
   m_unloadAllScenes: 0
   m_scenesToUnload:
-  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
-    m_sceneName: FreePlayCharacterSelectScene
-  - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
-    m_sceneName: ModeSelectionScene
+  - m_scene: {fileID: 102900000, guid: 52b693c24f8fe54468700c937db0a07c, type: 3}
+    m_sceneName: MainMenuSelectScene
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
     m_sceneName: TowerClimbTipsScene
@@ -1576,7 +1572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameEvent: {fileID: 11400000, guid: a948d242716a3114f952825b62eb5fb3, type: 2}
+  gameEvent: {fileID: 11400000, guid: 232a5ff7a64d9c24b8ec34349855f8b7, type: 2}
   response:
     m_PersistentCalls:
       m_Calls:
@@ -1942,6 +1938,18 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 4643465748075127093}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1892716013 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4643465746727742661, guid: 6a9a0c86717ac784ab13a599e9e316b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 4643465748075127093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892716011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5331b6653e447c949819f72a6cc97afd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2019386188
 GameObject:
   m_ObjectHideFlags: 0
@@ -2506,11 +2514,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1892716011}
+      objectReference: {fileID: 1892716013}
     - target: {fileID: 4643465746727742680, guid: 6a9a0c86717ac784ab13a599e9e316b7,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: OnClick
       objectReference: {fileID: 0}
     - target: {fileID: 4643465746727742661, guid: 6a9a0c86717ac784ab13a599e9e316b7,
         type: 3}
