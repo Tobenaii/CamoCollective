@@ -290,20 +290,20 @@ PrefabInstance:
         Competitors must dodge any obstacle in their path. If a Competitors falls
         too far behind, they are eliminated. The last Competitor climbing is the victor!
       objectReference: {fileID: 0}
-    - target: {fileID: 1462816624328055653, guid: a7f76a404a51b14449afafbc0011becd,
+    - target: {fileID: 1462816623872379208, guid: a7f76a404a51b14449afafbc0011becd,
         type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 105
+      propertyPath: m_Text
+      value: TOWER CLIMB
       objectReference: {fileID: 0}
     - target: {fileID: 1462816623984012676, guid: a7f76a404a51b14449afafbc0011becd,
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -160
       objectReference: {fileID: 0}
-    - target: {fileID: 1462816623872379208, guid: a7f76a404a51b14449afafbc0011becd,
+    - target: {fileID: 1462816624328055653, guid: a7f76a404a51b14449afafbc0011becd,
         type: 3}
-      propertyPath: m_Text
-      value: TOWER CLIMB
+      propertyPath: m_AnchoredPosition.y
+      value: 105
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f76a404a51b14449afafbc0011becd, type: 3}
@@ -384,6 +384,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_scenesToUnload.Array.data[0].m_sceneName
       value: TowerClimbTipsScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 497192700520986044, guid: e222536144f44ec44bd3672279cdfcb9,
+        type: 3}
+      propertyPath: m_scenesToLoad.Array.data[0].m_sceneName
+      value: CharacterScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 497192700520986044, guid: e222536144f44ec44bd3672279cdfcb9,
+        type: 3}
+      propertyPath: m_scenesToLoad.Array.data[1].m_sceneName
+      value: FreePlayModeSelectScene
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e222536144f44ec44bd3672279cdfcb9, type: 3}

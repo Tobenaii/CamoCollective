@@ -8,8 +8,6 @@ public class SceneValue
 {
     public static implicit operator string(SceneValue value)
     {
-        if (value.m_sceneName != value.m_scene.name)
-            value.m_sceneName = value.m_scene.name;
         return value.m_sceneName;
     }
 

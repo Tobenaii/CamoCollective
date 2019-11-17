@@ -495,56 +495,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 702503967}
   m_CullTransparentMesh: 0
---- !u!1 &906193361
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 906193362}
-  - component: {fileID: 906193363}
-  m_Layer: 0
-  m_Name: MainController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &906193362
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906193361}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 525.9084, y: 258.5271, z: 555.91144}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &906193363
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 906193361}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c321fd949b271f24cbb93562c13ab024, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_playerData:
-  - {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590, type: 2}
-  - {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b, type: 2}
-  - {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61, type: 2}
-  - {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9, type: 2}
-  m_controllers: {fileID: 11400000, guid: f2f096e69a744c44184a66a037b6acbf, type: 2}
-  m_mainController: {fileID: 11400000, guid: cd4124caeda9bf14b9381ee841503190, type: 2}
 --- !u!1 &1045731969
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +690,12 @@ MonoBehaviour:
     m_sceneName: MainCamera
   - m_scene: {fileID: 102900000, guid: 09abf88edf0f4be47972794f2ad897ab, type: 3}
     m_sceneName: StartScene
+  m_override:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
+  m_scenesToLoadOverride: []
   m_loadedEvent: {fileID: 11400000, guid: f295ee4e057eb6e4799cd7e9c7969125, type: 2}
 --- !u!1 &1667796762
 GameObject:

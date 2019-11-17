@@ -5,23 +5,10 @@ using UnityEngine;
 public class MainControllerFinder : MonoBehaviour
 {
     [SerializeField]
-    private List<PlayerData> m_playerData;
-    [SerializeField]
-    private FloatValue m_controllers;
-    [SerializeField]
     private FloatValue m_mainController;
 
-    private void Update()
+    public void SetMainController(int controller)
     {
-        int i = 0;
-        foreach (PlayerData player in m_playerData)
-        {
-            if (player.IsPlaying)
-            {
-                m_mainController.Value = m_controllers.GetValue(i);
-                return;
-            }
-            i++;
-        }
+        m_mainController.Value = controller;
     }
 }
