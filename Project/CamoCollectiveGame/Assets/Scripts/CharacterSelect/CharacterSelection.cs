@@ -51,20 +51,17 @@ public class CharacterSelection : MonoBehaviour
     public void OnHoverEnter(PlayerData player)
     {
         player.SetGhostCharacter(m_character);
-        Debug.Log("Setting " + player.name + " Ghost Character to " + m_character.name);
     }
 
     public void OnHoverExit(PlayerData player)
     {
         player.SetGhostCharacter(null);
-        Debug.Log("Setting " + player.name + " Ghost Character to null");
     }
 
     public void OnCursorClick(PlayerData player)
     {
         player.Character = m_character;
         m_assignedPlayer = player;
-        Debug.Log("Setting " + player.name + "Character to " + m_character.name);
         Color c = player.IndicatorColour;
         foreach (Image image in m_images)
             image.color = new Color(c.r, c.g, c.b, 0.75f);

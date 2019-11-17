@@ -19,7 +19,7 @@ public class TowerClimbWin : MonoBehaviour
     [SerializeField]
     private BoolValue m_isDeadValues;
     [SerializeField]
-    private FloatValue m_rulesScores;
+    private PlayerDataReference m_prevWinner;
     private bool m_hasWon;
 
     private void Start()
@@ -55,7 +55,7 @@ public class TowerClimbWin : MonoBehaviour
             
             m_wonGameEvent.Invoke();
             m_hasWon = true;
-
+            m_prevWinner.value = m_playerData[winner];
         }
         else if (alive == 0)
         {

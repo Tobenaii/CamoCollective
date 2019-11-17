@@ -30,7 +30,8 @@ public class PlayerJoiner : MonoBehaviour
 
     public void Leave()
     {
-        Debug.Log(gameObject.name);
+        if (m_currentPlayer == null)
+            return;
 
         if (m_currentPlayer.IsPlaying && m_currentPlayer.Character != null && m_characterSelectOpen.Value)
             m_currentPlayer.Character = null;
@@ -44,7 +45,6 @@ public class PlayerJoiner : MonoBehaviour
 
     public void Join(int controllerNum)
     {
-        Debug.Log(gameObject.name);
         if (m_currentPlayerIndex.Value != -1 && m_players[(int)m_currentPlayerIndex.Value].IsPlaying)
             return;
         int index = 0;

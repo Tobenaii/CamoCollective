@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/CharacterData")]
 public class CharacterData : ScriptableObject
 {
+
     [SerializeField]
     private Sprite m_icon;
     [SerializeField]
@@ -19,6 +20,8 @@ public class CharacterData : ScriptableObject
     private GameObject m_ghostHuntCharacter;
     [SerializeField]
     private GameObject m_storyModeCharacter;
+    [SerializeField]
+    private GameEvent m_gainedPointEvent;
 
     [System.NonSerialized]
     public bool inUse;
@@ -30,4 +33,5 @@ public class CharacterData : ScriptableObject
     public GameObject PoultryBashCharacter { get { return m_poultryBashCharacter; } private set { } }
     public GameObject GhostHuntCharacter { get { return m_ghostHuntCharacter; } private set { } }
     public GameObject StoryModeCharacter => m_storyModeCharacter;
+    public GameEvent GainedPointEvent => m_gainedPointEvent;
 }

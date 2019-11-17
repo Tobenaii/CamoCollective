@@ -6,6 +6,8 @@ using UnityEngine;
 public class PlayerData : ScriptableObject
 {
     [SerializeField]
+    private int m_playerNumber;
+    [SerializeField]
     private CharacterData m_forcedCharacter;
     [System.NonSerialized]
     private CharacterData m_currentCharacter;
@@ -22,6 +24,7 @@ public class PlayerData : ScriptableObject
     [System.NonSerialized]
     private bool m_tempIsPlaying;
 
+    public int PlayerNumber => m_playerNumber;
     public CharacterData Character { get { return m_currentCharacter; } set { if (m_currentCharacter != null) m_currentCharacter.inUse = false; m_currentCharacter = value; if (m_currentCharacter != null) m_currentCharacter.inUse = true; } }
     public CharacterData ForcedCharacter { get { return m_forcedCharacter; } private set { } }
     public bool IsPlaying { get { return m_isPlaying; } set { m_isPlaying = value; } }

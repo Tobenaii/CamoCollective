@@ -39,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28331804, g: 0.1518619, b: 0.1397635, a: 1}
+  m_IndirectSpecularColor: {r: 0.16851187, g: 0.27717173, b: 0.2965269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -684,12 +684,8 @@ MonoBehaviour:
   - m_scene: {fileID: 102900000, guid: 09abf88edf0f4be47972794f2ad897ab, type: 3}
     m_sceneName: MainMenuScene
   m_scenesToLoad:
-  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
-    m_sceneName: FreePlayCharacterSelectScene
-  - m_scene: {fileID: 102900000, guid: e1cbfc1dcac84b64dad6e04fac1db539, type: 3}
-    m_sceneName: CharacterSelectionsScene
-  - m_scene: {fileID: 102900000, guid: 9237c44d7d4c89a4aba0ebb667322dc8, type: 3}
-    m_sceneName: FindMainController
+  - m_scene: {fileID: 102900000, guid: 52b693c24f8fe54468700c937db0a07c, type: 3}
+    m_sceneName: MainMenuSelectScene
   m_loadedEvent: {fileID: 0}
 --- !u!114 &698122835
 MonoBehaviour:

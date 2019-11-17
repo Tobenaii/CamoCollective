@@ -128,8 +128,6 @@ public class TowerClimbPlayerController : MonoBehaviour
         m_currentClimbSpeed = Mathf.Clamp(m_currentClimbSpeed, 0, m_fallSpeed.Value + 3);
         m_targetClimbSpeed = Mathf.Clamp(m_targetClimbSpeed, 0, m_fallSpeed.Value + 3);
 
-        Debug.Log("Current Speed: " + m_currentClimbSpeed);
-        Debug.Log("Target Speed: " + m_targetClimbSpeed);
 
         m_yPosValue.Value = transform.position.y;
         if (m_stopMoving)

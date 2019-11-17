@@ -18,7 +18,8 @@ public class StoryModeCharacterSpawner : MonoBehaviour
         {
             if (player.IsPlaying)
             {
-                GameObject character = Instantiate(player.Character.StoryModeCharacter, transform.position + m_spacing * index, transform.rotation, transform);
+                Instantiate(player.Character.StoryModeCharacter, transform.position + m_spacing * index, transform.rotation, transform);
+                index++;
             }
         }
     }

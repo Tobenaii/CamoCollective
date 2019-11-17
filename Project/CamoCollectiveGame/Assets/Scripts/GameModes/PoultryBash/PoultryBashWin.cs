@@ -27,6 +27,8 @@ public class PoultryBashWin : MonoBehaviour
     private GameEvent m_newRoundEvent;
     [SerializeField]
     private BoolValue m_spawnTempPlayers;
+    [SerializeField]
+    private PlayerDataReference m_prevWinner;
 
     private bool m_wonGame;
     private int m_winner;
@@ -131,6 +133,7 @@ public class PoultryBashWin : MonoBehaviour
             player.TempIsPlaying = false;
         m_spawnTempPlayers.Value = false;
         m_winnerText.gameObject.SetActive(true);
+        m_prevWinner.value = m_players[m_winner];
         m_winnerText.text = "PLAYER " + (m_winner + 1) + " WINS THE GAME!";
         foreach (PlayerData player in m_players)
             player.TempIsPlaying = false;

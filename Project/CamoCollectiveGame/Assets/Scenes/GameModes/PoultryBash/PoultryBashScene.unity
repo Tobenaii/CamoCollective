@@ -1330,7 +1330,7 @@ Transform:
   - {fileID: 1532563603}
   - {fileID: 433966826}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &51522739
 PrefabInstance:
@@ -57425,7 +57425,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1391550359
 MonoBehaviour:
@@ -57448,9 +57448,19 @@ MonoBehaviour:
     m_sceneName: PoultryBashRoundEndScene
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
-    m_sceneName: FreePlayCharacterSelectScene
+    m_sceneName: CharacterScene
   - m_scene: {fileID: 102900000, guid: 3f96e893bd9a30e47833dc767154f916, type: 3}
-    m_sceneName: ModeSelectionScene
+    m_sceneName: FreePlayModeSelectScene
+  m_override:
+    m_index: 0
+    useConstant: 0
+    m_constant: 0
+    m_variable: {fileID: 11400000, guid: 7900cb351db134f428fdb605917b0cd3, type: 2}
+  m_scenesToLoadOverride:
+  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
+    m_sceneName: CharacterScene
+  - m_scene: {fileID: 102900000, guid: abf79d08f40d7314b9387eed4a308974, type: 3}
+    m_sceneName: StoryModeGameModeSelection
   m_loadedEvent: {fileID: 0}
 --- !u!114 &1391550360
 MonoBehaviour:
@@ -58031,48 +58041,48 @@ Transform:
   - {fileID: 316317300}
   - {fileID: 93147698}
   - {fileID: 611461984}
-  - {fileID: 1635669409}
   - {fileID: 854626948}
   - {fileID: 130068973}
+  - {fileID: 1635669409}
   - {fileID: 36645321}
   - {fileID: 2107409292}
   - {fileID: 1556096028}
   - {fileID: 437470843}
   - {fileID: 1292446274}
-  - {fileID: 840238232}
   - {fileID: 7072444}
+  - {fileID: 840238232}
   - {fileID: 979074999}
   - {fileID: 555879483}
   - {fileID: 2100482636}
   - {fileID: 1182981630}
   - {fileID: 343918970}
   - {fileID: 71084365}
-  - {fileID: 1131722041}
   - {fileID: 1716979987}
-  - {fileID: 896754181}
-  - {fileID: 1453677121}
-  - {fileID: 402377876}
+  - {fileID: 1131722041}
   - {fileID: 895551607}
+  - {fileID: 1453677121}
+  - {fileID: 896754181}
+  - {fileID: 402377876}
+  - {fileID: 176348621}
   - {fileID: 815585788}
   - {fileID: 115376469}
-  - {fileID: 176348621}
   - {fileID: 1766471792}
-  - {fileID: 1811572876}
   - {fileID: 1142302984}
-  - {fileID: 1970520457}
+  - {fileID: 1811572876}
   - {fileID: 948070301}
   - {fileID: 205988898}
   - {fileID: 768102811}
-  - {fileID: 1668640187}
+  - {fileID: 1970520457}
   - {fileID: 1469187451}
-  - {fileID: 802792552}
-  - {fileID: 910034123}
+  - {fileID: 1668640187}
   - {fileID: 2022621102}
   - {fileID: 1149696075}
-  - {fileID: 781702636}
+  - {fileID: 802792552}
   - {fileID: 302342739}
-  - {fileID: 872437165}
+  - {fileID: 910034123}
   - {fileID: 51522740}
+  - {fileID: 781702636}
+  - {fileID: 872437165}
   - {fileID: 1597121897}
   m_Father: {fileID: 1907839831}
   m_RootOrder: 3
@@ -71108,38 +71118,38 @@ Transform:
   - {fileID: 1659387507}
   - {fileID: 64542097}
   - {fileID: 1578790455}
-  - {fileID: 718613341}
   - {fileID: 79026875}
+  - {fileID: 718613341}
   - {fileID: 1869802345}
   - {fileID: 1428463573}
   - {fileID: 761297822}
-  - {fileID: 1866852067}
-  - {fileID: 1453620505}
   - {fileID: 1744301422}
+  - {fileID: 1866852067}
   - {fileID: 593281840}
   - {fileID: 63406865}
+  - {fileID: 1453620505}
   - {fileID: 778113185}
   - {fileID: 745928156}
-  - {fileID: 1248391201}
-  - {fileID: 1973054724}
   - {fileID: 605290020}
   - {fileID: 1046399751}
+  - {fileID: 1973054724}
   - {fileID: 995573248}
-  - {fileID: 384661796}
-  - {fileID: 567495651}
+  - {fileID: 1248391201}
   - {fileID: 1051391937}
-  - {fileID: 1772170008}
-  - {fileID: 2104600877}
+  - {fileID: 567495651}
+  - {fileID: 384661796}
   - {fileID: 1227118631}
+  - {fileID: 2104600877}
   - {fileID: 184730839}
-  - {fileID: 1070459583}
+  - {fileID: 1772170008}
   - {fileID: 277353806}
   - {fileID: 1268583812}
+  - {fileID: 1070459583}
   - {fileID: 1260798541}
   - {fileID: 92763436}
+  - {fileID: 237271744}
   - {fileID: 117929189}
   - {fileID: 678536716}
-  - {fileID: 237271744}
   - {fileID: 822692261}
   - {fileID: 1086971974}
   m_Father: {fileID: 1907839831}
@@ -81309,7 +81319,7 @@ RectTransform:
   - {fileID: 583318499}
   - {fileID: 1704828013}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -81342,6 +81352,7 @@ MonoBehaviour:
   m_scoreValues: {fileID: 11400000, guid: be05ff3b4e44b704f892246306e76baa, type: 2}
   m_newRoundEvent: {fileID: 11400000, guid: 1e351f9ba886d24439b294376ba6e389, type: 2}
   m_spawnTempPlayers: {fileID: 11400000, guid: 181d00b3dc0e4844181969951579e0c5, type: 2}
+  m_prevWinner: {fileID: 11400000, guid: 28c5811feb3ad784b97dcb059762e33a, type: 2}
 --- !u!114 &2068452268
 MonoBehaviour:
   m_ObjectHideFlags: 0

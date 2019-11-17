@@ -647,6 +647,8 @@ GameObject:
   m_Component:
   - component: {fileID: 543214102}
   - component: {fileID: 543214103}
+  - component: {fileID: 543214106}
+  - component: {fileID: 543214105}
   - component: {fileID: 543214104}
   m_Layer: 0
   m_Name: WAYPOINT_FreePlay
@@ -716,9 +718,62 @@ MonoBehaviour:
   - m_scene: {fileID: 102900000, guid: 52b693c24f8fe54468700c937db0a07c, type: 3}
     m_sceneName: MainMenuSelectScene
   m_scenesToLoad:
-  - m_scene: {fileID: 102900000, guid: 82900495f16e88945a0350feb99a28fe, type: 3}
-    m_sceneName: PoultryBashTipsScene
+  - m_scene: {fileID: 102900000, guid: e2e4a622e1e4fb646a7ab3a69f88c8f2, type: 3}
+    m_sceneName: CharacterScene
+  - m_scene: {fileID: 102900000, guid: e1cbfc1dcac84b64dad6e04fac1db539, type: 3}
+    m_sceneName: CharacterSelectionsScene
+  - m_scene: {fileID: 102900000, guid: cfaf8249c2e65a140b3f9911cfff9328, type: 3}
+    m_sceneName: FreePlayCharacterSelectionsEventsScene
+  m_override:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
+  m_scenesToLoadOverride: []
   m_loadedEvent: {fileID: 0}
+--- !u!114 &543214105
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543214101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa35296b9d48c4e4aa669f1538dda8d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_floatValues:
+  - {fileID: 11400000, guid: 9661702c3392f4946b7b03af09e8dbc8, type: 2}
+--- !u!114 &543214106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543214101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5a6ce1619a908fb499b581b5aa0e72ad, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 543214105}
+        m_MethodName: ResetValues
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &585492970
 GameObject:
   m_ObjectHideFlags: 0
@@ -745,7 +800,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 585492970}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: 0.000030517578, y: 13.68, z: 59.52}
+  m_LocalPosition: {x: 0.000030517578, y: 13.89, z: 69.99}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -775,6 +830,12 @@ MonoBehaviour:
     m_sceneName: CharacterScene
   - m_scene: {fileID: 102900000, guid: 2f4fb484aefec904f90f10dc527a5bdf, type: 3}
     m_sceneName: StoryModeCharacterSelectionsEventsScene
+  m_override:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
+  m_scenesToLoadOverride: []
   m_loadedEvent: {fileID: 0}
 --- !u!114 &585492973
 MonoBehaviour:
@@ -1075,6 +1136,12 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
     m_sceneName: TowerClimbTipsScene
+  m_override:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
+  m_scenesToLoadOverride: []
   m_loadedEvent: {fileID: 0}
 --- !u!114 &647668885
 MonoBehaviour:
@@ -1171,6 +1238,12 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
     m_sceneName: ChonkJoustingTipsScene
+  m_override:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
+  m_scenesToLoadOverride: []
   m_loadedEvent: {fileID: 0}
 --- !u!114 &721845978
 MonoBehaviour:
@@ -1559,6 +1632,12 @@ MonoBehaviour:
   m_scenesToLoad:
   - m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
     m_sceneName: TowerClimbTipsScene
+  m_override:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
+  m_scenesToLoadOverride: []
   m_loadedEvent: {fileID: 0}
 --- !u!114 &1450339384
 MonoBehaviour:
