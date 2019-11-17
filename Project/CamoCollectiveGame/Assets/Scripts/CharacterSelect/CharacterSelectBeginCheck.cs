@@ -41,10 +41,10 @@ public class CharacterSelectBeginCheck : MonoBehaviour
                 break;
             }
         }
-        //int isPlaying = 0;
-        //foreach (PlayerData player in m_players)
-        //    isPlaying += Convert.ToInt32(player.IsPlaying);
-        if (begin)
+        int isPlaying = 0;
+        foreach (PlayerData player in m_players)
+            isPlaying += Convert.ToInt32(player.IsPlaying);
+        if (isPlaying > 1 && begin)
         {
             m_closeEvent.Invoke();
             GetComponent<SceneLoader>().Load();
