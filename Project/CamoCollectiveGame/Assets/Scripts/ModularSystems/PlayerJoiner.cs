@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerJoiner : MonoBehaviour
 {
     [SerializeField]
+    private int m_controllerNum;
+    [SerializeField]
+    private FloatValue m_mainController;
+    [SerializeField]
     private List<PlayerData> m_players;
     [SerializeField]
     private List<CharacterData> m_characters;
@@ -21,6 +25,8 @@ public class PlayerJoiner : MonoBehaviour
     {
         if (m_currentPlayerIndex.Value != -1)
             m_currentPlayer = m_players[(int)m_currentPlayerIndex.Value];
+        if (m_controllerNum == m_mainController.Value)
+            Join(m_controllerNum);
     }
 
     public void Disconnected()

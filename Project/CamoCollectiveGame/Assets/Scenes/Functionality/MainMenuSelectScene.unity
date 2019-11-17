@@ -472,6 +472,57 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 204564715}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &264452872
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 264452874}
+  - component: {fileID: 264452875}
+  m_Layer: 0
+  m_Name: StartupEvents
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &264452874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264452872}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.4535784, y: 24.634727, z: 42.244675}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &264452875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264452872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4e9a70d95d080d4cacadb3021d211e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_rulerScore: {fileID: 11400000, guid: b92aef57bfe53544bbf7a1d7543047c1, type: 2}
+  m_joinedPlayerIndex: {fileID: 11400000, guid: 7138fcb45acda654391d61a3ee4da956,
+    type: 2}
+  m_players:
+  - {fileID: 11400000, guid: d9d38738a3cb8ce4bbfc13fb1ac61590, type: 2}
+  - {fileID: 11400000, guid: 39d745e8d043eb048b56587a4183a07b, type: 2}
+  - {fileID: 11400000, guid: 0a5a17eb20a357d468dc6bf867ca0b61, type: 2}
+  - {fileID: 11400000, guid: 72250df43d88f5048ac6427a64ec81b9, type: 2}
 --- !u!1 &309745105
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +794,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa35296b9d48c4e4aa669f1538dda8d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_triggerOnAwake: 0
   m_floatValues:
   - {fileID: 11400000, guid: 9661702c3392f4946b7b03af09e8dbc8, type: 2}
 --- !u!114 &543214106
