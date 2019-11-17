@@ -18,6 +18,8 @@ public class PlayerJoiner : MonoBehaviour
     private BoolValue m_characterSelectOpen;
     [SerializeField]
     private FloatReference m_currentPlayerIndex;
+    [SerializeField]
+    private BoolValue m_storyModeIsPlaying;
 
     private PlayerData m_currentPlayer;
 
@@ -36,12 +38,12 @@ public class PlayerJoiner : MonoBehaviour
 
     public void Leave()
     {
-        if (m_currentPlayer == null)
+        if (m_currentPlayer == null || (!m_characterSelectOpen.Value && m_storyModeIsPlaying.Value))
             return;
 
         if (m_currentPlayer.IsPlaying && m_currentPlayer.Character != null && m_characterSelectOpen.Value)
             m_currentPlayer.Character = null;
-        else
+        else if (m_controllerNum != 1)
         {
             m_currentPlayer.Character = null;
             m_currentPlayer.IsPlaying = false;
