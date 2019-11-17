@@ -72,12 +72,17 @@ public class MapCamera : MonoBehaviour
 
     public void SetTarget(GameObject target)
     {
-        if (target == null)
+        if (target != null)
+        {
+            m_currentTargetPos = target.transform.position;
+            m_currentTargetRot = target.transform.rotation;
+            m_atTarget = false;
+        }
+        else
+        {
             m_atTarget = true;
+        }
         m_triggeredEvent = false;
-        m_currentTargetPos = target.transform.position;
-        m_currentTargetRot = target.transform.rotation;
-        m_atTarget = false;
         m_initPos = transform.position;
         m_lerper.Reset();
     }
