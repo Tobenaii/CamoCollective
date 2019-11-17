@@ -72,6 +72,8 @@ public class MapCamera : MonoBehaviour
 
     public void SetTarget(GameObject target)
     {
+        if (target == null)
+            m_atTarget = true;
         m_triggeredEvent = false;
         m_currentTargetPos = target.transform.position;
         m_currentTargetRot = target.transform.rotation;
