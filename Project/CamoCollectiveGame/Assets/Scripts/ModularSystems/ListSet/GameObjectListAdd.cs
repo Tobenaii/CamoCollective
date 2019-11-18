@@ -36,8 +36,10 @@ public class GameObjectListAdd : MonoBehaviour
         m_listSet.Add(gameObject);
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
+        if (!m_listSet.Containts(gameObject))
+            return;
         if (CheckError())
             return;
         if (m_removeOnDestroy)
