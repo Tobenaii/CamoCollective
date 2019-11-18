@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: eb98ac3598618cc4d94186b66c0e5857
+  m_OcclusionCullingData: {fileID: 36300000, guid: 8b4985bd93b3f3340b761d8a4b146332,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -13709,6 +13710,16 @@ PrefabInstance:
       propertyPath: m_Text
       value: P2
       objectReference: {fileID: 0}
+    - target: {fileID: 5777899663253278663, guid: 7c863241871a745469b721458c8813f1,
+        type: 3}
+      propertyPath: m_overrideBoolReference.m_index
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3819732349808367664, guid: 7c863241871a745469b721458c8813f1,
+        type: 3}
+      propertyPath: m_boolReference.m_index
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7c863241871a745469b721458c8813f1, type: 3}
 --- !u!1001 &2809313981668336459
@@ -13832,6 +13843,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Text
       value: P3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5822844682108435193, guid: 21eed1bfa703ccf4bbebb9e542d46857,
+        type: 3}
+      propertyPath: m_overrideBoolReference.m_index
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3883146415122328846, guid: 21eed1bfa703ccf4bbebb9e542d46857,
+        type: 3}
+      propertyPath: m_boolReference.m_index
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 21eed1bfa703ccf4bbebb9e542d46857, type: 3}
@@ -13957,6 +13978,16 @@ PrefabInstance:
       propertyPath: m_Text
       value: P4
       objectReference: {fileID: 0}
+    - target: {fileID: 5219533579282593986, guid: 3bb26c0c88cf3564fb175d1947e4cca4,
+        type: 3}
+      propertyPath: m_overrideBoolReference.m_index
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3261399250977058613, guid: 3bb26c0c88cf3564fb175d1947e4cca4,
+        type: 3}
+      propertyPath: m_boolReference.m_index
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3bb26c0c88cf3564fb175d1947e4cca4, type: 3}
 --- !u!1001 &4644101451790533707
@@ -14075,6 +14106,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5670285788431305631, guid: cf337a36171427f4d88d391abce73b2a,
+        type: 3}
+      propertyPath: m_overrideBoolReference.useConstant
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf337a36171427f4d88d391abce73b2a, type: 3}
