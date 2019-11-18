@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 52b693c24f8fe54468700c937db0a07c
+  m_OcclusionCullingData: {fileID: 36300000, guid: 8b4985bd93b3f3340b761d8a4b146332,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -427,6 +428,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Colors.m_NormalColor.b
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4643465746727742680, guid: 6a9a0c86717ac784ab13a599e9e316b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1478197101}
+    - target: {fileID: 4643465746727742680, guid: 6a9a0c86717ac784ab13a599e9e316b7,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Quit
       objectReference: {fileID: 0}
     - target: {fileID: 4643465746727742661, guid: 6a9a0c86717ac784ab13a599e9e316b7,
         type: 3}
@@ -1288,8 +1299,8 @@ MonoBehaviour:
   - m_scene: {fileID: 102900000, guid: 52b693c24f8fe54468700c937db0a07c, type: 3}
     m_sceneName: MainMenuSelectScene
   m_scenesToLoad:
-  - m_scene: {fileID: 102900000, guid: bbaf4038ee69c9d41ba1b1d4806af9c3, type: 3}
-    m_sceneName: ChonkJoustingTipsScene
+  - m_scene: {fileID: 102900000, guid: 3dc862b871cc1c343afad44474dd6776, type: 3}
+    m_sceneName: OptionsScene
   m_override:
     m_index: 0
     useConstant: 1
@@ -1807,8 +1818,8 @@ MonoBehaviour:
   - m_scene: {fileID: 102900000, guid: 52b693c24f8fe54468700c937db0a07c, type: 3}
     m_sceneName: MainMenuSelectScene
   m_scenesToLoad:
-  - m_scene: {fileID: 102900000, guid: 5301f29f9de834e47a5f92fb25f58bd5, type: 3}
-    m_sceneName: TowerClimbTipsScene
+  - m_scene: {fileID: 102900000, guid: d6cea1a9d703be544a6c492d972e367d, type: 3}
+    m_sceneName: CreditsScene
   m_override:
     m_index: 0
     useConstant: 1
@@ -1845,6 +1856,24 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &1478197100 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4643465746727742686, guid: 6a9a0c86717ac784ab13a599e9e316b7,
+    type: 3}
+  m_PrefabInstance: {fileID: 204564715}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1478197101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1478197100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 42a4d65491724d048bb61c982081a82a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1479902593
 GameObject:
   m_ObjectHideFlags: 0

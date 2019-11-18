@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: e1cbfc1dcac84b64dad6e04fac1db539
+  m_OcclusionCullingData: {fileID: 36300000, guid: 8b4985bd93b3f3340b761d8a4b146332,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -1461,6 +1462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_triggerOnAwake: 1
   m_gameEvent: {fileID: 11400000, guid: 187a09abbdf04924689fd788a7f64eb4, type: 2}
+  m_onDestroyEvent: {fileID: 0}
 --- !u!4 &1866732922
 Transform:
   m_ObjectHideFlags: 0

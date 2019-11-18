@@ -29,8 +29,9 @@ public class SpawnChecker : MonoBehaviour
     private void Awake()
     {
         int players = 0;
+        bool tempPlayers = (m_spawnTempPlayers == null) ? false : m_spawnTempPlayers.Value;
         foreach (PlayerData player in m_playerData)
-            players += Convert.ToInt32(((m_spawnTempPlayers.Value)?player.TempIsPlaying:player.IsPlaying));
+            players += Convert.ToInt32(((tempPlayers) ?player.TempIsPlaying:player.IsPlaying));
         if (players == m_playerAmmount)
         {
             if (m_gameObjectToEnable)
@@ -39,7 +40,7 @@ public class SpawnChecker : MonoBehaviour
             int spawnIndex = 0;
             foreach (PlayerData player in m_playerData)
             {
-                if ((m_spawnTempPlayers.Value) ? player.TempIsPlaying : player.IsPlaying)
+                if ((tempPlayers) ? player.TempIsPlaying : player.IsPlaying)
                 {
                     GameObject p = Instantiate(m_playerObjects[index], m_spawnTransforms[spawnIndex]);
                     p.transform.localPosition = Vector3.zero;

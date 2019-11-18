@@ -8,6 +8,8 @@ public class GameEventTrigger : MonoBehaviour
     private bool m_triggerOnAwake;
     [SerializeField]
     private GameEvent m_gameEvent;
+    [SerializeField]
+    private GameEvent m_onDestroyEvent;
 
     private void Awake()
     {
@@ -18,5 +20,10 @@ public class GameEventTrigger : MonoBehaviour
     public void TriggerEvent()
     {
         m_gameEvent.Invoke();
+    }
+
+    private void OnDestroy()
+    {
+        m_onDestroyEvent?.Invoke();
     }
 }

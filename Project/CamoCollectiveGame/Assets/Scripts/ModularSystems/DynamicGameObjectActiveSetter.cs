@@ -10,13 +10,15 @@ public class DynamicGameObjectActiveSetter : MonoBehaviour
     private GameObject m_gameObject;
     [SerializeField]
     private BoolReference m_boolReference;
+    [SerializeField]
+    private BoolReference m_overrideBoolReference;
     private bool m_overridden;
 
 
     // Update is called once per frame
     void Update()
     {
-        if (m_overridden)
+        if (m_overridden || (m_overrideBoolReference != null && m_overrideBoolReference.Value))
             return;
         bool trig = (m_inverse) ? !m_boolReference.Value : m_boolReference.Value;
         if (m_gameObject.activeSelf && !trig)
