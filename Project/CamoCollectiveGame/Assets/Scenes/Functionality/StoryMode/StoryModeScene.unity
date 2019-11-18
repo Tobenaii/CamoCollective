@@ -404,7 +404,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249751954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2289655, y: 2.3542812, z: 87.61752}
+  m_LocalPosition: {x: 2.2289655, y: 2.3542812, z: 86.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1677750994}
@@ -576,7 +576,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 470963557}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2289655, y: 2.3542812, z: 87.61752}
+  m_LocalPosition: {x: 2.2289655, y: 2.3542812, z: 86.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 69601569}
@@ -730,7 +730,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 624282444}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.2289655, y: 2.3542812, z: 87.61752}
+  m_LocalPosition: {x: 2.2289655, y: 2.3542812, z: 86.23}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 890686169}
@@ -783,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4240e83b1c4c3f447a6cf19909949070, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_startNextGameModeTime: 5
+  m_startNextGameModeTime: 7
   m_startGameModeEvents:
   - {fileID: 11400000, guid: 028cc803818b34c49bb00e2e537d7464, type: 2}
   - {fileID: 11400000, guid: a9fbe7f47cf7c974e8515a67832ae9b3, type: 2}
@@ -984,6 +984,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_triggerOnAwake: 1
   m_gameEvent: {fileID: 11400000, guid: 4ff255a756d85614da834349003a6e38, type: 2}
+  m_onDestroyEvent: {fileID: 11400000, guid: 1e775896f437b4e4b9a05badb55f13e8, type: 2}
 --- !u!1 &1911587967
 GameObject:
   m_ObjectHideFlags: 0
