@@ -14,6 +14,8 @@ public class PoultryBashWin : MonoBehaviour
     [SerializeField]
     private Text m_winnerText;
     [SerializeField]
+    private GameModeWinText m_gameModeWinnerText;
+    [SerializeField]
     private GameEvent m_finishedEvent;
     [SerializeField]
     private GameEvent m_roundEndEvent;
@@ -36,6 +38,8 @@ public class PoultryBashWin : MonoBehaviour
 
     private void Start()
     {
+        m_winnerText.gameObject.SetActive(false);
+        m_gameModeWinnerText.gameObject.SetActive(false);
         for (int i = 0; i < m_deadValues.Count; i++)
         {
             m_deadValues.SetValue(i, false);
@@ -112,7 +116,7 @@ public class PoultryBashWin : MonoBehaviour
                 return;
             }
         }
-
+        m_gameModeWinnerText.gameObject.SetActive(false);
         if (m_roundNumberValue.Value == 3)
         {
             m_spawnTempPlayers.Value = true;
@@ -132,9 +136,10 @@ public class PoultryBashWin : MonoBehaviour
         foreach (PlayerData player in m_players)
             player.TempIsPlaying = false;
         m_spawnTempPlayers.Value = false;
-        m_winnerText.gameObject.SetActive(true);
+        m_gameModeWinnerText.gameObject.SetActive(true);
+        m_winnerText.gameObject.SetActive(false);
         m_prevWinner.value = m_players[m_winner];
-        m_winnerText.text = "PLAYER " + (m_winner + 1) + " WINS THE GAME!";
+        m_gameModeWinnerText.SetWinner(m_winner + 1);
         foreach (PlayerData player in m_players)
             player.TempIsPlaying = false;
         m_spawnTempPlayers.Value = false;
@@ -145,6 +150,7 @@ public class PoultryBashWin : MonoBehaviour
     {
         m_roundEndEvent.Invoke();
         m_winnerText.gameObject.SetActive(true);
+        m_gameModeWinnerText.gameObject.SetActive(false);
         m_winnerText.text = text;
         float timer = 3;
         while (timer > 0)
