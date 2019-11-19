@@ -24,6 +24,10 @@ public class TowerClimbPlayerController : MonoBehaviour
     [SerializeField]
     private float m_stickyMovementScale;
 
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioSource m_onObstacleHitSound;
+
     [Header("Data")]
     [SerializeField]
     private FloatReference m_yPosValue;
@@ -36,6 +40,7 @@ public class TowerClimbPlayerController : MonoBehaviour
     private bool m_playerHasControl;
     private bool m_playerFalling;
     private bool m_stopMoving;
+    private bool m_playedHitSound;
 
     private Rigidbody m_rb;
 
@@ -143,7 +148,19 @@ public class TowerClimbPlayerController : MonoBehaviour
             return;
         }
         if (hitUp)
+        {
+            if (!m_playedHitSound)
+            {
+                m_playedHitSound = true;
+                m_onObstacleHitSound.Play();
+            }
+            m_animator.SetFloat("ClimbScale", 0);
             transform.position = new Vector3(transform.position.x, hit.point.y - 1.0f, transform.position.z);
+        }
+
+        hitUp = Physics.Raycast(transform.position, Vector3.up, out hit, 2.0f);
+        if (!hitUp)
+            m_playedHitSound = false;
 
         if (!m_playerHasControl)
             m_currentClimbSpeed = m_fallSpeed.Value;
