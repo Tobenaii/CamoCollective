@@ -16,12 +16,15 @@ public class MapCamera : MonoBehaviour
     private Quaternion m_currentTargetRot;
     private bool m_atTarget;
     private Vector3 m_velocity;
-    private Vector3 m_rotateVelocity;
     private Vector3 m_targetRot;
 
     private Vector3 m_initPos;
     private TimeLerper m_lerper = new TimeLerper();
     private Vector3 m_prevPos;
+
+    private float m_rotateVelocityX;
+    private float m_rotateVelocityY;
+    private float m_rotateVelocityZ;
 
     private bool m_triggeredEvent;
 
@@ -57,8 +60,14 @@ public class MapCamera : MonoBehaviour
         Quaternion newRot = transform.rotation;
         transform.rotation = prevRot;
         //transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, m_rotateTime * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(Vector3.SmoothDamp(transform.rotation.eulerAngles, m_currentTargetRot.eulerAngles,
-                                                                                ref m_rotateVelocity, m_rotateTime));
+        float xAngle = Mathf.SmoothDampAngle(transform.rotation.eulerAngles.x, m_currentTargetRot.eulerAngles.x,
+                                                                                ref m_rotateVelocityX, m_rotateTime);
+        float yAngle = Mathf.SmoothDampAngle(transform.rotation.eulerAngles.y, m_currentTargetRot.eulerAngles.y,
+                                                                                ref m_rotateVelocityY, m_rotateTime);
+        float zAngle = Mathf.SmoothDampAngle(transform.rotation.eulerAngles.z, m_currentTargetRot.eulerAngles.z,
+                                                                                ref m_rotateVelocityZ, m_rotateTime);
+
+        transform.rotation = Quaternion.Euler(new Vector3(xAngle, yAngle, zAngle));
 
         if (!m_triggeredEvent && Vector3.Distance(transform.position, m_currentTargetPos) < 0.5f)
         {
