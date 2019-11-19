@@ -7187,7 +7187,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &520142839
 Transform:
   m_ObjectHideFlags: 0
@@ -7323,6 +7323,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: StartCountdownText
       objectReference: {fileID: 0}
+    - target: {fileID: 4160735074028911176, guid: 3b9d36c587aea214e8fcf3ac171d0dc5,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4160735074028911180, guid: 3b9d36c587aea214e8fcf3ac171d0dc5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7431,17 +7436,17 @@ PrefabInstance:
     - target: {fileID: 4160735074028911180, guid: 3b9d36c587aea214e8fcf3ac171d0dc5,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 1.6976126
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 4160735074028911180, guid: 3b9d36c587aea214e8fcf3ac171d0dc5,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 1.6976126
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4160735074028911180, guid: 3b9d36c587aea214e8fcf3ac171d0dc5,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.6976126
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3b9d36c587aea214e8fcf3ac171d0dc5, type: 3}
@@ -9327,7 +9332,7 @@ PrefabInstance:
     - target: {fileID: 8867152538679659812, guid: 1563b6954259bc34b8321bfd00cd0722,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8867152538679659815, guid: 1563b6954259bc34b8321bfd00cd0722,
         type: 3}
