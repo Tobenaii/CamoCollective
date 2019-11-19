@@ -14,6 +14,7 @@ public class CanvasFade : MonoBehaviour
     private void OnEnable()
     {
         m_opacity = 0;
+        m_canvasGroup.alpha = m_opacity;
     }
 
     private void Start()
