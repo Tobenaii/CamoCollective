@@ -67,7 +67,14 @@ public class PoultryBasher : MonoBehaviour
     [SerializeField]
     private AudioSource m_onHitSound;
     [SerializeField]
+    private AudioSource m_onHitSound2;
+    [SerializeField]
     private AudioSource m_onBlockSound;
+    [SerializeField]
+    private AudioSource m_onSwingSound;
+    [SerializeField]
+    private AudioSource m_onEliminatedSound;
+
 
     [Header("Data")]
     [SerializeField]
@@ -227,6 +234,7 @@ public class PoultryBasher : MonoBehaviour
 
     private void OnDeath()
     {
+        m_onEliminatedSound.Play();
         m_deadValue.Value = true;
         m_input.DisableInput();
         for (int i = 1; i < m_rbRagdolls.Length; i++)
@@ -329,6 +337,7 @@ public class PoultryBasher : MonoBehaviour
         if (!m_inRing)
             return;
         m_animator.SetTrigger(anim);
+        m_onSwingSound.Play();
         if (m_leftPunch)
             m_leftSwipeParticles.Play();
         else
@@ -430,7 +439,11 @@ public class PoultryBasher : MonoBehaviour
             hit.transform.GetComponent<InputMapper>().Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
             rb.velocity = newVelocity;
             m_cameraShakeEvent.Invoke();
-            m_onHitSound.Play();
+            int hitSound = Random.Range(0, 2);
+            if (hitSound == 0)
+                m_onHitSound.Play();
+            else
+                m_onHitSound2.Play();
             //Freeze(m_punchPreezeTime, Vector3.zero);
             //pb.Freeze(m_punchPreezeTime, newVelocity);
         }
