@@ -240,7 +240,7 @@ public class PoultryBasher : MonoBehaviour
 
     private void OnDeath()
     {
-        m_onDeathParticles.Play();
+        //m_onDeathParticles?.Play();
         m_onEliminatedSound.Play();
         m_deadValue.Value = true;
         m_input.DisableInput();
