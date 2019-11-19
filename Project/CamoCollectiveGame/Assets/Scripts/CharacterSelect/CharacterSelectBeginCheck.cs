@@ -47,7 +47,7 @@ public class CharacterSelectBeginCheck : MonoBehaviour
         if (isPlaying > 1 && begin)
         {
             m_closeEvent.Invoke();
-            GetComponent<SceneLoader>().Load();
+            GetComponent<SceneLoader>()?.Load();
         }
     }
 }

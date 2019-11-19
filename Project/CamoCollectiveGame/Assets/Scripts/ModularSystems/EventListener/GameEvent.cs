@@ -69,3 +69,8 @@ public class CustomGameObjectEvent : CustomUnityEvent<GameObject>
 public class CustomStringEvent : CustomUnityEvent<string>
 {
 }
+
+[System.Serializable]
+public class CustomAudioEvent : CustomUnityEvent<AudioClip>
+{
+}
