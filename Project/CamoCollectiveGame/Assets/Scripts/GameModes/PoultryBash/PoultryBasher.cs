@@ -60,6 +60,12 @@ public class PoultryBasher : MonoBehaviour
     private Vector3 m_rotateTowards;
     [SerializeField]
     private ParticleSystemPool m_runParticlePool;
+    [SerializeField]
+    private Transform m_sparksTransform;
+    [SerializeField]
+    private ParticleSystemPool m_sparksParticlePool;
+    [SerializeField]
+    private ParticleSystem m_onDeathParticles;
 
     private ParticleSystem[] m_punchParticles;
 
@@ -234,6 +240,7 @@ public class PoultryBasher : MonoBehaviour
 
     private void OnDeath()
     {
+        m_onDeathParticles.Play();
         m_onEliminatedSound.Play();
         m_deadValue.Value = true;
         m_input.DisableInput();
@@ -430,6 +437,10 @@ public class PoultryBasher : MonoBehaviour
                 pb.m_shieldHealth -= m_shieldBreakPercentOnHit;
                 m_rb.velocity = (pb.transform.forward * pb.m_blockKnockbackForce) + (Vector3.up * pb.m_blockKnockupForce);
                 pb.m_onBlockSound.Play();
+                ParticleSystem ps = pb.m_sparksParticlePool.GetObject();
+                ps.transform.SetParent(pb.transform);
+                ps.transform.localPosition = pb.m_sparksTransform.localPosition;
+                ps.Play();
                 return;
             }
             rb.velocity = Vector3.zero;
