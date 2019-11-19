@@ -37,7 +37,13 @@ public class ChonkJouster : MonoBehaviour
 
     [Header("Particles")]
     [SerializeField]
+    private Transform m_sparksTransform;
+    [SerializeField]
+    private ParticleSystemPool m_sparksParticlePool;
+    [SerializeField]
     private ParticleSystemPool m_gainPointsParticles;
+    [SerializeField]
+    private ParticleSystem m_smokeParticles;
     private List<ParticleSystem> m_activeParticles = new List<ParticleSystem>();
 
     [Header("Death")]
@@ -180,6 +186,11 @@ public class ChonkJouster : MonoBehaviour
         //}
         if (m_attackFrequencyTimer > 0)
             m_attackFrequencyTimer -= Time.deltaTime;
+
+        if (m_controller.Velocity.magnitude > 15)
+            m_smokeParticles.Play();
+        else
+            m_smokeParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
 
     private void ToggleColliders(bool enable)
@@ -202,7 +213,11 @@ public class ChonkJouster : MonoBehaviour
         {
             jouster.Knockback(transform.forward * m_shieldKnockbackForce);
             Knockback(transform.forward * -1 * m_shieldKnockbackForce);
-            m_onBlockSound.Play();
+            jouster.m_onBlockSound.Play();
+            ParticleSystem s = jouster.m_sparksParticlePool.GetObject();
+            s.transform.SetParent(jouster.transform);
+            s.transform.localPosition = m_sparksTransform.localPosition;
+            s.Play();
         }
         //Didn't hit shield
         else
