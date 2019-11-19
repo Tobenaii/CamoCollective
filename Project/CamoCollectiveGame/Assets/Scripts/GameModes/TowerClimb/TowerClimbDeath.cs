@@ -56,6 +56,7 @@ public class TowerClimbDeath : MonoBehaviour
         m_isDeadValue.Value = true;
         ParticleSystem ps = m_particleSystemPool.GetObject();
         ps.transform.position = transform.position;
+        ps.transform.localScale = new Vector3(4, 4, 4);
         ps.Play();
         Destroy(gameObject);
     }

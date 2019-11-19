@@ -11,15 +11,11 @@ public class CanvasFade : MonoBehaviour
     private CanvasGroup m_canvasGroup;
     private float m_opacity;
 
-    private void OnEnable()
-    {
-        m_opacity = 0;
-        m_canvasGroup.alpha = m_opacity;
-    }
-
     private void Start()
     {
         m_canvasGroup = GetComponent<CanvasGroup>();
+        m_opacity = 0;
+        m_canvasGroup.alpha = m_opacity;
     }
 
     private void Update()
