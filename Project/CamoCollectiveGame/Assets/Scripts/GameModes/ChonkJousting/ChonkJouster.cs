@@ -54,6 +54,12 @@ public class ChonkJouster : MonoBehaviour
     [SerializeField]
     private float m_speedScaleInMud;
 
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioSource m_onBlockSound;
+    [SerializeField]
+    private AudioSource m_onEliminatedSound;
+
     [Header("Data")]
     [SerializeField]
     private PlayerData m_player;
@@ -194,9 +200,9 @@ public class ChonkJouster : MonoBehaviour
         //Did hit shield
         if (dot < shield)
         {
-            Debug.Log("HIT!");
             jouster.Knockback(transform.forward * m_shieldKnockbackForce);
             Knockback(transform.forward * -1 * m_shieldKnockbackForce);
+            m_onBlockSound.Play();
         }
         //Didn't hit shield
         else
@@ -219,6 +225,9 @@ public class ChonkJouster : MonoBehaviour
         m_input.Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
 
         m_livesValue.Value--;
+
+        m_onEliminatedSound.Play();
+
         if (m_livesValue.Value <= 0)
             m_fullyDeadValue.Value = true;
         Die();

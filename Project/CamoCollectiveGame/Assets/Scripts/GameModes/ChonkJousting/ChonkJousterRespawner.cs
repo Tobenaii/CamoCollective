@@ -10,6 +10,8 @@ public class ChonkJousterRespawner : MonoBehaviour
     private Animator m_animator;
     [SerializeField]
     private float m_respawnForce;
+    [SerializeField]
+    private AudioSource m_respawnAudio;
     private List<GameObject> m_chonks = new List<GameObject>();
     private int m_chonkIndex = 0;
     private bool m_isOpen;
@@ -83,6 +85,7 @@ public class ChonkJousterRespawner : MonoBehaviour
             return;
         }
         m_animator.SetTrigger("Open");
+        m_respawnAudio.PlayDelayed(0.35f);
         m_animator.ResetTrigger("Close");
         m_isOpen = true;
     }

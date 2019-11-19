@@ -27,6 +27,8 @@ public class StandardCharacterController : MonoBehaviour
     private float m_minRotationValue;
     [Header("Dash")]
     [SerializeField]
+    private AudioSource m_onDashSound;
+    [SerializeField]
     private FloatReference m_dashForceScale;
     [SerializeField]
     private float m_minDashForce;
@@ -163,6 +165,7 @@ public class StandardCharacterController : MonoBehaviour
     {
         if (!m_canSprint)
             return;
+        m_onDashSound?.Play();
         m_velocity = transform.forward * m_sprintMoveSpeed;
         StopCoroutine(SprintTimer());
         StartCoroutine(SprintTimer());
