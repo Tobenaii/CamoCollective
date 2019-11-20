@@ -97,6 +97,8 @@ public class PoultryBasher : MonoBehaviour
     private GameObject m_playerIndicator;
     [SerializeField]
     private GameEvent m_cameraShakeEvent;
+    [SerializeField]
+    private GameEvent m_onPlayerDiedEvent;
 
     private float m_currentBlockKnockbackScale;
 
@@ -241,6 +243,7 @@ public class PoultryBasher : MonoBehaviour
     private void OnDeath()
     {
         //m_onDeathParticles?.Play();
+        m_onPlayerDiedEvent.Invoke();
         m_onEliminatedSound.Play();
         m_deadValue.Value = true;
         m_input.DisableInput();

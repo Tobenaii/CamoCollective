@@ -2063,6 +2063,7 @@ GameObject:
   - component: {fileID: 9188216787382530325}
   - component: {fileID: 2423498402563788500}
   - component: {fileID: 507310120622508728}
+  - component: {fileID: 1823316670527084152}
   m_Layer: 0
   m_Name: PB_NPC
   m_TagString: Untagged
@@ -2158,3 +2159,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_lookTarget: {fileID: 0}
+--- !u!114 &1823316670527084152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3670803275333634296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 78b1bac3779313949b6bb2fc8eea24ee, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 9188216787382530325}
+        m_MethodName: RandomCheer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null

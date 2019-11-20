@@ -121,6 +121,8 @@ MonoBehaviour:
     useConstant: 1
     m_constant: 0
     m_variable: {fileID: 0}
+  m_onPlayerDiedEvent: {fileID: 11400000, guid: 149399b8028bbff48a9336d4a358b954,
+    type: 2}
 --- !u!114 &161683513231905873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1520,6 +1522,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5747398002671475719, guid: d984d2a8566edf742839ba36162dcf40,
+        type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5747398002671475719, guid: d984d2a8566edf742839ba36162dcf40,
+        type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 200
+      objectReference: {fileID: 0}
     - target: {fileID: 5747398002671475712, guid: d984d2a8566edf742839ba36162dcf40,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1574,16 +1586,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5747398002671475719, guid: d984d2a8566edf742839ba36162dcf40,
-        type: 3}
-      propertyPath: moveWithTransform
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5747398002671475719, guid: d984d2a8566edf742839ba36162dcf40,
-        type: 3}
-      propertyPath: EmissionModule.rateOverTime.scalar
-      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d984d2a8566edf742839ba36162dcf40, type: 3}

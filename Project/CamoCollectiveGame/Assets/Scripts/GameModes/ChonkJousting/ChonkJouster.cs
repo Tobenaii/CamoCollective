@@ -85,6 +85,8 @@ public class ChonkJouster : MonoBehaviour
     private BoolReference m_isDeadValue;
     [SerializeField]
     private BoolReference m_fullyDeadValue;
+    [SerializeField]
+    private GameEvent m_onPlayerDiedEvent;
 
     private Rigidbody[] m_rbRagdolls;
     private Collider[] m_colRagdolls;
@@ -263,6 +265,7 @@ public class ChonkJouster : MonoBehaviour
 
     public void Die()
     {
+        m_onPlayerDiedEvent.Invoke();
         //Disable input and start fading away
         m_controller.enabled = false;
         m_respawnTimer.Value = m_respawnTime;

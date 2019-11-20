@@ -28,7 +28,24 @@ public class PoultryBashNPC : MonoBehaviour
 
     public void Cheer()
     {
+        StopCoroutine(EndCheer());
         m_animator.SetTrigger("Cheer" + Random.Range(1, 5).ToString());
+    }
+
+    public void RandomCheer()
+    {
+        int rand = Random.Range(0, 4);
+        if (rand == 0)
+        {
+            m_animator.SetTrigger("Cheer" + Random.Range(1, 5).ToString());
+            StartCoroutine(EndCheer());
+        }
+    }
+
+    private IEnumerator EndCheer()
+    {
+        yield return new WaitForSeconds(3);
+        m_animator.SetTrigger("EndCheer");
     }
 
     // Start is called before the first frame update
