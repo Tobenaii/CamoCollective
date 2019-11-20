@@ -3783,6 +3783,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: StoryModeKneil Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 2022227101047409404, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c4a36a2c97fd414681fc28bd3526ca7,
+        type: 2}
     - target: {fileID: 2022227101047409395, guid: 680d4a74ba0e8704aabb5524d98150fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3838,16 +3844,40 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2022227101047409404, guid: 680d4a74ba0e8704aabb5524d98150fe,
+    - target: {fileID: 2022227101004371420, guid: 680d4a74ba0e8704aabb5524d98150fe,
         type: 3}
-      propertyPath: gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 6c4a36a2c97fd414681fc28bd3526ca7,
-        type: 2}
-    - target: {fileID: 2022227101004371423, guid: 680d4a74ba0e8704aabb5524d98150fe,
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371420, guid: 680d4a74ba0e8704aabb5524d98150fe,
         type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalRotation.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371420, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371420, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371420, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371420, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 4.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371420, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 10.64
       objectReference: {fileID: 0}
     - target: {fileID: 2022227101004371421, guid: 680d4a74ba0e8704aabb5524d98150fe,
         type: 3}
@@ -3858,6 +3888,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_isInputParsingRequired
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371423, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680d4a74ba0e8704aabb5524d98150fe, type: 3}
