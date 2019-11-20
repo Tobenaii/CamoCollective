@@ -15,6 +15,19 @@ public class FloatOverTime : MonoBehaviour
     private float m_prev;
     private bool m_frozen;
 
+    private void Start()
+    {
+        m_frozen = true;
+        m_float.Value = 0;
+    }
+    public void StartTime()
+    {
+        if (!m_frozen)
+            return;
+        m_frozen = false;
+        m_float.Reset();
+    }
+
     private void Update()
     {
         if (m_frozen)

@@ -1291,6 +1291,7 @@ GameObject:
   - component: {fileID: 587950744}
   - component: {fileID: 587950743}
   - component: {fileID: 587950745}
+  - component: {fileID: 587950746}
   m_Layer: 0
   m_Name: SpeedRate
   m_TagString: Untagged
@@ -1342,6 +1343,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_initValue: 10
   m_floatValue: {fileID: 11400000, guid: 5e4261c139267984580a96e53eeafa49, type: 2}
+--- !u!114 &587950746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 587950742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 720508003fc7bd24a8eaf7e1ec39085a, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 587950743}
+        m_MethodName: StartTime
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1001 &602928384
 PrefabInstance:
   m_ObjectHideFlags: 0

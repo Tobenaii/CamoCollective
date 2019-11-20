@@ -30,9 +30,11 @@ public class TowerClimbPlayerController : MonoBehaviour
 
     [Header("Data")]
     [SerializeField]
-    private FloatReference m_yPosValue;
+    private FloatValue m_yPosValue;
     [SerializeField]
     private Animator m_animator;
+    [SerializeField]
+    private GameEvent m_playerStartedMovingEvent;
 
     private Quaternion m_leftClimbRot;
     private Quaternion m_rightClimbRot;
@@ -45,9 +47,11 @@ public class TowerClimbPlayerController : MonoBehaviour
     private Rigidbody m_rb;
 
     private Vector3 m_targetPos;
+    private Vector3 m_initPos;
 
     private float m_currentClimbSpeed;
     private float m_targetClimbSpeed;
+    private bool m_reachedMiddle;
 
     private void Awake()
     {
@@ -55,7 +59,7 @@ public class TowerClimbPlayerController : MonoBehaviour
         m_rightClimbRot = Quaternion.Euler(-20, 0, 0);
         m_playerHasControl = false;
         m_rb = GetComponent<Rigidbody>();
-        TakeControl();
+        //TakeControl();
     }
 
     private void Start()
@@ -63,6 +67,12 @@ public class TowerClimbPlayerController : MonoBehaviour
         m_targetPos = transform.position;
         m_animator = GetComponentInChildren<Animator>();
         m_currentClimbSpeed = m_baseClimbSpeed;
+        m_initPos = transform.position;
+    }
+
+    public void ReachedMiddle()
+    {
+        m_reachedMiddle = true;
     }
 
     public void ClimbFaster()
@@ -124,17 +134,39 @@ public class TowerClimbPlayerController : MonoBehaviour
             t.position = newPos;
     }
 
+    private void LateUpdate()
+    {
+        if (!m_reachedMiddle)
+        {
+            float lowestY = 999999;
+            for (int i = 0; i < m_yPosValue.Count; i++)
+            {
+                if (m_yPosValue.GetValue(i) == 0)
+                    continue;
+                if (m_yPosValue.GetValue(i) < lowestY)
+                    lowestY = m_yPosValue.GetValue(i);
+            }
+
+            if (lowestY == transform.position.y)
+            {
+                m_fallSpeed.Value = m_currentClimbSpeed;
+                if (transform.position.y > m_initPos.y + 5)
+                    m_playerStartedMovingEvent.Invoke();
+            }
+        }
+    }
+
     private void Update()
     {
+        float speedCap = (m_reachedMiddle) ? m_fallSpeed.Value : 5;
         if (!Mathf.Approximately(m_currentClimbSpeed, m_targetClimbSpeed))
             m_currentClimbSpeed = Mathf.MoveTowards(m_currentClimbSpeed, m_targetClimbSpeed, m_climbAcceleration * Time.deltaTime);
         m_targetClimbSpeed = Mathf.MoveTowards(m_targetClimbSpeed, m_baseClimbSpeed, m_climbSpeedDecrease * Time.deltaTime);
+    
+        m_currentClimbSpeed = Mathf.Clamp(m_currentClimbSpeed, 0, speedCap + 3);
+        m_targetClimbSpeed = Mathf.Clamp(m_targetClimbSpeed, 0, speedCap + 3);
 
-        m_currentClimbSpeed = Mathf.Clamp(m_currentClimbSpeed, 0, m_fallSpeed.Value + 3);
-        m_targetClimbSpeed = Mathf.Clamp(m_targetClimbSpeed, 0, m_fallSpeed.Value + 3);
 
-
-        m_yPosValue.Value = transform.position.y;
         if (m_stopMoving)
             return;
         RaycastHit hit;
@@ -168,6 +200,7 @@ public class TowerClimbPlayerController : MonoBehaviour
         if (m_playerFalling)
             transform.position += Vector3.down * m_fallSpeed.Value * Time.deltaTime;
         m_animator.SetFloat("ClimbScale", m_currentClimbSpeed);
+        m_yPosValue.Value = transform.position.y;
     }
 
     private void OnTriggerStay(Collider other)

@@ -44,7 +44,6 @@ public class TowerClimbDeath : MonoBehaviour
         Vector3 vport = m_camera.WorldToViewportPoint(transform.position);
         if (vport.y > 0.8f)
         {
-            Debug.Log("Increasing Speed");
             m_fallSpeed.Value += 1.0f * Time.deltaTime;
         }
     }
