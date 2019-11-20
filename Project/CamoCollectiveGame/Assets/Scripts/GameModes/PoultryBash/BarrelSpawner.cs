@@ -90,6 +90,7 @@ public class BarrelSpawner : MonoBehaviour
             Vector2 unitCirc = Random.insideUnitCircle * m_spawnRadius;
             Vector3 randDir = new Vector3(unitCirc.x, 0, unitCirc.y);
             barrel.transform.position = transform.position + ((m_firstBarrel)?Vector3.zero:randDir);
+            barrel.transform.rotation = Quaternion.Euler(Random.Range(0, 180), Random.Range(0, 180), Random.Range(0, 180));
             if (m_firstBarrel)
                 m_firstBarrel = false;
             GetRandomTime();
