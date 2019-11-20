@@ -2972,17 +2972,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2022227101047409394, guid: 680d4a74ba0e8704aabb5524d98150fe,
-        type: 3}
-      propertyPath: m_Name
-      value: StoryModeHerbert Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 2022227101047409404, guid: 680d4a74ba0e8704aabb5524d98150fe,
-        type: 3}
-      propertyPath: gameEvent
-      value: 
-      objectReference: {fileID: 11400000, guid: 7c4a2aac2b4ffa3409b02ae5f9f9c7ff,
-        type: 2}
     - target: {fileID: 2022227101047409395, guid: 680d4a74ba0e8704aabb5524d98150fe,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3038,6 +3027,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2022227101047409394, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_Name
+      value: StoryModeHerbert Variant
+      objectReference: {fileID: 0}
     - target: {fileID: 2022227101004371420, guid: 680d4a74ba0e8704aabb5524d98150fe,
         type: 3}
       propertyPath: m_LocalRotation.x
@@ -3083,11 +3077,65 @@ PrefabInstance:
       propertyPath: m_isInputParsingRequired
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371421, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_fontSize
+      value: 2.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371421, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371421, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_fontSizeMin
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371421, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371421, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_overflowMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371421, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 81353692679259147952b20931d49611,
+        type: 2}
+    - target: {fileID: 2022227101004371421, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 21280328814595476, guid: 81353692679259147952b20931d49611,
+        type: 2}
     - target: {fileID: 2022227101004371423, guid: 680d4a74ba0e8704aabb5524d98150fe,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2022227101004371411, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2022227101047409404, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: gameEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 7c4a2aac2b4ffa3409b02ae5f9f9c7ff,
+        type: 2}
+    - target: {fileID: 2022227101004371416, guid: 680d4a74ba0e8704aabb5524d98150fe,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 21280328814595476, guid: 81353692679259147952b20931d49611,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680d4a74ba0e8704aabb5524d98150fe, type: 3}
 --- !u!4 &2470554542655986484 stripped
