@@ -26,6 +26,8 @@ public class SelectionButton : MonoBehaviour
     private Image m_characterSpriteImage;
     [SerializeField]
     private AudioSource m_onHoverSound;
+    [SerializeField]
+    private AudioSourceValue m_onSelectSound;
     private bool m_ignoreFirstSound;
 
     private void Start()
@@ -68,6 +70,7 @@ public class SelectionButton : MonoBehaviour
 
     public void OnClick()
     {
+        m_onSelectSound.Value.Play();
         m_clickEvent.Invoke();
     }
 }

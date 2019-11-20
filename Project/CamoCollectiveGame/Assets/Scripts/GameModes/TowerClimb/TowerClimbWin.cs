@@ -64,7 +64,6 @@ public class TowerClimbWin : MonoBehaviour
         }
         else if (alive == 0)
         {
-            m_otherText.text = "Nobody wins I guess?";
             m_winnerText.gameObject.SetActive(false);
             m_otherText.gameObject.SetActive(true);
             m_wonGameEvent.Invoke();
