@@ -81,6 +81,8 @@ public class MapCamera : MonoBehaviour
 
     public void SetTarget(GameObject target)
     {
+        if (Vector3.Distance(target.transform.position, transform.position) < 5f && Quaternion.Angle(target.transform.rotation, transform.rotation) < 5f)
+            return;
         if (target != null)
         {
             m_currentTargetPos = target.transform.position;

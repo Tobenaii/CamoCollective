@@ -71,6 +71,6 @@ public class CustomStringEvent : CustomUnityEvent<string>
 }
 
 [System.Serializable]
-public class CustomAudioEvent : CustomUnityEvent<AudioClip>
+public class CustomAudioEvent : CustomUnityEvent<AudioSource>
 {
 }

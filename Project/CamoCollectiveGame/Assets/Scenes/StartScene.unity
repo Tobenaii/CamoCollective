@@ -408,6 +408,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1007309736}
+          m_MethodName: TriggerEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     unityEventJoystick:
@@ -574,6 +585,17 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1007309736}
+          m_MethodName: TriggerEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
@@ -748,6 +770,17 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 1007309736}
+          m_MethodName: TriggerEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
       m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
         Culture=neutral, PublicKeyToken=null
     unityEventJoystick:
@@ -858,6 +891,7 @@ GameObject:
   m_Component:
   - component: {fileID: 737115033}
   - component: {fileID: 737115034}
+  - component: {fileID: 737115035}
   m_Layer: 0
   m_Name: StartupEvent
   m_TagString: Untagged
@@ -894,6 +928,25 @@ MonoBehaviour:
   m_triggerOnAwake: 1
   m_gameObjectEvent: {fileID: 11400000, guid: 2c4c957b7a208c747af7c139a0372274, type: 2}
   m_gameObject: {fileID: 0}
+--- !u!114 &737115035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737115032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7dff62939339841bf26ae4e00a5b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_triggerOnAwake: 1
+  m_audioSource:
+    m_index: 0
+    useConstant: 0
+    m_constant: {fileID: 0}
+    m_variable: {fileID: 11400000, guid: 373525c3105eb5c4f87765a2defa8c73, type: 2}
+  m_audioEvent: {fileID: 11400000, guid: 1b9a85e556d3a6f46bcafc9adf8cdf97, type: 2}
 --- !u!1 &995038243
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +1027,7 @@ GameObject:
   - component: {fileID: 1007309733}
   - component: {fileID: 1007309734}
   - component: {fileID: 1007309735}
+  - component: {fileID: 1007309736}
   m_Layer: 0
   m_Name: CinematicInvoker
   m_TagString: Untagged
@@ -1022,6 +1076,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_mainController: {fileID: 11400000, guid: cd4124caeda9bf14b9381ee841503190, type: 2}
+--- !u!114 &1007309736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1007309732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a7dff62939339841bf26ae4e00a5b51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_triggerOnAwake: 0
+  m_audioSource:
+    m_index: 0
+    useConstant: 0
+    m_constant: {fileID: 0}
+    m_variable: {fileID: 11400000, guid: 24202b5be456cb54191e64ebe9eba64a, type: 2}
+  m_audioEvent: {fileID: 11400000, guid: 1b9a85e556d3a6f46bcafc9adf8cdf97, type: 2}
 --- !u!1 &1080539034
 GameObject:
   m_ObjectHideFlags: 0
@@ -1419,6 +1492,17 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1007309736}
+          m_MethodName: TriggerEvent
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0

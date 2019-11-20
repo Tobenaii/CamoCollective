@@ -2,15 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(AudioSource))]
-public class Musician : MonoBehaviour
+public class AudioMixer : MonoBehaviour
 {
     enum TransitionState {Idle, FadeOut, FadeIn}
 
     [SerializeField]
     private float m_transitionTime;
     private AudioSource m_source;
-    private AudioClip m_nextAudio;
+    private AudioSource m_nextSource;
 
     private TransitionState m_state;
     private TimeLerper m_lerper;
@@ -18,7 +17,6 @@ public class Musician : MonoBehaviour
 
     private void Start()
     {
-        m_source = GetComponent<AudioSource>();
         m_lerper = new TimeLerper();
     }
 
@@ -34,7 +32,7 @@ public class Musician : MonoBehaviour
             {
                 m_lerper.Reset();
                 m_state = TransitionState.FadeIn;
-                m_source.clip = m_nextAudio;
+                m_source = m_nextSource;
                 m_source.Play();
             }
         }
@@ -51,11 +49,13 @@ public class Musician : MonoBehaviour
         }
     }
 
-    public void SetMusic(AudioClip audio)
+    public void SetMusic(AudioSource audio)
     {
-        if (m_source.clip == null)
+        if (m_source == audio)
+            return;
+        if (m_source == null)
         {
-            m_source.clip = audio;
+            m_source = audio;
             m_source.Play();
             m_source.volume = 0;
             m_state = TransitionState.FadeIn;
@@ -63,6 +63,6 @@ public class Musician : MonoBehaviour
         }
         m_state = TransitionState.FadeOut;
         m_initVolume = m_source.volume;
-        m_nextAudio = audio;
+        m_nextSource = audio;
     }
 }
