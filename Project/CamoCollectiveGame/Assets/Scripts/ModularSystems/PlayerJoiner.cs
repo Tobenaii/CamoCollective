@@ -43,7 +43,7 @@ public class PlayerJoiner : MonoBehaviour
 
         if (m_currentPlayer.IsPlaying && m_currentPlayer.Character != null && m_characterSelectOpen.Value)
             m_currentPlayer.Character = null;
-        else if (m_controllerNum != 1)
+        else
         {
             m_currentPlayer.Character = null;
             m_currentPlayer.IsPlaying = false;
