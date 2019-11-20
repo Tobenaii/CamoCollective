@@ -72,7 +72,7 @@ public class InputMapper : MonoBehaviour
                 if (mod.button == InputAction.Button.RightJoystick)
                     unityEventJoystick.Invoke(new Vector2(state.ThumbSticks.Right.X, state.ThumbSticks.Right.Y));
                 if (mod.button == InputAction.Button.LeftJoystick)
-                    unityEventJoystick.Invoke(new Vector2(state.ThumbSticks.Left.X, state.ThumbSticks.Left.Y));
+                    unityEventJoystick.Invoke(new Vector2((state.DPad.Left == ButtonState.Pressed)?-1:(state.DPad.Right == ButtonState.Pressed)?1:state.ThumbSticks.Left.X, (state.DPad.Down == ButtonState.Pressed) ? -1 : (state.DPad.Up == ButtonState.Pressed) ? 1 : state.ThumbSticks.Left.Y));
                 if (mod.button == InputAction.Button.LeftTrigger)
                     unityEventTrigger.Invoke(state.Triggers.Left);
                 if (mod.button == InputAction.Button.RightTrigger)
