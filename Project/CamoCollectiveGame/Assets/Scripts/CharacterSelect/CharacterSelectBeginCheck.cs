@@ -30,6 +30,19 @@ public class CharacterSelectBeginCheck : MonoBehaviour
             isPlaying += Convert.ToInt32(player.IsPlaying);
     }
 
+    public void Close()
+    {
+        StartCoroutine(NextFrameCloseCheck());
+    }
+
+    private IEnumerator NextFrameCloseCheck()
+    {
+        //TODO: Fix rid of this sh*t
+        yield return null;
+        if (m_players[0].IsPlaying == false)
+            transform.GetChild(0).GetComponent<SceneLoader>().Load();
+    }
+
     public void Begin()
     {
         bool begin = true;
