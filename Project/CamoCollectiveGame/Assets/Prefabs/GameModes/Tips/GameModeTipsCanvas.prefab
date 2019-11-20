@@ -154,7 +154,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1462816624961537996}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -178,94 +178,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1462816624534061689}
     m_Modifications:
-    - target: {fileID: 8956479473461272098, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_Name
-      value: TipsPanel
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 63
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -63.899902
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474548986022, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: e731530a27b460d47b6426229d3fb60b,
-        type: 3}
-    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 87b1c770f66909f4698cf02085979141,
-        type: 3}
-    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_FontData.m_FontStyle
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_Text
-      value: 'CONTROLS
-
-        Move - Left Stick
-
-        Turn - Right Stick
-
-        Attack - A or RT
-
-        Block - B or LT'
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479473960534666, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_FontData.m_Font
-      value: 
-      objectReference: {fileID: 12800000, guid: 2a674c32ee657e44d99bb439417ec165,
-        type: 3}
-    - target: {fileID: 8956479473960534666, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_FontData.m_Alignment
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479473960534666, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_Text
-      value: '[Players] fight each other in the Royal Arena, each armed with two turkey
-        drumsticks. [Players] must knock each other out of the arena. The last one
-        standing gains a point. The first [Player] to reach three points is the winner!'
-      objectReference: {fileID: 0}
     - target: {fileID: 8956479473461272110, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -371,6 +283,94 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8956479473461272098, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_Name
+      value: TipsPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -63.899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474548986022, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: e731530a27b460d47b6426229d3fb60b,
+        type: 3}
+    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 87b1c770f66909f4698cf02085979141,
+        type: 3}
+    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474438288489, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_Text
+      value: 'CONTROLS
+
+        Move - Left Stick
+
+        Turn - Right Stick
+
+        Attack - A or RT
+
+        Block - B or LT'
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479473960534666, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: 2a674c32ee657e44d99bb439417ec165,
+        type: 3}
+    - target: {fileID: 8956479473960534666, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_FontData.m_Alignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479473960534666, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_Text
+      value: '[Players] fight each other in the Royal Arena, each armed with two turkey
+        drumsticks. [Players] must knock each other out of the arena. The last one
+        standing gains a point. The first [Player] to reach three points is the winner!'
+      objectReference: {fileID: 0}
     - target: {fileID: 8956479473027190508, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -409,7 +409,7 @@ PrefabInstance:
     - target: {fileID: 8956479473960534667, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 110
+      value: 130
       objectReference: {fileID: 0}
     - target: {fileID: 8956479473027190507, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
@@ -442,6 +442,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: 4ba6b3e5cb0ddf34bbfdc687ddc3af43,
         type: 3}
+    - target: {fileID: 8632937497387971033, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632937497387971033, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632937497387971033, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632937497387971033, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -144
+      objectReference: {fileID: 0}
+    - target: {fileID: 583336101368200619, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_Name
+      value: Controls
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61b532e376d73b347aa5131e933a3eb4, type: 3}
 --- !u!1 &1462816624961537996 stripped
