@@ -46,10 +46,6 @@ ScriptedImporter:
         texture: {instanceID: 0}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
-      - name: _DispTex
-        texture: {instanceID: 0}
-        scale: {x: 1, y: 1}
-        offset: {x: 0, y: 0}
       - name: _EmissionMap
         texture: {instanceID: 0}
         scale: {x: 1, y: 1}
@@ -60,10 +56,6 @@ ScriptedImporter:
         offset: {x: 0, y: 0}
       - name: _MetallicGlossMap
         texture: {fileID: 2800004, guid: 671fa1f47d54d1d4bb0184a24840b6ed, type: 3}
-        scale: {x: 1, y: 1}
-        offset: {x: 0, y: 0}
-      - name: _NormalMap
-        texture: {instanceID: 0}
         scale: {x: 1, y: 1}
         offset: {x: 0, y: 0}
       - name: _OcclusionMap
@@ -81,8 +73,6 @@ ScriptedImporter:
         float: 0.5
       - name: _DetailNormalMapScale
         float: 1
-      - name: _Displacement
-        float: 0.3
       - name: _DstBlend
         float: 0
       - name: _GlossMapScale
@@ -114,8 +104,6 @@ ScriptedImporter:
         color: {r: 1, g: 1, b: 1, a: 1}
       - name: _EmissionColor
         color: {r: 0, g: 0, b: 0, a: 1}
-      - name: _SpecColor
-        color: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
     texturePackingList:
     - outputName: baseColor
       alphaSource: baseColor
