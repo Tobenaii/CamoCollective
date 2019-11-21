@@ -14,7 +14,7 @@ public class StoryModeScore : MonoBehaviour
     [SerializeField]
     private GameEvent m_storyModeWonEvent;
     [SerializeField]
-    private TextMeshPro m_winnerText;
+    private GameModeWinText m_winnerText;
 
     private void Start()
     {
@@ -38,7 +38,7 @@ public class StoryModeScore : MonoBehaviour
     IEnumerator WinnerText(int winner)
     {
         m_winnerText.gameObject.SetActive(true);
-        m_winnerText.text = "PLAYER " + winner + " IS THE NEW RULER OF THYTHE!";
+        m_winnerText.SetWinner(winner);
         yield return new WaitForSeconds(5);
         m_storyModeWonEvent.Invoke();
     }

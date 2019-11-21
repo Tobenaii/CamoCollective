@@ -349,12 +349,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 052923c28f8017a4ab7542cbd3225f21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_inverse: 0
   m_gameObject: {fileID: 7119025147384148926}
   m_boolReference:
     m_index: 0
     useConstant: 0
     m_constant: 0
     m_variable: {fileID: 11400000, guid: 7900cb351db134f428fdb605917b0cd3, type: 2}
+  m_overrideBoolReference:
+    m_index: 0
+    useConstant: 1
+    m_constant: 0
+    m_variable: {fileID: 0}
 --- !u!1 &7299654288552546789
 GameObject:
   m_ObjectHideFlags: 0
@@ -441,6 +447,7 @@ GameObject:
   - component: {fileID: 7299654288684776066}
   - component: {fileID: 2286464242668830794}
   - component: {fileID: 2078250199031579170}
+  - component: {fileID: 8529571494204790884}
   m_Layer: 5
   m_Name: Player1Select
   m_TagString: Untagged
@@ -553,6 +560,20 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &8529571494204790884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7299654288684776071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0f8ea86dad33224e9f58123adf88c29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_inStoryMode: {fileID: 11400000, guid: 7900cb351db134f428fdb605917b0cd3, type: 2}
+  m_playerData: {fileID: 0}
 --- !u!1 &8102892388381662743
 GameObject:
   m_ObjectHideFlags: 0
