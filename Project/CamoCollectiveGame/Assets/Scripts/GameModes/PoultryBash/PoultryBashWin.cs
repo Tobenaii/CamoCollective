@@ -12,9 +12,13 @@ public class PoultryBashWin : MonoBehaviour
     [SerializeField]
     private BoolValue m_deadValues;
     [SerializeField]
-    private Text m_winnerText;
-    [SerializeField]
     private GameModeWinText m_gameModeWinnerText;
+    [SerializeField]
+    private GameObject m_drawText;
+    [SerializeField]
+    private GameObject m_tieBreakerText;
+    [SerializeField]
+    private GameModeWinText m_winRoundText;
     [SerializeField]
     private GameEvent m_finishedEvent;
     [SerializeField]
@@ -38,8 +42,9 @@ public class PoultryBashWin : MonoBehaviour
 
     private void Start()
     {
-        m_winnerText.gameObject.SetActive(false);
         m_gameModeWinnerText.gameObject.SetActive(false);
+        m_tieBreakerText.gameObject.SetActive(false);
+        m_drawText.gameObject.SetActive(false);
         for (int i = 0; i < m_deadValues.Count; i++)
         {
             m_deadValues.SetValue(i, false);
@@ -99,7 +104,7 @@ public class PoultryBashWin : MonoBehaviour
         m_wonGame = true;
         if (alive == 0)
         {
-            StartCoroutine(WinRound("NOBODY WINS!"));
+            StartCoroutine(WinRound(m_drawText));
             return;
         }
         m_roundNumberValue.Value++;
@@ -120,14 +125,14 @@ public class PoultryBashWin : MonoBehaviour
         if (m_roundNumberValue.Value == 3)
         {
             m_spawnTempPlayers.Value = true;
-            StartCoroutine(WinRound("Tie Breaker!"));
+            StartCoroutine(WinRound(m_tieBreakerText));
             return;
         }
 
         if (alive == 0)
-            StartCoroutine(WinRound("Nobody Wins!"));
+            StartCoroutine(WinRound(m_drawText));
         else
-            StartCoroutine(WinRound("PLAYER " + (m_winner + 1) + " WINS THE ROUND!"));
+            StartCoroutine(WinRound(m_winRoundText.gameObject, m_winRoundText));
     }
 
     private void WinGame()
@@ -137,7 +142,6 @@ public class PoultryBashWin : MonoBehaviour
             player.TempIsPlaying = false;
         m_spawnTempPlayers.Value = false;
         m_gameModeWinnerText.gameObject.SetActive(true);
-        m_winnerText.gameObject.SetActive(false);
         m_prevWinner.value = m_players[m_winner];
         m_gameModeWinnerText.SetWinner(m_winner + 1);
         foreach (PlayerData player in m_players)
@@ -146,12 +150,13 @@ public class PoultryBashWin : MonoBehaviour
         m_finishedEvent.Invoke();
     }
 
-    IEnumerator WinRound(string text)
+    IEnumerator WinRound(GameObject text, GameModeWinText winnerText = null)
     {
+        if (winnerText)
+            winnerText.SetWinner(m_winner + 1);
         m_roundEndEvent.Invoke();
-        m_winnerText.gameObject.SetActive(true);
+        text.SetActive(true);
         m_gameModeWinnerText.gameObject.SetActive(false);
-        m_winnerText.text = text;
         float timer = 3;
         while (timer > 0)
         {
