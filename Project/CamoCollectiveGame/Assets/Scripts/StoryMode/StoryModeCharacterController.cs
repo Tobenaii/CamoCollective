@@ -8,7 +8,7 @@ public class StoryModeCharacterController : MonoBehaviour
     private GameObject m_gainedPointText;
     [SerializeField]
     private GameObjectListSet m_targetListSet;
-    private Animator m_animator;
+    private Animator[] m_animators;
     private Vector3 m_firstTarget;
     private Vector3 m_target;
     private bool m_doTheShuffle;
@@ -21,7 +21,7 @@ public class StoryModeCharacterController : MonoBehaviour
         m_targetListSet.RemoveAt(0);
         m_firstTarget = new Vector3(transform.position.x, transform.position.y, m_target.z - (m_target.z - transform.position.z) / 2);
 
-        m_animator = GetComponentInChildren<Animator>();
+        m_animators = GetComponentsInChildren<Animator>();
     }
 
     private void Update()
@@ -43,8 +43,11 @@ public class StoryModeCharacterController : MonoBehaviour
         else
         {
             m_stopped = true;
-            m_animator.SetTrigger("Idle");
-            m_animator.speed = 1;
+            foreach (Animator anim in m_animators)
+            {
+                anim.SetTrigger("Idle");
+                anim.speed = 1;
+            }
         }
     }
 

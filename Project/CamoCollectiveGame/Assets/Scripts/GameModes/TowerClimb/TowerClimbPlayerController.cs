@@ -32,7 +32,7 @@ public class TowerClimbPlayerController : MonoBehaviour
     [SerializeField]
     private FloatValue m_yPosValue;
     [SerializeField]
-    private Animator m_animator;
+    private Animator[] m_animators;
     [SerializeField]
     private GameEvent m_playerStartedMovingEvent;
 
@@ -65,7 +65,7 @@ public class TowerClimbPlayerController : MonoBehaviour
     private void Start()
     {
         m_targetPos = transform.position;
-        m_animator = GetComponentInChildren<Animator>();
+        m_animators = GetComponentsInChildren<Animator>();
         m_currentClimbSpeed = m_baseClimbSpeed;
         m_initPos = transform.position;
     }
@@ -176,7 +176,8 @@ public class TowerClimbPlayerController : MonoBehaviour
         if (hitUp && hit.transform.CompareTag("StopClimber"))
         {
             m_stopMoving = true;
-            m_animator.SetFloat("ClimbScale", 0);
+            foreach (Animator anim in m_animators)
+                anim.SetFloat("ClimbScale", 0);
             return;
         }
         if (hitUp)
@@ -186,7 +187,8 @@ public class TowerClimbPlayerController : MonoBehaviour
                 m_playedHitSound = true;
                 m_onObstacleHitSound.Play();
             }
-            m_animator.SetFloat("ClimbScale", 0);
+            foreach (Animator anim in m_animators)
+                anim.SetFloat("ClimbScale", 0);
             transform.position = new Vector3(transform.position.x, hit.point.y - 1.0f, transform.position.z);
         }
 
@@ -199,7 +201,8 @@ public class TowerClimbPlayerController : MonoBehaviour
         transform.position += Vector3.up * m_currentClimbSpeed * Time.deltaTime;
         if (m_playerFalling)
             transform.position += Vector3.down * m_fallSpeed.Value * Time.deltaTime;
-        m_animator.SetFloat("ClimbScale", m_currentClimbSpeed);
+        foreach (Animator anim in m_animators)
+            anim.SetFloat("ClimbScale", m_currentClimbSpeed);
         m_yPosValue.Value = transform.position.y;
     }
 
