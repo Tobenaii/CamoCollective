@@ -19,7 +19,8 @@ public class PoultryBasher : MonoBehaviour
     private float m_punchEndTime;
     [SerializeField]
     private float m_punchQueueTime;
-
+    [SerializeField]
+    private float m_punchPreezeTime;
 
     [Header("Controller Vibration")]
     [SerializeField]
@@ -56,11 +57,30 @@ public class PoultryBasher : MonoBehaviour
 
     [Header("Particles")]
     [SerializeField]
-    private ParticleSystemPool m_deathParticleSystemPool;
-    [SerializeField]
     private Vector3 m_rotateTowards;
     [SerializeField]
-    private ParticleSystem m_speedParticleSystem;
+    private ParticleSystemPool m_runParticlePool;
+    [SerializeField]
+    private Transform m_sparksTransform;
+    [SerializeField]
+    private ParticleSystemPool m_sparksParticlePool;
+    [SerializeField]
+    private ParticleSystem m_onDeathParticles;
+
+    private ParticleSystem[] m_punchParticles;
+
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioSource m_onHitSound;
+    [SerializeField]
+    private AudioSource m_onHitSound2;
+    [SerializeField]
+    private AudioSource m_onBlockSound;
+    [SerializeField]
+    private AudioSource m_onSwingSound;
+    [SerializeField]
+    private AudioSource m_onEliminatedSound;
+
 
     [Header("Data")]
     [SerializeField]
@@ -75,6 +95,10 @@ public class PoultryBasher : MonoBehaviour
     private GameObjectListSet m_gameObjectListSet;
     [SerializeField]
     private GameObject m_playerIndicator;
+    [SerializeField]
+    private GameEvent m_cameraShakeEvent;
+    [SerializeField]
+    private GameEvent m_onPlayerDiedEvent;
 
     private float m_currentBlockKnockbackScale;
 
@@ -106,6 +130,11 @@ public class PoultryBasher : MonoBehaviour
     private Vector3 m_initShieldScale;
     private bool m_shieldBroke;
 
+    private ParticleSystem m_leftSwipeParticles;
+    private ParticleSystem m_rightSwipeParticles;
+
+    private float m_runParticleTimer;
+
     private void Start()
     {
         m_shieldHealth = 1;
@@ -130,7 +159,15 @@ public class PoultryBasher : MonoBehaviour
             m_rbRagdolls[i].detectCollisions = false;
             m_rbRagdolls[i].isKinematic = true;
         }
+        m_punchParticles = gameObject.GetComponentsInChildren<ParticleSystem>();
 
+        foreach (ParticleSystem ps in m_punchParticles)
+        {
+            if (ps.transform.CompareTag("LeftSwipe"))
+                m_leftSwipeParticles = ps;
+            else if (ps.transform.CompareTag("RightSwipe"))
+                m_rightSwipeParticles = ps;
+        }
         //Instantiate(m_playerData.Character.PoultryBashCharacter, transform);
     }
 
@@ -151,6 +188,18 @@ public class PoultryBasher : MonoBehaviour
             m_shieldHealth = Mathf.Clamp(m_shieldHealth, 0, 1);
         }
         m_shield.transform.localScale = m_initShieldScale * m_shieldHealth;
+        if (m_controller.Velocity.sqrMagnitude > 20)
+        {
+            m_runParticleTimer -= Time.deltaTime;
+            if (m_runParticleTimer <= 0)
+            {
+                m_runParticleTimer = 0.25f;
+                ParticleSystem ps = m_runParticlePool.GetObject();
+                ps.transform.position = transform.position;
+                ps.transform.rotation = transform.rotation;
+                ps.Play();
+            }
+        }
     }
 
 
@@ -193,6 +242,9 @@ public class PoultryBasher : MonoBehaviour
 
     private void OnDeath()
     {
+        //m_onDeathParticles?.Play();
+        m_onPlayerDiedEvent.Invoke();
+        m_onEliminatedSound.Play();
         m_deadValue.Value = true;
         m_input.DisableInput();
         for (int i = 1; i < m_rbRagdolls.Length; i++)
@@ -252,6 +304,27 @@ public class PoultryBasher : MonoBehaviour
         m_speedScale.Value = 1;
     }
 
+    public void Freeze(float seconds, Vector3 newVelocity)
+    {
+        StartCoroutine(FreezeForSeconds(seconds, newVelocity));
+    }
+
+    private IEnumerator FreezeForSeconds(float seconds, Vector3 newVelocity)
+    {
+        float prevSpeed = m_animator.speed;
+        m_animator.speed = prevSpeed * 0.25f;
+
+        float timer = seconds;
+        while (timer > 0)
+        {
+            timer -= Time.deltaTime;
+            yield return null;
+        }
+        m_animator.speed = prevSpeed;
+        if (newVelocity != Vector3.zero)
+            m_rb.velocity = newVelocity;
+    }
+
     private IEnumerator ResetKnockbackScale(float seconds)
     {
         float timer = seconds;
@@ -274,6 +347,11 @@ public class PoultryBasher : MonoBehaviour
         if (!m_inRing)
             return;
         m_animator.SetTrigger(anim);
+        m_onSwingSound.Play();
+        if (m_leftPunch)
+            m_leftSwipeParticles.Play();
+        else
+            m_rightSwipeParticles.Play();
         Debug.Log(anim);
         StopCoroutine(PunchHitTimer());
         StartCoroutine(PunchHitTimer());
@@ -308,6 +386,10 @@ public class PoultryBasher : MonoBehaviour
     public void OnPunchEnd()
     {
         m_isPunching = false;
+        if (m_leftPunch)
+            m_leftSwipeParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
+        else
+            m_rightSwipeParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
         m_leftPunch = !m_leftPunch;
         if (m_punchQueued && m_punchQueueResetTimer > 0)
             AlternatePunch(1);
@@ -356,13 +438,28 @@ public class PoultryBasher : MonoBehaviour
             if (pb.m_isBlocking)
             {
                 pb.m_shieldHealth -= m_shieldBreakPercentOnHit;
-                rb.velocity = (pb.transform.forward * pb.m_blockKnockbackForce) + (Vector3.up * pb.m_blockKnockupForce);
+                m_rb.velocity = (pb.transform.forward * pb.m_blockKnockbackForce) + (Vector3.up * pb.m_blockKnockupForce);
+                pb.m_onBlockSound.Play();
+                ParticleSystem ps = pb.m_sparksParticlePool.GetObject();
+                ps.transform.SetParent(pb.transform);
+                ps.transform.localPosition = pb.m_sparksTransform.localPosition;
+                ps.Play();
+                return;
             }
             rb.velocity = Vector3.zero;
             float dot = Vector3.Dot(transform.forward, rb.transform.forward);
             float knockbackScale = (dot < -0.15f) ? pb.m_currentBlockKnockbackScale : 1;
-            rb.velocity = (transform.forward * m_knockback * m_knockbackScale * knockbackScale) + (Vector3.up * m_knockup);
+            Vector3 newVelocity = (transform.forward * m_knockback * m_knockbackScale * knockbackScale) + (Vector3.up * m_knockup);
             hit.transform.GetComponent<InputMapper>().Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
+            rb.velocity = newVelocity;
+            m_cameraShakeEvent.Invoke();
+            int hitSound = Random.Range(0, 2);
+            if (hitSound == 0)
+                m_onHitSound.Play();
+            else
+                m_onHitSound2.Play();
+            //Freeze(m_punchPreezeTime, Vector3.zero);
+            //pb.Freeze(m_punchPreezeTime, newVelocity);
         }
     }
 

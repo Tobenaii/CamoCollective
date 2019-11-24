@@ -11,7 +11,9 @@ public class TowerClimbWin : MonoBehaviour
     [SerializeField]
     private GameEvent m_wonGameEvent;
     [SerializeField]
-    private Text m_winnerText;
+    private Text m_otherText;
+    [SerializeField]
+    private GameModeWinText m_winnerText;
     [SerializeField]
     private FloatValue m_speedScaleValue;
 
@@ -19,11 +21,13 @@ public class TowerClimbWin : MonoBehaviour
     [SerializeField]
     private BoolValue m_isDeadValues;
     [SerializeField]
-    private FloatValue m_rulesScores;
+    private PlayerDataReference m_prevWinner;
     private bool m_hasWon;
 
     private void Start()
     {
+        m_winnerText.gameObject.SetActive(false);
+        m_otherText.gameObject.SetActive(false);
         for (int i = 0; i < 4; i++)
             m_isDeadValues.SetValue(i, false);
     }
@@ -50,17 +54,18 @@ public class TowerClimbWin : MonoBehaviour
         }
         if (alive == 1)
         {
-            m_winnerText.text = "PLAYER " + (winner + 1) + " WINS!";
             m_winnerText.gameObject.SetActive(true);
+            m_winnerText.SetWinner(winner + 1);
+            m_otherText.gameObject.SetActive(false);
             
             m_wonGameEvent.Invoke();
             m_hasWon = true;
-
+            m_prevWinner.value = m_playerData[winner];
         }
         else if (alive == 0)
         {
-            m_winnerText.text = "Nobody wins I guess?";
-            m_winnerText.gameObject.SetActive(true);
+            m_winnerText.gameObject.SetActive(false);
+            m_otherText.gameObject.SetActive(true);
             m_wonGameEvent.Invoke();
             m_hasWon = true;
         }

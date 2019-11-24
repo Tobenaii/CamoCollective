@@ -15,6 +15,10 @@ public class SceneLoader : MonoBehaviour
     [SerializeField]
     private List<SceneValue> m_scenesToLoad;
     [SerializeField]
+    private BoolReference m_override;
+    [SerializeField]
+    private List<SceneValue> m_scenesToLoadOverride;
+    [SerializeField]
     private GameEvent m_loadedEvent;
 
     private int m_unloadAmmount;
@@ -44,17 +48,17 @@ public class SceneLoader : MonoBehaviour
             UnloadScenes();
     }
 
-    private void LoadScenes()
+    private void LoadScenes(List<SceneValue> scenes)
     {
-        if (m_scenesToLoad.Count == 0)
+        if (scenes.Count == 0)
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
             SceneManager.sceneUnloaded -= OnSceneUnloaded;
             m_loadedEvent?.Invoke();
             return;
         }
-        m_loadAmmount = m_scenesToLoad.Count;
-        foreach (SceneValue scene in m_scenesToLoad)
+        m_loadAmmount = scenes.Count;
+        foreach (SceneValue scene in scenes)
         {
             if (!m_unloadAllScenes && SceneManager.GetSceneByName(scene).IsValid())
             {
@@ -80,7 +84,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (m_scenesToUnload.Count == 0)
         {
-            LoadScenes();
+            LoadScenes((m_override.Value)?m_scenesToLoadOverride:m_scenesToLoad);
             return;
         }
         m_unloadAmmount = m_scenesToUnload.Count;
@@ -95,7 +99,7 @@ public class SceneLoader : MonoBehaviour
         m_unloadAmmount = SceneManager.sceneCount - 1;
         if (m_unloadAmmount == 0)
         {
-            LoadScenes();
+            LoadScenes((m_override.Value) ? m_scenesToLoadOverride : m_scenesToLoad);
             return;
         }
         for (int i = 0; i < m_unloadAmmount + 1; i++)
@@ -115,6 +119,6 @@ public class SceneLoader : MonoBehaviour
     {
         m_unloadedAmmount++;
         if (m_unloadedAmmount == m_unloadAmmount)
-            LoadScenes();
+            LoadScenes((m_override.Value) ? m_scenesToLoadOverride : m_scenesToLoad);
     }
 }

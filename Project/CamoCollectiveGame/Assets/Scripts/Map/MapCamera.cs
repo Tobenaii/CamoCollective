@@ -12,15 +12,19 @@ public class MapCamera : MonoBehaviour
     private float m_bezierTime;
     [SerializeField]
     private GameEvent m_cameraReachedTargetEvent;
-    private GameObject m_currentTarget;
+    private Vector3 m_currentTargetPos;
+    private Quaternion m_currentTargetRot;
     private bool m_atTarget;
     private Vector3 m_velocity;
-    private Vector3 m_rotateVelocity;
     private Vector3 m_targetRot;
 
     private Vector3 m_initPos;
     private TimeLerper m_lerper = new TimeLerper();
     private Vector3 m_prevPos;
+
+    private float m_rotateVelocityX;
+    private float m_rotateVelocityY;
+    private float m_rotateVelocityZ;
 
     private bool m_triggeredEvent;
 
@@ -36,12 +40,12 @@ public class MapCamera : MonoBehaviour
 
     private void Update()
     {
-        if (m_atTarget || m_currentTarget == null)
+        if (m_atTarget)
             return;
         m_prevPos = transform.position;
-        Vector3 dir = m_currentTarget.transform.position - m_initPos;
+        Vector3 dir = m_currentTargetPos - m_initPos;
         Vector3 perp = new Vector3(-dir.z, dir.y, dir.x);
-        Vector3 targetPos = m_lerper.BezierCurve(m_initPos, (m_initPos + dir / 2) + perp / 2, m_currentTarget.transform.position, m_bezierTime);
+        Vector3 targetPos = m_lerper.BezierCurve(m_initPos, (m_initPos + dir / 2) + perp / 2, m_currentTargetPos, m_bezierTime);
 
         transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref m_velocity, m_panTime);
 
@@ -49,34 +53,46 @@ public class MapCamera : MonoBehaviour
         if (Vector3.Distance(transform.position, targetPos) < 10.0f)
             targetRot = Quaternion.LookRotation(transform.position - m_prevPos, Vector3.up);
         else
-            targetRot = m_currentTarget.transform.rotation;
+            targetRot = m_currentTargetRot;
 
         Quaternion prevRot = transform.rotation;
         transform.forward = targetPos - transform.position;
         Quaternion newRot = transform.rotation;
         transform.rotation = prevRot;
         //transform.rotation = Quaternion.Slerp(transform.rotation, targetRot, m_rotateTime * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(Vector3.SmoothDamp(transform.rotation.eulerAngles, m_currentTarget.transform.rotation.eulerAngles,
-                                                                                ref m_rotateVelocity, m_rotateTime));
+        float xAngle = Mathf.SmoothDampAngle(transform.rotation.eulerAngles.x, m_currentTargetRot.eulerAngles.x,
+                                                                                ref m_rotateVelocityX, m_rotateTime);
+        float yAngle = Mathf.SmoothDampAngle(transform.rotation.eulerAngles.y, m_currentTargetRot.eulerAngles.y,
+                                                                                ref m_rotateVelocityY, m_rotateTime);
+        float zAngle = Mathf.SmoothDampAngle(transform.rotation.eulerAngles.z, m_currentTargetRot.eulerAngles.z,
+                                                                                ref m_rotateVelocityZ, m_rotateTime);
 
-        if (!m_triggeredEvent && Vector3.Distance(transform.position, m_currentTarget.transform.position) < 0.5f)
+        transform.rotation = Quaternion.Euler(new Vector3(xAngle, yAngle, zAngle));
+
+        if (!m_triggeredEvent && Vector3.Distance(transform.position, m_currentTargetPos) < 0.5f)
         {
             m_triggeredEvent = true;
             m_cameraReachedTargetEvent.Invoke();
         }
 
-        if (Vector3.Distance(transform.position, m_currentTarget.transform.position) < 0.1f && transform.rotation == m_currentTarget.transform.rotation)
-        {
-            transform.position = targetPos;
+        if (Vector3.Distance(transform.position, m_currentTargetPos) < 0.1f && transform.rotation == m_currentTargetRot)
             m_atTarget = true;
-        }
     }
 
     public void SetTarget(GameObject target)
     {
+        if (target != null)
+        {
+            if (Vector3.Distance(target.transform.position, transform.position) < 5f && Quaternion.Angle(target.transform.rotation, transform.rotation) < 5f)
+                return;
+            m_currentTargetPos = target.transform.position;
+            m_currentTargetRot = target.transform.rotation;
+            m_atTarget = false;
+        }
+        else
+            m_atTarget = true;
+
         m_triggeredEvent = false;
-        m_currentTarget = target;
-        m_atTarget = false;
         m_initPos = transform.position;
         m_lerper.Reset();
     }

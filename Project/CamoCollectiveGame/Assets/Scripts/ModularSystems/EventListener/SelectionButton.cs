@@ -24,6 +24,11 @@ public class SelectionButton : MonoBehaviour
     private bool m_invoked;
     [SerializeField]
     private Image m_characterSpriteImage;
+    [SerializeField]
+    private AudioSource m_onHoverSound;
+    [SerializeField]
+    private AudioSourceValue m_onSelectSound;
+    private bool m_ignoreFirstSound;
 
     private void Start()
     {
@@ -44,6 +49,10 @@ public class SelectionButton : MonoBehaviour
                 m_invoked = true;
                 m_hoverEvent.Invoke(m_targetGameObject);
                 m_currentSelectedValue.Value = m_index;
+                if (!m_ignoreFirstSound)
+                    m_onHoverSound.Play();
+                else
+                    m_ignoreFirstSound = false;
             }
         }
         else if (EventSystem.current.currentSelectedGameObject != gameObject && m_invoked)
@@ -56,10 +65,12 @@ public class SelectionButton : MonoBehaviour
     public void SetHover()
     {
         EventSystem.current.SetSelectedGameObject(gameObject);
+        m_ignoreFirstSound = true;
     }
 
     public void OnClick()
     {
+        m_onSelectSound.Value.Play();
         m_clickEvent.Invoke();
     }
 }

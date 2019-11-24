@@ -146,6 +146,31 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!225 &2282981175283881659
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462816624961537996}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &7650580055539686321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1462816624961537996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af0e2fd7a205c14aba19bf1a5901517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_fadeInSpeed: 2
 --- !u!1001 &7496023159127333358
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -153,11 +178,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1462816624534061689}
     m_Modifications:
-    - target: {fileID: 8956479473461272098, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_Name
-      value: TipsPanel
-      objectReference: {fileID: 0}
     - target: {fileID: 8956479473461272110, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -263,6 +283,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 8956479473461272098, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_Name
+      value: TipsPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 8956479474834605757, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -292,46 +317,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -63.899902
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474548986023, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 340
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474548986023, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 1200
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474548986023, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 160
-      objectReference: {fileID: 0}
-    - target: {fileID: 3125874520389063673, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479474438288490, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -160
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479473960534667, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 110
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479473027190508, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 380
-      objectReference: {fileID: 0}
-    - target: {fileID: 8956479473027190508, guid: 61b532e376d73b347aa5131e933a3eb4,
-        type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 8956479474548986022, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
@@ -386,6 +371,46 @@ PrefabInstance:
         drumsticks. [Players] must knock each other out of the arena. The last one
         standing gains a point. The first [Player] to reach three points is the winner!'
       objectReference: {fileID: 0}
+    - target: {fileID: 8956479473027190508, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 380
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479473027190508, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474548986023, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 340
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474548986023, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474548986023, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 3125874520389063673, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479474438288490, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -160
+      objectReference: {fileID: 0}
+    - target: {fileID: 8956479473960534667, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 130
+      objectReference: {fileID: 0}
     - target: {fileID: 8956479473027190507, guid: 61b532e376d73b347aa5131e933a3eb4,
         type: 3}
       propertyPath: m_Text
@@ -417,6 +442,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 12800000, guid: 4ba6b3e5cb0ddf34bbfdc687ddc3af43,
         type: 3}
+    - target: {fileID: 8632937497387971033, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632937497387971033, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632937497387971033, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 8632937497387971033, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -144
+      objectReference: {fileID: 0}
+    - target: {fileID: 583336101368200619, guid: 61b532e376d73b347aa5131e933a3eb4,
+        type: 3}
+      propertyPath: m_Name
+      value: Controls
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61b532e376d73b347aa5131e933a3eb4, type: 3}
 --- !u!1 &1462816624961537996 stripped

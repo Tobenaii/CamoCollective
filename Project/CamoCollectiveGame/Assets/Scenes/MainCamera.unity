@@ -8,8 +8,9 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 3abf72cc827069941a035819ab15c9d6
+  m_OcclusionCullingData: {fileID: 36300000, guid: 8b4985bd93b3f3340b761d8a4b146332,
+    type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -38,7 +39,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.28331804, g: 0.1518619, b: 0.1397635, a: 1}
+  m_IndirectSpecularColor: {r: 0.16851187, g: 0.27717173, b: 0.2965269, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -136,6 +137,8 @@ GameObject:
   - component: {fileID: 1080172195}
   - component: {fileID: 1080172197}
   - component: {fileID: 1080172198}
+  - component: {fileID: 1080172194}
+  - component: {fileID: 1080172196}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -449,6 +452,36 @@ MonoBehaviour:
     m_RotationOrder: 4
   m_gameObjectListSet: {fileID: 11400000, guid: 1fa4373eacc98754a807c58314adab96,
     type: 2}
+  m_shakeTime: 10
+--- !u!114 &1080172194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080172181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59e4d4ade0faafe49b2fe2d55c4c2fa4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: cb421be3aebccdf4292ec50968e2b051, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1080172193}
+        m_MethodName: Shake
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!114 &1080172195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -478,6 +511,18 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1080172196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080172181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcd9cbd45ecca4d4e954b512cca6d445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1080172197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,7 +574,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2066496179}
   - component: {fileID: 2066496181}
-  - component: {fileID: 2066496180}
   m_Layer: 0
   m_Name: BarrelShadowCamera
   m_TagString: Untagged
@@ -551,14 +595,6 @@ Transform:
   m_Father: {fileID: 1080172184}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!81 &2066496180
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2066496178}
-  m_Enabled: 1
 --- !u!20 &2066496181
 Camera:
   m_ObjectHideFlags: 0

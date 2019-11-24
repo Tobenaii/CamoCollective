@@ -11,6 +11,10 @@ public class TowerClimbDeath : MonoBehaviour
     [SerializeField]
     private ParticleSystemPool m_particleSystemPool;
 
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioSource m_onDeathSound;
+
     [Header("Data")]
     [SerializeField]
     private BoolReference m_isDeadValue;
@@ -40,16 +44,18 @@ public class TowerClimbDeath : MonoBehaviour
         Vector3 vport = m_camera.WorldToViewportPoint(transform.position);
         if (vport.y > 0.8f)
         {
-            Debug.Log("Increasing Speed");
             m_fallSpeed.Value += 1.0f * Time.deltaTime;
         }
     }
 
     private void OnDeath()
     {
+        m_onDeathSound.transform.SetParent(null);
+        m_onDeathSound.Play();
         m_isDeadValue.Value = true;
         ParticleSystem ps = m_particleSystemPool.GetObject();
         ps.transform.position = transform.position;
+        ps.transform.localScale = new Vector3(4, 4, 4);
         ps.Play();
         Destroy(gameObject);
     }

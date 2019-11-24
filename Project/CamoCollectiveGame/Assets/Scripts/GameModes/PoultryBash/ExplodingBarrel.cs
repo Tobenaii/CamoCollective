@@ -13,9 +13,7 @@ public class ExplodingBarrel : MonoBehaviour
     [SerializeField]
     private GameObjectListSet m_playerGameObjects;
     [SerializeField]
-    private GameObjectPool m_barrelPool;
-    [SerializeField]
-    private GameObjectPool m_shadowPool;
+    private GameObject m_shadowObject;
     [SerializeField]
     private float m_shadowYPos;
     [SerializeField]
@@ -63,7 +61,7 @@ public class ExplodingBarrel : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
 
-        m_shadow = m_shadowPool.GetObject();
+        m_shadow = Instantiate(m_shadowObject);
         m_shadow.transform.SetParent(transform.parent);
         m_shadow.transform.position = new Vector3(transform.position.x, m_shadowYPos, transform.position.z);
         m_shadow.transform.localScale = Vector3.zero;
@@ -120,7 +118,7 @@ public class ExplodingBarrel : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         //m_playerGameObjects.Remove(m_shadow);
-        m_shadowPool.DestroyObject(m_shadow);
+        Destroy(m_shadow);
     }
 
     public void OnNewRound()

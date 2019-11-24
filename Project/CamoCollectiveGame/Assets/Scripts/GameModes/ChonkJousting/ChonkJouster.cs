@@ -37,7 +37,13 @@ public class ChonkJouster : MonoBehaviour
 
     [Header("Particles")]
     [SerializeField]
+    private Transform m_sparksTransform;
+    [SerializeField]
+    private ParticleSystemPool m_sparksParticlePool;
+    [SerializeField]
     private ParticleSystemPool m_gainPointsParticles;
+    [SerializeField]
+    private ParticleSystem m_smokeParticles;
     private List<ParticleSystem> m_activeParticles = new List<ParticleSystem>();
 
     [Header("Death")]
@@ -53,6 +59,12 @@ public class ChonkJouster : MonoBehaviour
     [Header("Mud")]
     [SerializeField]
     private float m_speedScaleInMud;
+
+    [Header("Sounds")]
+    [SerializeField]
+    private AudioSource m_onBlockSound;
+    [SerializeField]
+    private AudioSource m_onEliminatedSound;
 
     [Header("Data")]
     [SerializeField]
@@ -73,6 +85,8 @@ public class ChonkJouster : MonoBehaviour
     private BoolReference m_isDeadValue;
     [SerializeField]
     private BoolReference m_fullyDeadValue;
+    [SerializeField]
+    private GameEvent m_onPlayerDiedEvent;
 
     private Rigidbody[] m_rbRagdolls;
     private Collider[] m_colRagdolls;
@@ -174,6 +188,11 @@ public class ChonkJouster : MonoBehaviour
         //}
         if (m_attackFrequencyTimer > 0)
             m_attackFrequencyTimer -= Time.deltaTime;
+
+        if (m_controller.Velocity.magnitude > 15)
+            m_smokeParticles.Play();
+        else
+            m_smokeParticles.Stop(true, ParticleSystemStopBehavior.StopEmitting);
     }
 
     private void ToggleColliders(bool enable)
@@ -194,9 +213,13 @@ public class ChonkJouster : MonoBehaviour
         //Did hit shield
         if (dot < shield)
         {
-            Debug.Log("HIT!");
             jouster.Knockback(transform.forward * m_shieldKnockbackForce);
             Knockback(transform.forward * -1 * m_shieldKnockbackForce);
+            jouster.m_onBlockSound.Play();
+            ParticleSystem s = jouster.m_sparksParticlePool.GetObject();
+            s.transform.SetParent(jouster.transform);
+            s.transform.localPosition = m_sparksTransform.localPosition;
+            s.Play();
         }
         //Didn't hit shield
         else
@@ -219,6 +242,9 @@ public class ChonkJouster : MonoBehaviour
         m_input.Vibrate(m_vibrationTime, m_vibrationAmount, m_vibrationAmount);
 
         m_livesValue.Value--;
+
+        m_onEliminatedSound.Play();
+
         if (m_livesValue.Value <= 0)
             m_fullyDeadValue.Value = true;
         Die();
@@ -239,6 +265,7 @@ public class ChonkJouster : MonoBehaviour
 
     public void Die()
     {
+        m_onPlayerDiedEvent.Invoke();
         //Disable input and start fading away
         m_controller.enabled = false;
         m_respawnTimer.Value = m_respawnTime;
@@ -269,6 +296,7 @@ public class ChonkJouster : MonoBehaviour
 
     public void Respawn()
     {
+        m_chonkSpeedScale.Value = 1;
         m_rb.isKinematic = true;
         m_respawnEvent.Invoke(gameObject);
         m_isRespawning = false;

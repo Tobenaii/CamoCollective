@@ -39,7 +39,8 @@ public class CustomBaseInput : BaseInput
 
         prevState = state;
         state = GamePad.GetState((PlayerIndex)m_controllerNumber.Value - 1, GamePadDeadZone.Circular);
-        m_cursorPos += new Vector2(state.ThumbSticks.Left.X * Screen.width, state.ThumbSticks.Left.Y * Screen.width) * m_cursorMoveSpeed * Time.deltaTime;
+        Vector2 dir = new Vector2(((state.DPad.Left == ButtonState.Pressed) ? -1 : ((state.DPad.Right == ButtonState.Pressed) ? 1 : state.ThumbSticks.Left.X)), ((state.DPad.Down == ButtonState.Pressed) ? -1 : ((state.DPad.Up == ButtonState.Pressed) ? 1 : state.ThumbSticks.Left.Y)));
+        m_cursorPos += dir.normalized * Screen.width * m_cursorMoveSpeed * Time.deltaTime;
         if (m_cursorPos.x < 0)
             m_cursorPos.x = 0;
         if (m_cursorPos.y < 0)
@@ -61,7 +62,7 @@ public class CustomBaseInput : BaseInput
                 if (inputs[1] == "X")
                     return state.ThumbSticks.Left.X != 0?state.ThumbSticks.Left.X:state.DPad.Left == ButtonState.Pressed?-1:state.DPad.Right == ButtonState.Pressed?1:0;
                 else if (inputs[1] == "Y")
-                    return state.ThumbSticks.Left.Y;
+                    return state.ThumbSticks.Left.Y != 0?state.ThumbSticks.Left.Y:state.DPad.Down == ButtonState.Pressed?-1:state.DPad.Up == ButtonState.Pressed?1:0;
                 break;
             case "RightJoystick":
                 if (inputs[1] == "X")

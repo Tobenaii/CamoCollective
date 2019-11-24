@@ -10,13 +10,13 @@ public class PauseGame : MonoBehaviour
     [SerializeField]
     private GameEvent m_gameResumedEvent;
 
-    private void Awake()
+    private void Start()
     {
         Time.timeScale = 0;
         m_gamePausedEvent?.Invoke();
     }
 
-    private void OnDisable()
+    private void OnDestroy()
     {
         Time.timeScale = 1;
         m_gameResumedEvent?.Invoke();

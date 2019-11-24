@@ -21,6 +21,8 @@ public class DynamicPlayerCamera : MonoBehaviour
     [Header("Data")]
     [SerializeField]
     private GameObjectListSet m_gameObjectListSet;
+    [SerializeField]
+    private float m_shakeTime;
 
     private Vector3 m_basePos;
     private float m_baseDist;
@@ -28,6 +30,8 @@ public class DynamicPlayerCamera : MonoBehaviour
     private Vector3 m_midPos;
 
     private Vector3 m_zoomVelocity;
+
+    private float m_currentShakeScale;
 
     public void StartDynamicCamera()
     {
@@ -37,6 +41,11 @@ public class DynamicPlayerCamera : MonoBehaviour
     public void StopDynamicCamera()
     {
         m_cameraStarted = false;
+    }
+
+    public void Shake()
+    {
+        m_currentShakeScale = 1 / m_shakeTime;
     }
 
     private void FixedUpdate()
@@ -56,6 +65,17 @@ public class DynamicPlayerCamera : MonoBehaviour
         float newNormSize = m_zoomCurve.Evaluate(normSize);
         float newSize = Mathf.Lerp(m_minimumZoom, m_maximumZoom, newNormSize);
         transform.position = Vector3.SmoothDamp(transform.position, (m_midPos + m_offset) - transform.forward * newSize * m_zoomBufferSpace, ref m_zoomVelocity, m_zoomSpeed);
+    }
+
+    private void LateUpdate()
+    {
+        //Vector3 offset = transform.up * Mathf.Sin(Mathf.Lerp(0, m_shakeTime, m_currentShakeScale));
+        //m_currentShakeScale -= Time.deltaTime;
+        //if (m_currentShakeScale > 0)
+        //    m_currentShakeScale -= Time.deltaTime;
+        //else
+        //    m_currentShakeScale = 0;
+        //transform.position += offset;
     }
 
     private void OnDrawGizmos()

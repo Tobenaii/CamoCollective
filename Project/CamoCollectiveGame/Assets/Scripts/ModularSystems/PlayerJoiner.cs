@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerJoiner : MonoBehaviour
 {
     [SerializeField]
+    private int m_controllerNum;
+    [SerializeField]
+    private FloatValue m_mainController;
+    [SerializeField]
     private List<PlayerData> m_players;
     [SerializeField]
     private List<CharacterData> m_characters;
@@ -14,6 +18,8 @@ public class PlayerJoiner : MonoBehaviour
     private BoolValue m_characterSelectOpen;
     [SerializeField]
     private FloatReference m_currentPlayerIndex;
+    [SerializeField]
+    private BoolValue m_storyModeIsPlaying;
 
     private PlayerData m_currentPlayer;
 
@@ -21,6 +27,8 @@ public class PlayerJoiner : MonoBehaviour
     {
         if (m_currentPlayerIndex.Value != -1)
             m_currentPlayer = m_players[(int)m_currentPlayerIndex.Value];
+        if (m_controllerNum == m_mainController.Value)
+            Join(m_controllerNum);
     }
 
     public void Disconnected()
@@ -30,7 +38,8 @@ public class PlayerJoiner : MonoBehaviour
 
     public void Leave()
     {
-        Debug.Log(gameObject.name);
+        if (m_currentPlayer == null || (!m_characterSelectOpen.Value && m_storyModeIsPlaying.Value))
+            return;
 
         if (m_currentPlayer.IsPlaying && m_currentPlayer.Character != null && m_characterSelectOpen.Value)
             m_currentPlayer.Character = null;
@@ -44,7 +53,6 @@ public class PlayerJoiner : MonoBehaviour
 
     public void Join(int controllerNum)
     {
-        Debug.Log(gameObject.name);
         if (m_currentPlayerIndex.Value != -1 && m_players[(int)m_currentPlayerIndex.Value].IsPlaying)
             return;
         int index = 0;
@@ -61,16 +69,16 @@ public class PlayerJoiner : MonoBehaviour
             }
             index++;
         }
-        if (!m_characterSelectOpen.Value)
-        {
-            foreach (CharacterData character in m_characters)
-            {
-                if (!character.inUse)
-                {
-                    m_currentPlayer.Character = character;
-                    break;
-                }
-            }
-        }
+        //if (!m_characterSelectOpen.Value)
+        //{
+        //    foreach (CharacterData character in m_characters)
+        //    {
+        //        if (!character.inUse)
+        //        {
+        //            m_currentPlayer.Character = character;
+        //            break;
+        //        }
+        //    }
+        //}
     }
 }
