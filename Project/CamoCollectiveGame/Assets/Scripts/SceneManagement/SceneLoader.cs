@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class SceneLoader : MonoBehaviour
 {
     [SerializeField]
+    private BoolValue m_isInputDisabled;
+    [SerializeField]
     private bool m_runOnAwake;
     [SerializeField]
     private bool m_unloadAllScenes;
@@ -39,6 +41,7 @@ public class SceneLoader : MonoBehaviour
 
     public void Load()
     {
+        m_isInputDisabled.Value = true;
         SceneManager.sceneLoaded += OnSceneLoaded;
         SceneManager.sceneUnloaded += OnSceneUnloaded;
         m_unloadedAmmount = 0;
@@ -74,6 +77,7 @@ public class SceneLoader : MonoBehaviour
     {
         if (m_loadedAmmount == m_loadAmmount)
         {
+            m_isInputDisabled.Value = false;
             SceneManager.sceneLoaded -= OnSceneLoaded;
             SceneManager.sceneUnloaded -= OnSceneUnloaded;
             m_loadedEvent?.Invoke();

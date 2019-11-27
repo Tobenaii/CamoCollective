@@ -8,6 +8,8 @@ using XInputDotNetPure;
 public class CustomBaseInput : BaseInput
 {
     [SerializeField]
+    private BoolValue m_isInputDisabled;
+    [SerializeField]
     private PlayerData m_playerData;
     [SerializeField]
     private FloatReference m_controllerNumber;
@@ -29,6 +31,9 @@ public class CustomBaseInput : BaseInput
 
     private void Update()
     {
+        Debug.Log(m_isInputDisabled.Value);
+        if (m_isInputDisabled.Value)
+            return;
         if (m_firstUpdate && m_cursorPos != (Vector2)m_cursorPosValue.Value)
             m_cursorPos = m_cursorPosValue.Value;
         if (!m_firstUpdate)
@@ -55,6 +60,8 @@ public class CustomBaseInput : BaseInput
 
     public override float GetAxisRaw(string axisName)
     {
+        if (m_isInputDisabled.Value)
+            return 0;
         string[] inputs = axisName.Split('.');
         switch (inputs[0])
         {
@@ -76,6 +83,8 @@ public class CustomBaseInput : BaseInput
 
     public override bool GetButtonDown(string buttonName)
     {
+        if (m_isInputDisabled.Value)
+            return false;
         switch (buttonName)
         {
             case "ButtonA":
@@ -92,11 +101,15 @@ public class CustomBaseInput : BaseInput
 
     public override bool GetMouseButtonDown(int button)
     {
+        if (m_isInputDisabled.Value)
+            return false;
         return state.Buttons.A == ButtonState.Pressed && prevState.Buttons.A == ButtonState.Released;
     }
 
     public override bool GetMouseButtonUp(int button)
     {
+        if (m_isInputDisabled.Value)
+            return false;
         return state.Buttons.A == ButtonState.Released && prevState.Buttons.A == ButtonState.Pressed;
     }
 

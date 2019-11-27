@@ -280,6 +280,12 @@ PrefabInstance:
       propertyPath: m_scenesToLoad.Array.data[1].m_sceneName
       value: FreePlayModeSelectScene
       objectReference: {fileID: 0}
+    - target: {fileID: 497192700520986044, guid: e222536144f44ec44bd3672279cdfcb9,
+        type: 3}
+      propertyPath: m_isInputDisabled
+      value: 
+      objectReference: {fileID: 11400000, guid: b1ad9e0bd3da1b34a923d6819d0b8d65,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e222536144f44ec44bd3672279cdfcb9, type: 3}
 --- !u!1 &427528611
@@ -609,20 +615,10 @@ PrefabInstance:
         If you're knocked off three times, you're eliminated. The last one to be riding
         their Chonker wins!
       objectReference: {fileID: 0}
-    - target: {fileID: 1462816623587680083, guid: a7f76a404a51b14449afafbc0011becd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -63.899902
-      objectReference: {fileID: 0}
     - target: {fileID: 1462816623872379208, guid: a7f76a404a51b14449afafbc0011becd,
         type: 3}
       propertyPath: m_Text
       value: CHONK JOUSTING
-      objectReference: {fileID: 0}
-    - target: {fileID: 6957551740849100368, guid: a7f76a404a51b14449afafbc0011becd,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -9.14502
       objectReference: {fileID: 0}
     - target: {fileID: 2282981175283881659, guid: a7f76a404a51b14449afafbc0011becd,
         type: 3}
@@ -638,6 +634,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -144
+      objectReference: {fileID: 0}
+    - target: {fileID: 1462816623587680083, guid: a7f76a404a51b14449afafbc0011becd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -63.899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 6957551740849100368, guid: a7f76a404a51b14449afafbc0011becd,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -9.14502
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7f76a404a51b14449afafbc0011becd, type: 3}
@@ -741,6 +747,12 @@ PrefabInstance:
       propertyPath: m_scenesToUnload.Array.data[0].m_sceneName
       value: ChonkJoustingTipsScene
       objectReference: {fileID: 0}
+    - target: {fileID: 2777209146648889269, guid: c774c7470b0d05a44bee6d99b8df5224,
+        type: 3}
+      propertyPath: m_isInputDisabled
+      value: 
+      objectReference: {fileID: 11400000, guid: b1ad9e0bd3da1b34a923d6819d0b8d65,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c774c7470b0d05a44bee6d99b8df5224, type: 3}
 --- !u!1 &1118541303
