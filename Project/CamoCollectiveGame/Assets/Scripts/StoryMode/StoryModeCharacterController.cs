@@ -28,7 +28,7 @@ public class StoryModeCharacterController : MonoBehaviour
     {
         if (m_stopped)
         {
-            transform.forward = Vector3.MoveTowards(transform.forward, Vector3.back, 10 * Time.deltaTime);
+            transform.forward = Vector3.MoveTowards(transform.forward, Vector3.back, 1 * Time.deltaTime);
             return;
         }
         transform.forward = m_velocity;
