@@ -893,6 +893,7 @@ GameObject:
   - component: {fileID: 737115033}
   - component: {fileID: 737115034}
   - component: {fileID: 737115035}
+  - component: {fileID: 737115036}
   m_Layer: 0
   m_Name: StartupEvent
   m_TagString: Untagged
@@ -948,6 +949,21 @@ MonoBehaviour:
     m_constant: {fileID: 0}
     m_variable: {fileID: 11400000, guid: 373525c3105eb5c4f87765a2defa8c73, type: 2}
   m_audioEvent: {fileID: 11400000, guid: 1b9a85e556d3a6f46bcafc9adf8cdf97, type: 2}
+--- !u!114 &737115036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737115032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9b20837eb84764b9850c991633ecb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_triggerOnAwake: 1
+  m_gameEvent: {fileID: 11400000, guid: 0ac3c64849eadfa45b1742c9fb10f18f, type: 2}
+  m_onDestroyEvent: {fileID: 0}
 --- !u!1 &995038243
 GameObject:
   m_ObjectHideFlags: 0
@@ -1268,11 +1284,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1160550663}
@@ -1669,11 +1685,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1765292768}
@@ -1896,11 +1912,11 @@ MonoBehaviour:
     lineCount: 1
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 0
+  m_havePropertiesChanged: 1
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 0
+  m_isInputParsingRequired: 1
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 2137686192}
