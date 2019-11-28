@@ -7,6 +7,8 @@ using UnityEngine;
 public class EnoughPlayersCheck : MonoBehaviour
 {
     [SerializeField]
+    private BoolValue m_isLoadingValue;
+    [SerializeField]
     private List<PlayerData> m_players;
     private SceneLoader m_sceneLoader;
     private bool m_isLoading;
@@ -16,9 +18,9 @@ public class EnoughPlayersCheck : MonoBehaviour
         m_sceneLoader = GetComponent<SceneLoader>();
     }
 
-    private void Update()
+    private void LateUpdate()
     {
-        if (m_isLoading)
+        if (m_isLoading || m_isLoadingValue.Value)
             return;
         int players = 0;
         foreach (PlayerData player in m_players)

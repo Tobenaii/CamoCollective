@@ -8,6 +8,8 @@ using XInputDotNetPure;
 public class CustomBaseInput : BaseInput
 {
     [SerializeField]
+    private bool m_disableMouse;
+    [SerializeField]
     private BoolValue m_isInputDisabled;
     [SerializeField]
     private PlayerData m_playerData;
@@ -83,7 +85,7 @@ public class CustomBaseInput : BaseInput
 
     public override bool GetButtonDown(string buttonName)
     {
-        if (m_isInputDisabled.Value)
+        if (m_isInputDisabled.Value || buttonName == "")
             return false;
         switch (buttonName)
         {
@@ -101,14 +103,14 @@ public class CustomBaseInput : BaseInput
 
     public override bool GetMouseButtonDown(int button)
     {
-        if (m_isInputDisabled.Value)
+        if (m_isInputDisabled.Value || m_disableMouse)
             return false;
         return state.Buttons.A == ButtonState.Pressed && prevState.Buttons.A == ButtonState.Released;
     }
 
     public override bool GetMouseButtonUp(int button)
     {
-        if (m_isInputDisabled.Value)
+        if (m_isInputDisabled.Value || m_disableMouse)
             return false;
         return state.Buttons.A == ButtonState.Released && prevState.Buttons.A == ButtonState.Pressed;
     }

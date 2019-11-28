@@ -2118,7 +2118,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalAxis: LeftJoystick.X
   m_VerticalAxis: LeftJoystick.Y
-  m_SubmitButton: ButtonA
+  m_SubmitButton: 
   m_CancelButton: ButtonB
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0.5
@@ -2135,6 +2135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8806af405c2232c4d8b56a0b0d88e797, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_disableMouse: 1
   m_isInputDisabled: {fileID: 11400000, guid: b1ad9e0bd3da1b34a923d6819d0b8d65, type: 2}
   m_playerData: {fileID: 0}
   m_controllerNumber:
